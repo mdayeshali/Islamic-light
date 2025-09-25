@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>হাদীস সংগ্রহ</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>📖 হাদীস সংগ্রহ</h1>
+    <nav>
+      <a href="../index.html">🏠 হোম</a>
+      <a href="hadith.html" class="active">📚 হাদীস</a>
+      <a href="../about.html">ℹ️ পরিচিতি</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <!-- সাইডবার -->
+    <aside class="sidebar">
+      <h2>📚 হাদীসের বই</h2>
+      <ul id="book-list">
+        <li onclick="loadBook('data/bukhari.json')">সহীহ বুখারী</li>
+        <li onclick="loadBook('muslim.json')">সহীহ মুসলিম</li>
+        <li onclick="loadBook('tirmidhi.json')">সুনান তিরমিযী</li>
+        <li onclick="loadBook('abu_dawud.json')">সুনান আবু দাউদ</li>
+      </ul>
+    </aside>
+
+    <!-- হাদীস কন্টেন্ট -->
+    <section class="content">
+      <h2 id="book-title">একটি বই নির্বাচন করুন</h2>
+      <div id="chapter-list"></div>
+      <div id="hadith-list"></div>
+    </section>
+  </main>
+
+  <script src="js/hadith.js"></script>
+</body>
+</html>
