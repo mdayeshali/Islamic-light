@@ -21,9 +21,9 @@
             </div>
 
             <div class="settings-container">
-                <a href="../index.html" class="home-btn" style="text-decoration: none;">  হোম পেজ</a>
+                <a href="../index.html" class="home-btn" style="text-decoration: none;">হোম পেজ</a>
 
-                <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
+                <button class="settings-btn" onclick="toggleSettings()">⚙</button>
                 <div id="font-sizer" class="font-sizer-hidden">
                     <button onclick="changeFontSize(-1)">-</button>
                     <button onclick="changeFontSize(1)">+</button>
@@ -32,46 +32,133 @@
         </div>
 
         <div class="ayat">
-            <strong>আয়াত ১:</strong>
-            <div class="arabic">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
-            <div class="translation">আল্লাহর নামে শুরু করছি যিনি পরম করুণাময়, অতি দয়ালু।</div>
-        </div>
+  <strong>আয়াত ১</strong>
+  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
+  <div class="arabic">بِسْمِ اللَّهِ الرَّحْمَـٰنِ الرَّحِيمِ</div>
+  <div class="transliteration">বিসমিল্লাহির রাহমানির রাহীম</div>
+  <div class="translation">শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতিশয় দয়ালু।</div>
+  <div class="tafsir">
+    <strong>তাফসীর (সংক্ষেপে):</strong><br>
+    প্রতিটি কাজের শুরুতে আল্লাহর নাম নেওয়া উচিত। এটি বরকতের মাধ্যম এবং শয়তানের প্রভাব থেকে রক্ষা করে।  
+    <br><br>
+    উদাহরণ: যেমন পরীক্ষার আগে শিক্ষককে সালাম দিলে মন শান্ত হয়, কাজও সুন্দরভাবে শুরু হয়। তেমনি আল্লাহর নামে শুরু করলে কাজ বরকতময় হয়।  
+    <br><br>
+    <strong>শিক্ষণীয় বিষয়:</strong><br>
+    ১. আল্লাহর নামে কাজ শুরু করলে বরকত আসে।<br>
+    ২. আল্লাহই প্রকৃত দয়াময় ও করুণাময়।
+  </div>
+</div>
 
-        <div class="ayat">
-            <strong>আয়াত ২:</strong>
-            <div class="arabic">اَلْحَمْدُ لِلّٰهِ رَبِّ الْعٰلَمِيْنَ</div>
-            <div class="translation">সকল প্রশংসা আল্লাহর জন্য, যিনি বিশ্বজগতের প্রতিপালক।</div>
-        </div>
+<div class="ayat">
+  <strong>আয়াত ২</strong>
+  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
+  <div class="arabic">الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ</div>
+  <div class="transliteration">আলহামদু লিল্লাহি রাব্বিল ‘আলামীন</div>
+  <div class="translation">সমস্ত প্রশংসা আল্লাহর জন্য, যিনি সমস্ত জগতের প্রতিপালক।</div>
+  <div class="tafsir">
+    <strong>তাফসীর (সংক্ষেপে):</strong><br>
+    আল্লাহই প্রতিটি সৃষ্টির প্রতিপালক, দাতা ও নিয়ন্ত্রক। সব প্রশংসা শুধু তাঁরই জন্য প্রযোজ্য।  
+    <br><br>
+    উদাহরণ: যেমন একটি গাছকে নিয়মিত পানি দিলে সে টিকে থাকে। আল্লাহ না চাইলে কোনো প্রাণী, কোনো মানুষই বাঁচতে পারবে না।  
+    <br><br>
+    <strong>শিক্ষণীয় বিষয়:</strong><br>
+    ১. সব প্রশংসা কেবল আল্লাহর জন্য।<br>
+    ২. তিনিই সকল জগতের প্রতিপালক।
+  </div>
+</div>
 
-        <div class="ayat">
-            <strong>আয়াত ৩:</strong>
-            <div class="arabic">الرَّحْمٰنِ الرَّحِيْمِ</div>
-            <div class="translation">যিনি পরম করুণাময়, অতি দয়ালু।</div>
-        </div>
+<div class="ayat">
+  <strong>আয়াত ৩</strong>
+  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
+  <div class="arabic">الرَّحْمَـٰنِ الرَّحِيمِ</div>
+  <div class="transliteration">আর-রাহমানির রাহীম</div>
+  <div class="translation">যিনি পরম করুণাময়, অতিশয় দয়ালু।</div>
+  <div class="tafsir">
+    <strong>তাফসীর (সংক্ষেপে):</strong><br>
+    আল্লাহর রহমতের কোনো সীমা নেই। তিনি দুনিয়াতে সবাইকে দয়া করেন, আর আখিরাতে বিশেষভাবে মুমিনদের প্রতি।  
+    <br><br>
+    উদাহরণ: যেমন একজন মা সন্তানের প্রতি নিঃশর্ত দয়া করে, তবুও আল্লাহর দয়া তার চেয়ে অসীম গুণ বেশি।  
+    <br><br>
+    <strong>শিক্ষণীয় বিষয়:</strong><br>
+    ১. আল্লাহর দয়ার ওপর ভরসা করতে হবে।<br>
+    ২. মানুষের ওপরও দয়া প্রদর্শন করা উচিত।
+  </div>
+</div>
 
-        <div class="ayat">
-            <strong>আয়াত ৪:</strong>
-            <div class="arabic">مٰلِكِ يَوْمِ الدِّيْنِ</div>
-            <div class="translation">বিচার দিনের মালিক।</div>
-        </div>
+<div class="ayat">
+  <strong>আয়াত ৪</strong>
+  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
+  <div class="arabic">مَـٰلِكِ يَوْمِ الدِّينِ</div>
+  <div class="transliteration">মালিকি ইয়াওমিদ্দীন</div>
+  <div class="translation">যিনি বিচার দিবসের মালিক।</div>
+  <div class="tafsir">
+    <strong>তাফসীর (সংক্ষেপে):</strong><br>
+    আখিরাতে চূড়ান্ত বিচারক আল্লাহ। সেদিন কারও সুপারিশ বা প্রভাব চলবে না, শুধু ন্যায়বিচার হবে।  
+    <br><br>
+    উদাহরণ: যেমন কোনো পরীক্ষার হলে কেবল নম্বর দেখে ফলাফল হয়, সুপারিশে নয়। বিচার দিবসে কেবল আমলের ভিত্তিতেই হিসাব হবে।  
+    <br><br>
+    <strong>শিক্ষণীয় বিষয়:</strong><br>
+    ১. আখিরাতের বিচার দিবসকে স্মরণ রাখা জরুরি।<br>
+    ২. দুনিয়ায় সৎ আমলই হবে মুক্তির উপায়।
+  </div>
+</div>
 
-        <div class="ayat">
-            <strong>আয়াত ৫:</strong>
-            <div class="arabic">اِيَّاكَ نَعْبُدُ وَ اِیَّاكَ نَسْتَعِيْنُ</div>
-            <div class="translation">আমরা শুধু তোমারই ইবাদত করি এবং শুধু তোমারই সাহায্য চাই।</div>
-        </div>
+<div class="ayat">
+  <strong>আয়াত ৫</strong>
+  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
+  <div class="arabic">إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ</div>
+  <div class="transliteration">ইয়্যাকা নাআবুদু ওয়া ইয়্যাকা নাস্তাঈন</div>
+  <div class="translation">আমরা একমাত্র তোমারই ইবাদত করি এবং তোমারই সাহায্য চাই।</div>
+  <div class="tafsir">
+    <strong>তাফসীর (সংক্ষেপে):</strong><br>
+    এটি আল্লাহর সাথে বান্দার প্রতিশ্রুতি। ইবাদত শুধু তাঁরই জন্য, সাহায্য প্রার্থনাও শুধু তাঁর কাছেই।  
+    <br><br>
+    উদাহরণ: যেমন একজন কর্মচারী এক মালিকের অধীন হয়, অন্য কারও নয়। মুসলিমও কেবল আল্লাহর ইবাদতের অধীন।  
+    <br><br>
+    <strong>শিক্ষণীয় বিষয়:</strong><br>
+    ১. আল্লাহ ছাড়া কারও কাছে সাহায্য চাওয়া শিরক।<br>
+    ২. ইবাদত একমাত্র আল্লাহর জন্য হতে হবে।
+  </div>
+</div>
 
-        <div class="ayat">
-            <strong>আয়াত ৬:</strong>
-            <div class="arabic">اِهْدِنَا الصِّرَاطَ الْمُسْتَقِيْمَ</div>
-            <div class="translation">আমাদেরকে সরল পথ দেখাও।</div>
-        </div>
+<div class="ayat">
+  <strong>আয়াত ৬</strong>
+  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
+  <div class="arabic">اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ</div>
+  <div class="transliteration">ইহদিনাস্-সিরাতাল্-মুস্তাকীম</div>
+  <div class="translation">আমাদেরকে সরল পথে পরিচালিত কর।</div>
+  <div class="tafsir">
+    <strong>তাফসীর (সংক্ষেপে):</strong><br>
+    মানুষ নিজে সঠিক পথ খুঁজে পায় না, তাই আল্লাহর নিকট দিকনির্দেশনা চাইতে হয়।  
+    <br><br>
+    উদাহরণ: যেমন অন্ধকারে পথ চিনতে গাইড লাগে, তেমনি দুনিয়ার অন্ধকারে আল্লাহর দিকনির্দেশনাই পথপ্রদর্শক।  
+    <br><br>
+    <strong>শিক্ষণীয় বিষয়:</strong><br>
+    ১. আল্লাহর কাছ থেকে সঠিক পথ প্রার্থনা করা জরুরি।<br>
+    ২. মানুষ নিজের বুদ্ধিতে সঠিক পথ পায় না।
+  </div>
+</div>
 
-        <div class="ayat">
-            <strong>আয়াত ৭:</strong>
-            <div class="arabic">صِرَاطَ الَّذِيْنَ اَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوْبِ عَلَيْهِمْ وَ لَا الضَّآلِّيْنَ</div>
-            <div class="translation">সেই সকল লোকের পথে, যাদের প্রতি তুমি অনুগ্রহ করেছ; ওই সকল লোকের পথে নয়, যাদের প্রতি গযব নাযিল হয়েছে এবং তাদের পথেও নয়, যারা পথহারা।</div>
-        </div>
+<div class="ayat">
+  <strong>আয়াত ৭</strong>
+  <button class="transliteration-btn" onclick="toggleTransliteration(this)">উচ্চারণ</button>
+  <div class="arabic">صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ</div>
+  <div class="transliteration">সিরাতাল্লাযীনা আন‘আমতা ‘আলাইহিম গাইরিল-মাগদূবি ‘আলাইহিম ওয়ালা দদ্বাল্লীন</div>
+  <div class="translation">সে পথ, যাদেরকে তুমি নেয়ামত দান করেছো; যারা তোমার গজবের শিকার হয়নি এবং যারা পথভ্রষ্টও নয়।</div>
+  <div class="tafsir">
+    <strong>তাফসীর (সংক্ষেপে):</strong><br>
+    এখানে সঠিক পথের ব্যাখ্যা এসেছে—নবী-রাসূল, সৎ মানুষদের পথ। আর গজবপ্রাপ্ত (ইহুদী) ও পথভ্রষ্টদের (নাসারা) পথ নয়।  
+    <br><br>
+    উদাহরণ: যেমন একটি পরীক্ষায় ভালো ছাত্ররা শিক্ষককে খুশি করে, আবার কেউ শাস্তি পায়, কেউ বিভ্রান্ত হয়ে ভুল পথে যায়। তেমনি মানবজাতিও ভাগ হয়।  
+    <br><br>
+    <strong>শিক্ষণীয় বিষয়:</strong><br>
+    ১. সঠিক পথ হলো নবী-রাসূল ও সৎ লোকদের পথ।<br>
+    ২. ভ্রান্তদের অনুসরণ করলে গজব নেমে আসে।
+  </div>
+</div>
+
+        
+
     </div>
     <script src="surah.js"></script>
 </body>
