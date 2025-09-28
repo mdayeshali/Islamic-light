@@ -287,9 +287,9 @@ body {
     .menu-btn {
       display: block;
       position: static;
-      font-size: 10px;
-      background: #dcdcdc;
-      color: #004d40;
+      font-size: 12px;
+      background: #004d40;
+      color: white;
       padding: 8px 15px;
       border: none;
       cursor: pointer;
@@ -303,9 +303,7 @@ body {
       position: static;
     }
     .home-btn {
-      background-color: #dcdcdc;
-      color: #004d40;
-      font-size: 10px;
+      font-size: 12px;
       display: block;
       padding: 6px 10px;
     }
@@ -319,3 +317,4 @@ body {
       flex-direction: row;
     }
 }
+
