@@ -316,5 +316,24 @@ body {
       right: 5px;
       flex-direction: row;
     }
+
+    #scrollHandle {
+    position: fixed;
+    top: 50%;
+    right: 5px;
+    width: 12px;
+    height: 50px;
+    background: #004d40;
+    border-radius: 6px;
+    cursor: grab;
+    z-index: 9999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    transition: background 0.3s;
 }
+#scrollHandle:active {
+    cursor: grabbing;
+    background: #00332a;
+}
+}
+
 
