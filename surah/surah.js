@@ -200,5 +200,42 @@ function toggleTransliteration(btn){
     }
 }
 
+if (window.innerWidth <= 768) {
+    const handle = document.getElementById("scrollHandle");
+    if (handle) {
+        let isDragging = false;
+        let startY, startScrollTop;
+
+        handle.addEventListener("mousedown", startDrag);
+        handle.addEventListener("touchstart", startDrag);
+
+        function startDrag(e) {
+            isDragging = true;
+            startY = e.type === "touchstart" ? e.touches[0].pageY : e.pageY;
+            startScrollTop = window.scrollY;
+
+            document.addEventListener("mousemove", onDrag);
+            document.addEventListener("mouseup", stopDrag);
+            document.addEventListener("touchmove", onDrag);
+            document.addEventListener("touchend", stopDrag);
+        }
+
+        function onDrag(e) {
+            if (!isDragging) return;
+            const y = e.type === "touchmove" ? e.touches[0].pageY : e.pageY;
+            const deltaY = y - startY;
+            window.scrollTo(0, startScrollTop + deltaY * 3); 
+        }
+
+        function stopDrag() {
+            isDragging = false;
+            document.removeEventListener("mousemove", onDrag);
+            document.removeEventListener("mouseup", stopDrag);
+            document.removeEventListener("touchmove", onDrag);
+            document.removeEventListener("touchend", stopDrag);
+        }
+    }
+}
 // যখন সম্পূর্ণ পেজ লোড হবে, তখন এই ফাংশনটি কল করা হবে
 window.onload = loadSidebar;
+
