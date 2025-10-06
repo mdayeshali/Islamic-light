@@ -411,7 +411,7 @@ body {
 
 /* ওপেন অবস্থায় */
 .intro-content.open {
-  max-height: 1000px; /* পর্যাপ্ত বড় মান */
+  max-height: none; /* পর্যাপ্ত বড় মান */
   opacity: 1;
   padding: 20px;
 }
@@ -467,3 +467,4 @@ body {
     font-size: 1.3em;
   }
 }
+
