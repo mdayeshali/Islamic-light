@@ -200,48 +200,21 @@ function toggleTransliteration(btn){
     }
 }
 
-/* ✅ Scroll Handle শুধু মোবাইলের জন্য */
-document.addEventListener("DOMContentLoaded", () => {
-    if (window.innerWidth <= 768) {
-        const handle = document.getElementById("scrollHandle");
-        if (handle) {
-            let isDragging = false;
-            let startY, startScrollTop;
-
-            handle.addEventListener("touchstart", startDrag);
-            handle.addEventListener("mousedown", startDrag);
-
-            function startDrag(e) {
-                isDragging = true;
-                startY = e.type === "touchstart" ? e.touches[0].pageY : e.pageY;
-                startScrollTop = window.scrollY;
-
-                document.addEventListener("touchmove", onDrag);
-                document.addEventListener("mousemove", onDrag);
-                document.addEventListener("touchend", stopDrag);
-                document.addEventListener("mouseup", stopDrag);
-            }
-
-            function onDrag(e) {
-                if (!isDragging) return;
-                const y = e.type === "touchmove" ? e.touches[0].pageY : e.pageY;
-                const deltaY = y - startY;
-                window.scrollTo(0, startScrollTop + deltaY * 3); // sensitivity = 3
-            }
-
-            function stopDrag() {
-                isDragging = false;
-                document.removeEventListener("mousemove", onDrag);
-                document.removeEventListener("mouseup", stopDrag);
-                document.removeEventListener("touchmove", onDrag);
-                document.removeEventListener("touchend", stopDrag);
-            }
-        }
-    }
+document.addEventListener('DOMContentLoaded', function () {
+  const buttons = document.querySelectorAll('.intro-toggle');
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', function () {
+      const content = btn.nextElementSibling;
+      if (content && content.classList.contains('intro-content')) {
+        content.classList.toggle('open');
+      }
+    });
+  });
 });
+
+
 
 
 // যখন সম্পূর্ণ পেজ লোড হবে, তখন এই ফাংশনটি কল করা হবে
 window.onload = loadSidebar;
-
 
