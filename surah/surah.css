@@ -249,6 +249,7 @@ body {
   flex-grow: 1;
   text-align: center;
 }
+.nnn { display: none;}
 
 /* Mobile Responsiveness (unchanged) */
 @media (max-width: 768px) {
@@ -343,6 +344,8 @@ body {
     right: 5px;
     flex-direction: row;
   }
+  .nnn{ display: block;
+       text-align: center;}
 }
 
 /* 🌿 সূরা ভূমিকা অংশের ডিজাইন */
@@ -467,4 +470,5 @@ body {
     font-size: 1.3em;
   }
 }
+
 
