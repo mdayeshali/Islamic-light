@@ -1,0 +1,243 @@
+/* =============== BASIC STYLE =============== */
+body {
+  margin: 0;
+  font-family: "Noto Sans Bengali", Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: 0.3s ease;
+}
+
+:root {
+  --bg: #f9fafb;
+  --text: #222;
+  --primary: #004d40;
+  --secondary: #00796b;
+  --card-bg: #ffffff;
+  --transliteration-bg: #f3f7f5;
+}
+
+[data-theme="dark"] {
+  --bg: #121212;
+  --text: #eaeaea;
+  --primary: #26a69a;
+  --card-bg: #1e1e1e;
+  --transliteration-bg: #1b2b29;
+}
+
+/* =============== HEADER =============== */
+header {
+  background: var(--primary);
+  color: white;
+  padding: 15px 25px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  color: #ffeb3b;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.dark-toggle {
+  background: none;
+  border: 1px solid white;
+  border-radius: 50%;
+  color: white;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+
+/* =============== HERO SECTION =============== */
+.hero {
+  text-align: center;
+  background: linear-gradient(to right, #004d40, #00796b);
+  color: white;
+  padding: 60px 20px;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+}
+
+/* =============== DUA SECTION =============== */
+.container {
+  max-width: 950px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.dua-box {
+  background: var(--card-bg);
+  border-left: 5px solid var(--primary);
+  border-radius: 12px;
+  padding: 25px 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.dua-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.dua-box h3 {
+  color: var(--primary);
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+/* =============== ARABIC TEXT =============== */
+.arabic {
+  font-family: "Scheherazade New", "Amiri", serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: #222;
+  margin: 15px 0;
+  line-height: 2.1rem;
+  direction: rtl;
+}
+
+[data-theme="dark"] .arabic {
+  color: #eaeaea;
+}
+
+/* =============== TRANSLITERATION (উচ্চারণ) =============== */
+.transliteration {
+  background: var(--transliteration-bg);
+  border-left: 4px solid var(--secondary);
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin: 12px 0;
+  font-size: 1rem;
+  line-height: 1.8rem;
+  color: #333;
+  font-style: italic;
+}
+
+.transliteration::before {
+  content: "🗣️ উচ্চারণ:";
+  font-weight: bold;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 5px;
+}
+
+[data-theme="dark"] .transliteration {
+  color: #e0e0e0;
+  background: var(--transliteration-bg);
+}
+
+/* =============== MEANING (অনুবাদ) =============== */
+.meaning {
+  background: #fefefe;
+  padding: 12px 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.8rem;
+  border-left: 4px solid #c8e6c9;
+}
+
+.meaning::before {
+  content: "🌿 অর্থ:";
+  font-weight: bold;
+  color: var(--primary);
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* =============== REFERENCE =============== */
+.reference {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #555;
+  font-style: italic;
+  text-align: right;
+}
+
+.reference::before {
+  content: "📚 ";
+}
+
+/* =============== FOOTER =============== */
+footer {
+  text-align: center;
+  background: var(--primary);
+  color: white;
+  padding: 25px 10px;
+  margin-top: 50px;
+  font-size: 0.9rem;
+  line-height: 1.6rem;
+}
+
+/* =============== RESPONSIVE DESIGN =============== */
+@media (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    background: var(--primary);
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+  }
+
+  nav a {
+    display: block;
+    margin: 10px 0;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  .arabic {
+    font-size: 1.3rem;
+  }
+
+  .transliteration,
+  .meaning {
+    font-size: 0.95rem;
+  }
+}

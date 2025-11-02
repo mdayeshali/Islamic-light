@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🤲 দো‘আ হোম | Islamic Light</title>
+
+  <meta name="description" content="কুরআনের দো‘আ, নামাযের দো‘আ ও দৈনন্দিন জীবনের দো‘আ — এক জায়গায়।" />
+  <meta name="keywords" content="Islamic Light, Dua, Quranic Dua, Daily Dua, Namaz Dua, Bangla Dua" />
+  <meta name="author" content="Islamic Light Team" />
+
+  <style>
+    /* ---------- GLOBAL ---------- */
+    :root {
+      --bg: #f7fafc;
+      --text: #222;
+      --primary: #004d40;
+      --accent: #00796b;
+      --card-bg: #ffffff;
+    }
+
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #eaeaea;
+      --primary: #26a69a;
+      --card-bg: #1e1e1e;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans Bengali", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: 0.4s ease;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #ffeb3b;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .dark-toggle {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      background: linear-gradient(rgba(0, 77, 64, 0.8), rgba(0, 77, 64, 0.8)), url('assets/masjid-bg.jpg') center/cover no-repeat;
+      color: white;
+      padding: 70px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* ---------- DUA HOME CARDS ---------- */
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      padding: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+      height: calc(100vh - 220px); /* পুরো স্ক্রিনে ফিট করতে */
+      align-content: center;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      border-top: 5px solid var(--primary);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .card h2 a {
+      text-decoration: none;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      color: var(--text);
+      font-size: 0.9rem;
+      margin: 10px 0 15px;
+    }
+
+    .button {
+      background: var(--primary);
+      color: white;
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9rem;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: var(--accent);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.85rem;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+    }
+
+    footer a {
+      color: #ffeb3b;
+      text-decoration: none;
+    }
+
+    /* ---------- MOBILE MENU ---------- */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        background: var(--primary);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        padding: 10px 0;
+      }
+
+      nav.active {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+
+      nav a {
+        background: #00695c;
+        margin: 5px;
+        padding: 8px 5px;
+        border-radius: 10px;
+        font-size: 0.9rem;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        height: calc(100vh - 210px);
+      }
+
+      .card {
+        padding: 10px;
+      }
+
+      .card h2 a {
+        font-size: 1rem;
+      }
+
+      .hero {
+        padding: 20px 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo"><strong>Islamic Light</strong></div>
+    <button class="menu-toggle" id="menuBtn">☰</button>
+
+    <nav id="navMenu">
+      <a href="index.html">হোম</a>
+      <a href="quran.html">কুরআন</a>
+      <a href="hadith/hadith.html">হাদীস</a>
+      <a href="aqeedah.html">আকীদা</a>
+      <a href="dua.html" class="active">দো‘আ</a>
+      <a href="about.html">আমাদের সম্পর্কে</a>
+      <a href="contact.html">যোগাযোগ</a>
+    </nav>
+
+    <button class="dark-toggle" id="themeToggle">🌙</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>🤲 দো‘আ সমূহ</h1>
+    <p>পবিত্র কুরআন ও হাদীসের আলোকে দো‘আসমূহ পড়ুন, শিখুন এবং জীবনে বাস্তবায়ন করুন।</p>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    <div class="card">
+      <h2><a href="dua/quranic_dua.html">📖 কুরআনের দো‘আ</a></h2>
+      <p>পবিত্র কুরআনে বর্ণিত দো‘আসমূহ একত্রে পড়ুন।</p>
+      <a href="dua/quranic_dua.html" class="button">দেখুন</a>
+    </div>
+
+    <div class="card">
+      <h2><a href="dua/namaz_dua.html">🕌 নামাযের দো‘আ</a></h2>
+      <p>রুকু, সিজদা ও তাশাহহুদের দো‘আসমূহ সহজভাবে।</p>
+      <a href="dua/namaz_dua.html" class="button">দেখুন</a>
+    </div>
+
+    <div class="card">
+      <h2><a href="dua/daily_dua.html">🌅 দৈনন্দিন দো‘আ</a></h2>
+      <p>জীবনের প্রতিটি কাজে দো‘আ জানুন ও শিখুন।</p>
+      <a href="dua/daily_dua.html" class="button">দেখুন</a>
+    </div>
+
+    <div class="card">
+      <h2><a href="dua/special_dua.html">❤️ বিশেষ দো‘আ</a></h2>
+      <p>রোগ, রিজিক ও কষ্টের সময়ের দো‘আসমূহ।</p>
+      <a href="dua/special_dua.html" class="button">দেখুন</a>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Islamic Light | Developed with ❤️ by Islamic Light Team</p>
+  </footer>
+
+  <!-- ---------- JAVASCRIPT ---------- -->
+  <script>
+    // 🌙 Dark Mode Toggle
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.dataset.theme =
+        document.body.dataset.theme === "dark" ? "" : "dark";
+      toggle.textContent = document.body.dataset.theme === "dark" ? "☀️" : "🌙";
+    });
+
+    // 📱 Mobile Menu Toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const navMenu = document.getElementById("navMenu");
+    menuBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      menuBtn.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
+    });
+  </script>
+</body>
+</html>
