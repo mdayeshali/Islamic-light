@@ -10,7 +10,6 @@
   <meta name="author" content="Islamic Light Team" />
 
   <style>
-    /* ---------- GLOBAL ---------- */
     :root {
       --bg: #f7fafc;
       --text: #222;
@@ -29,12 +28,13 @@
     body {
       margin: 0;
       font-family: "Noto Sans Bengali", Arial, sans-serif;
-      background-color: var(--bg);
+      background: var(--bg);
       color: var(--text);
       transition: 0.4s ease;
+      overflow-x: hidden;
     }
 
-    /* ---------- HEADER ---------- */
+    /* HEADER */
     header {
       display: flex;
       justify-content: space-between;
@@ -42,10 +42,10 @@
       background: var(--primary);
       color: white;
       padding: 12px 20px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10;
     }
 
     .logo {
@@ -65,9 +65,7 @@
       transition: 0.3s;
     }
 
-    nav a:hover {
-      color: #ffeb3b;
-    }
+    nav a:hover { color: #ffeb3b; }
 
     .menu-toggle {
       display: none;
@@ -86,153 +84,174 @@
       width: 35px;
       height: 35px;
       cursor: pointer;
+      transition: 0.3s;
     }
 
-    /* ---------- HERO ---------- */
+    .dark-toggle:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* HERO */
     .hero {
       text-align: center;
-      background: linear-gradient(rgba(0, 77, 64, 0.8), rgba(0, 77, 64, 0.8)), url('assets/masjid-bg.jpg') center/cover no-repeat;
+      background: linear-gradient(to right, #004d40, #00796b);
       color: white;
-      padding: 70px 20px;
+      padding: 40px 15px;
     }
 
     .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
     }
 
     .hero p {
-      font-size: 1.1rem;
-      max-width: 650px;
+      font-size: 1rem;
       margin: 0 auto;
+      max-width: 600px;
+      line-height: 1.5;
     }
 
-    /* ---------- DUA HOME CARDS ---------- */
+    /* CONTAINER & CARDS */
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      padding: 20px;
-      max-width: 1000px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
       margin: 0 auto;
-      height: calc(100vh - 220px); /* পুরো স্ক্রিনে ফিট করতে */
-      align-content: center;
     }
 
     .card {
       background: var(--card-bg);
-      padding: 20px;
-      border-radius: 12px;
+      padding: 18px;
+      border-radius: 15px;
       text-align: center;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-      border-top: 5px solid var(--primary);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-top: 4px solid var(--primary);
       transition: 0.3s;
     }
 
     .card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
 
     .card h2 a {
       text-decoration: none;
       color: var(--primary);
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
 
     .card p {
+      font-size: 0.85rem;
+      margin: 8px 0 12px;
       color: var(--text);
-      font-size: 0.9rem;
-      margin: 10px 0 15px;
     }
 
     .button {
       background: var(--primary);
       color: white;
-      padding: 6px 14px;
+      padding: 6px 12px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       transition: 0.3s;
     }
 
-    .button:hover {
-      background: var(--accent);
-    }
+    .button:hover { background: var(--accent); }
 
-    /* ---------- FOOTER ---------- */
+    /* FOOTER */
     footer {
       background: var(--primary);
       color: white;
       text-align: center;
       padding: 15px;
-      font-size: 0.85rem;
-      position: relative;
-      bottom: 0;
-      width: 100%;
+      line-height: 1.5;
+      font-size: 0.9rem;
     }
 
     footer a {
       color: #ffeb3b;
       text-decoration: none;
+      margin: 0 5px;
     }
 
-    /* ---------- MOBILE MENU ---------- */
+    /* RESPONSIVE (MOBILE) */
     @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-wrap: wrap;
-        justify-content: center;
-        background: var(--primary);
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 100%;
-        padding: 10px 0;
-      }
-
-      nav.active {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-      }
-
-      nav a {
-        background: #00695c;
-        margin: 5px;
-        padding: 8px 5px;
-        border-radius: 10px;
-        font-size: 0.9rem;
+      header {
+        padding: 10px 15px;
       }
 
       .menu-toggle {
         display: block;
       }
 
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        position: fixed;
+        top: 55px;
+        right: 0;
+        width: 40%;
+        padding: 10px 0;
+      }
+      nav a {
+        text-align: center;
+        padding: 5px;
+        
+      }
+
+      nav.active { display: flex; }
+
       .container {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        height: calc(100vh - 210px);
-      }
-
-      .card {
         padding: 10px;
       }
 
-      .card h2 a {
-        font-size: 1rem;
+      .card {
+        padding: 12px;
       }
 
       .hero {
-        padding: 20px 10px;
+        padding: 25px 10px;
+      }
+
+      .hero h1 {
+        font-size: 1.3rem;
+      }
+
+      .hero p {
+        font-size: 0.85rem;
+      }
+
+      footer {
+        font-size: 0.75rem;
+        padding: 10px;
+        position: relative;
+        bottom: 0;
+      }
+
+      /* সবকিছু এক স্ক্রিনে ফিট রাখার জন্য */
+      html, body {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        align-items: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
   <header>
     <div class="logo"><strong>Islamic Light</strong></div>
     <button class="menu-toggle" id="menuBtn">☰</button>
@@ -250,45 +269,47 @@
     <button class="dark-toggle" id="themeToggle">🌙</button>
   </header>
 
-  <!-- HERO -->
   <section class="hero">
     <h1>🤲 দো‘আ সমূহ</h1>
-    <p>পবিত্র কুরআন ও হাদীসের আলোকে দো‘আসমূহ পড়ুন, শিখুন এবং জীবনে বাস্তবায়ন করুন।</p>
+    <p>পবিত্র কুরআন ও হাদীসের আলোকে দো‘আসমূহ পড়ুন, শিখুন ও বাস্তবায়ন করুন।</p>
   </section>
 
-  <!-- MAIN CONTENT -->
   <main class="container">
     <div class="card">
       <h2><a href="dua/quranic_dua.html">📖 কুরআনের দো‘আ</a></h2>
-      <p>পবিত্র কুরআনে বর্ণিত দো‘আসমূহ একত্রে পড়ুন।</p>
+      <p>কুরআনে বর্ণিত শ্রেষ্ঠ দো‘আসমূহ।</p>
       <a href="dua/quranic_dua.html" class="button">দেখুন</a>
     </div>
 
     <div class="card">
       <h2><a href="dua/namaz_dua.html">🕌 নামাযের দো‘আ</a></h2>
-      <p>রুকু, সিজদা ও তাশাহহুদের দো‘আসমূহ সহজভাবে।</p>
+      <p>রুকু, সিজদা ও বসার দো‘আসমূহ।</p>
       <a href="dua/namaz_dua.html" class="button">দেখুন</a>
     </div>
 
     <div class="card">
       <h2><a href="dua/daily_dua.html">🌅 দৈনন্দিন দো‘আ</a></h2>
-      <p>জীবনের প্রতিটি কাজে দো‘আ জানুন ও শিখুন।</p>
+      <p>দৈনন্দিন জীবনের দো‘আ সমূহ।</p>
       <a href="dua/daily_dua.html" class="button">দেখুন</a>
     </div>
 
     <div class="card">
       <h2><a href="dua/special_dua.html">❤️ বিশেষ দো‘আ</a></h2>
-      <p>রোগ, রিজিক ও কষ্টের সময়ের দো‘আসমূহ।</p>
+      <p>রোগ, রিজিক ও বিপদের সময়ের দো‘আ।</p>
       <a href="dua/special_dua.html" class="button">দেখুন</a>
     </div>
   </main>
 
-  <!-- FOOTER -->
   <footer>
+    <div class="links">
+      <a href="quran.html">কুরআন</a> |
+      <a href="hadith/hadith.html">হাদীস</a> |
+      <a href="dua.html">দো‘আ</a> |
+      <a href="about.html">আমাদের সম্পর্কে</a>
+    </div>
     <p>© 2025 Islamic Light | Developed with ❤️ by Islamic Light Team</p>
   </footer>
 
-  <!-- ---------- JAVASCRIPT ---------- -->
   <script>
     // 🌙 Dark Mode Toggle
     const toggle = document.getElementById("themeToggle");
@@ -298,7 +319,7 @@
       toggle.textContent = document.body.dataset.theme === "dark" ? "☀️" : "🌙";
     });
 
-    // 📱 Mobile Menu Toggle
+    // 📱 Menu Toggle
     const menuBtn = document.getElementById("menuBtn");
     const navMenu = document.getElementById("navMenu");
     menuBtn.addEventListener("click", () => {
