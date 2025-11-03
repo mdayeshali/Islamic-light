@@ -31,7 +31,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 25px;
+  padding: 12px 25px;
   z-index: 1000;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
@@ -43,6 +43,17 @@ header {
 
 .menu-toggle {
   display: none;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 nav a {
@@ -74,7 +85,7 @@ nav a:hover {
   background-color: rgba(0, 77, 64, 0.85);
   background-blend-mode: overlay;
   color: white;
-  padding: 90px 20px;
+  padding: 40px 20px;
 }
 
 .hero h1 {
@@ -164,63 +175,99 @@ footer p {
   margin-top: 10px;
 }
 
-
-/* RESPONSIVE MENU */
+/* ---------- RESPONSIVE MENU (Mobile Optimized) ---------- */
 @media (max-width: 768px) {
-    header {
-        /* হেডার-এর padding ছোট স্ক্রিনের জন্য একটু কমানো হলো */
-        padding: 10px 15px; 
-    }
+  header {
+    padding: 10px 15px;
+  }
 
-    nav {
-        display: none;
-        flex-direction: column;
-        background: var(--primary); 
-        /* absolute এর পরিবর্তে fixed ব্যবহার করলে মেনু স্ক্রোল করলেও দেখা যাবে */
-        position: fixed; 
-        top: 55px; /* হেডার এর উচ্চতা অনুযায়ী মান দিতে পারেন */
-        right: 0;
-        height: calc(100vh - 55px); /* স্ক্রিনের বাকি উচ্চতা জুড়ে মেনু থাকবে */
-        width: 250px; /* মেনুর একটি নির্দিষ্ট প্রস্থ সেট করা হলো */
-        text-align: left; /* মেনু আইটেমগুলি বামদিকে অ্যালাইন করা হলো */
-        padding: 10px 0;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2); /* একটি হালকা শ্যাডো যোগ করা হলো */
-        transform: translateX(100%); /* মেনুটিকে প্রাথমিকভাবে স্ক্রিনের বাইরে লুকিয়ে রাখা হলো */
-        transition: transform 0.4s ease-out; /* স্লাইড-ইন/আউট অ্যানিমেশন যোগ করা হলো */
-    }
+  nav {
+    display: none;
+    flex-direction: column;
+    background: var(--primary);
+    position: fixed;
+    top: 60px;
+    right: 0;
+    height: calc(100vh - 60px);
+    width: 240px;
+    padding: 15px 0;
+    box-shadow: -3px 0 6px rgba(0, 0, 0, 0.3);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+  }
 
-    nav a {
-        border: none;
-        border-radius: 3px;
-        color: var(--primary); /* টেক্সটের রঙ প্রাইমারি, ব্যাকগ্রাউন্ড সাদা */
-        background-color: white;
-        margin: 8px 15px; /* মার্জিন কিছুটা বাড়ানো হলো */
-        width: auto; /* width: 200px এর পরিবর্তে auto ব্যবহার করা হলো */
-        padding: 10px 15px; /* প্যাডিং যোগ করা হলো যাতে সহজে ক্লিক করা যায় */
-        display: block; /* পুরো প্রস্থ জুড়ে ক্লিক করার জন্য ব্লক এলিমেন্ট করা হলো */
-        text-align: left; /* মেনু টেক্সট বাম দিকে থাকবে */
-    }
-    
-    nav a:hover {
-        background-color: var(--accent); /* হোভার এ অ্যাকসেন্ট কালার */
-        color: white; /* হোভার এ সাদা টেক্সট */
-    }
+  nav.active {
+    display: flex;
+    transform: translateX(0);
+  }
 
+  nav a {
+    display: block;
+    background: white;
+    color: var(--primary);
+    width: 150px;
+    padding: 5px;
+    margin: 8px 15px;
+    border-radius: 6px;
+    text-align: left;
+    font-size: 1rem;
+    transition: 0.3s;
+  }
 
-    /* যখন মেনুটি সক্রিয় হবে (যেমন, জাভাস্ক্রিপ্ট 'active' ক্লাস যোগ করলে) */
-    nav.active {
-        display: flex; /* ডিসপ্লে ফ্লেক্স রাখা হলো */
-        transform: translateX(0); /* মেনুটিকে স্ক্রিনের ভেতরে আনা হলো (ডান দিক থেকে স্লাইড ইন) */
-    }
+  nav a:hover {
+    background-color: var(--accent);
+    color: white;
+  }
 
-    .menu-toggle {
-        display: block;
-        /* নিশ্চিত করুন আপনার HTML এ একটি 'menu-toggle' বাটন আছে */
-        font-size: 1.2rem;
-        cursor: pointer;
-    }
-  /*  .hero {
-      display: none;
+  .menu-toggle {
+    display: block;
+  }
 
-  } */
+  .dark-toggle {
+    width: 32px;
+    height: 32px;
+  }
+
+  /* Hero optimization for mobile */
+  .hero {
+    background: linear-gradient(to right, #004d40, #00796b);
+    padding: 20px 15px;
+  }
+
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  /* Cards: make them smaller but clear */
+  .container {
+    padding: 20px 10px;
+    gap: 15px;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  .card h2 a {
+    font-size: 1.1rem;
+  }
+
+  .button {
+    padding: 7px 14px;
+    font-size: 0.9rem;
+  }
+
+  /* Hide long Quran verse on small screens */
+  .quran-verse {
+    display: none;
+  }
+
+  footer {
+    padding: 18px;
+    font-size: 0.85rem;
+  }
 }
