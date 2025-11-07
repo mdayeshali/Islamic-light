@@ -1,366 +1,350 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>আমাদের সম্পর্কে — ইসলামিক লাইট</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>আমাদের সম্পর্কে — Islamic Light</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmShkL76P8yC3S83sA1W2L/4B1x2n4s3W4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
 
-    <style>
-        /* --- সাধারণ স্টাইল --- */
-        :root {
-            --bg: #0f3b2e;
-            --card: #f7f9f7;
-            --accent: #cfe8db;
-            --text-dark: #073327;
-            --muted: #5b6b67;
-            --maxw: 1000px;
-            --radius: 12px;
-            font-family: "Noto Sans Bengali", "Helvetica", Arial, sans-serif;
-            font-size: 16px;
-        }
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-        body {
-            margin: 0;
-            background: linear-gradient(180deg, #eaf3ef 0%, #ffffff 100%);
-            color: var(--text-dark);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            line-height: 1.6;
-        }
+  <style>
+    /* ---------- GLOBAL ---------- */
+    :root {
+      --bg: #f7fafc;
+      --text: #222;
+      --primary: #004d40;
+      --accent: #009688;
+      --card-bg: #ffffff;
+    }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #eaeaea;
+      --primary: #26a69a;
+      --card-bg: #1e1e1e;
+    }
 
-        /* --- হেডার এবং ন্যাভিগেশন --- */
-        .site-header {
-            background: var(--bg);
-            color: white;
-            padding: 18px 24px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: relative;
-        }
+    body {
+      margin: 0;
+      font-family: "Noto Sans Bengali", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: 0.4s ease;
+      line-height: 1.7;
+    }
 
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 700;
-            font-size: 20px;
-            z-index: 2;
-        }
-        
-        .site-header a.brand { color: white; } 
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
 
-        .brand .moon {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: var(--accent);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--bg);
-            font-weight: 700;
-        }
+    /* ---------- HEADER ---------- */
+    header {
+      background: var(--primary);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-        /* Desktop Nav */
-        .desktop-nav a {
-            color: rgba(255, 255, 255, 0.95);
-            text-decoration: none;
-            margin-left: 18px;
-            font-weight: 500;
-            font-size: 15px;
-        }
-        
-        .desktop-nav a:hover,
-        .desktop-nav a.current {
-            color: var(--accent);
-            text-decoration: underline;
-            text-underline-offset: 4px;
-        }
+    .brand {
+      font-weight: 700;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-        /* Mobile Menu Toggle (Hamburger Icon) */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            font-size: 24px;
-            color: white;
-            z-index: 2;
-            padding: 5px;
-        }
+    .brand .moon {
+      background: white;
+      color: var(--primary);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
 
-        /* Mobile Nav Links */
-        .mobile-nav {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            width: 100%;
-            background: var(--bg);
-            padding: 20px 24px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-            transform: translateY(-100%);
-            transition: transform 0.3s ease-in-out;
-        }
-        
-        .mobile-nav.is-active {
-            display: flex;
-            transform: translateY(0);
-        }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
 
-        .mobile-nav a {
-            color: white;
-            padding: 12px 0;
-            font-size: 18px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
+    nav a {
+      color: white;
+      font-weight: 600;
+      transition: 0.3s;
+    }
 
-        .mobile-nav a:last-child {
-            border-bottom: none;
-        }
-        
-        .mobile-nav a.current {
-            color: var(--accent);
-            font-weight: 700;
-        }
+    nav a:hover,
+    nav a.active {
+      color: #ffeb3b;
+    }
 
-        /* --- মূল কন্টেন্ট লেআউট --- */
-        .container {
-            max-width: var(--maxw);
-            margin: 26px auto;
-            padding: 0 18px;
-        }
+    /* ---------- MOBILE MENU ---------- */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 1200;
+    }
 
-        .hero {
-            display: flex;
-            gap: 18px;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      background: var(--primary);
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transform: translateY(-100%);
+      transition: transform 0.4s ease-in-out;
+    }
 
-        .hero .title {
-            background: var(--card);
-            padding: 20px;
-            border-radius: var(--radius);
-            box-shadow: 0 6px 18px rgba(9, 30, 22, 0.06);
-            flex: 1;
-        }
+    .mobile-nav.active {
+      display: flex;
+      transform: translateY(0);
+    }
 
-        .hero h1 {
-            margin: 0 0 8px 0;
-            color: var(--text-dark);
-            font-size: 24px;
-        }
+    .mobile-nav a {
+      color: white;
+      padding: 12px 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
 
-        .hero p.lead {
-            margin: 0;
-            color: var(--muted);
-            font-size: 18px;
-        }
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
 
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 320px;
-            gap: 18px;
-            align-items: start;
-        }
+    /* ---------- HERO ---------- */
+    .hero {
+      background: linear-gradient(to right, #004d40, #00796b);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
 
-        /* কার্ড স্টাইল */
-        .card {
-            background: var(--card);
-            padding: 18px;
-            border-radius: 12px;
-            box-shadow: 0 6px 18px rgba(9, 30, 22, 0.06);
-        }
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
 
-        .card h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            font-size: 18px;
-            color: var(--text-dark);
-        }
+    .hero p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
 
-        .card p {
-            margin: 0 0 10px 0;
-            color: var(--muted);
-        }
-        
-        ul.small-list {
-            list-style: disc;
-            margin: 10px 0 0 0;
-            padding-left: 18px;
-            color: var(--muted);
-        }
+    /* ---------- MAIN CONTENT ---------- */
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 25px;
+    }
 
-        .contact-item {
-            font-size: 14px;
-            margin: 8px 0;
-            color: var(--muted);
-        }
+    .card {
+      background: var(--card-bg);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      border-top: 4px solid var(--primary);
+    }
 
-        /* WhatsApp Link Specific Styling */
-        .whatsapp-link {
-            display: inline-flex;
-            align-items: center;
-            font-weight: 500;
-            color: #25d366; /* WhatsApp Green */
-        }
-        .whatsapp-link:hover {
-            color: #128c7e;
-        }
-        .whatsapp-link i {
-            font-size: 18px;
-            margin-right: 6px;
-        }
-        
-        footer {
-            max-width: var(--maxw);
-            margin: 28px auto 48px auto;
-            padding: 12px 18px;
-            color: var(--muted);
-            text-align: center;
-            font-size: 14px;
-        }
+    .card h3 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
 
-        /* --- রেসপনসিভ ডিজাইন (মোবাইল) --- */
-        @media (max-width: 880px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
+    .card p {
+      color: var(--text);
+      margin: 10px 0;
+      font-size: 0.95rem;
+    }
 
-            .hero {
-                flex-direction: column;
-            }
-            
-            .desktop-nav {
-                display: none;
-            }
+    ul.small-list {
+      list-style: disc;
+      margin-left: 20px;
+      color: var(--text);
+    }
 
-            .menu-toggle {
-                display: block;
-            }
-        }
-    </style>
+    /* Sidebar */
+    .whatsapp-link {
+      color: #25d366;
+      display: inline-flex;
+      align-items: center;
+      margin-top: 5px;
+    }
+    .whatsapp-link i {
+      margin-right: 6px;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: #ffeb3b;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 60px 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
+  <!-- HEADER -->
+  <header>
+    <div class="brand">
+      <div class="moon">☾</div> Islamic Light
+    </div>
 
-    <header class="site-header" role="banner">
-        <a href="index.html" class="brand">
-            <div class="moon">☾</div>
-            <div>
-                <div style="font-size:16px">Islamic Light</div>
-                <div style="font-size:12px; color:rgba(255,255,255,0.85); margin-top:2px">কুরআন • হাদিস • ইসলামিক রিসোর্স</div>
-            </div>
-        </a>
+    <button class="menu-toggle" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
 
-        <nav class="desktop-nav" aria-label="Main navigation">
-            <a href="index.html">হোম</a>
-            <a href="quran.html">কুরআন</a>
-            <a href="hadith/hadith.html">হাদিস</a>
-            <a href="about.html" class="current">আমাদের সম্পর্কে</a>
-        </nav>
-
-        <div class="menu-toggle" id="menu-toggle">
-            <i class="fa-solid fa-bars"></i>
-        </div>
-    </header>
-
-    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-        <a href="index.html">হোম</a>
-        <a href="quran.html">কুরআন</a>
-        <a href="hadith/hadith.html">হাদিস</a>
-        <a href="about.html" class="current">আমাদের সম্পর্কে</a>
+    <nav id="desktopNav">
+      <a href="index.html">হোম</a>
+      <a href="quran.html">কুরআন</a>
+      <a href="hadith/hadith.html">হাদিস</a>
+      <a href="about.html" class="active">আমাদের সম্পর্কে</a>
     </nav>
+  </header>
 
-    <main class="container" role="main">
-        <section class="hero">
-            <div class="title">
-                <h1>আমাদের সম্পর্কে</h1>
-                <p class="lead">Islamic Light হল এমন একটি অনলাইন প্ল্যাটফর্ম যেখানে কুরআন ও হাদিসের সহজ ও প্রামাণিক উপস্থাপনা পাওয়া যায়। আমরা চেষ্টা করি সরল ভাষায় মূল ইসলামিক বার্তা পৌঁছে দিতে — প্রতিটি মানুষের জন্য।</p>
-            </div>
-        </section>
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+   <a href="index.html">হোম</a>
+      <a href="quran.html">কুরআন</a>
+      <a href="hadith/hadith.html">হাদীস</a>
+      <a href="aqeedah.html">আকীদা</a>
+      <a href="dua.html" class="active">দো‘আ</a>
+      <a href="contact.html">যোগাযোগ</a>
+    <a href="about.html" class="active">আমাদের সম্পর্কে</a>
+  </nav>
 
-        <section class="grid">
-            <div>
-                <article class="card" aria-labelledby="mission">
-                    <h3 id="mission">আমাদের উদ্দেশ্য</h3>
-                    <p>আমাদের প্রধান লক্ষ্য হলো — কুরআন ও সহিহ হাদিসের জ্ঞানকে সহজ, স্পষ্ট ও বিশ্বাসযোগ্যভাবে সকলের কাছে পৌঁছে দেওয়া। আমরা ধর্মীয় তথ্য উপস্থাপন করার সময় প্রামাণ্য সূত্র ও সঠিক ব্যাখ্যার উপর গুরুত্ব দিই।</p>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>আমাদের সম্পর্কে</h1>
+    <p>Islamic Light — কুরআন ও সহিহ হাদিসের আলোকে নির্ভরযোগ্য ইসলামিক জ্ঞান সবার কাছে পৌঁছে দেওয়ার একটি প্রচেষ্টা।</p>
+  </section>
 
-                    <h3 style="margin-top:16px;">ওয়েবসাইটে যা পাবেন</h3>
-                    <ul class="small-list">
-                        <li>কুরআনের আরবি পাঠ ও বাংলা অনুবাদ</li>
-                        <li>সংকলিত হাদিস ও সহজ ব্যাখ্যা</li>
-                        <li>ইসলামিক প্রবন্ধ ও ব্যবহারিক নির্দেশনা</li>
-                        <li>ডাউনলোডেবল রেফারেন্স পাতা ও লাইটওয়েট রিসোর্স</li>
-                    </ul>
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    <section>
+      <div class="card">
+        <h3>আমাদের উদ্দেশ্য</h3>
+        <p>আমাদের লক্ষ্য হলো — ইসলামের সত্যিকারের বার্তা সহজ ও প্রমাণিকভাবে পৌঁছে দেওয়া। কুরআন, সহিহ হাদিস এবং প্রখ্যাত আলেম ও গবেষকদের ব্যাখ্যা অনুযায়ী ইসলামী দিকনির্দেশনা প্রচার করা।</p>
 
-                    <h3 style="margin-top:16px;">কীভাবে আমরা কাজ করি</h3>
-                    <p>প্রকাশিত সকল কন্টেন্ট সম্ভব হলে বিশ্বাসযোগ্য উৎস থেকে যাচাই করে অনূদিত বা সংকলিত হয়। ভুল-ত্রুটি থাকলে সদয়ভাবে জানালে সংশোধন করা হবে।</p>
-                </article>
+        <h3>ওয়েবসাইটে যা পাবেন</h3>
+        <ul class="small-list">
+          <li>কুরআনের আরবি পাঠ ও বাংলা অনুবাদ</li>
+          <li>সহিহ হাদিস ও সহজ ব্যাখ্যা</li>
+          <li>ইসলামিক দো‘আ ও আমলসমূহ</li>
+          <li>শিক্ষামূলক প্রবন্ধ ও রেফারেন্স রিসোর্স</li>
+        </ul>
 
-                <article class="card" aria-labelledby="vision" style="margin-top:18px;">
-                    <h3 id="vision">ভিশন ও মূল্যবোধ</h3>
-                    <p>ভিশন — ইসলামের পরিষ্কার, ঐক্যবদ্ধ ও সৎ উপস্থাপন করা যাতে প্রত্যেক মানুষ সহজে বুঝতে পারে এবং তার দৈনন্দিন জীবনে অনুসরণ করতে পারে। মূল্যবোধের মধ্যে রয়েছে সত্যনিষ্ঠা, নম্রতা এবং শিক্ষা প্রসার।</p>
-                </article>
-            </div>
+        <h3>আমরা কীভাবে কাজ করি</h3>
+        <p>আমাদের সকল কনটেন্ট বিশ্বাসযোগ্য উৎস ও সম্মানিত ইসলামি আলেমদের ব্যাখ্যা অনুসারে প্রস্তুত করা হয়। ভুল বা ত্রুটি থাকলে জানালে তা সংশোধন করা হয় ইনশাআল্লাহ।</p>
+      </div>
 
-            <aside>
-                <div class="card">
-                    <h3>আমার সম্পর্কে</h3>
-                    <p class="contact-item">আসসালামু আলাইকুম। আমি মোঃ আয়েশ আলি এই প্রজেক্টের প্রতিষ্ঠাতা— একজন সাধারণ মুসলিম, যে নিজের জীবন ও অন্যদের জীবন আলোর পথে আনতে উৎসাহী।</p>
-                    <p class="contact-item">উদ্যোগ: কুরআন ও হাদিসকে সরল ও প্রামাণিকভাবে সবাইয়ের কাছে পৌঁছে দেওয়া।</p>
-                    <p class="contact-item"><strong>মূল লক্ষ্য:</strong> আল্লাহর সন্তুষ্টি ও শিক্ষা প্রসার।</p>
+      <div class="card">
+        <h3>ভিশন ও মূল্যবোধ</h3>
+        <p>আমাদের ভিশন — একটি আলোকিত সমাজ গঠন, যেখানে ইসলামিক জ্ঞান সহজবোধ্য ও জীবনমুখী হবে। আমাদের মূল্যবোধের মধ্যে রয়েছে — সত্যনিষ্ঠা, সম্মান ও দায়িত্বশীলতা।</p>
+      </div>
+    </section>
 
-                    <div style="margin-top:12px;">
-                        <div style="font-weight:600; margin-bottom:6px;">যোগাযোগ</div>
-                        <div class="contact-item">ইমেইল: <a href="mailto:info@example.com">info@example.com</a></div>
-                        
-                        <div class="contact-item">
-                            <a href="https://wa.me/+918617316109" target="_blank" rel="noopener" class="whatsapp-link">
-                                <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বার্তা পাঠান
-                            </a>
-                        </div>
-                        
-                        <div class="contact-item">ফেসবুক পেজ: <a href="https://www.facebook.com/profile.php?id=61573783316016" target="_blank" rel="noopener">Noor-e-hidayah</a></div>
-                    </div>
-                </div>
+    <aside>
+      <div class="card">
+        <h3>প্রতিষ্ঠাতা সম্পর্কে</h3>
+        <p>আসসালামু আলাইকুম। আমি <strong>মোঃ আয়েশ আলি</strong> — Islamic Light-এর প্রতিষ্ঠাতা। আমার লক্ষ্য হলো ইসলামিক জ্ঞান প্রচার এবং আল্লাহর সন্তুষ্টি অর্জনের মাধ্যমে সত্য ও আলো ছড়িয়ে দেওয়া।</p>
 
-                <div class="card" style="margin-top:14px;">
-                    <h3>দায়িত্বশীল ব্যবহার</h3>
-                    <p>ওয়েবসাইটে প্রকাশিত তথ্য শিক্ষা-উদ্দেশ্যে প্রদান করা হয়েছে। কোনো মত বা বক্তব্য যদি ভুল মনে করেন, তাহলে আমাদের জানান—আমরা উৎস নিয়ে পুনরায় যাচাই করবো ইনশাআল্লাহ্‌।</p>
-                </div>
-            </aside>
-        </section>
-    </main>
+        <div style="margin-top:12px;">
+          <h4>📞 যোগাযোগ</h4>
+          <p>ইমেইল: <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a></p>
+          <p>
+            <a href="https://wa.me/+918617316109" class="whatsapp-link" target="_blank">
+              <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বার্তা পাঠান
+            </a>
+          </p>
+          <p>ফেসবুক পেজ: <a href="https://www.facebook.com/profile.php?id=61573783316016" target="_blank">Noor-e-hidayah</a></p>
+        </div>
+      </div>
 
-    <footer>
-        © <span id="year"></span> Islamic Light — সর্বস্বত্ব সংরক্ষিত।
-    </footer>
+      <div class="card">
+        <h3>দায়িত্বশীল ব্যবহার</h3>
+        <p>Islamic Light-এর তথ্যসমূহ শুধুমাত্র শিক্ষামূলক ও দাওয়াতি উদ্দেশ্যে ব্যবহারের জন্য। কোনো তথ্য ভুল মনে হলে জানালে উৎস যাচাই করে সংশোধন করা হবে ইনশাআল্লাহ।</p>
+      </div>
+    </aside>
+  </main>
 
-    <script>
-        // ফুডার বর্ষ হালনাগাদ
-        document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> Islamic Light | সর্বস্বত্ব সংরক্ষিত।</p>
+  </footer>
 
-        // মোবাইল মেনু টগল লজিক
-        const menuToggle = document.getElementById('menu-toggle');
-        const mobileNav = document.getElementById('mobile-nav');
+  <!-- ---------- JAVASCRIPT ---------- -->
+  <script>
+    // Year Update
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-        menuToggle.addEventListener('click', () => {
-            mobileNav.classList.toggle('is-active');
-        });
-    </script>
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuBtn.addEventListener("click", () => {
+      mobileNav.classList.toggle("active");
+      menuBtn.innerHTML = mobileNav.classList.contains("active")
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+  </script>
 </body>
 </html>
