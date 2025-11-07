@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy | Islamic Light</title>
+  <meta name="description" content="Islamic Light অ্যাপ ও ওয়েবসাইটের গোপনীয়তা নীতি (Privacy Policy)" />
+  <meta name="author" content="Islamic Light Team" />
+
+  <style>
+    /* ---------- GLOBAL ---------- */
+    :root {
+      --bg: #f7fafc;
+      --text: #222;
+      --primary: #004d40;
+      --accent: #00796b;
+      --card-bg: #ffffff;
+    }
+    [data-theme="dark"] {
+      --bg: #121212;
+      --text: #eaeaea;
+      --primary: #26a69a;
+      --card-bg: #1e1e1e;
+    }
+    body {
+      margin: 0;
+      font-family: "Noto Sans Bengali", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: 0.4s ease;
+      line-height: 1.8;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .logo {
+      font-weight: bold;
+      font-size: 1.3rem;
+    }
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+    nav a:hover { color: #ffeb3b; }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .dark-toggle {
+      background: transparent;
+      border: 1px solid white;
+      color: white;
+      border-radius: 50%;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .dark-toggle:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      text-align: center;
+      background: linear-gradient(to right, #004d40, #00796b);
+      color: white;
+      padding: 70px 20px;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+    }
+
+    /* ---------- CONTENT ---------- */
+    .content {
+      max-width: 900px;
+      margin: 40px auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      padding: 30px;
+      border-top: 5px solid var(--primary);
+    }
+    h2 {
+      color: var(--primary);
+      border-bottom: 2px solid #e0f2f1;
+      padding-bottom: 6px;
+      margin-top: 25px;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .muted {
+      color: #666;
+      font-size: 0.9rem;
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    footer a {
+      color: #ffeb3b;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--primary);
+        position: fixed;
+        top: 60px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+      }
+      nav.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+      }
+      .hero {
+        padding: 50px 15px;
+      }
+      .hero h1 {
+        font-size: 1.6rem;
+      }
+      .hero p {
+        font-size: 0.95rem;
+      }
+      .content {
+        margin: 20px 10px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">Islamic Light</div>
+    <button class="menu-toggle" id="menuBtn">☰</button>
+
+    <nav id="navMenu">
+      <a href="index.html">হোম</a>
+      <a href="quran.html">কুরআন</a>
+      <a href="hadith/hadith.html">হাদীস</a>
+      <a href="dua.html">দো‘আ</a>
+      <a href="about.html">আমাদের সম্পর্কে</a>
+      <a href="contact.html">যোগাযোগ</a>
+    </nav>
+
+    <button class="dark-toggle" id="themeToggle">🌙</button>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>🔒 গোপনীয়তা নীতি (Privacy Policy)</h1>
+    <p>Islamic Light ওয়েবসাইট ও অ্যাপ ব্যবহারে আপনার ব্যক্তিগত গোপনীয়তা আমাদের কাছে গুরুত্বপূর্ণ।</p>
+  </section>
+
+  <!-- CONTENT -->
+  <main class="content">
+    <p class="muted">কার্যকর তারিখ: <strong>৭ নভেম্বর ২০২৫</strong></p>
+
+    <p><strong>Islamic Light</strong> (ওয়েবসাইট: 
+      <a href="https://mdayeshali.github.io/Islamic-light/" target="_blank">mdayeshali.github.io/Islamic-light/</a>) 
+      ব্যবহারকারীদের গোপনীয়তাকে আমরা সম্মান করি। এই নীতিতে জানানো হয়েছে কোন তথ্য সংগ্রহ করা হয় এবং কীভাবে তা ব্যবহার করা হয়।</p>
+
+    <h2>১️ আমরা কী তথ্য সংগ্রহ করি</h2>
+    <ul>
+      <li><strong>ব্যক্তিগত তথ্য:</strong> আমরা সাধারণত কোনো ব্যক্তিগত তথ্য সংগ্রহ করি না। আপনি যদি ইমেইল বা ফর্মের মাধ্যমে যোগাযোগ করেন, তবে আপনার দেওয়া তথ্য শুধুমাত্র উত্তর দেওয়ার জন্য ব্যবহৃত হতে পারে।</li>
+      <li><strong>লগ ডাটা:</strong> GitHub Pages বা হোস্টিং প্রোভাইডারের সার্ভারে ব্রাউজার টাইপ, IP (অ্যানোনিমাইজড), রেফারার URL ইত্যাদি সংরক্ষিত হতে পারে।</li>
+      <li><strong>কুকিজ:</strong> আমাদের সাইট সরাসরি কুকি ব্যবহার করে না, তবে তৃতীয় পক্ষের বিজ্ঞাপন বা অ্যানালিটিকস সেবা ব্যবহার করতে পারে।</li>
+    </ul>
+
+    <h2>২️ বিজ্ঞাপন (শরীয়তসম্মত)</h2>
+    <p>আমরা শুধুমাত্র <strong>শরীয়তসম্মত বিজ্ঞাপন</strong> প্রদর্শন করি। যেমন: Halal.Ad, Muslim Ad Network ইত্যাদি। কোনো হারাম পণ্য, জুয়া, সুদ বা ইসলামবিরোধী বিজ্ঞাপন কখনও গ্রহণ করা হয় না।</p>
+
+    <h2>৩️ তৃতীয় পক্ষের লিংক</h2>
+    <p>আমাদের সাইটে অন্য ওয়েবসাইটের লিংক থাকতে পারে। ঐ ওয়েবসাইটগুলোর প্রাইভেসি নীতি তাদের নিজস্ব, আমাদের নীতির আওতায় নয়।</p>
+
+    <h2>৪️ শিশুদের গোপনীয়তা</h2>
+    <p>Islamic Light শিশু-বান্ধব হলেও, ১৩ বছরের কম বয়সীদের থেকে আমরা ইচ্ছাকৃতভাবে ব্যক্তিগত তথ্য সংগ্রহ করি না।</p>
+
+    <h2>৫️ তথ্যের ব্যবহার ও সংরক্ষণ</h2>
+    <ul>
+      <li>আপনার দেওয়া তথ্য শুধুমাত্র যোগাযোগ বা সেবা উন্নতির জন্য ব্যবহৃত হতে পারে।</li>
+      <li>আইনগত প্রয়োজন হলে সীমিত সময়ের জন্য তথ্য সংরক্ষণ করা হতে পারে।</li>
+    </ul>
+
+    <h2>৬️ আপনার অধিকার</h2>
+    <p>আপনি আপনার তথ্য দেখতে, পরিবর্তন বা মুছে ফেলার অনুরোধ করতে পারেন। যোগাযোগ করুন:
+      <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a>
+    </p>
+
+    <h2>৭️ নিরাপত্তা</h2>
+    <p>আমরা যুক্তিসঙ্গত টেকনিক্যাল ব্যবস্থায় তথ্যের নিরাপত্তা বজায় রাখি, তবে ইন্টারনেটে শতভাগ নিরাপত্তা নিশ্চয়তা দেওয়া যায় না।</p>
+
+    <h2>৮️ নীতির পরিবর্তন</h2>
+    <p>এই নীতি সময়ে সময়ে আপডেট হতে পারে। পরিবর্তনের ক্ষেত্রে “কার্যকর তারিখ” হালনাগাদ করা হবে।</p>
+
+    <h2>৯️ যোগাযোগ</h2>
+    <p><strong>Md Ayesh Ali</strong><br>
+    📧 <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a><br>
+    🌍 India</p>
+
+    <p class="muted">শেষ হালনাগাদ: ৭ নভেম্বর ২০২৫</p>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="links">
+      <a href="quran.html">কুরআন</a> |
+      <a href="hadith/hadith.html">হাদীস</a> |
+      <a href="dua.html">দো‘আ</a> |
+      <a href="about.html">আমাদের সম্পর্কে</a>
+    </div>
+    <p>© 2025 Islamic Light | Developed with ❤️ by Islamic Light Team</p>
+  </footer>
+
+  <script>
+    // 🌙 Dark Mode Toggle
+    const toggle = document.getElementById("themeToggle");
+    toggle.addEventListener("click", () => {
+      document.body.dataset.theme =
+        document.body.dataset.theme === "dark" ? "" : "dark";
+      toggle.textContent = document.body.dataset.theme === "dark" ? "☀️" : "🌙";
+    });
+
+    // 📱 Menu Toggle
+    const menuBtn = document.getElementById("menuBtn");
+    const navMenu = document.getElementById("navMenu");
+    menuBtn.addEventListener("click", () => {
+      navMenu.classList.toggle("active");
+      menuBtn.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
+    });
+  </script>
+</body>
+</html>
