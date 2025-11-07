@@ -1,103 +1,263 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কুরআনের সূচীপত্র</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>📖 কুরআনের সূচীপত্র | Islamic Light</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
   <style>
+    :root {
+      --bg: #f7fafc;
+      --text: #222;
+      --primary: #004d40;
+      --accent: #009688;
+      --card-bg: #ffffff;
+    }
+
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      font-family: "Noto Sans Bengali", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
+
+    /* ---------- HEADER ---------- */
     header {
-      background: #004d40;
+      background: var(--primary);
       color: white;
-      padding: 20px;
-      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 20px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.5rem;
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      text-decoration: none;
-      color: white;
-      margin: 0 15px;
+
+    .brand .moon {
+      background: white;
+      color: var(--primary);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: bold;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
       transition: 0.3s;
     }
-    nav a:hover {
-      color: #ffeb3b;}
-    
-   
-    
+
+    nav a:hover,
+    nav a.active {
+      color: #ffeb3b;
+    }
+
+    /* ---------- MOBILE MENU ---------- */
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 1200;
+    }
+
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      background: var(--primary);
+      text-align: center;
+      padding: 20px 0;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transform: translateY(-100%);
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .mobile-nav.active {
+      display: flex;
+      transform: translateY(0);
+    }
+
+    .mobile-nav a {
+      color: white;
+      padding: 12px 0;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .mobile-nav a:last-child {
+      border-bottom: none;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: linear-gradient(to right, #004d40, #00796b);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* ---------- SURAH GRID ---------- */
     .container {
-      padding: 30px;
+      padding: 40px 20px;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
+
     .card {
-      background: white;
+      background: var(--card-bg);
+      border-radius: 12px;
       padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      transition: 0.3s;
       text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      border-top: 4px solid var(--primary);
+      transition: 0.3s;
     }
+
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
     }
+
     .card a {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.1rem;
       text-decoration: none;
-      color: #004d40;
-      font-weight: bold;
-      font-size: 18px;
+      display: block;
+      transition: 0.3s;
     }
-     @media (max-width: 768px) {
-       header h1 {
-      margin: 0;
-      font-size: 1.2rem;}
-     }
+
+    .card a:hover {
+      color: var(--accent);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 25px 15px;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer a {
+      color: #ffeb3b;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .menu-toggle { display: block; }
+      .hero { padding: 60px 15px; }
+    }
   </style>
 </head>
+
 <body>
+  <!-- HEADER -->
   <header>
-    <h1>📖 কুরআন মাজীদের সূরাহ-সমূহ</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="hadith/hadith.html">Hadith</a>
-      <a href="about.html">About</a>
+    <div class="brand">
+      <div class="moon">☾</div> Islamic Light
+    </div>
+
+    <button class="menu-toggle" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
+
+    <nav id="desktopNav">
+      <a href="index.html">হোম</a>
+      <a href="hadith/hadith.html">হাদিস</a>
+      <a href="about.html">আমাদের সম্পর্কে</a>
+      <a href="contact.html">যোগাযোগ</a>
     </nav>
   </header>
 
+  <!-- MOBILE NAV -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">হোম</a>
+      <a href="quran.html">কুরআন</a>
+      <a href="hadith/hadith.html">হাদীস</a>
+      <a href="aqeedah.html">আকীদা</a>
+      <a href="dua.html" class="active">দো‘আ</a>
+      <a href="about.html">আমাদের সম্পর্কে</a>
+      <a href="contact.html">যোগাযোগ</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>📖 কুরআনের সূচীপত্র</h1>
+    <p>পবিত্র কুরআনের ১১৪টি সূরা সহজে ব্রাউজ করুন ও প্রতিটি সূরার অনুবাদ ও তাফসীর দেখুন।</p>
+  </section>
+
+  <!-- SURAH LIST -->
   <div class="container">
-  <div class="card"><a href="surah/surah_1.html">001 সূরা আল-ফাতিহা</a></div>
-  <div class="card"><a href="surah/surah_2.html">002 সূরা আল-বাকারা</a></div>
-  <div class="card"><a href="surah/surah_3.html">003 সূরা আলে ইমরান</a></div>
-  <div class="card"><a href="surah/surah_4.html">004 সূরা আন-নিসা</a></div>
-  <div class="card"><a href="surah/surah_5.html">005 সূরা আল-মায়েদা</a></div>
-  <div class="card"><a href="surah/surah_6.html">006 সূরা আল-আনআম</a></div>
-  <div class="card"><a href="surah/surah_7.html">007 সূরা আল-আ’রাফ</a></div>
-  <div class="card"><a href="surah/surah_8.html">008 সূরা আল-আনফাল</a></div>
-  <div class="card"><a href="surah/surah_9.html">009 সূরা আত-তাওবা</a></div>
-  <div class="card"><a href="surah/surah_10.html">010 সূরা ইউনুস</a></div>
-  <div class="card"><a href="surah/surah_11.html">011 সূরা হুদ</a></div>
-  <div class="card"><a href="surah/surah_12.html">012 সূরা ইউসুফ</a></div>
-  <div class="card"><a href="surah/surah_13.html">013 সূরা আর-রাদ</a></div>
-  <div class="card"><a href="surah/surah_14.html">014 সূরা ইবরাহিম</a></div>
-  <div class="card"><a href="surah/surah_15.html">015 সূরা আল-হিজর</a></div>
-  <div class="card"><a href="surah/surah_16.html">016 সূরা আন-নাহল</a></div>
-  <div class="card"><a href="surah/surah_17.html">017 সূরা আল-ইসরা</a></div>
-  <div class="card"><a href="surah/surah_18.html">018 সূরা আল-কাহফ</a></div>
-  <div class="card"><a href="surah/surah_19.html">019 সূরা মারইয়াম</a></div>
-  <div class="card"><a href="surah/surah_20.html">020 সূরা তোয়া-হা</a></div>
-  <div class="card"><a href="surah/surah_21.html">021 সূরা আল-আম্বিয়া</a></div>
+    <div class="card"><a href="surah/surah_1.html">১. সূরা আল-ফাতিহা</a></div>
+    <div class="card"><a href="surah/surah_2.html">২. সূরা আল-বাকারা</a></div>
+    <div class="card"><a href="surah/surah_3.html">৩. সূরা আলে ইমরান</a></div>
+    <div class="card"><a href="surah/surah_4.html">৪. সূরা আন-নিসা</a></div>
+    <div class="card"><a href="surah/surah_5.html">৫. সূরা আল-মায়িদা</a></div>
+    <div class="card"><a href="surah/surah_6.html">৬. সূরা আল-আন’আম</a></div>
+    <div class="card"><a href="surah/surah_7.html">৭. সূরা আল-আ’রাফ</a></div>
+    <div class="card"><a href="surah/surah_8.html">৮. সূরা আল-আনফাল</a></div>
+    <div class="card"><a href="surah/surah_9.html">৯. সূরা আত-তাওবা</a></div>
+    <div class="card"><a href="surah/surah_10.html">১০. সূরা ইউনুস</a></div>
+    <div class="card"><a href="surah/surah_11.html">১১. সূরা হুদ</a></div>
+    <div class="card"><a href="surah/surah_12.html">১২. সূরা ইউসুফ</a></div>
+    <div class="card"><a href="surah/surah_13.html">১৩. সূরা আর-রাদ</a></div>
+    <div class="card"><a href="surah/surah_14.html">১৪. সূরা ইবরাহিম</a></div>
+    <div class="card"><a href="surah/surah_15.html">১৫. সূরা আল-হিজর</a></div>
+    <div class="card"><a href="surah/surah_16.html">১৬. সূরা আন-নাহল</a></div>
+    <div class="card"><a href="surah/surah_17.html">১৭. সূরা আল-ইসরা</a></div>
+    <div class="card"><a href="surah/surah_18.html">১৮. সূরা আল-কাহফ</a></div>
+    <div class="card"><a href="surah/surah_19.html">১৯. সূরা মারইয়াম</a></div>
+    <div class="card"><a href="surah/surah_20.html">২০. সূরা ত্বোয়া-হা</a></div>
+    <div class="card"><a href="surah/surah_21.html">021 সূরা আল-আম্বিয়া</a></div>
   <div class="card"><a href="surah/surah_22.html">022 সূরা আল-হাজ্জ</a></div>
   <div class="card"><a href="surah/surah_23.html">023 সূরা আল-মুমিনুন</a></div>
   <div class="card"><a href="surah/surah_24.html">024 সূরা আন-নূর</a></div>
@@ -191,9 +351,27 @@
   <div class="card"><a href="surah/surah_112.html">112 সূরা আল-ইখলাস</a></div>
   <div class="card"><a href="surah/surah_113.html">113 সূরা আল-ফালাক</a></div>
   <div class="card"><a href="surah/surah_114.html">114 সূরা আন-নাস</a></div>
-</div>
 
 
-  
+   
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> Islamic Light | সর্বস্বত্ব সংরক্ষিত।</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    menuBtn.addEventListener("click", () => {
+      mobileNav.classList.toggle("active");
+      menuBtn.innerHTML = mobileNav.classList.contains("active")
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
+    });
+  </script>
 </body>
 </html>
