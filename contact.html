@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>যোগাযোগ — Islamic Light</title>
 
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
   <style>
-    /* ---------- GLOBAL ---------- */
     :root {
       --bg: #f7fafc;
       --text: #222;
@@ -18,28 +18,12 @@
       --card-bg: #ffffff;
     }
 
-    [data-theme="dark"] {
-      --bg: #121212;
-      --text: #eaeaea;
-      --primary: #26a69a;
-      --card-bg: #1e1e1e;
-    }
-
     body {
       margin: 0;
       font-family: "Noto Sans Bengali", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      transition: 0.4s ease;
       line-height: 1.7;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
     }
 
     /* ---------- HEADER ---------- */
@@ -50,39 +34,35 @@
       justify-content: space-between;
       align-items: center;
       padding: 12px 20px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
     }
 
     .brand {
-      font-weight: 700;
-      font-size: 1.3rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.3rem;
     }
 
-    .brand .moon {
+    .moon {
       background: white;
       color: var(--primary);
+      border-radius: 50%;
       width: 34px;
       height: 34px;
-      border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-weight: bold;
-    }
-
-    nav {
-      display: flex;
-      gap: 15px;
     }
 
     nav a {
       color: white;
+      margin-left: 18px;
+      text-decoration: none;
       font-weight: 600;
       transition: 0.3s;
     }
@@ -92,30 +72,26 @@
       color: #ffeb3b;
     }
 
-    /* ---------- MOBILE MENU ---------- */
     .menu-toggle {
       display: none;
       font-size: 1.8rem;
-      background: none;
-      border: none;
       color: white;
+      border: none;
+      background: none;
       cursor: pointer;
-      z-index: 1200;
     }
 
     .mobile-nav {
       display: none;
       flex-direction: column;
-      position: fixed;
-      top: 60px;
-      right: 0;
-      width: 100%;
       background: var(--primary);
       text-align: center;
-      padding: 20px 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      position: fixed;
+      top: 60px;
+      width: 100%;
+      z-index: 999;
       transform: translateY(-100%);
-      transition: transform 0.4s ease-in-out;
+      transition: transform 0.3s ease-in-out;
     }
 
     .mobile-nav.active {
@@ -125,13 +101,10 @@
 
     .mobile-nav a {
       color: white;
-      padding: 12px 0;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      text-decoration: none;
       font-size: 1.1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .mobile-nav a:last-child {
-      border-bottom: none;
     }
 
     /* ---------- HERO ---------- */
@@ -151,21 +124,20 @@
       font-size: 1rem;
       max-width: 700px;
       margin: 0 auto;
-      line-height: 1.6;
     }
 
-    /* ---------- CONTACT FORM ---------- */
+    /* ---------- FORM ---------- */
     .container {
-      max-width: 900px;
+      max-width: 800px;
       margin: 40px auto;
       padding: 0 20px;
     }
 
     .card {
       background: var(--card-bg);
-      padding: 25px;
+      padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
       border-top: 4px solid var(--primary);
     }
 
@@ -177,40 +149,38 @@
 
     label {
       font-weight: 600;
-      margin-bottom: 5px;
       color: var(--primary);
     }
 
     input, textarea {
       padding: 10px 12px;
-      border: 1px solid #ccc;
       border-radius: 8px;
+      border: 1px solid #ccc;
       font-size: 1rem;
       font-family: inherit;
       background: var(--bg);
-      color: var(--text);
       transition: 0.3s;
     }
 
     input:focus, textarea:focus {
       border-color: var(--accent);
       outline: none;
-      box-shadow: 0 0 5px rgba(0, 150, 136, 0.3);
+      box-shadow: 0 0 6px rgba(0,150,136,0.3);
     }
 
     textarea {
-      resize: vertical;
       min-height: 120px;
+      resize: vertical;
     }
 
     button {
       background: var(--primary);
       color: white;
       border: none;
-      padding: 12px 16px;
+      padding: 12px;
       border-radius: 8px;
       font-size: 1rem;
-      font-weight: 600;
+      font-weight: bold;
       cursor: pointer;
       transition: 0.3s;
     }
@@ -219,30 +189,50 @@
       background: var(--accent);
     }
 
-    /* ---------- CONTACT INFO ---------- */
-    .contact-info {
-      margin-top: 25px;
-      background: var(--card-bg);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      border-left: 4px solid var(--primary);
+    /* ---------- SUCCESS POPUP ---------- */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: #e8f5e9;
+      color: #1b5e20;
+      border: 2px solid #81c784;
+      padding: 25px 35px;
+      border-radius: 12px;
+      text-align: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      opacity: 0;
+      z-index: 9999;
+      transition: all 0.4s ease-in-out;
     }
 
-    .contact-info p {
-      margin: 8px 0;
+    .popup.active {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      animation: slideUp 0.5s ease-out;
+    }
+
+    @keyframes slideUp {
+      from { transform: translate(-50%, 20%) scale(0.8); opacity: 0; }
+      to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    /* ---------- CONTACT INFO ---------- */
+    .contact-info {
+      background: var(--card-bg);
+      margin-top: 30px;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      border-left: 4px solid var(--primary);
     }
 
     .whatsapp-link {
       color: #25d366;
-      display: inline-flex;
-      align-items: center;
-      margin-top: 5px;
-      font-weight: 600;
-    }
-
-    .whatsapp-link i {
-      margin-right: 6px;
+      font-weight: bold;
     }
 
     /* ---------- FOOTER ---------- */
@@ -253,20 +243,11 @@
       padding: 20px;
       margin-top: 50px;
       font-size: 0.9rem;
-      line-height: 1.6;
     }
 
-    footer a {
-      color: #ffeb3b;
-      text-decoration: none;
-      margin: 0 5px;
-    }
-
-    /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
       nav { display: none; }
       .menu-toggle { display: block; }
-      .hero { padding: 60px 15px; }
     }
   </style>
 </head>
@@ -280,7 +261,7 @@
 
     <button class="menu-toggle" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
 
-    <nav id="desktopNav">
+    <nav>
       <a href="index.html">হোম</a>
       <a href="quran.html">কুরআন</a>
       <a href="hadith/hadith.html">হাদিস</a>
@@ -303,13 +284,13 @@
   <!-- HERO -->
   <section class="hero">
     <h1>যোগাযোগ করুন</h1>
-    <p>Islamic Light-এর সঙ্গে যুক্ত থাকুন — আপনার মতামত, প্রশ্ন বা প্রস্তাব আমাদের কাছে মূল্যবান।</p>
+    <p>Islamic Light-এর সঙ্গে যুক্ত থাকুন — আপনার মতামত, প্রশ্ন ও পরামর্শ আমাদের জন্য মূল্যবান।</p>
   </section>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <main class="container">
     <div class="card">
-      <form action="https://formspree.io/f/mwkzvjpl" method="POST">
+      <form id="contactForm" action="https://formspree.io/f/mwkzvjpl" method="POST">
         <label for="name">আপনার নাম</label>
         <input type="text" id="name" name="name" placeholder="আপনার নাম লিখুন" required>
 
@@ -318,6 +299,10 @@
 
         <label for="message">বার্তা</label>
         <textarea id="message" name="message" placeholder="আপনার বার্তা লিখুন..." required></textarea>
+
+        <input type="hidden" name="_subject" value="📬 নতুন বার্তা - Islamic Light">
+        <input type="hidden" name="_language" value="bn">
+        <input type="hidden" name="_captcha" value="false">
 
         <button type="submit">✉️ বার্তা পাঠান</button>
       </form>
@@ -335,25 +320,48 @@
     </div>
   </main>
 
+  <!-- SUCCESS POPUP -->
+  <div id="popup" class="popup">✅ আপনার বার্তাটি সফলভাবে পাঠানো হয়েছে!</div>
+
   <!-- FOOTER -->
   <footer>
     <p>© <span id="year"></span> Islamic Light | সর্বস্বত্ব সংরক্ষিত।</p>
   </footer>
 
-  <!-- ---------- JAVASCRIPT ---------- -->
   <script>
-    // Year Update
+    // Auto Year
     document.getElementById("year").textContent = new Date().getFullYear();
 
     // Mobile Menu Toggle
     const menuBtn = document.getElementById("menuBtn");
     const mobileNav = document.getElementById("mobileNav");
-
     menuBtn.addEventListener("click", () => {
       mobileNav.classList.toggle("active");
       menuBtn.innerHTML = mobileNav.classList.contains("active")
         ? '<i class="fa-solid fa-xmark"></i>'
         : '<i class="fa-solid fa-bars"></i>';
+    });
+
+    // Popup Success Animation
+    const contactForm = document.getElementById("contactForm");
+    const popup = document.getElementById("popup");
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: formData,
+        headers: { "Accept": "application/json" }
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        popup.classList.add("active");
+        setTimeout(() => popup.classList.remove("active"), 5000);
+      } else {
+        alert("❌ বার্তা পাঠাতে সমস্যা হয়েছে। অনুগ্রহ করে পুনরায় চেষ্টা করুন।");
+      }
     });
   </script>
 </body>
