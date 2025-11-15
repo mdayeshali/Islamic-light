@@ -1,1 +1,305 @@
+/* ========================================
+ 🌙 Islamic Light Global Style
+ Author: Md Ayesh Ali | IslamicLight.in
+======================================== */
+
+/* ------------------------------
+   🌿 Base Theme Colors & Fonts
+------------------------------ */
+:root {
+  --primary: #004d40;
+  --accent: #009688;
+  --bg: #f7fafc;
+  --text: #222;
+  --card-bg: #ffffff;
+  --border: #dcdcdc;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --font-bn: "Noto Sans Bengali", "SolaimanLipi", sans-serif;
+}
+
+/* 🌙 Dark Mode */
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --text: #f1f1f1;
+  --card-bg: #1c1c1c;
+  --border: #333;
+  --shadow: rgba(255, 255, 255, 0.08);
+}
+
+/* ------------------------------
+   🌸 Global Reset & Base
+------------------------------ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-bn);
+  line-height: 1.8;
+  transition: background 0.4s, color 0.4s;
+  padding-top: 80px; /* fixed header space */
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary);
+  transition: 0.3s;
+}
+a:hover {
+  color: var(--accent);
+}
+
+img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* ------------------------------
+   🌙 Header / Navbar
+------------------------------ */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 25px;
+  z-index: 9999;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+  transition: 0.4s ease;
+}
+
+.site-header.scrolled {
+  background: #00382f;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+}
+.brand .moon {
+  background: white;
+  color: var(--primary);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.desktop-nav {
+  display: flex;
+  gap: 18px;
+}
+.desktop-nav a {
+  color: white;
+  font-weight: 600;
+  padding: 6px 8px;
+  border-radius: 5px;
+}
+.desktop-nav a:hover,
+.desktop-nav a.active {
+  background: rgba(255,255,255,0.1);
+  color: #ffeb3b;
+}
+
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.theme-toggle, .menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 1.3rem;
+  transition: 0.3s;
+}
+.theme-toggle:hover,
+.menu-toggle:hover {
+  color: #ffeb3b;
+}
+
+/* ------------------------------
+   📱 Mobile Nav
+------------------------------ */
+.mobile-nav {
+  position: fixed;
+  top: 60px;
+  left: 60%;
+  width: 40%;
+
+  background: var(--primary);
+  display: none;
+  flex-direction: column;
+  text-align: center;
+  z-index: 999;
+  transition: all 0.4s ease;
+}
+.mobile-nav.active {
+  display: flex;
+}
+.mobile-nav a {
+  color: white;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-weight: 600;
+}
+.mobile-nav a:hover {
+  background: var(--accent);
+}
+
+
+
+
+/* Dua / Arabic Block */
+.dua {
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px var(--shadow);
+}
+.dua .arabic {
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--primary);
+  line-height: 2;
+}
+.dua .translit {
+  color: #444;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5px;
+}
+.dua .meaning {
+  background: rgba(0, 150, 136, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* Section Title */
+.section-title {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin: 25px 0 10px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
+
+/* ========================================
+   🌙 Footer (Islamic Light)
+======================================== */
+
+.site-footer {
+  margin-top: 60px;
+  background: var(--primary);
+  color: white;
+  text-align: center;
+  padding: 35px 20px;
+  box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
+}
+
+.footer-brand {
+  margin-bottom: 20px;
+}
+
+.footer-logo {
+  width: 45px;
+  height: 45px;
+  background: white;
+  color: var(--primary);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 22px;
+  margin: 0 auto 8px;
+  font-weight: bold;
+}
+
+.footer-links {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: #ffeb3b;
+  text-decoration: none;
+  margin: 6px 10px;
+  display: inline-block;
+  font-size: 0.95rem;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+/* Dark Mode Footer */
+[data-theme="dark"] .site-footer {
+  background: var(--primary-dark);
+}
+
+
+/* Arabic Font Size Fix for Mobile */
+@media (max-width: 600px) {
+  .dua .arabic {
+    font-size: 1.3rem;
+  }
+}
+
+
+
+/* ------------------------------
+   🌿 Animations
+------------------------------ */
+.fade-in {
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ------------------------------
+   📱 Responsive
+------------------------------ */
+@media (max-width: 900px) {
+  .desktop-nav { display: none; }
+  .menu-toggle { display: block; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 1rem; }
+  .container { padding: 0 15px; }
+}
 
