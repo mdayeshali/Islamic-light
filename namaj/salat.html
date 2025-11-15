@@ -20,90 +20,8 @@
       color: #222;
     }
 
-    /* 🌙 HEADER */
-    header {
-      background: #004d40;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 14px 25px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: bold;
-      color: white;
-      text-decoration: none;
-      font-size: 1.2rem;
-    }
-
-    .brand .moon {
-      background: white;
-      color: #004d40;
-      border-radius: 50%;
-      width: 30px;
-      height: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 18px;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-
-    nav a:hover,
-    nav a.current {
-      color: #ffeb3b;
-    }
-
-    .menu-toggle {
-      display: none;
-      cursor: pointer;
-      font-size: 22px;
-      color: white;
-    }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      background: #004d40;
-      position: fixed;
-      top: 60px;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      transform: translateY(-100%);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .mobile-nav.active {
-      display: flex;
-      transform: translateY(0);
-    }
-
-    .mobile-nav a {
-      color: white;
-      padding: 14px;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
-      text-align: center;
-      text-decoration: none;
-    }
-
-    .mobile-nav a:hover {
-      background: #00796b;
-    }
-
+   
+   
     /* 🌿 HERO SECTION */
     .hero {
       text-align: center;
@@ -175,61 +93,27 @@
       background: #00796b;
     }
 
-    /* 🌿 FOOTER */
-    footer {
-      background: #004d40;
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-    }
+    
 
     /* 🌿 RESPONSIVE */
     @media (max-width: 880px) {
-      nav.desktop-nav {
-        display: none;
-      }
-      .menu-toggle {
-        display: block;
-      }
+     
       .hero h1 {
         font-size: 1.6rem;
       }
     }
   </style>
+  
+  <link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+ <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+<div id="header"></div>
 
-  <!-- 🌙 HEADER -->
-  <header>
-    <a href="index.html" class="brand">
-      <div class="moon">☾</div>
-      <span>Islamic Light</span>
-    </a>
-
-    <nav class="desktop-nav">
-      <a href="index.html">হোম</a>
-      <a href="quran.html">কুরআন</a>
-      <a href="hadith/hadith.html">হাদিস</a>
-      <a href="namaz.html" class="current">নামাজ শিক্ষা</a>
-      <a href="about.html">আমাদের সম্পর্কে</a>
-    </nav>
-
-    <div class="menu-toggle" id="menu-toggle">
-      <i class="fa-solid fa-bars"></i>
-    </div>
-  </header>
-
-  <!-- 🌿 MOBILE MENU -->
-  <nav class="mobile-nav" id="mobile-nav">
-    <a href="index.html">হোম</a>
-    <a href="quran.html">কুরআন</a>
-    <a href="hadith/hadith.html">হাদিস</a>
-    <a href="namaz.html" class="current">নামাজ শিক্ষা</a>
-    <a href="about.html">আমাদের সম্পর্কে</a>
-  </nav>
-
+ 
   <!-- 🌿 HERO -->
   <section class="hero">
     <h1>🕌 নামাজ শিক্ষা</h1>
@@ -251,20 +135,9 @@
     </div>
   </main>
 
-  <!-- 🌿 FOOTER -->
-  <footer>
-    © 2025 Islamic Light | নামাজ শিক্ষা বিভাগ  
-  </footer>
+  
+ <div id="footer"></div>
 
-  <script>
-    // 🌿 Mobile Menu Toggle
-    const menuToggle = document.getElementById("menu-toggle");
-    const mobileNav = document.getElementById("mobile-nav");
-
-    menuToggle.addEventListener("click", () => {
-      mobileNav.classList.toggle("active");
-    });
-  </script>
-
+  <script src="../js/script.js" defer></script>
 </body>
 </html>
