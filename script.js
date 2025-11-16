@@ -7,15 +7,3 @@ toggle.addEventListener("click", () => {
   toggle.textContent = document.body.dataset.theme === "dark" ? "☀️" : "🌙";
 });
 
-// 🪄 AOS Animation Initialize
-AOS.init();
-
-
-// 📱 Mobile Menu Toggle
-const menuBtn = document.getElementById("menuBtn");
-const navMenu = document.getElementById("navMenu");
-
-menuBtn.addEventListener("click", () => {
-  navMenu.classList.toggle("active");
-  menuBtn.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
-});
