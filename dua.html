@@ -9,6 +9,12 @@
   <meta name="keywords" content="Islamic Light, Dua, Quranic Dua, Daily Dua, Namaz Dua, Bangla Dua" />
   <meta name="author" content="Islamic Light Team" />
 
+   <link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+ <link rel="stylesheet" href="css/style.css">
+
   <style>
     :root {
       --bg: #f7fafc;
@@ -34,64 +40,7 @@
       overflow-x: hidden;
     }
 
-    /* HEADER */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--primary);
-      color: white;
-      padding: 12px 20px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-
-    .logo {
-      font-weight: bold;
-      font-size: 1.3rem;
-    }
-
-    nav {
-      display: flex;
-      gap: 15px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav a:hover { color: #ffeb3b; }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      background: transparent;
-      border: none;
-      color: white;
-      cursor: pointer;
-    }
-
-    .dark-toggle {
-      background: transparent;
-      border: 1px solid white;
-      color: white;
-      border-radius: 50%;
-      width: 35px;
-      height: 35px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .dark-toggle:hover {
-      background: white;
-      color: var(--primary);
-    }
-
+   
     /* HERO */
     .hero {
       text-align: center;
@@ -162,50 +111,11 @@
 
     .button:hover { background: var(--accent); }
 
-    /* FOOTER */
-    footer {
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 15px;
-      line-height: 1.5;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #ffeb3b;
-      text-decoration: none;
-      margin: 0 5px;
-    }
+   
 
     /* RESPONSIVE (MOBILE) */
     @media (max-width: 768px) {
-      header {
-        padding: 10px 15px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      nav {
-        display: none;
-        flex-direction: column;
-        background: var(--primary);
-        position: fixed;
-        top: 55px;
-        right: 0;
-        width: 40%;
-        padding: 10px 0;
-      }
-      nav a {
-        text-align: center;
-        padding: 5px;
-        
-      }
-
-      nav.active { display: flex; }
-
+     
       .container {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -228,12 +138,7 @@
         font-size: 0.85rem;
       }
 
-      footer {
-        font-size: 0.75rem;
-        padding: 10px;
-        position: relative;
-        bottom: 0;
-      }
+     
 
       /* সবকিছু এক স্ক্রিনে ফিট রাখার জন্য */
       html, body {
@@ -249,25 +154,12 @@
       }
     }
   </style>
+
+  
 </head>
 
 <body>
-  <header>
-    <div class="logo"><strong>Islamic Light</strong></div>
-    <button class="menu-toggle" id="menuBtn">☰</button>
-
-    <nav id="navMenu">
-      <a href="index.html">হোম</a>
-      <a href="quran.html">কুরআন</a>
-      <a href="hadith/hadith.html">হাদীস</a>
-      <a href="aqeedah.html">আকীদা</a>
-      <a href="dua.html" class="active">দো‘আ</a>
-      <a href="about.html">আমাদের সম্পর্কে</a>
-      <a href="contact.html">যোগাযোগ</a>
-    </nav>
-
-    <button class="dark-toggle" id="themeToggle">🌙</button>
-  </header>
+  <div id="header"></div>
 
   <section class="hero">
     <h1>🤲 দো‘আ সমূহ</h1>
@@ -282,7 +174,7 @@
     </div>
 
     <div class="card">
-      <h2><a href="dua/namaz_dua.html">🕌 নামাযের দো‘আ সমূহ </a></h2>
+      <h2><a href="dua/namaz_dua.html">🕌 নামাযের দো‘আ</a></h2>
       <p>রুকু, সিজদা ও বসার দো‘আসমূহ।</p>
       <a href="dua/namaz_dua.html" class="button">দেখুন</a>
     </div>
@@ -300,33 +192,10 @@
     </div>
   </main>
 
-  <footer>
-    <div class="links">
-      <a href="quran.html">কুরআন</a> |
-      <a href="hadith/hadith.html">হাদীস</a> |
-      <a href="dua.html">দো‘আ</a> |
-      <a href="about.html">আমাদের সম্পর্কে</a>
-    </div>
-    <p>© 2025 Islamic Light | Developed with ❤️ by Islamic Light Team</p>
-  </footer>
+  <div id="footer"></div>
 
-  <script>
-    // 🌙 Dark Mode Toggle
-    const toggle = document.getElementById("themeToggle");
-    toggle.addEventListener("click", () => {
-      document.body.dataset.theme =
-        document.body.dataset.theme === "dark" ? "" : "dark";
-      toggle.textContent = document.body.dataset.theme === "dark" ? "☀️" : "🌙";
-    });
+  <script src="js/script.js" defer></script>
 
-    // 📱 Menu Toggle
-    const menuBtn = document.getElementById("menuBtn");
-    const navMenu = document.getElementById("navMenu");
-    menuBtn.addEventListener("click", () => {
-      navMenu.classList.toggle("active");
-      menuBtn.textContent = navMenu.classList.contains("active") ? "✕" : "☰";
-    });
-  </script>
+  
 </body>
 </html>
-
