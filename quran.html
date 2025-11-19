@@ -5,229 +5,115 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>📖 কুরআনের সূচীপত্র | Islamic Light</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
   <style>
-    :root {
-      --bg: #f7fafc;
-      --text: #222;
-      --primary: #004d40;
-      --accent: #009688;
-      --card-bg: #ffffff;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Noto Sans Bengali", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    /* ---------- HEADER ---------- */
-    header {
-      background: var(--primary);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .brand {
-      font-weight: 700;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .brand .moon {
-      background: white;
-      color: var(--primary);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    nav {
-      display: flex;
-      gap: 15px;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: #ffeb3b;
-    }
-
-    /* ---------- MOBILE MENU ---------- */
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      z-index: 1200;
-    }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      position: fixed;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      background: var(--primary);
-      text-align: center;
-      padding: 20px 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      transform: translateY(-100%);
-      transition: transform 0.4s ease-in-out;
-    }
-
-    .mobile-nav.active {
-      display: flex;
-      transform: translateY(0);
-    }
-
-    .mobile-nav a {
-      color: white;
-      padding: 12px 0;
-      font-size: 1.1rem;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .mobile-nav a:last-child {
-      border-bottom: none;
-    }
-
-    /* ---------- HERO ---------- */
     .hero {
-      background: linear-gradient(to right, #004d40, #00796b);
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-    }
+  background: linear-gradient(to right, #004d40, #00796b);
+  color: white;
+  text-align: center;
+  padding: 50px 20px 40px;
+}
+.hero h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
 
-    .hero h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-    }
+/* ------------------------------
+   🌸 Main Content & Cards
+------------------------------ */
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
 
-    .hero p {
-      font-size: 1rem;
-      max-width: 700px;
-      margin: 0 auto;
-    }
+.card {
+  background: var(--card-bg);
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 10px var(--shadow);
+  border-top: 4px solid var(--primary);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 15px var(--shadow);
+}
 
-    /* ---------- SURAH GRID ---------- */
-    .container {
-      padding: 40px 20px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.card h2 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+.card p {
+  color: var(--text);
+  opacity: 0.9;
+  margin-bottom: 10px;
+}
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      border-top: 4px solid var(--primary);
-      transition: 0.3s;
-    }
+/* Dua / Arabic Block */
+.dua {
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  padding: 15px;
+  margin: 20px 0;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px var(--shadow);
+}
+.dua .arabic {
+  font-size: 1.5rem;
+  text-align: center;
+  color: var(--primary);
+  line-height: 2;
+}
+.dua .translit {
+  color: #444;
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 5px;
+}
+.dua .meaning {
+  background: rgba(0, 150, 136, 0.05);
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  text-align: center;
+}
 
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.2);
-    }
+/* Section Title */
+.section-title {
+  color: var(--primary);
+  font-size: 1.5rem;
+  margin: 25px 0 10px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+}
 
-    .card a {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-decoration: none;
-      display: block;
-      transition: 0.3s;
-    }
+/* Arabic Font Size Fix for Mobile */
+@media (max-width: 600px) {
+  .dua .arabic {
+    font-size: 1.3rem;
+  }
+}
 
-    .card a:hover {
-      color: var(--accent);
-    }
-
-    /* ---------- FOOTER ---------- */
-    footer {
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 25px 15px;
-      margin-top: 40px;
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    footer a {
-      color: #ffeb3b;
-      text-decoration: none;
-      margin: 0 5px;
-    }
-
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 900px) {
-      nav { display: none; }
-      .menu-toggle { display: block; }
-      .hero { padding: 60px 15px; }
-    }
   </style>
+
+  <link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+ <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="brand">
-      <div class="moon">☾</div> Islamic Light
-    </div>
-
-    <button class="menu-toggle" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-
-    <nav id="desktopNav">
-      <a href="index.html">হোম</a>
-      <a href="hadith/hadith.html">হাদিস</a>
-      <a href="about.html">আমাদের সম্পর্কে</a>
-      <a href="contact.html">যোগাযোগ</a>
-    </nav>
-  </header>
-
-  <!-- MOBILE NAV -->
-  <nav class="mobile-nav" id="mobileNav">
-    <a href="index.html">হোম</a>
-      <a href="quran.html">কুরআন</a>
-      <a href="hadith/hadith.html">হাদীস</a>
-      <a href="aqeedah.html">আকীদা</a>
-      <a href="dua.html" class="active">দো‘আ</a>
-      <a href="about.html">আমাদের সম্পর্কে</a>
-      <a href="contact.html">যোগাযোগ</a>
-  </nav>
+ <div id="header"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -353,25 +239,11 @@
   <div class="card"><a href="surah/surah_114.html">114 সূরা আন-নাস</a></div>
 
 
-   
+    <!-- বাকিগুলি আগের মতো যুক্ত করুন -->
   </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© <span id="year"></span> Islamic Light | সর্বস্বত্ব সংরক্ষিত।</p>
-  </footer>
+  <div id="footer"></div>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileNav = document.getElementById("mobileNav");
-    menuBtn.addEventListener("click", () => {
-      mobileNav.classList.toggle("active");
-      menuBtn.innerHTML = mobileNav.classList.contains("active")
-        ? '<i class="fa-solid fa-xmark"></i>'
-        : '<i class="fa-solid fa-bars"></i>';
-    });
-  </script>
+  <script src="js/script.js" defer></script>
 </body>
 </html>
