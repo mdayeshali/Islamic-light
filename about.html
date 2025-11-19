@@ -11,6 +11,12 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+
+  <link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+ <link rel="stylesheet" href="css/style.css">
   <style>
     /* ---------- GLOBAL ---------- */
     :root {
@@ -45,20 +51,6 @@
       text-decoration: underline;
     }
 
-    /* ---------- HEADER ---------- */
-    header {
-      background: var(--primary);
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
     .brand {
       font-weight: 700;
       font-size: 1.3rem;
@@ -79,63 +71,7 @@
       font-weight: bold;
     }
 
-    nav {
-      display: flex;
-      gap: 15px;
-    }
-
-    nav a {
-      color: white;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    nav a:hover,
-    nav a.active {
-      color: #ffeb3b;
-    }
-
-    /* ---------- MOBILE MENU ---------- */
-    .menu-toggle {
-      display: none;
-      font-size: 1.8rem;
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      z-index: 1200;
-    }
-
-    .mobile-nav {
-      display: none;
-      flex-direction: column;
-      position: fixed;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      background: var(--primary);
-      text-align: center;
-      padding: 20px 0;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-      transform: translateY(-100%);
-      transition: transform 0.4s ease-in-out;
-    }
-
-    .mobile-nav.active {
-      display: flex;
-      transform: translateY(0);
-    }
-
-    .mobile-nav a {
-      color: white;
-      padding: 12px 0;
-      font-size: 1.1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .mobile-nav a:last-child {
-      border-bottom: none;
-    }
+    
 
     /* ---------- HERO ---------- */
     .hero {
@@ -204,71 +140,24 @@
       margin-right: 6px;
     }
 
-    /* ---------- FOOTER ---------- */
-    footer {
-      background: var(--primary);
-      color: white;
-      text-align: center;
-      padding: 20px;
-      margin-top: 50px;
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
-
-    footer a {
-      color: #ffeb3b;
-      text-decoration: none;
-      margin: 0 5px;
-    }
-
+    
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
-      nav {
-        display: none;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
+     
 
       .container {
         grid-template-columns: 1fr;
       }
 
       .hero {
-        padding: 60px 15px;
+        padding: 40px 15px;
       }
     }
   </style>
 </head>
 
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="brand">
-      <div class="moon">☾</div> Islamic Light
-    </div>
-
-    <button class="menu-toggle" id="menuBtn"><i class="fa-solid fa-bars"></i></button>
-
-    <nav id="desktopNav">
-      <a href="index.html">হোম</a>
-      <a href="quran.html">কুরআন</a>
-      <a href="hadith/hadith.html">হাদিস</a>
-      <a href="about.html" class="active">আমাদের সম্পর্কে</a>
-    </nav>
-  </header>
-
-  <!-- MOBILE NAV -->
-  <nav class="mobile-nav" id="mobileNav">
-   <a href="index.html">হোম</a>
-      <a href="quran.html">কুরআন</a>
-      <a href="hadith/hadith.html">হাদীস</a>
-      <a href="aqeedah.html">আকীদা</a>
-      <a href="dua.html" class="active">দো‘আ</a>
-      <a href="contact.html">যোগাযোগ</a>
-    <a href="about.html" class="active">আমাদের সম্পর্কে</a>
-  </nav>
+  <div id="header"></div>
 
   <!-- HERO -->
   <section class="hero">
@@ -325,26 +214,10 @@
     </aside>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© <span id="year"></span> Islamic Light | সর্বস্বত্ব সংরক্ষিত।</p>
-  </footer>
+ 
+ <div id="footer"></div>
 
-  <!-- ---------- JAVASCRIPT ---------- -->
-  <script>
-    // Year Update
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Mobile Menu Toggle
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileNav = document.getElementById("mobileNav");
-
-    menuBtn.addEventListener("click", () => {
-      mobileNav.classList.toggle("active");
-      menuBtn.innerHTML = mobileNav.classList.contains("active")
-        ? '<i class="fa-solid fa-xmark"></i>'
-        : '<i class="fa-solid fa-bars"></i>';
-    });
-  </script>
+  <script src="js/script.js" defer></script>
+  
 </body>
 </html>
