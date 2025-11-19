@@ -45,7 +45,7 @@ body {
   font-family: var(--font-bn);
   line-height: 1.8;
   transition: background 0.4s, color 0.4s;
-  padding-top: 80px; /* fixed header space */
+  padding-top: 55px; /* fixed header space */
 }
 
 a {
@@ -302,4 +302,3 @@ img {
   .hero p { font-size: 1rem; }
   .container { padding: 0 15px; }
 }
-
