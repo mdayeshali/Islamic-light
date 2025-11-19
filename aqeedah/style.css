@@ -41,27 +41,26 @@ body {
   padding: 40px 20px;
 }
 
-/* ---------- HEADER ---------- */
-.header {
-  background: var(--primary);
-  color: white;
-  text-align: center;
-  padding: 60px 25px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  border-bottom: 4px solid var(--accent);
-}
+/* HERO */
+    .hero {
+      text-align: center;
+      background: linear-gradient(to right, #004d40, #00796b);
+      color: white;
+      padding: 40px 15px;
+    }
 
-.header h1 {
-  font-size: 2.4rem;
-  margin-bottom: 10px;
-}
+    .hero h1 {
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
 
-.header p {
-  font-size: 1rem;
-  color: #d0f0f0;
-  max-width: 700px;
-  margin: 0 auto;
-}
+    .hero p {
+      font-size: 1rem;
+      margin: 0 auto;
+      max-width: 600px;
+      line-height: 1.5;
+    }
+
 
 /* ---------- INTRO & CONTENT ---------- */
 .intro {
