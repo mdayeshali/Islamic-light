@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mdayeshali.github.io/islamic-light/sitemap.xml
+Sitemap: https://islamiclight.in/sitemap.xml
