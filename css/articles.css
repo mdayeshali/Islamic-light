@@ -1,0 +1,188 @@
+/* ==============================
+   GENERAL STYLES
+============================== */
+body {
+    margin: 0;
+    font-family: "Noto Sans Bengali", sans-serif;
+    background: #ffffff;
+    color: #222;
+    line-height: 1.6;
+    transition: 0.3s;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* ==============================
+   HERO SECTION
+============================== */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: #eaf7f0;
+    border-radius: 10px;
+    margin: 20px;
+}
+
+.hero h1 {
+    font-size: 28px;
+    color: #1f5f46;
+}
+
+.hero p {
+    font-size: 16px;
+    color: #444;
+}
+
+/* ==============================
+   CARD SECTION
+============================== */
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+    text-align: center;
+    transition: 0.3s;
+   
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 a {
+    color: #1f5f46;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.card p {
+    color: #555;
+}
+
+.button {
+    display: inline-block;
+    margin-top: 15px;
+    background: #1f5f46;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 6px;
+}
+
+.article-card{
+    margin: 20px;
+}
+
+
+/* ==============================
+   ARTICLE PAGE – UNIVERSAL SYSTEM
+============================== */
+.article-page {
+    max-width: 850px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.article-title {
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 15px;
+    color: #1f5f46;
+}
+
+.article-intro {
+    font-size: 17px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.article-content h2 {
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #1f5f46;
+}
+
+.article-content p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.article-content hr {
+    margin: 25px 0;
+    border: none;
+    border-top: 1px solid #ddd;
+}
+
+/* ==============================
+   DARK MODE (Universal System)
+============================== */
+body.dark {
+    background: #0f1a17;
+    color: #e6e6e6;
+}
+
+body.dark .hero {
+    background: #1b2b27;
+}
+
+body.dark .card {
+    background: #1b2b27;
+    color: #ffffff;
+}
+
+body.dark .card h2 a {
+    color: #98ffa7;
+}
+
+body.dark .single-article-box {
+    background: #1b2b27;
+    color: #e6e6e6;
+}
+
+body.dark .single-article-box h2 {
+    color: #98ffa7;
+}
+
+body.dark .single-article-box p {
+    color: #cccccc;
+}
+
+body.dark .quran-verse {
+    background: #1b2b27;
+    color: #e6e6e6;
+}
+
+body.dark .article-title {
+    color: #ffffff;
+}
+
+body.dark .article-content p {
+    color: #dcdcdc;
+}
+
+body.dark .article-content h2 {
+    color: #98ffa7;
+}
+
+body.dark .article-content hr {
+    border-top: 1px solid #555;
+}
+
+body.dark .button,
+body.dark .article-button {
+    background: #4caf50;
+}
