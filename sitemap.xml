@@ -200,5 +200,58 @@
     <priority>0.80</priority>
   </url>
 
+  <!-- ============================= -->
+<!--  Islamic Light — Sexual Ethics -->
+<!-- ============================= -->
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics.html</loc>
+  <lastmod>2025-11-28</lastmod>
+  <priority>0.90</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics/porn-addiction.html</loc>
+  <lastmod>2025-11-28</lastmod>
+  <priority>0.85</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics/masturbation-control.html</loc>
+  <lastmod>2025-11-28</lastmod>
+  <priority>0.85</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics/marriage-intimacy.html</loc>
+  <lastmod>2025-11-28</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics/sexual-purity.html</loc>
+  <lastmod>2025-11-28</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics/haram-relationships.html</loc>
+  <lastmod>2025-11-28</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics/zina-warning.html</loc>
+  <lastmod>2025-11-28</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/sexual-ethics/sexual-faq.html</loc>
+  <lastmod>2025-02-28</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
 </urlset>
 
