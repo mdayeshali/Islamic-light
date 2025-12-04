@@ -115,6 +115,8 @@ body {
   text-align: center;
   color: #222;
   margin-bottom: 8px;
+  direction: ltr;
+  unicode-bidi: plaintext;
 }
 
 .translation {
@@ -470,5 +472,6 @@ body {
     font-size: 1.3em;
   }
 }
+
 
 
