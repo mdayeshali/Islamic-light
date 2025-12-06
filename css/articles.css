@@ -1,188 +1,265 @@
-/* ==============================
-   GENERAL STYLES
-============================== */
+/* ============================================
+   ARTICLE PAGE – Islamic Light UI
+   Author: Md Ayesh Ali
+   Used in: article.html (Updated Version)
+============================================ */
+
+/* ---------- Base Styles ---------- */
 body {
-    margin: 0;
     font-family: "Noto Sans Bengali", sans-serif;
-    background: #ffffff;
+    margin: 0;
+    padding: 0;
     color: #222;
-    line-height: 1.6;
+    background: #f7fafc;
+}
+
+/* Main Feed Container */
+.article-feed {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 10px;
+}
+
+/* ---------- ARTICLE META DATA ---------- */
+.article-meta {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap; /* ছোট স্ক্রিনে ভেঙে যাবে */
+}
+
+.article-meta i {
+    color: #1f5f46;
+    margin-right: 5px;
+}
+
+/* ডার্ক মোড স্টাইল */
+body.dark .article-meta {
+    color: #aaaaaa;
+}
+
+/* =============================================
+   ARTICLE BOX (Main Card)
+============================================ */
+.article-box {
+    background: #ffffff;
+    padding: 20px 22px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 28px;
+    border-top: 4px solid #1f5f46;
+    position: relative;
+    overflow: hidden;
     transition: 0.3s;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
+.article-box:hover {
+    transform: translateY(-4px);
 }
 
-/* ==============================
-   HERO SECTION
-============================== */
-.hero {
-    text-align: center;
-    padding: 40px 20px;
-    background: #eaf7f0;
-    border-radius: 10px;
-    margin: 20px;
-}
-
-.hero h1 {
-    font-size: 28px;
+/* Title */
+.article-heading {
+    font-size: 24px;
     color: #1f5f46;
+    margin: 0 0 10px 0;
+    font-weight: 700;
 }
 
-.hero p {
+/* Article Summary */
+.article-summary {
     font-size: 16px;
     color: #444;
+    line-height: 1.7;
+    margin-bottom: 12px;
 }
 
-/* ==============================
-   CARD SECTION
-============================== */
-.container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    padding: 20px;
+/* ---------- ACTION BUTTONS (Share / Copy) ---------- */
+.article-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    position: relative; /* বাটন কন্টেইনার */
 }
 
-.card {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.08);
-    text-align: center;
+.share-btn,
+.copy-btn { /* দুটো বাটনকেই কমন স্টাইল দেওয়া হলো */
+    border: none;
+    padding: 7px 14px;
+    font-size: 14px;
+    border-radius: 6px;
+    cursor: pointer;
     transition: 0.3s;
-   
+    color: #fff;
+    white-space: nowrap; /* টেক্সট যাতে না ভাঙে */
 }
 
-.card:hover {
-    transform: translateY(-5px);
+/* শেয়ার বাটন (নীল) */
+.share-btn {
+    background: #0284c7;
 }
 
-.card h2 a {
-    color: #1f5f46;
+.share-btn:hover {
+    background: #0369a1;
+}
+
+/* কপি বাটন (সবুজ, আগের কমেন্ট বাটনের স্টাইল ব্যবহার করে) */
+.copy-btn {
+    background: #10b981; /* সবুজ রঙ */
+}
+
+.copy-btn:hover {
+    background: #059669;
+}
+
+/* ---------- FULL CONTENT (Hidden by default) ---------- */
+.article-full {
+    display: none;
+    margin-top: 12px;
+    padding: 12px 0;
+    border-top: 1px solid #e2e2e2;
+}
+
+.article-full p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.75;
+}
+
+/* Quran Verse Block */
+.quran-verse {
+    background: #e9f7f1;
+    padding: 12px;
+    border-left: 4px solid #1f5f46;
+    border-radius: 6px;
+    margin: 15px 0;
+}
+
+.quran-verse .arabic {
+    text-align: center;
     font-size: 20px;
+    color: #1f5f46;
     font-weight: bold;
 }
 
-.card p {
-    color: #555;
-}
-
-.button {
-    display: inline-block;
-    margin-top: 15px;
-    background: #1f5f46;
-    color: white;
-    padding: 8px 18px;
-    border-radius: 6px;
-}
-
-.article-card{
-    margin: 20px;
-}
-
-
-/* ==============================
-   ARTICLE PAGE – UNIVERSAL SYSTEM
-============================== */
-.article-page {
-    max-width: 850px;
-    margin: 40px auto;
-    padding: 20px;
-}
-
-.article-title {
-    font-size: 28px;
+.quran-verse .translation {
     text-align: center;
-    margin-bottom: 15px;
-    color: #1f5f46;
-}
-
-.article-intro {
-    font-size: 17px;
-    color: #555;
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.article-content h2 {
-    margin-top: 25px;
-    margin-bottom: 8px;
-    font-size: 20px;
-    color: #1f5f46;
-}
-
-.article-content p {
-    font-size: 16px;
+    margin-top: 6px;
+    font-size: 15px;
     color: #444;
-    margin-bottom: 10px;
-    line-height: 1.7;
 }
 
-.article-content hr {
-    margin: 25px 0;
+/* ---------- READ MORE BUTTON ---------- */
+.read-more-btn {
+    margin-top: 10px;
+    padding: 7px 14px;
+    background: #1f5f46;
+    color: #fff;
+    border-radius: 6px;
     border: none;
-    border-top: 1px solid #ddd;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-/* ==============================
-   DARK MODE (Universal System)
-============================== */
+.read-more-btn:hover {
+    background: #144f39;
+}
+
+/* =============================================
+   SIDE SUGGESTION BOX (Right aligned)
+============================================ */
+.side-suggest {
+    background: #f4fbf7;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    border: 1px solid #cdeadc;
+}
+
+.side-suggest h4 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    color: #1f5f46;
+}
+
+.side-suggest a {
+    display: block;
+    font-size: 14px;
+    color: #064e3b;
+    margin: 5px 0;
+}
+
+.side-suggest a:hover {
+    color: #0b6b4f;
+    text-decoration: underline;
+}
+
+/* =============================================
+   DARK MODE SUPPORT
+============================================ */
 body.dark {
     background: #0f1a17;
     color: #e6e6e6;
 }
 
-body.dark .hero {
-    background: #1b2b27;
-}
-
-body.dark .card {
-    background: #1b2b27;
+body.dark .article-box {
+    background: #16221f;
+    border-top-color: #4caf50;
     color: #ffffff;
 }
 
-body.dark .card h2 a {
+body.dark .article-heading {
     color: #98ffa7;
 }
 
-body.dark .single-article-box {
-    background: #1b2b27;
-    color: #e6e6e6;
-}
-
-body.dark .single-article-box h2 {
-    color: #98ffa7;
-}
-
-body.dark .single-article-box p {
+body.dark .article-summary {
     color: #cccccc;
 }
 
+body.dark .article-full p {
+    color: #dddddd;
+}
+
 body.dark .quran-verse {
-    background: #1b2b27;
-    color: #e6e6e6;
+    background: #1d2e2a;
+    border-left-color: #4caf50;
 }
 
-body.dark .article-title {
-    color: #ffffff;
-}
-
-body.dark .article-content p {
-    color: #dcdcdc;
-}
-
-body.dark .article-content h2 {
+body.dark .quran-verse .arabic {
     color: #98ffa7;
 }
 
-body.dark .article-content hr {
-    border-top: 1px solid #555;
+/* ডার্ক মোডে বাটন */
+body.dark .share-btn {
+    background: #0369a1;
+}
+body.dark .share-btn:hover {
+    background: #025785;
+}
+body.dark .copy-btn {
+    background: #0f7a36;
+}
+body.dark .copy-btn:hover {
+    background: #0b662e;
 }
 
-body.dark .button,
-body.dark .article-button {
-    background: #4caf50;
+
+body.dark .side-suggest {
+    background: #1d2e2a;
+    border-color: #274138;
+}
+
+body.dark .side-suggest a {
+    color: #98ffa7;
+}
+
+/* মন্তব্য সেকশন না থাকায় এর ডার্ক মোড স্টাইল অপ্রয়োজনীয় */
+
+strong{
+    color: #005d44;
+}
+
+h3{
+  color: #004d40;
 }
