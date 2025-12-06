@@ -3,9 +3,11 @@
  Author: Md Ayesh Ali | IslamicLight.in
 ======================================== */
 
+
 /* ------------------------------
    🌿 Base Theme Colors & Fonts
 ------------------------------ */
+
 :root {
   --primary: #004d40;
   --accent: #009688;
@@ -17,7 +19,9 @@
   --font-bn: "Noto Sans Bengali", "SolaimanLipi", sans-serif;
 }
 
+
 /* 🌙 Dark Mode */
+
 [data-theme="dark"] {
   --bg: #0f0f0f;
   --text: #f1f1f1;
@@ -26,18 +30,22 @@
   --shadow: rgba(255, 255, 255, 0.08);
 }
 
+
 /* ------------------------------
    🌸 Global Reset & Base
 ------------------------------ */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+
 html {
   scroll-behavior: smooth;
 }
+
 
 body {
   background: var(--bg);
@@ -48,23 +56,28 @@ body {
   padding-top: 55px; /* fixed header space */
 }
 
+
 a {
   text-decoration: none;
   color: var(--primary);
   transition: 0.3s;
 }
+
 a:hover {
   color: var(--accent);
 }
+
 
 img {
   max-width: 100%;
   border-radius: 8px;
 }
 
+
 /* ------------------------------
    🌙 Header / Navbar
 ------------------------------ */
+
 .site-header {
   position: fixed;
   top: 0;
@@ -81,9 +94,11 @@ img {
   transition: 0.4s ease;
 }
 
+
 .site-header.scrolled {
   background: #00382f;
 }
+
 
 .brand {
   display: flex;
@@ -93,6 +108,7 @@ img {
   font-weight: 700;
   color: white;
 }
+
 .brand .moon {
   background: white;
   color: var(--primary);
@@ -105,27 +121,32 @@ img {
   font-weight: bold;
 }
 
+
 .desktop-nav {
   display: flex;
-  gap: 18px;
+  gap: 15px;
 }
+
 .desktop-nav a {
   color: white;
   font-weight: 600;
-  padding: 6px 8px;
+  padding: 6px 2px;
   border-radius: 5px;
 }
+
 .desktop-nav a:hover,
 .desktop-nav a.active {
   background: rgba(255,255,255,0.1);
   color: #ffeb3b;
 }
 
+
 .nav-controls {
   display: flex;
   align-items: center;
   gap: 10px;
 }
+
 
 .theme-toggle, .menu-toggle {
   background: none;
@@ -135,44 +156,92 @@ img {
   font-size: 1.3rem;
   transition: 0.3s;
 }
+
 .theme-toggle:hover,
 .menu-toggle:hover {
   color: #ffeb3b;
 }
 
-/* ------------------------------
-   📱 Mobile Nav
------------------------------- */
-.mobile-nav {
-  position: fixed;
-  top: 60px;
-  left: 60%;
-  width: 40%;
 
+/* ------------------------------
+   📱 Mobile Nav (Updated for Dropdown Behavior)
+------------------------------ */
+
+.mobile-nav {
+  /* ড্রপডাউন স্টাইল */
+  position: fixed;
+  top: 55px; /* Header-এর উচ্চতার পরে শুরু হবে */
+  right: 15px; /* ডান দিক থেকে দূরত্ব */
+  
+  width: 250px; /* ড্রপডাউনের নির্দিষ্ট প্রস্থ */
+  max-height: 0; /* ডিফল্টভাবে লুকানো */
+  overflow-y:auto; /* ভেতরের উপাদান লুকানোর জন্য */
+  overflow-x:hidden;
+
+
+  
   background: var(--primary);
-  display: none;
-  flex-direction: column;
-  text-align: center;
-  z-index: 999;
-  transition: all 0.4s ease;
-}
-.mobile-nav.active {
+  box-shadow: 0 4px 15px var(--shadow);
+  border-radius: 8px;
+  
   display: flex;
+  flex-direction: column;
+  text-align: left; /* আইটেম বাম দিকে সরানো হলো */
+  z-index: 1000; /* overlay (999)-এর উপরে থাকবে */
+  
+  /* অ্যানিমেশন ট্রানজিশন যোগ করা হয়েছে */
+  transition: max-height 0.4s ease-out, opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(-10px); /* উপরে থেকে সামান্য নিচে স্লাইড হবে */
+  opacity: 0;
 }
+
+/* মেনু খোলার ক্লাস (JS এ এই ক্লাসটি যোগ হবে) */
+.mobile-nav.open {
+  max-height: 500px; /* কনটেন্ট অনুযায়ী একটি যথেষ্ট উচ্চতা দিন */
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .mobile-nav a {
   color: white;
-  padding: 14px 0;
+  padding: 12px 15px; /* প্যাডিং বাড়ানো হলো */
   border-bottom: 1px solid rgba(255,255,255,0.1);
   font-weight: 600;
+  text-align: center;
 }
+
+/* শেষ আইটেমের নিচে বর্ডার সরান */
+.mobile-nav a:last-child {
+  border-bottom: none;
+}
+
 .mobile-nav a:hover {
   background: var(--accent);
 }
 
+/* ------------------------------
+   ✨ NEW: Overlay for Closing Menu
+------------------------------ */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999; /* mobile-nav (1000)-এর নিচে থাকবে */
+  background: rgba(0, 0, 0, 0.4); /* হালকা কালো শেড */
+  display: none; /* প্রাথমিক অবস্থায় লুকানো থাকবে */
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
 
-
+/* যখন ওভারলে দৃশ্যমান হবে (JS এই ক্লাসটি যোগ করবে) */
+#overlay.visible {
+  display: block;
+}
 
 /* Dua / Arabic Block */
+
 .dua {
   background: var(--card-bg);
   border-left: 4px solid var(--accent);
@@ -181,18 +250,21 @@ img {
   border-radius: 10px;
   box-shadow: 0 2px 5px var(--shadow);
 }
+
 .dua .arabic {
   font-size: 1.5rem;
   text-align: center;
   color: var(--primary);
   line-height: 2;
 }
+
 .dua .translit {
   color: #444;
   font-size: 1rem;
   text-align: center;
   margin-top: 5px;
 }
+
 .dua .meaning {
   background: rgba(0, 150, 136, 0.05);
   padding: 10px;
@@ -202,7 +274,9 @@ img {
   text-align: center;
 }
 
+
 /* Section Title */
+
 .section-title {
   color: var(--primary);
   font-size: 1.5rem;
@@ -211,9 +285,11 @@ img {
   display: inline-block;
 }
 
+
 /* ========================================
    🌙 Footer (Islamic Light)
 ======================================== */
+
 
 .site-footer {
   margin-top: 60px;
@@ -224,9 +300,11 @@ img {
   box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
 }
 
+
 .footer-brand {
   margin-bottom: 20px;
 }
+
 
 .footer-logo {
   width: 45px;
@@ -242,10 +320,12 @@ img {
   font-weight: bold;
 }
 
+
 .footer-links {
   margin-top: 10px;
   margin-bottom: 20px;
 }
+
 
 .footer-links a {
   color: #ffeb3b;
@@ -256,23 +336,29 @@ img {
   transition: 0.3s;
 }
 
+
 .footer-links a:hover {
   color: white;
   text-decoration: underline;
 }
+
 
 .footer-copy {
   font-size: 0.85rem;
   opacity: 0.85;
 }
 
+
 /* Dark Mode Footer */
+
 [data-theme="dark"] .site-footer {
   background: var(--primary-dark);
 }
 
 
+
 /* Arabic Font Size Fix for Mobile */
+
 @media (max-width: 600px) {
   .dua .arabic {
     font-size: 1.3rem;
@@ -281,24 +367,91 @@ img {
 
 
 
+
 /* ------------------------------
    🌿 Animations
 ------------------------------ */
+
 .fade-in {
   animation: fadeIn 1s ease;
 }
+
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+
 /* ------------------------------
-   📱 Responsive
+   📱 Responsive (Updated)
 ------------------------------ */
+
 @media (max-width: 900px) {
   .desktop-nav { display: none; }
   .menu-toggle { display: block; }
   .hero h1 { font-size: 1.8rem; }
   .hero p { font-size: 1rem; }
   .container { padding: 0 15px; }
+  
+  /* Mobile Nav-কে ছোট স্ক্রিনে ডান দিকে আরও ভেতরে আনা হলো */
+  .mobile-nav {
+      right: 10px;
+      width: 220px; 
+  }
 }
+
+
+/* Share Button Style */
+
+.share-container {
+    margin: 20px 0;
+    position: relative;
+}
+
+
+.share-btn {
+    background: #0284c7;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+
+.share-btn:hover {
+    background: #0369a1;
+}
+
+
+.share-menu {
+    display: none;
+    position: absolute;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 10px;
+    padding: 10px;
+    width: 180px;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    z-index: 99;
+}
+
+
+.share-menu a {
+    display: block;
+    padding: 8px;
+    margin: 5px 0;
+    background: #f3f3f3;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #333;
+    font-size: 15px;
+}
+
+
+.share-menu a:hover {
+    background: #e0e0e0;
+}
+
