@@ -167,39 +167,12 @@
   <url><loc>https://islamiclight.in/quran.html</loc></url>
 
    <url>
-    <loc>https://islamiclight.in/articles/index.html</loc>
+    <loc>https://islamiclight.in/articles/article.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
 
-  <!-- Article: Namaz -->
-  <url>
-    <loc>https://islamiclight.in/articles/namaz-er-upokarita.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- Article: Morning Dua -->
-  <url>
-    <loc>https://islamiclight.in/articles/morning-dua.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- Article: Aqeedah Basic -->
-  <url>
-    <loc>https://islamiclight.in/articles/aqeedah-basic.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
-  <!-- Article: QA -->
-  <url>
-    <loc>https://islamiclight.in/articles/islamic-questions-answers.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.80</priority>
-  </url>
-
+ 
   <!-- ============================= -->
 <!--  Islamic Light — Sexual Ethics -->
 <!-- ============================= -->
