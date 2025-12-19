@@ -1,0 +1,465 @@
+/*
+====================================
+  ০. বেসিক রিসেট ও গ্লোবাল ভ্যারিয়েবল
+====================================
+*/
+:root {
+    --base-font-size: 16px;
+    --color-primary: #00796b;
+    --color-secondary: #4CAF50;
+    --color-background: #f4f7f6;
+    --color-text: #333333;
+    --color-light-text: #666666;
+    --color-border: #e0e0e0;
+    --color-tafsir-bg: #e8f5e9;
+    --color-arabic: #2c3e50;
+    --color-share-btn: #1a73e8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+    background-color: var(--color-background);
+    color: var(--color-text);
+    padding-top: 60px;
+}
+
+/* ====================================
+  ১. লেআউট এবং কন্টেইনার
+====================================
+*/
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+
+/* ====================================
+  ২. হেডার এবং নেভিগেশন (ফিক্সড টপ বার)
+====================================
+*/
+.header-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background:none;
+    color: rgb(17, 13, 13);
+    padding: 10px 15px;
+
+    /* ⭐ এখানে মূল পরিবর্তন — দুটি বাটন দুই পাশে করবে */
+    display: flex;
+    justify-content: space-between;  /* Left ↔ Right */
+    align-items: center;
+
+    z-index: 1000;
+   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);*/
+}
+
+/* প্রতিটি বাটনের র‍্যাপার */
+.header-bar .menu-wrapper,
+.header-bar .settings-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.header-bar button {
+    background-color:rgb(218, 216, 216);
+    border: 1px solid white;
+    color: rgb(0, 0, 0);
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.header-bar button:hover {
+    background-color: #004d40;
+    color: white;
+}
+
+.header-bar button:active {
+    transform: scale(0.98);
+}
+
+/* ====================================
+  ৩. ড্রপডাউন মেনু (সূরা ও সেটিংস)
+====================================
+*/
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    background-color: #ffffff;
+    color: var(--color-text);
+    min-width: 280px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    z-index: 1001;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 10px 0;
+    max-height: 80vh;
+    overflow-y: auto;
+
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-menu.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.dropdown-menu h3 {
+    color: var(--color-primary);
+    margin: 0 10px 10px 10px;
+    border-bottom: 2px solid var(--color-primary);
+    padding-bottom: 8px;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--color-text);
+    text-decoration: none;
+    border-bottom: 1px dotted #e0e0e0;
+    font-size: 0.95em;
+    transition: background-color 0.2s;
+}
+
+.dropdown-menu a:hover {
+    background-color: var(--color-tafsir-bg);
+}
+
+.setting-control {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.95em;
+}
+
+.setting-control button {
+    background-color: var(--color-secondary);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* === বাকী স্টাইল আপনার মতো অপরিবর্তিত থাকবে === */
+/* সূরা ইন্ট্রো, আয়াত সেকশন, ফুটার—সব একই রাখা হয়েছে */
+/* ====================================
+  ৪. সূরার ভূমিকা (Intro) ডিজাইন
+====================================
+*/
+.surah-intro {
+    background-color: #ffffff; 
+    border: 1px solid var(--color-secondary); 
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden; 
+}
+
+.intro-toggle {
+    width: 100%;
+    text-align: left;
+    background-color: var(--color-primary); 
+    color: white;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 15px 20px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    border-radius: 8px; /* ডিফল্ট গোল */
+}
+
+.intro-content {
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, padding 0.3s; 
+    padding: 0 20px;
+}
+
+.intro-content.show {
+    max-height: 5000px; 
+    padding: 20px;
+}
+
+.intro-content ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.intro-content ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+}
+
+.intro-content ul li::before {
+    content: '★'; 
+    position: absolute;
+    left: 0;
+    color: var(--color-secondary);
+    font-size: 0.8em;
+    top: 2px;
+}
+
+
+/* ====================================
+  ৫. আয়াত অ্যাকশন এবং কন্টেন্ট স্টাইল
+====================================
+*/
+
+.sura-info {top: 0;
+    position: sticky;
+     background-color: var(--color-background);
+    text-align: center;
+    margin-bottom: 30px;
+    margin-top: 0;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--color-secondary);
+}
+
+@media (max-width: 900px) {
+   .sura-info h1{
+        font-size: 20px;
+    }
+    .sura-info p {
+        font-size: 10px;
+    }
+    
+}
+
+
+/* আয়াত ব্লক */
+.ayat {
+    background-color: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--color-border);
+    font-size: var(--base-font-size); 
+}
+
+/* আয়াত অ্যাকশন বাটন (ডাইনামিক্যালি লোড হওয়া) */
+.action-buttons {
+    display: flex;
+    justify-content: space-between; /* নম্বর বামে, বাটন গ্রুপ ডানে */
+    align-items: center;
+    
+    border-bottom: 1px dashed var(--color-border); 
+    padding-bottom: 10px;
+    margin-bottom: 15px; 
+}
+
+/* আয়াত নম্বর ডিসপ্লে */
+.ayat-number-display {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--color-primary); 
+    background-color: var(--color-tafsir-bg);
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* বাটন গ্রুপ স্টাইল */
+.button-group {
+    display: flex; 
+    gap: 10px;    
+}
+
+.action-buttons button {
+    background-color:rgb(236, 250, 231); 
+    color: rgb(4, 0, 0);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px; 
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.action-buttons button:hover {
+    color: white;
+    background-color: #084949;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+}
+
+
+/* আরবি টেক্সট */
+.arabic {
+    font-family: 'Amiri', 'Scheherazade New', serif;
+    font-size: 2.2em; 
+    text-align: right;
+    direction: rtl;
+    margin: 0 0 20px 0; /* উপরের মার্জিন কমানো হয়েছে */
+    line-height: 2;
+    color: var(--color-arabic); 
+}
+
+/* অনুবাদ */
+.translation {
+    font-weight: 500;
+    color: var(--color-text);
+    padding: 10px 0;
+    border-left: 4px solid var(--color-secondary);
+    padding-left: 15px;
+}
+
+/* উচ্চারণ (Transliteration) - JS দ্বারা ডিসপ্লে কন্ট্রোল হবে */
+.transliteration {
+    font-style: italic;
+    color: var(--color-light-text);
+    padding: 5px 0;
+    margin-bottom: 10px;
+    display: none; 
+}
+
+/* তাফসীর ব্লক - JS দ্বারা ডিসপ্লে কন্ট্রোল হবে */
+.tafsir {
+    background-color: var(--color-tafsir-bg);
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 5px solid var(--color-primary);
+    margin-top: 20px;
+    font-size: 0.95em; 
+    display: none; 
+}
+
+.tafsir h3 {
+    color: var(--color-primary);
+    margin-top: 0;
+    border-bottom: 1px dashed #a5d6a7;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 5px; /* প্রতিটি লাইনের মাঝে একটু gap */
+}
+
+ol {
+    padding-left: 20px;
+}
+
+ol li {
+    margin-bottom: 5px; /* প্রতিটি লাইনের মাঝে একটু gap */
+}
+
+strong{
+    color: #004b42;
+}
+
+
+
+/* ====================================
+  ৬. ফুটার
+====================================
+*/
+/* প্রফেশনাল রেসপন্সিভ ইসলামিক ফুটার */
+.surah-footer {
+    background: linear-gradient(135deg, #0a2e23 0%, #0f3d2e 100%);
+    color: #eaf7f1;
+    padding: 60px 20px 30px; /* উপরে বেশি স্পেস দেওয়া হয়েছে */
+    margin-top: 50px;
+    border-top: 4px solid #c5a059; /* প্রিমিয়াম গোল্ডেন বর্ডার */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.footer-inner {
+    max-width: 1100px;
+    margin: auto;
+    text-align: center;
+}
+
+/* সূরার আয়াতের অংশ */
+.footer-dua {
+    font-size: clamp(16px, 4vw, 20px); /* ল্যাপটপ ও মোবাইলে অটো সাইজ ঠিক করবে */
+    line-height: 1.8;
+    margin-bottom: 40px;
+    padding: 0 10px;
+}
+
+.footer-dua span {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #c5a059;
+    font-style: italic;
+}
+
+/* লিঙ্ক সেকশন - ফ্লেক্সবক্স ব্যবহার করা হয়েছে */
+.footer-links {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap; /* মোবাইলে লিঙ্কগুলো অটোমেটিক নিচে নেমে আসবে */
+}
+
+.footer-links a {
+    color: #eaf7f1;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.05); /* হালকা গ্লাস ইফেক্ট */
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    background: #c5a059;
+    color: #0a2e23;
+    transform: translateY(-3px); /* হোভার করলে সামান্য উপরে উঠবে */
+}
+
+/* কপিরাইট সেকশন */
+.footer-copy {
+    font-size: 13px;
+    opacity: 0.7;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 25px;
+    margin-top: 20px;
+}
+
+/* --- মোবাইল ভার্সনের জন্য বিশেষ পরিবর্তন (Responsive Logic) --- */
+@media (max-width: 768px) {
+    .surah-footer {
+        padding: 40px 15px 20px;
+    }
+
+    .footer-links {
+        display: grid; /* মোবাইলে ২ কলামে দেখানোর জন্য */
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+
+    .footer-dua {
+        font-size: 16px;
+    }
+}
+
