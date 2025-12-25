@@ -52,9 +52,7 @@ a {
   color: var(--primary);
   text-decoration: none;
 }
-a:hover {
-  color: var(--accent);
-}
+
 
 /* ------------------------------
    📦 Main Container
@@ -136,7 +134,7 @@ a:hover {
 }
 
 .se-btn:hover {
-
+color: var(--accent);
 }
 
 /* ------------------------------
@@ -287,4 +285,5 @@ a:hover {
   .faq-item { padding: 12px; }
   .faq-item h2 { font-size: 1.02rem; }
 }
+
 
