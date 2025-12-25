@@ -133,9 +133,7 @@ a {
   transition: 0.3s;
 }
 
-.se-btn:hover {
-color: var(--accent);
-}
+
 
 /* ------------------------------
    🕊️ Dua Block (optional in detail pages)
@@ -285,5 +283,6 @@ color: var(--accent);
   .faq-item { padding: 12px; }
   .faq-item h2 { font-size: 1.02rem; }
 }
+
 
 
