@@ -202,24 +202,6 @@ body {
   font-size: 0.95rem;
 }
 
-/* ---------- FOOTER ---------- */
-.footer {
-  background: var(--primary);
-  color: white;
-  text-align: center;
-  padding: 25px 15px;
-  margin-top: 60px;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.footer a {
-  color: #ffeb3b;
-  text-decoration: none;
-}
-
-.footer a:hover {
-  text-decoration: underline;
-}
 
 /* ---------- GRID ELEMENTS ---------- */
 .grid-3 {
@@ -254,8 +236,5 @@ body {
     font-size: 1rem;
   }
 
-  .footer {
-    font-size: 0.85rem;
-    padding: 20px;
-  }
 }
+
