@@ -62,11 +62,11 @@ a {
   color: var(--primary);
   transition: 0.3s;
 }
-
+/*
 a:hover {
   color: var(--accent);
 }
-
+*/
 
 img {
   max-width: 100%;
