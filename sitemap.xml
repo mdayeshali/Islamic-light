@@ -29,6 +29,85 @@
     <priority>0.3</priority>
   </url>
 
+  
+<!--artycel-->
+  <url>
+  <loc>https://islamiclight.in/articles/article/first-january-in-islam.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/man-duties.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/purdah-and-freedom.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/purpose-of-quran-revelation.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/scientific-benefits-of-fast.html</loc>
+  <lastmod>2026-02-27</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/talaq-system.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/why-do-we-fast.html</loc>
+  <lastmod>2026-02-24</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.9</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/why-understand-quran.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/women-at-home-myth.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/women-rights.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
+<url>
+  <loc>https://islamiclight.in/articles/article/wudu-without-mobile.html</loc>
+  <lastmod>2026-01-01</lastmod>
+  <changefreq>monthly</changefreq>
+  <priority>0.8</priority>
+</url>
+
   <!-- Aqeedah Pages -->
   <url><loc>https://islamiclight.in/aqeedah/aqeedah.html</loc></url>
   <url><loc>https://islamiclight.in/aqeedah/akhirah.html</loc></url>
