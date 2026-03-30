@@ -1,0 +1,197 @@
+/* ১. গ্লোবাল ভেরিয়েবল ও রিসেট */
+:root {
+    --primary-color: #004d40;
+    --primary-light: #00796b;
+    --accent-color: #80cbc4;
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-main: #2c3e50;
+    --text-muted: #7f8c8d;
+    --text-arabic: #1a1a1a;
+    --text-bangla: #2e7d32;
+    --header-text: #ffffff;
+    --overlay-bg: rgba(0, 0, 0, 0.6);
+    --border-radius: 12px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --max-width: 1100px; /* ল্যাপটপ কন্টেন্ট উইডথ */
+}
+
+/* ডার্ক মোড প্যালেট (স্মার্ট কালার ফিক্স) */
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --text-arabic: #ffffff;
+    --text-bangla: #81c784;
+    --primary-color: #2ecc71; /* ডার্ক মোডে উজ্জ্বল সবুজ */
+    --primary-light: #27ae60;
+    --border-color: #333333;
+}
+
+/* ২. স্ক্রলবার ও বেসিক লেআউট */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 10px; }
+
+body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Roboto, 'Hind Siliguri', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden; /* ডানের সাদা গ্যাপ বন্ধ করবে */
+    display: flex; flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ৩. হেডার ডিজাইন (ল্যাপটপ ও মোবাইল রেসপনসিভ) */
+.header-bar {
+    width: 100%; background: #004d40;
+    color: white; padding: 12px 5%;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 1100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-sizing: border-box;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.1); border: none;
+    color: white; font-size: 22px; cursor: pointer;
+    width: 42px; height: 42px; border-radius: 10px;
+    transition: var(--transition);
+}
+
+.icon-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.05); }
+
+/* ৪. মেইন কন্টেন্ট উইডথ কন্ট্রোল */
+main {
+    width: 100%; max-width: var(--max-width);
+    margin: 0 auto; flex: 1;
+}
+
+.select-container { padding: 25px 15px; text-align: center; }
+
+#surahSelect {
+    width: 100%; max-width: 500px; padding: 15px;
+    border-radius: var(--border-radius); border: 2px solid var(--primary-light);
+    background: var(--card-bg); color: var(--text-main);
+    font-size: 16px; font-weight: 600; cursor: pointer;
+}
+
+/* ৫. সূরা হেডার (ডার্ক মোডে লেখা স্পষ্ট করার জন্য) */
+.surah-header { text-align: center; margin: 10px 0 30px 0; }
+
+.surah-header h2 {
+    font-size: 2.2rem; margin-bottom: 8px;
+    color: var(--primary-color); /* ডার্ক মোডে অটো সাদা/সবুজ হবে */
+}
+
+.surah-info-tag {
+    background: var(--primary-light); color: white;
+    padding: 6px 18px; border-radius: 20px; font-size: 14px;
+}
+
+/* ৬. আয়াত কার্ড ডিজাইন */
+.surah-container { padding: 0 15px 40px 15px; }
+
+.ayah {
+    background: var(--card-bg); padding: 30px;
+    margin-bottom: 20px; border-radius: var(--border-radius);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.03); transition: var(--transition);
+    cursor: pointer;
+}
+
+.ayah:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
+
+.arabic {
+    font-size: 34px; text-align: right; line-height: 2.2;
+    color: var(--text-arabic); margin-bottom: 15px;
+    font-family: 'Amiri', serif;
+}
+
+.bangla { font-size: 19px; color: var(--text-bangla); line-height: 1.8; }
+
+/* ৭. সাইড প্যানেল ও সেটিংস */
+.popup {
+    position: fixed; top: 0; right: 0;
+    width: 300px; height: 100%; background: var(--card-bg);
+    z-index: 1200; padding: 30px 20px;
+    box-shadow: -10px 0 30px rgba(0,0,0,0.2);
+    transform: translateX(105%); visibility: hidden;
+    transition: var(--transition); box-sizing: border-box;
+}
+
+.popup.active { transform: translateX(0); visibility: visible; }
+
+.setting-item { margin-bottom: 25px; padding: 15px; background: var(--bg-color); border-radius: 10px; }
+.setting-item label { display: block; font-weight: 600; margin-bottom: 10px; font-size: 14px; }
+
+/* মেনু প্যানেলের লিঙ্কগুলোকে সুন্দর কার্ড স্টাইল দেওয়া */
+.nav-links a {
+    display: block; /* পুরো জায়গা জুড়ে ক্লিক হবে */
+    padding: 15px;
+    margin-bottom: 12px;
+    background: var(--bg-color); /* হালকা ব্যাকগ্রাউন্ড */
+    color: var(--text-main);
+    text-decoration: none; /* নীল আন্ডারলাইন দূর করবে */
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: var(--transition);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+}
+
+/* মাউস নিলে বা টাচ করলে হাইলাইট হবে */
+.nav-links a:hover {
+    background: var(--primary-light);
+    color: white;
+    transform: translateX(5px); /* হালকা স্লাইড ইফেক্ট */
+}
+
+/* ডার্ক মোডে মেনু লিঙ্কের ডিজাইন ফিক্স */
+body.dark-mode .nav-links a {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+}
+
+
+/* ৮. কপি মেনু (ল্যাপটপে মাঝখানে থাকবে) */
+.copy-menu {
+    position: fixed; bottom: 0; left: 50%;
+    width: 100%; max-width: 500px;
+    transform: translate(-50%, 100%);
+    background: var(--card-bg); border-radius: 25px 25px 0 0;
+    padding: 30px; z-index: 1500;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.3);
+    transition: var(--transition);
+}
+
+.copy-menu.active { transform: translate(-50%, 0); }
+
+.copy-option {
+    padding: 15px; margin: 10px 0; background: var(--bg-color);
+    border-radius: 10px; text-align: center; font-weight: 600; cursor: pointer;
+}
+
+/* ৯. ওভারলে (ফাঁকা জায়গা ঝাপসা করতে) */
+#overlay {
+    position: fixed; inset: 0; background: var(--overlay-bg);
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+    display: none; z-index: 1050; opacity: 0;
+    transition: opacity 0.3s ease; cursor: pointer;
+}
+
+/* ১০. ফুটার */
+footer {
+    background: #00332c; color: white; padding: 25px;
+    text-align: center; margin-top: auto;
+}
+
+/* ১১. ল্যাপটপ ও বড় স্ক্রিন স্পেশাল ফিক্স */
+@media (min-width: 992px) {
+    .surah-header h2 { font-size: 3rem; }
+    .ayah { padding: 40px; }
+    .header-bar { padding: 15px 10%; }
+}
