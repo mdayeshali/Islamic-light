@@ -35,7 +35,7 @@ body.dark-mode {
 
 body {
     margin: 0; padding: 0;
-    font-family: 'Segoe UI', Roboto, 'Hind Siliguri', sans-serif;
+    font-family: "Noto Sans Bengali", Arial, sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow-x: hidden; /* ডানের সাদা গ্যাপ বন্ধ করবে */
