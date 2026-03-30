@@ -106,7 +106,7 @@ main {
 .arabic {
     font-size: 34px; text-align: right; line-height: 2.2;
     color: var(--text-arabic); margin-bottom: 15px;
-    font-family: 'Amiri', serif;
+    font-family: "Scheherazade New", serif;
 }
 
 .bangla { font-size: 19px; color: var(--text-bangla); line-height: 1.8; }
