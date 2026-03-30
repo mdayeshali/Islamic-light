@@ -185,10 +185,7 @@ body.dark-mode .nav-links a {
 }
 
 /* ১০. ফুটার */
-footer {
-    background: #00332c; color: white; padding: 25px;
-    text-align: center; margin-top: auto;
-}
+
 
 /* ১১. ল্যাপটপ ও বড় স্ক্রিন স্পেশাল ফিক্স */
 @media (min-width: 992px) {
