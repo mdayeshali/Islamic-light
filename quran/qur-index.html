@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Light</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri&family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="overlay" onclick="closeAll()"></div>
+
+    <header class="header-bar">
+        <button onclick="togglePanel('menu')" class="icon-btn" aria-label="Menu">☰</button>
+        <h2>Islamic Light</h2>
+        <button onclick="togglePanel('settings')" class="icon-btn" aria-label="Settings">⚙️</button>
+    </header>
+
+    <div id="menu" class="popup">
+        <div class="popup-header">
+            <h3>মেনু</h3>
+            <span class="close-btn" onclick="closeAll()">&times;</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#">📖 আল-কুরআন</a>
+            <a href="#">📚 হাদিস</a>
+            <a href="#">🕌 দোয়া</a>
+        </nav>
+    </div>
+
+    <div id="settings" class="popup">
+        <div class="popup-header">
+            <h3>সেটিংস</h3>
+            <span class="close-btn" onclick="closeAll()">&times;</span>
+        </div>
+        <div class="setting-item">
+            <label>আরবি ফন্ট সাইজ:</label>
+            <input type="range" min="20" max="60" value="32" id="arabicSize">
+        </div>
+        <div class="setting-item">
+            <label>বাংলা ফন্ট সাইজ:</label>
+            <input type="range" min="14" max="32" value="18" id="banglaSize">
+        </div>
+        <div class="setting-item flex-item">
+            <label>ডার্ক মোড</label>
+            <label class="switch">
+                <input type="checkbox" id="darkMode">
+                <span class="slider round"></span>
+            </label>
+        </div>
+    </div>
+
+    <main>
+        <div class="select-container">
+            <select id="surahSelect">
+                <option value="">-- সূরা নির্বাচন করুন --</option>
+            </select>
+        </div>
+
+        <div id="quran"></div>
+    </main>
+
+    <div id="copyMenu" class="copy-menu">
+        <div class="copy-handle"></div> <h4>আয়াত কপি করুন</h4>
+        <div class="copy-option" onclick="executeCopy('ar')">📝 শুধু আরবি কপি</div>
+        <div class="copy-option" onclick="executeCopy('bn')">📖 শুধু বাংলা কপি</div>
+        <div class="copy-option" onclick="executeCopy('both')">📜 উভয়ই একসাথে কপি</div>
+        <button class="cancel-btn" onclick="closeAll()">বন্ধ করুন</button>
+    </div>
+
+    <footer>
+        <p><b>Islamic Light</b></p>
+        <small>© ২০২৬ | নূর ছড়াক প্রতিটি হৃদয়ে</small><br>
+        <small style="opacity: 0.8; margin-top: 5px; display: block;">Developed by: <b>Md Ayesh Ali</b></small>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
