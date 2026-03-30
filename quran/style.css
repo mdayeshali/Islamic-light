@@ -119,6 +119,7 @@ main {
     box-shadow: -10px 0 30px rgba(0,0,0,0.2);
     transform: translateX(105%); visibility: hidden;
     transition: var(--transition); box-sizing: border-box;
+    overflow-y: auto; 
 }
 
 .popup.active { transform: translateX(0); visibility: visible; }
