@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Islamic Light - নামাজ ও কিবলা</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section class="hero">
+    <h2>🕌 নামাজের সময়</h2>
+    <p id="hijriDate">লোড হচ্ছে...</p>
+</section>
+
+<div class="container">
+
+    <div class="card">
+        <h3>📍 আপনার এলাকা</h3>
+
+        <select id="countrySel">
+            <option value="">দেশ নির্বাচন করুন</option>
+            <option value="India">India</option>
+            <option value="Bangladesh">Bangladesh</option>
+        </select>
+
+        <select id="stateSel"></select>
+        <select id="citySel"></select>
+
+        <h3>⚖️ মাযহাব</h3>
+        <select id="schoolSelect">
+            <option value="1">হানাফি</option>
+            <option value="0">অন্যান্য</option>
+        </select>
+
+        <button onclick="getUserGPS()">📡 অটো লোকেশন</button>
+    </div>
+
+    <div class="card">
+        <h3>🕒 নামাজের সময়</h3>
+        <div id="prayerList">
+            <p>লোকেশন নির্বাচন করুন</p>
+        </div>
+    </div>
+
+    <div class="card center">
+        <h3>🧭 কিবলা</h3>
+        <div id="compass">
+            <div id="needle"></div>
+        </div>
+        <p id="qiblaInfo">ডিভাইস ঘোরান</p>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
