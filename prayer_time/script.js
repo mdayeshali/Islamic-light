@@ -79,12 +79,26 @@ function showData(data) {
 }
 
 // 🧭 Compass FIX
-window.addEventListener("deviceorientationabsolute", (e) => {
-    if (e.alpha !== null) {
-        let heading = e.alpha;
-        let rotation = qiblaAngle - heading;
+window.addEventListener("deviceorientation", (event) => {
 
-        document.getElementById("needle").style.transform =
-            `translate(-50%,0) rotate(${rotation}deg)`;
+    let heading;
+
+    // 📱 iPhone (Safari)
+    if (event.webkitCompassHeading) {
+        heading = event.webkitCompassHeading;
+    } 
+    // 🤖 Android
+    else if (event.alpha !== null) {
+        heading = 360 - event.alpha;
     }
+
+    if (heading === undefined) return;
+
+    // 🧭 Correct Qibla rotation
+    let rotation = qiblaAngle - heading;
+
+    document.getElementById("needle").style.transform =
+        `translate(-50%, 0) rotate(${rotation}deg)`;
+document.getElementById("qiblaInfo").innerText =
+"📌 ফোন সোজা ধরে ৮ আকারে ঘোরান";
 });
