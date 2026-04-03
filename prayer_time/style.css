@@ -24,31 +24,26 @@ body {
     border-radius: 12px;
 }
 
-h3 {
-    margin-top: 0;
-}
-
-select, button {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
+.center {
+    text-align: center;
 }
 
 button {
+    width: 100%;
+    padding: 12px;
     background: #00796b;
     color: white;
     border: none;
+    margin-top: 10px;
+    border-radius: 8px;
 }
 
 .prayer {
     display: flex;
     justify-content: space-between;
-    padding: 8px;
+    padding: 10px;
     border-bottom: 1px solid #eee;
-}
-
-.center {
-    text-align: center;
+    font-size: 16px;
 }
 
 /* Compass */
