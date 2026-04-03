@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    font-family: 'Noto Sans Bengali', sans-serif;
+    background: #f0f2f5;
+}
+
+.hero {
+    background: linear-gradient(135deg,#004d40,#00796b);
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 15px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+button {
+    background: #00796b;
+    color: white;
+    border: none;
+}
+
+.prayer {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px;
+    border-bottom: 1px solid #eee;
+}
+
+.center {
+    text-align: center;
+}
+
+/* Compass */
+#compass {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    background: url('https://cdn-icons-png.flaticon.com/512/2805/2805355.png') center/contain no-repeat;
+    position: relative;
+}
+
+#needle {
+    width: 4px;
+    height: 90px;
+    background: orange;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+}
