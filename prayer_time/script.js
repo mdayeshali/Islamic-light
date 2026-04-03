@@ -69,7 +69,7 @@ function showPrayer(data) {
 // 🧭 Open Google Map Qibla
 function openQiblaMap() {
     if (!userLat || !userLon) {
-        alert("প্রথমে লোকেশন চালু করুন");
+        alert("প্রথমে অটো লোকেশন চালু করুন");
         return;
     }
 
@@ -78,5 +78,6 @@ function openQiblaMap() {
 
     const url = `https://www.google.com/maps/dir/${userLat},${userLon}/${kaabaLat},${kaabaLon}`;
 
-    window.open(url, "_blank");
+    // ❗ window.open বাদ দিয়ে এটা ব্যবহার করুন
+    window.location.href = url;
 }
