@@ -1,71 +1,56 @@
-const stateSel = document.getElementById('stateSel');
-const citySel = document.getElementById('citySel');
-const countrySel = document.getElementById('countrySel');
-const schoolSel = document.getElementById('schoolSelect');
-
 let userLat, userLon, qiblaAngle = 0;
 
-// Load states
-countrySel.onchange = function () {
-    fetch("https://countriesnow.space/api/v1/countries/states", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({ country: this.value })
-    })
-    .then(res => res.json())
-    .then(data => {
-        stateSel.innerHTML = "";
-        data.data.states.forEach(s => {
-            stateSel.innerHTML += `<option>${s.name}</option>`;
-        });
-    })
-    .catch(() => alert("State load error"));
-};
-
-// Load cities
-stateSel.onchange = function () {
-    fetch("https://countriesnow.space/api/v1/countries/state/cities", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            country: countrySel.value,
-            state: this.value
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        citySel.innerHTML = "";
-        data.data.forEach(c => {
-            citySel.innerHTML += `<option>${c}</option>`;
-        });
-    });
-};
-
-// Load prayer time
-citySel.onchange = function () {
-    const address = `${citySel.value},${stateSel.value},${countrySel.value}`;
-
-    fetch(`https://api.aladhan.com/v1/timingsByAddress?address=${address}&school=${schoolSel.value}`)
-    .then(res => res.json())
-    .then(data => showData(data.data));
-};
-
-// GPS
+// 📡 AUTO LOCATION
 function getUserGPS() {
+    if (!navigator.geolocation) {
+        alert("GPS support নেই");
+        return;
+    }
+
     navigator.geolocation.getCurrentPosition(
-        pos => {
+        async (pos) => {
             userLat = pos.coords.latitude;
             userLon = pos.coords.longitude;
 
-            fetch(`https://api.aladhan.com/v1/timings?latitude=${userLat}&longitude=${userLon}&school=${schoolSel.value}`)
-            .then(res => res.json())
-            .then(data => showData(data.data));
+            try {
+                // 🌍 Reverse Geocoding
+                const geoRes = await fetch(
+                    `https://nominatim.openstreetmap.org/reverse?lat=${userLat}&lon=${userLon}&format=json`
+                );
+                const geoData = await geoRes.json();
+
+                const addr = geoData.address;
+
+                const city =
+                    addr.city ||
+                    addr.town ||
+                    addr.village ||
+                    "Unknown";
+
+                const state = addr.state || "";
+                const country = addr.country || "";
+
+                document.getElementById("locationText").innerText =
+                    `📍 ${city}, ${state}, ${country}`;
+
+                // 🕌 Prayer Time
+                const res = await fetch(
+                    `https://api.aladhan.com/v1/timings?latitude=${userLat}&longitude=${userLon}`
+                );
+
+                const data = await res.json();
+                showData(data.data);
+
+            } catch (err) {
+                alert("লোকেশন নিতে সমস্যা হচ্ছে");
+                console.log(err);
+            }
         },
         () => alert("লোকেশন অনুমতি দিন")
     );
 }
 
-// Show data
+// 🕌 Show Prayer Data
 function showData(data) {
     userLat = data.meta.latitude;
     userLon = data.meta.longitude;
@@ -83,7 +68,7 @@ function showData(data) {
         <div class="prayer"><span>ইশা</span><span>${t.Isha}</span></div>
     `;
 
-    // Qibla
+    // 🧭 Qibla Direction
     fetch(`https://api.aladhan.com/v1/qibla/${userLat}/${userLon}`)
     .then(res => res.json())
     .then(d => {
@@ -93,7 +78,7 @@ function showData(data) {
     });
 }
 
-// Compass
+// 🧭 Compass FIX
 window.addEventListener("deviceorientationabsolute", (e) => {
     if (e.alpha !== null) {
         let heading = e.alpha;
