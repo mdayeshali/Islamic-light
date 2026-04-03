@@ -17,31 +17,16 @@
 
 <div class="container">
 
-    <div class="card">
-        <h3>📍 আপনার এলাকা</h3>
-
-        <select id="countrySel">
-            <option value="">দেশ নির্বাচন করুন</option>
-            <option value="India">India</option>
-            <option value="Bangladesh">Bangladesh</option>
-        </select>
-
-        <select id="stateSel"></select>
-        <select id="citySel"></select>
-
-        <h3>⚖️ মাযহাব</h3>
-        <select id="schoolSelect">
-            <option value="1">হানাফি</option>
-            <option value="0">অন্যান্য</option>
-        </select>
-
-        <button onclick="getUserGPS()">📡 অটো লোকেশন</button>
+    <div class="card center">
+        <h3>📍 আপনার লোকেশন</h3>
+        <p id="locationText">লোকেশন পাওয়া যায়নি</p>
+        <button onclick="getUserGPS()">📡 অটো লোকেশন চালু করুন</button>
     </div>
 
     <div class="card">
         <h3>🕒 নামাজের সময়</h3>
         <div id="prayerList">
-            <p>লোকেশন নির্বাচন করুন</p>
+            <p style="text-align:center;">লোকেশন চালু করুন</p>
         </div>
     </div>
 
