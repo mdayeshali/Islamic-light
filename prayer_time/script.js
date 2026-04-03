@@ -1,9 +1,9 @@
-let userLat, userLon, qiblaAngle = 0;
+let userLat, userLon;
 
 // 📡 AUTO LOCATION
 function getUserGPS() {
     if (!navigator.geolocation) {
-        alert("GPS support নেই");
+        alert("আপনার ব্রাউজারে GPS নেই");
         return;
     }
 
@@ -33,13 +33,13 @@ function getUserGPS() {
                 document.getElementById("locationText").innerText =
                     `📍 ${city}, ${state}, ${country}`;
 
-                // 🕌 Prayer Time
+                // 🕌 Prayer Time API
                 const res = await fetch(
                     `https://api.aladhan.com/v1/timings?latitude=${userLat}&longitude=${userLon}`
                 );
 
                 const data = await res.json();
-                showData(data.data);
+                showPrayer(data.data);
 
             } catch (err) {
                 alert("লোকেশন নিতে সমস্যা হচ্ছে");
@@ -50,11 +50,8 @@ function getUserGPS() {
     );
 }
 
-// 🕌 Show Prayer Data
-function showData(data) {
-    userLat = data.meta.latitude;
-    userLon = data.meta.longitude;
-
+// 🕌 Show Prayer Time
+function showPrayer(data) {
     const t = data.timings;
 
     document.getElementById("hijriDate").innerText =
@@ -67,38 +64,19 @@ function showData(data) {
         <div class="prayer"><span>মাগরিব</span><span>${t.Maghrib}</span></div>
         <div class="prayer"><span>ইশা</span><span>${t.Isha}</span></div>
     `;
-
-    // 🧭 Qibla Direction
-    fetch(`https://api.aladhan.com/v1/qibla/${userLat}/${userLon}`)
-    .then(res => res.json())
-    .then(d => {
-        qiblaAngle = d.data.direction;
-        document.getElementById("qiblaInfo").innerText =
-            "কিবলা: " + qiblaAngle.toFixed(1) + "°";
-    });
 }
 
-// 🧭 Compass FIX
-window.addEventListener("deviceorientation", (event) => {
-
-    let heading;
-
-    // 📱 iPhone (Safari)
-    if (event.webkitCompassHeading) {
-        heading = event.webkitCompassHeading;
-    } 
-    // 🤖 Android
-    else if (event.alpha !== null) {
-        heading = 360 - event.alpha;
+// 🧭 Open Google Map Qibla
+function openQiblaMap() {
+    if (!userLat || !userLon) {
+        alert("প্রথমে লোকেশন চালু করুন");
+        return;
     }
 
-    if (heading === undefined) return;
+    const kaabaLat = 21.4225;
+    const kaabaLon = 39.8262;
 
-    // 🧭 Correct Qibla rotation
-    let rotation = qiblaAngle - heading;
+    const url = `https://www.google.com/maps/dir/${userLat},${userLon}/${kaabaLat},${kaabaLon}`;
 
-    document.getElementById("needle").style.transform =
-        `translate(-50%, 0) rotate(${rotation}deg)`;
-document.getElementById("qiblaInfo").innerText =
-"📌 ফোন সোজা ধরে ৮ আকারে ঘোরান";
-});
+    window.open(url, "_blank");
+}
