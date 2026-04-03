@@ -66,18 +66,3 @@ function showPrayer(data) {
     `;
 }
 
-// 🧭 Open Google Map Qibla
-function openQiblaMap() {
-    if (!userLat || !userLon) {
-        alert("প্রথমে অটো লোকেশন চালু করুন");
-        return;
-    }
-
-    const kaabaLat = 21.4225;
-    const kaabaLon = 39.8262;
-
-    const url = `https://www.google.com/maps/dir/${userLat},${userLon}/${kaabaLat},${kaabaLon}`;
-
-    // ❗ window.open বাদ দিয়ে এটা ব্যবহার করুন
-    window.location.href = url;
-}
