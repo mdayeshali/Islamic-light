@@ -64,5 +64,8 @@ function showPrayer(data) {
         <div class="prayer"><span>মাগরিব</span><span>${t.Maghrib}</span></div>
         <div class="prayer"><span>ইশা</span><span>${t.Isha}</span></div>
     `;
+    // 👉 এখানে add করুন
+    updateNextPrayer(data.timings);
+}
 }
 
