@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Islamic Light - নামাজ ও কিবলা</title>
+    <title>Islamic Light - নামাজের সময়</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
@@ -17,12 +17,14 @@
 
 <div class="container">
 
+    <!-- Location -->
     <div class="card center">
         <h3>📍 আপনার লোকেশন</h3>
         <p id="locationText">লোকেশন পাওয়া যায়নি</p>
         <button onclick="getUserGPS()">📡 অটো লোকেশন চালু করুন</button>
     </div>
 
+    <!-- Prayer Times -->
     <div class="card">
         <h3>🕒 নামাজের সময়</h3>
         <div id="prayerList">
@@ -30,12 +32,10 @@
         </div>
     </div>
 
+    <!-- Qibla Map -->
     <div class="card center">
-        <h3>🧭 কিবলা</h3>
-        <div id="compass">
-            <div id="needle"></div>
-        </div>
-        <p id="qiblaInfo">ডিভাইস ঘোরান</p>
+        <h3>🧭 কিবলার দিক</h3>
+        <button onclick="openQiblaMap()">🕋 ম্যাপে কিবলা দেখুন</button>
     </div>
 
 </div>
