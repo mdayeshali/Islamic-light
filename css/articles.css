@@ -75,6 +75,20 @@ body.dark .article-meta {
     margin-bottom: 12px;
 }
 
+.article-image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+
+    max-height: 400px;   /* Height control */
+    object-fit: cover;   /* Crop করে সুন্দর রাখবে */
+
+    border-radius: 10px;
+    margin: 15px 0;
+
+    display: block;
+}
+
 /* ---------- ACTION BUTTONS (Share / Copy) ---------- */
 .article-actions {
     display: flex;
