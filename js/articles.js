@@ -51,6 +51,9 @@ fetch('/data/articles.json')
 
       container.innerHTML += `
         <div class="article-box">
+        <img src="${article.image || '/images/default.webp'}" 
+         alt="${article.title}" 
+         class="article-image">
 
           <h2 class="article-heading">${article.title}</h2>
 
