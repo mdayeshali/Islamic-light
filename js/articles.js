@@ -44,7 +44,11 @@ fetch('/data/articles.json')
   .then(data => {
     const container = document.getElementById('article-container');
 
-    data.slice().reverse().forEach(article => {
+    if (!container) return;
+
+    data.forEach(article => {
+      const isExternal = article.link.startsWith('http');
+
       container.innerHTML += `
         <div class="article-box">
 
@@ -64,12 +68,16 @@ fetch('/data/articles.json')
           <div class="article-footer">
             <div class="share-buttons"></div>
 
-            <a href="${article.link}" class="read-more-link">
-              আরও পড়ুন
+            <a href="${article.link}"
+               class="read-more-link"
+               ${isExternal ? 'target="_blank" rel="noopener"' : ''}>
+               আরও পড়ুন
             </a>
+
           </div>
 
         </div>
       `;
     });
   });
+
