@@ -77,16 +77,29 @@ body.dark .article-meta {
 
 .article-image {
     width: 100%;
-    max-width: 100%;
-    height: auto;
-
-    max-height: 400px;   /* Height control */
-    object-fit: cover;   /* Crop করে সুন্দর রাখবে */
-
+    height: 220px;
+    object-fit: cover;
     border-radius: 10px;
-    margin: 15px 0;
+    margin: 12px 0;
+}
 
-    display: block;
+@media (min-width: 1200px) {
+    .article-image {
+        height: 260px;
+    }
+}
+
+@media (max-width: 600px) {
+    .article-image {
+        height: 180px;
+    }
+}
+.article-image {
+    transition: 0.3s;
+}
+
+.article-box:hover .article-image {
+    transform: scale(1.03);
 }
 
 /* ---------- ACTION BUTTONS (Share / Copy) ---------- */
