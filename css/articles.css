@@ -139,6 +139,28 @@ body.dark .article-meta {
 .copy-btn:hover {
     background: #059669;
 }
+.article-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-icons {
+    display: flex;
+    gap: 12px;
+}
+
+.share-icon,
+.copy-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: #2e7d32;
+}
+
+.share-icon:hover,
+.copy-icon:hover {
+    color: #1b5e20;
+}
 
 /* ---------- FULL CONTENT (Hidden by default) ---------- */
 .article-full {
