@@ -38,3 +38,38 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+fetch('/data/articles.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('article-container');
+
+    data.slice().reverse().forEach(article => {
+      container.innerHTML += `
+        <div class="article-box">
+
+          <h2 class="article-heading">${article.title}</h2>
+
+          <div class="article-meta">
+            <span class="meta-date">
+              <i class="fa-regular fa-calendar-days"></i> পোস্ট: ${article.date}
+            </span>
+            <span class="meta-author">
+              <i class="fa-solid fa-user"></i> ${article.author}
+            </span>
+          </div>
+
+          <p class="article-summary">${article.summary}</p>
+
+          <div class="article-footer">
+            <div class="share-buttons"></div>
+
+            <a href="${article.link}" class="read-more-link">
+              আরও পড়ুন
+            </a>
+          </div>
+
+        </div>
+      `;
+    });
+  });
