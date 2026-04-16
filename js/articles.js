@@ -126,15 +126,22 @@ fetch('/data/articles.json')
           <p class="article-summary">${article.summary}</p>
 
           <div class="article-footer">
-            <div class="share-buttons"></div>
 
-            <a href="${article.link}"
-               class="read-more-link"
-               ${isExternal ? 'target="_blank" rel="noopener"' : ''}>
-               আরও পড়ুন
-            </a>
+  <div class="box-icons">
+    <span class="share-icon" data-url="${article.link}">
+      <i class="fa-solid fa-share-nodes"></i>
+    </span>
 
-          </div>
+    <span class="copy-icon" data-url="${article.link}">
+      <i class="fa-regular fa-copy"></i>
+    </span>
+  </div>
+
+  <a href="${article.link}" class="read-more-link">
+    আরও পড়ুন
+  </a>
+
+</div>
 
         </div>
       `;
