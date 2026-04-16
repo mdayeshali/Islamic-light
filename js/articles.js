@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
 
+    const pageUrl = window.location.href;
+
+    /* =========================
+       ১. ARTICLE PAGE BUTTONS
+    ========================== */
+
     document.querySelectorAll('.share-buttons').forEach(container => {
 
         fetch('/includes/share-buttons.html')
@@ -9,7 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const shareBtn = container.querySelector('.share-btn');
                 const copyBtn = container.querySelector('.copy-btn');
-                const pageUrl = window.location.href;
 
                 if (shareBtn) {
                     shareBtn.addEventListener('click', () => {
@@ -34,8 +39,60 @@ document.addEventListener("DOMContentLoaded", () => {
                     });
                 }
             });
+    });
+
+
+    /* =========================
+       ২. ARTICLE BOX ICONS (NEW)
+    ========================== */
+
+    document.addEventListener("click", function(e) {
+
+        // 📤 SHARE ICON
+        if (e.target.closest(".share-icon")) {
+            const btn = e.target.closest(".share-icon");
+            const url = btn.getAttribute("data-url");
+
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    url: url
+                });
+            } else {
+                window.open(
+                    `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
+                    '_blank'
+                );
+            }
+        }
+
+        // 📋 COPY ICON
+        if (e.target.closest(".copy-icon")) {
+            const btn = e.target.closest(".copy-icon");
+            const url = btn.getAttribute("data-url");
+
+            navigator.clipboard.writeText(url);
+            alert("লিংক কপি হয়েছে ✅");
+        }
 
     });
+
+
+    /* =========================
+       ৩. TOP SHARE ICON (ARTICLE PAGE)
+    ========================== */
+
+    window.sharePage = function () {
+        if (navigator.share) {
+            navigator.share({
+                title: document.title,
+                url: pageUrl
+            });
+        } else {
+            navigator.clipboard.writeText(pageUrl);
+            alert("লিংক কপি হয়েছে ✅");
+        }
+    };
 
 });
 
