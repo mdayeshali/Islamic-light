@@ -24,7 +24,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       ২. আর্টিকেল বক্স লোড (JSON থেকে)
+       ২. আর্টিকেলের ভেতরের শেয়ার বাটন (লেখা সহ)
+       আপনার ফাইলের <div class="share-buttons"></div> এখানে এটি লোড হবে
+    ========================== */
+    document.querySelectorAll('.share-buttons').forEach(container => {
+        // বাটনগুলো তৈরি করা হচ্ছে
+        container.innerHTML = `
+            <div class="article-inner-share" style="display: flex; gap: 10px; margin: 15px 0;">
+                <button class="inner-share-btn" style="background: #f1f1f1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: inherit;">
+                    <i class="fa-solid fa-share-nodes"></i> শেয়ার করুন
+                </button>
+                <button class="inner-copy-btn" style="background: #f1f1f1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: inherit;">
+                    <i class="fa-regular fa-copy"></i> লিংক কপি
+                </button>
+            </div>
+        `;
+
+        // বাটন ক্লিকের কাজ
+        container.querySelector('.inner-share-btn').addEventListener('click', () => handleShare(document.title, pageUrl));
+        container.querySelector('.inner-copy-btn').addEventListener('click', () => handleCopy(pageUrl));
+    });
+
+
+    /* =========================
+       ৩. মেইন পেজের বক্স লোড (শুধু আইকন)
     ========================== */
     const container = document.getElementById('article-container');
 
@@ -33,21 +56,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
         fetch('/data/articles.json')
             .then(res => {
-                if (!res.ok) throw new Error("JSON ফাইল খুঁজে পাওয়া যায়নি!");
+                if (!res.ok) throw new Error("JSON ফাইল পাওয়া যায়নি!");
                 return res.json();
             })
             .then(data => {
                 let articlesHTML = "";
 
                 data.forEach(article => {
-                    // সঠিক এবং পূর্ণাঙ্গ URL তৈরি (/articles/article/... ফরম্যাটে)
                     let fullUrl = article.link;
-                    
                     if (!fullUrl.startsWith('http')) {
-                        // লিঙ্কের শুরুতে স্ল্যাশ না থাকলে যোগ করা হচ্ছে
                         const cleanPath = fullUrl.startsWith('/') ? fullUrl : '/' + fullUrl;
-                        
-                        // ডোমেইন + /articles + আর্টিকেল পাথ (যেমন: islamiclight.in/articles/article/...)
+                        // আপনার চাহিদা অনুযায়ী /articles পাথ যুক্ত করা হয়েছে
                         fullUrl = window.location.origin + '/articles' + cleanPath;
                     }
 
@@ -88,34 +107,25 @@ document.addEventListener("DOMContentLoaded", () => {
                 container.innerHTML = articlesHTML;
             })
             .catch(err => {
-                container.innerHTML = `<p style="color:red; text-align:center; padding: 20px;">আর্টিকেল লোড করতে সমস্যা হয়েছে।</p>`;
-                console.error("Error:", err);
+                container.innerHTML = `<p style="color:red; text-align:center;">আর্টিকেল লোড করতে সমস্যা হয়েছে।</p>`;
             });
     }
 
 
     /* =========================
-       ৩. ক্লিক ইভেন্ট হ্যান্ডেলার (Event Delegation)
+       ৪. ইভেন্ট ডেলিগেশন (মেইন পেজের বক্সের আইকনের জন্য)
     ========================== */
     document.addEventListener("click", function(e) {
         const shareBtn = e.target.closest(".share-icon");
         const copyBtn = e.target.closest(".copy-icon");
 
         if (shareBtn) {
-            const url = shareBtn.getAttribute("data-url");
-            const title = shareBtn.getAttribute("data-title");
-            handleShare(title, url);
+            handleShare(shareBtn.getAttribute("data-title"), shareBtn.getAttribute("data-url"));
         }
-
         if (copyBtn) {
-            const url = copyBtn.getAttribute("data-url");
-            handleCopy(url);
+            handleCopy(copyBtn.getAttribute("data-url"));
         }
     });
 
-    /* =========================
-       ৪. টপ পেজ শেয়ার (গ্লোবাল ফাংশন)
-    ========================== */
     window.sharePage = () => handleShare(document.title, pageUrl);
-
 });
