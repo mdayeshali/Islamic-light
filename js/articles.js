@@ -2,64 +2,52 @@ document.addEventListener("DOMContentLoaded", () => {
     const pageUrl = window.location.href;
 
     /* =========================
-       ১. SHARE & COPY UTILITY (Re-usable Functions)
+       ১. শেয়ার ও কপি ইউটিলিটি ফাংশন
     ========================== */
     const handleShare = (title, url) => {
         if (navigator.share) {
-            navigator.share({ title: title, url: url })
-                .catch(err => console.log("Share cancelled or failed", err));
+            navigator.share({
+                title: title,
+                url: url
+            }).catch(err => console.log("Share failed:", err));
         } else {
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`, '_blank');
+            // যদি ব্রাউজার শেয়ার সাপোর্ট না করে তবে ফেসবুক শেয়ার ওপেন হবে
+            const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+            window.open(fbUrl, '_blank');
         }
     };
 
     const handleCopy = (url) => {
         navigator.clipboard.writeText(url)
             .then(() => alert('লিংক কপি হয়েছে ✅'))
-            .catch(err => console.error('Copy failed', err));
+            .catch(err => console.error('Copy failed:', err));
     };
 
 
     /* =========================
-       ২. LOAD ARTICLE PAGE BUTTONS
-    ========================== */
-    document.querySelectorAll('.share-buttons').forEach(container => {
-        fetch('/includes/share-buttons.html')
-            .then(res => res.ok ? res.text() : null)
-            .then(html => {
-                if (!html) return;
-                container.innerHTML = html;
-
-                container.querySelector('.share-btn')?.addEventListener('click', () => handleShare(document.title, pageUrl));
-                container.querySelector('.copy-btn')?.addEventListener('click', () => handleCopy(pageUrl));
-            });
-    });
-
-
-    /* =========================
-       ৩. ARTICLE BOX LOAD FROM JSON
+       ২. আর্টিকেল বক্স লোড (JSON থেকে)
     ========================== */
     const container = document.getElementById('article-container');
 
     if (container) {
-        // লোডিং মেসেজ বা স্পিনার দিতে পারেন এখানে
-        container.innerHTML = `<p style="text-align:center;">আর্টিকেল লোড হচ্ছে...</p>`;
+        container.innerHTML = `<p style="text-align:center; padding: 20px;">আর্টিকেল লোড হচ্ছে...</p>`;
 
         fetch('/data/articles.json')
             .then(res => {
-                if (!res.ok) throw new Error("Network response was not ok");
+                if (!res.ok) throw new Error("JSON ফাইল খুঁজে পাওয়া যায়নি!");
                 return res.json();
             })
             .then(data => {
-                // লেটেস্ট আর্টিকেল আগে দেখানোর জন্য (Reverse)
-                data.reverse();
-
-                let articlesHTML = ""; // সব ডাটা একসাথে রাখার জন্য স্ট্রিং
+                // আপনি চেয়েছেন JSON-এ যেভাবে আছে সেভাবেই দেখাবে (অর্থাৎ No Reverse)
+                let articlesHTML = "";
 
                 data.forEach(article => {
-                    const fullUrl = article.link.startsWith('http')
-                        ? article.link
-                        : window.location.origin + '/' + article.link;
+                    // সঠিক এবং পূর্ণাঙ্গ URL তৈরি (শেয়ার ও কপির জন্য)
+                    let fullUrl = article.link;
+                    if (!fullUrl.startsWith('http')) {
+                        const cleanPath = fullUrl.startsWith('/') ? fullUrl : '/' + fullUrl;
+                        fullUrl = window.location.origin + cleanPath;
+                    }
 
                     articlesHTML += `
                         <article class="article-box">
@@ -71,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             <div class="article-meta">
                                 <span class="meta-date">
-                                    <i class="fa-regular fa-calendar-days"></i> ${article.date}
+                                    <i class="fa-regular fa-calendar-days"></i> পোস্ট: ${article.date}
                                 </span>
                                 <span class="meta-author">
                                     <i class="fa-solid fa-user"></i> ${article.author}
@@ -82,7 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             <div class="article-footer">
                                 <div class="box-icons">
-                                    <span class="share-icon" data-url="${fullUrl}" title="শেয়ার করুন">
+                                    <span class="share-icon" data-url="${fullUrl}" data-title="${article.title}" title="শেয়ার করুন">
                                         <i class="fa-solid fa-share-nodes"></i>
                                     </span>
                                     <span class="copy-icon" data-url="${fullUrl}" title="লিংক কপি করুন">
@@ -95,35 +83,39 @@ document.addEventListener("DOMContentLoaded", () => {
                     `;
                 });
 
-                container.innerHTML = articlesHTML; // লুপ শেষে একবারেই রেন্ডার হবে
+                container.innerHTML = articlesHTML;
             })
             .catch(err => {
-                container.innerHTML = `<p style="color:red; text-align:center;">আর্টিকেল লোড করতে সমস্যা হয়েছে।</p>`;
-                console.error("JSON load error:", err);
+                container.innerHTML = `<p style="color:red; text-align:center; padding: 20px;">আর্টিকেল লোড করতে সমস্যা হয়েছে।</p>`;
+                console.error("Error:", err);
             });
     }
 
 
     /* =========================
-       ৪. EVENT DELEGATION (Click Icons)
+       ৩. ক্লিক ইভেন্ট হ্যান্ডেলার (Event Delegation)
     ========================== */
     document.addEventListener("click", function(e) {
         const shareBtn = e.target.closest(".share-icon");
         const copyBtn = e.target.closest(".copy-icon");
 
         if (shareBtn) {
-            handleShare(document.title, shareBtn.getAttribute("data-url"));
+            const url = shareBtn.getAttribute("data-url");
+            const title = shareBtn.getAttribute("data-title");
+            handleShare(title, url);
         }
 
         if (copyBtn) {
-            handleCopy(copyBtn.getAttribute("data-url"));
+            const url = copyBtn.getAttribute("data-url");
+            handleCopy(url);
         }
     });
 
 
     /* =========================
-       ৫. GLOBAL SHARE FUNCTION
+       ৪. টপ পেজ শেয়ার (গ্লোবাল ফাংশন)
     ========================== */
     window.sharePage = () => handleShare(document.title, pageUrl);
 
 });
+                          
