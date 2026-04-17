@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 url: url
             }).catch(err => console.log("Share failed:", err));
         } else {
-            // যদি ব্রাউজার শেয়ার সাপোর্ট না করে তবে ফেসবুক শেয়ার ওপেন হবে
             const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
             window.open(fbUrl, '_blank');
         }
@@ -20,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const handleCopy = (url) => {
         navigator.clipboard.writeText(url)
             .then(() => alert('লিংক কপি হয়েছে ✅'))
-            .catch(err => console.error('Copy failed:', err));
+            .catch(err => console.error('Copy failed', err));
     };
 
 
@@ -38,15 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.json();
             })
             .then(data => {
-                // আপনি চেয়েছেন JSON-এ যেভাবে আছে সেভাবেই দেখাবে (অর্থাৎ No Reverse)
                 let articlesHTML = "";
 
                 data.forEach(article => {
-                    // সঠিক এবং পূর্ণাঙ্গ URL তৈরি (শেয়ার ও কপির জন্য)
+                    // সঠিক এবং পূর্ণাঙ্গ URL তৈরি (/articles/article/... ফরম্যাটে)
                     let fullUrl = article.link;
+                    
                     if (!fullUrl.startsWith('http')) {
+                        // লিঙ্কের শুরুতে স্ল্যাশ না থাকলে যোগ করা হচ্ছে
                         const cleanPath = fullUrl.startsWith('/') ? fullUrl : '/' + fullUrl;
-                        fullUrl = window.location.origin + cleanPath;
+                        
+                        // ডোমেইন + /articles + আর্টিকেল পাথ (যেমন: islamiclight.in/articles/article/...)
+                        fullUrl = window.location.origin + '/articles' + cleanPath;
                     }
 
                     articlesHTML += `
@@ -111,11 +113,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-
     /* =========================
        ৪. টপ পেজ শেয়ার (গ্লোবাল ফাংশন)
     ========================== */
     window.sharePage = () => handleShare(document.title, pageUrl);
 
 });
-                          
