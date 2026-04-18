@@ -166,7 +166,7 @@ if (suggestionsBox) {
             
             // যদি আরও অনেক আর্টিকেল থাকে, তবে একটি 'সব দেখুন' বাটন যোগ করতে পারেন
             if (filteredData.length > 10) {
-                html += `<a href="/articles/" class="view-all-link">সবগুলো আর্টিকেল দেখুন...</a>`;
+                html += `<a href="/articles/article.html" class="view-all-link">সবগুলো আর্টিকেল দেখুন...</a>`;
             }
 
             suggestionsBox.innerHTML = html;
