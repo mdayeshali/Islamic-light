@@ -129,3 +129,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.sharePage = () => handleShare(document.title, pageUrl);
 });
+
+const suggestionsBox = document.getElementById('more-read-container');
+
+if (suggestionsBox) {
+    fetch('/data/articles.json')
+        .then(res => res.json())
+        .then(data => {
+            let currentUrl = window.location.pathname;
+            
+            // ১. বর্তমান আর্টিকেলটি লিস্ট থেকে বাদ দেওয়া
+            let filteredData = data.filter(article => !currentUrl.includes(article.link));
+
+            // ২. লেটেস্ট ১০টি আর্টিকেল নেওয়া (আপনি চাইলে সংখ্যা পরিবর্তন করতে পারেন)
+            // যদি আপনি চান উল্টোপাল্টা (Random) দেখাবে, তবে নিচের 'slice' এর বদলে র‍্যান্ডম লজিক দিতে পারেন।
+            let latestArticles = filteredData.reverse().slice(0, 10); 
+
+            let html = `<h3>আরও পড়ুন</h3><ul class="more-read-list">`;
+
+            latestArticles.forEach(article => {
+                // পাথ ঠিক করা (আপনার ফোল্ডার স্ট্রাকচার অনুযায়ী /articles/ যোগ করা হয়েছে)
+                let finalLink = article.link.startsWith('http') 
+                                ? article.link 
+                                : `/articles/${article.link}`;
+
+                html += `
+                    <li>
+                        <a href="${finalLink}">
+                            <i class="fa-solid fa-arrow-right"></i> ${article.title}
+                        </a>
+                    </li>
+                `;
+            });
+
+            html += `</ul>`;
+            
+            // যদি আরও অনেক আর্টিকেল থাকে, তবে একটি 'সব দেখুন' বাটন যোগ করতে পারেন
+            if (filteredData.length > 10) {
+                html += `<a href="/articles/" class="view-all-link">সবগুলো আর্টিকেল দেখুন...</a>`;
+            }
+
+            suggestionsBox.innerHTML = html;
+        })
+        .catch(err => console.error("Suggestions error:", err));
+}
