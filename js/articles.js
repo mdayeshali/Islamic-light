@@ -133,22 +133,43 @@ document.addEventListener("DOMContentLoaded", () => {
 const suggestionsBox = document.getElementById('more-read-container');
 
 if (suggestionsBox) {
-    fetch('/data/articles.json')
+
+    // 🔀 Fisher-Yates Shuffle (Perfect Random)
+    function shuffleArray(array) {
+        let arr = [...array];
+        for (let i = arr.length - 1; i > 0; i--) {
+            let j = Math.floor(Math.random() * (i + 1));
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+        return arr;
+    }
+
+    fetch('./data/articles.json')
         .then(res => res.json())
         .then(data => {
-            let currentUrl = window.location.pathname;
-            
-            // ১. বর্তমান আর্টিকেলটি লিস্ট থেকে বাদ দেওয়া
-            let filteredData = data.filter(article => !currentUrl.includes(article.link));
 
-            // ২. লেটেস্ট ১০টি আর্টিকেল নেওয়া (আপনি চাইলে সংখ্যা পরিবর্তন করতে পারেন)
-            // যদি আপনি চান উল্টোপাল্টা (Random) দেখাবে, তবে নিচের 'slice' এর বদলে র‍্যান্ডম লজিক দিতে পারেন।
-            let latestArticles = filteredData.reverse().slice(0, 10); 
+            // ✅ বর্তমান পেজ বের করা
+            let currentPage = window.location.pathname.split("/").pop();
+
+            // ✅ বর্তমান আর্টিকেল বাদ
+            let filteredData = data.filter(article => article.link !== currentPage);
+
+            // ✅ Latest + Random mix (৫ + ৫)
+            let latest = [...filteredData].reverse().slice(0, 5);
+            let random = shuffleArray(filteredData).slice(0, 5);
+
+            let finalArticles = [...latest, ...random];
+
+            // ❗ যদি কিছু না থাকে
+            if (finalArticles.length === 0) {
+                suggestionsBox.innerHTML = "<p>কোনো আর্টিকেল পাওয়া যায়নি</p>";
+                return;
+            }
 
             let html = `<h3>আরও পড়ুন</h3><ul class="more-read-list">`;
 
-            latestArticles.forEach(article => {
-                // পাথ ঠিক করা (আপনার ফোল্ডার স্ট্রাকচার অনুযায়ী /articles/ যোগ করা হয়েছে)
+            finalArticles.forEach(article => {
+
                 let finalLink = article.link.startsWith('http') 
                                 ? article.link 
                                 : `/articles/${article.link}`;
@@ -163,13 +184,17 @@ if (suggestionsBox) {
             });
 
             html += `</ul>`;
-            
-            // যদি আরও অনেক আর্টিকেল থাকে, তবে একটি 'সব দেখুন' বাটন যোগ করতে পারেন
+
+            // 👉 সবগুলো দেখুন বাটন
             if (filteredData.length > 10) {
                 html += `<a href="/articles/article.html" class="view-all-link">সবগুলো আর্টিকেল দেখুন...</a>`;
             }
 
             suggestionsBox.innerHTML = html;
+
         })
-        .catch(err => console.error("Suggestions error:", err));
+        .catch(err => {
+            console.error("Suggestions error:", err);
+            suggestionsBox.innerHTML = "<p>লোড করতে সমস্যা হয়েছে</p>";
+        });
 }
