@@ -133,43 +133,33 @@ document.addEventListener("DOMContentLoaded", () => {
 const suggestionsBox = document.getElementById('more-read-container');
 
 if (suggestionsBox) {
-
-    // 🔀 Fisher-Yates Shuffle (Perfect Random)
-    function shuffleArray(array) {
-        let arr = [...array];
-        for (let i = arr.length - 1; i > 0; i--) {
-            let j = Math.floor(Math.random() * (i + 1));
-            [arr[i], arr[j]] = [arr[j], arr[i]];
-        }
-        return arr;
-    }
-
-    fetch('./data/articles.json')
+    fetch('/data/articles.json')
         .then(res => res.json())
         .then(data => {
+            let currentUrl = window.location.pathname;
 
-            // ✅ বর্তমান পেজ বের করা
-            let currentPage = window.location.pathname.split("/").pop();
+            // ১. বর্তমান লিঙ্কের একটি অংশ নেওয়া (যেমন: 'tech' বা 'health') রিলেটেড খোঁজার জন্য
+            let urlParts = currentUrl.split('/');
+            let folderName = urlParts.length > 2 ? urlParts[urlParts.length - 2] : "";
 
-            // ✅ বর্তমান আর্টিকেল বাদ
-            let filteredData = data.filter(article => article.link !== currentPage);
+            // ২. ফিল্টার করা: বর্তমান আর্টিকেল বাদে এবং যদি ফোল্ডার নাম মিলে যায়
+            let relatedData = data.filter(article => {
+                let isNotCurrent = !currentUrl.includes(article.link);
+                let isRelated = folderName && article.link.includes(folderName);
+                return isNotCurrent && isRelated;
+            });
 
-            // ✅ Latest + Random mix (৫ + ৫)
-            let latest = [...filteredData].reverse().slice(0, 5);
-            let random = shuffleArray(filteredData).slice(0, 5);
-
-            let finalArticles = [...latest, ...random];
-
-            // ❗ যদি কিছু না থাকে
-            if (finalArticles.length === 0) {
-                suggestionsBox.innerHTML = "<p>কোনো আর্টিকেল পাওয়া যায়নি</p>";
-                return;
+            // ৩. যদি রিলেটেড কিছু না পাওয়া যায়, তবে সাধারণ অন্য আর্টিকেলগুলো নেওয়া
+            if (relatedData.length === 0) {
+                relatedData = data.filter(article => !currentUrl.includes(article.link));
             }
+
+            // ৪. এলোমেলো করে ১০টি আর্টিকেল নেওয়া
+            let finalSelection = relatedData.sort(() => 0.5 - Math.random()).slice(0, 10);
 
             let html = `<h3>আরও পড়ুন</h3><ul class="more-read-list">`;
 
-            finalArticles.forEach(article => {
-
+            finalSelection.forEach(article => {
                 let finalLink = article.link.startsWith('http') 
                                 ? article.link 
                                 : `/articles/${article.link}`;
@@ -184,17 +174,12 @@ if (suggestionsBox) {
             });
 
             html += `</ul>`;
-
-            // 👉 সবগুলো দেখুন বাটন
-            if (filteredData.length > 10) {
+            
+            if (relatedData.length > 10) {
                 html += `<a href="/articles/article.html" class="view-all-link">সবগুলো আর্টিকেল দেখুন...</a>`;
             }
 
             suggestionsBox.innerHTML = html;
-
         })
-        .catch(err => {
-            console.error("Suggestions error:", err);
-            suggestionsBox.innerHTML = "<p>লোড করতে সমস্যা হয়েছে</p>";
-        });
-}
+        .catch(err => console.error("Suggestions error:", err));
+                    }
