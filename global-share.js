@@ -14,10 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
         navigator.clipboard.writeText(url).then(() => alert('লিংক কপি হয়েছে ✅'));
     };
 
-    // এখন আমরা id এর বদলে class ব্যবহার করবো যাতে অনেক জায়গায় বসানো যায়
     const shareContainers = document.querySelectorAll('.global-share-system');
 
     shareContainers.forEach(container => {
+        // জাভাস্ক্রিপ্ট দিয়েই ডিভ-টিকে ডান দিকে (flex-end) পাঠিয়ে দেওয়া হচ্ছে
+        container.style.display = "flex";
+        container.style.justifyContent = "flex-end";
+        container.style.alignItems = "center";
+
         container.innerHTML = `
             <div class="global-share-box">
                 <span class="g-share-icon" title="শেয়ার করুন"><i class="fa-solid fa-share-nodes"></i></span>
