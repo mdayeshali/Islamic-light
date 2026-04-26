@@ -3,7 +3,7 @@ name: Generate XML Sitemap
 on:
   push:
     branches:
-      - main # যদি আপনার ব্রাঞ্চের নাম 'master' হয়, তবে এখানে master লিখবেন
+      - main
 
 jobs:
   sitemap_job:
@@ -11,7 +11,7 @@ jobs:
     name: Generate a sitemap
     steps:
     - name: Checkout the repo
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4 # ভার্সন আপডেট করা হয়েছে
       with:
         fetch-depth: 0 
 
@@ -20,13 +20,14 @@ jobs:
       with:
         base-url-path: https://islamiclight.in/
         sitemap-format: xml
-        # এটি আপনার রিপোজিটরির সব .html ফাইল খুঁজে বের করবে
 
     - name: Commit and push changes
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # টোকেন যুক্ত করা হয়েছে
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'github-actions@github.com'
         git add sitemap.xml
         git commit -m "Automated sitemap update" || exit 0
-        git push
+        git push origin main
         
