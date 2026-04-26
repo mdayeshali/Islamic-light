@@ -1,0 +1,32 @@
+name: Generate XML Sitemap
+
+on:
+  push:
+    branches:
+      - main # যদি আপনার ব্রাঞ্চের নাম 'master' হয়, তবে এখানে master লিখবেন
+
+jobs:
+  sitemap_job:
+    runs-on: ubuntu-latest
+    name: Generate a sitemap
+    steps:
+    - name: Checkout the repo
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 
+
+    - name: Generate XML Sitemap
+      uses: cicirello/generate-sitemap@v1
+      with:
+        base-url-path: https://islamiclight.in/
+        sitemap-format: xml
+        # এটি আপনার রিপোজিটরির সব .html ফাইল খুঁজে বের করবে
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions'
+        git config --global user.email 'github-actions@github.com'
+        git add sitemap.xml
+        git commit -m "Automated sitemap update" || exit 0
+        git push
+        
