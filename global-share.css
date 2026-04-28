@@ -55,6 +55,8 @@
     font-style: italic;
     line-height: 1.8;
 }
+.sss{display: flex; justify-content: space-between; 
+     align-items: center; margin-bottom: 15px;}
 
 /* ডার্ক মোড সাপোর্ট */
 body.dark .quran-verse {
