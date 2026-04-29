@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>যোগাযোগ — Islamic Light</title>
 
-  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
@@ -25,28 +24,6 @@
       color: var(--text);
       line-height: 1.7;
     }
-
-    
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 1.3rem;
-    }
-
-    .moon {
-      background: white;
-      color: var(--primary);
-      border-radius: 50%;
-      width: 34px;
-      height: 34px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-   
 
     /* ---------- HERO ---------- */
     .hero {
@@ -148,6 +125,7 @@
       opacity: 0;
       z-index: 9999;
       transition: all 0.4s ease-in-out;
+      pointer-events: none;
     }
 
     .popup.active {
@@ -165,37 +143,56 @@
     .contact-info {
       background: var(--card-bg);
       margin-top: 30px;
-      padding: 20px;
+      padding: 25px;
       border-radius: 15px;
       box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      border-left: 4px solid var(--primary);
+      border-left: 5px solid var(--primary);
     }
 
-    .whatsapp-link {
-      color: #25d366;
-      font-weight: bold;
+    .contact-info h3 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 15px;
     }
 
-    
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 12px;
+      text-decoration: none;
+      color: var(--text);
+      transition: 0.3s;
+    }
+
+    .info-item:hover {
+      color: var(--accent);
+    }
+
+    .info-item i {
+      width: 25px;
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .icon-email { color: #ea4335; }
+    .icon-twitter { color: #000000; }
+    .icon-facebook { color: #1877f2; }
+
   </style>
-  <link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
- <link rel="stylesheet" href="css/style.css">
+  
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-   <div id="header"></div>
+  <div id="header"></div>
 
-  
-  <!-- HERO -->
   <section class="hero">
     <h1>যোগাযোগ করুন</h1>
     <p>Islamic Light-এর সঙ্গে যুক্ত থাকুন — আপনার মতামত, প্রশ্ন ও পরামর্শ আমাদের জন্য মূল্যবান।</p>
   </section>
 
-  <!-- MAIN -->
   <main class="container">
     <div class="card">
       <form id="contactForm" action="https://formspree.io/f/movyqwoa" method="POST">
@@ -217,36 +214,30 @@
     </div>
 
     <div class="contact-info">
-      <h3>📞 অন্যান্য যোগাযোগ মাধ্যম</h3>
-      <p>ইমেইল: <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a></p>
-      <p>
-        <a href="https://wa.me/+918617316109" target="_blank" class="whatsapp-link">
-          <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বার্তা পাঠান
-        </a>
-      </p>
-      <p>ফেসবুক: <a href="https://www.facebook.com/profile.php?id=61573783316016" target="_blank">Noor-e-hidayah</a></p>
+      <h3>📬 অন্যান্য যোগাযোগ মাধ্যম</h3>
+      
+      <a href="mailto:mdayeshali433@gmail.com" class="info-item">
+        <i class="fa-solid fa-envelope icon-email"></i>
+        <span><strong>ইমেইল:</strong> mdayeshali433@gmail.com</span>
+      </a>
+
+      <a href="https://twitter.com/@md_ali71187" target="_blank" class="info-item">
+        <i class="fa-brands fa-x-twitter icon-twitter"></i>
+        <span><strong>টুইটার (X):</strong> আমাদের টুইটার প্রোফাইল</span>
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61573783316016" target="_blank" class="info-item">
+        <i class="fa-brands fa-facebook icon-facebook"></i>
+        <span><strong>ফেসবুক:</strong> Noor-e-hidayah</span>
+      </a>
     </div>
   </main>
 
-  <!-- SUCCESS POPUP -->
   <div id="popup" class="popup">✅ আপনার বার্তাটি সফলভাবে পাঠানো হয়েছে!</div>
 
-  
+  <div id="footer"></div>
 
   <script>
-    // Auto Year
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    // Mobile Menu Toggle
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileNav = document.getElementById("mobileNav");
-    menuBtn.addEventListener("click", () => {
-      mobileNav.classList.toggle("active");
-      menuBtn.innerHTML = mobileNav.classList.contains("active")
-        ? '<i class="fa-solid fa-xmark"></i>'
-        : '<i class="fa-solid fa-bars"></i>';
-    });
-
     // Popup Success Animation
     const contactForm = document.getElementById("contactForm");
     const popup = document.getElementById("popup");
@@ -269,7 +260,6 @@
       }
     });
   </script>
-  <div id="footer"></div>
 
   <script src="js/script.js" defer></script>
 </body>
