@@ -3,90 +3,191 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Terms & Conditions — Islamic Light</title>
-  <meta name="description" content="Islamic Light (islamiclight.in) - Terms & Conditions" />
+  <title>ব্যবহারের শর্তাবলি (Terms & Conditions) — Islamic Light</title>
+  <meta name="description" content="Islamic Light (islamiclight.in) - ব্যবহারের শর্ত ও নিয়মাবলী" />
   
-  <link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
 
-
- <link rel="stylesheet" href="css/style.css">
-
-  
   <style>
-    :root{--bg:#ffffff;--card:#fbfbfb;--muted:#6b7280;--accent:#0b6b4f;--accent-2:#064e3b;--border:#e6e9ef}
-    *{box-sizing:border-box}
-    body{font-family:Inter, system-ui, -apple-system, 'Noto Sans Bengali', 'SolaimanLipi', Arial, sans-serif;margin:0;background:var(--bg);color:#0f172a;line-height:1.6}
-    .container{max-width:900px;margin:40px auto;padding:24px}
-    header{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-    .logo{width:52px;height:52px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:18px}
-    h1{margin:0;font-size:22px}
-    p.lead{color:var(--muted);margin-top:6px}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:18px;box-shadow:0 6px 18px rgba(3,7,18,0.04)}
-    h2{font-size:18px;margin-top:0}
-    ul{padding-left:18px}
-    code{background:#f3f4f6;padding:2px 6px;border-radius:6px;font-family:monospace}
-    .muted{color:var(--muted)}
-    footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    @media (max-width:600px){.container{padding:16px;margin:20px}}  
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #64748b;
+      --accent: #004d40;
+      --accent-2: #00796b;
+      --border: #e2e8f0;
+      --text: #1e293b;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Noto Sans Bengali', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Header Section - Centered for Modern Look */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    p.lead {
+      color: var(--muted);
+      margin: 10px 0 0 0;
+      font-size: 1.05rem;
+    }
+
+    /* Content Card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-top: 30px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 10px;
+    }
+
+    h2::before {
+      content: "";
+      width: 4px;
+      height: 20px;
+      background: var(--accent-2);
+      border-radius: 10px;
+    }
+
+    p {
+      margin: 15px 0;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 15px 0;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+    }
+
+    .muted {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Contact & Footer */
+    .contact-box {
+      background: #f1f5f9;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 30px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+
+    a {
+      color: var(--accent-2);
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+      color: var(--accent);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+      .card { padding: 25px; }
+      h1 { font-size: 1.5rem; }
+      h2 { font-size: 1.15rem; }
+    }
   </style>
 </head>
 <body>
-     <div id="header"></div>
+  
+  <div id="header"></div>
+  
   <div class="container">
     <header>
-      <div class="logo">NL</div>
-      <div>
-        <h1>Terms &amp; Conditions</h1>
-        <p class="lead">islamiclight.in – Islamic Light (পরিচালক: মোঃ আয়েশ আলি)</p>
-      </div>
+      <h1>ব্যবহারের শর্তাবলি (Terms & Conditions)</h1>
+      <p class="lead"><strong>islamiclight.in</strong> — পরিচালক: মোঃ আয়েশ আলি</p>
     </header>
 
     <div class="card">
       <h2>১. স্বীকৃতি ও গ্রহণযোগ্যতা</h2>
-      <p>এই Terms &amp; Conditions (নর্তক) আপনার এবং <strong>Islamic Light</strong> (যেটি <code>https://islamiclight.in</code> ঠিকানায় প্রকাশিত)–এর মধ্যে একটি আইনী চুক্তি। আমাদের সাইট ব্যবহার করলে, আপনি এই শর্তাবলি গ্রহণ করেছেন। যদি আপনি এগুলো মেনে চলতে না চান, অনুগ্রহ করে সাইট ব্যবহার বন্ধ করুন।</p>
+      <p>এই ব্যবহারের শর্তাবলি আপনার এবং <strong>Islamic Light</strong>-এর মধ্যে একটি আইনী চুক্তি। আমাদের ওয়েবসাইট ব্যবহার করার মাধ্যমে আপনি এই শর্তগুলো মেনে নিচ্ছেন বলে গণ্য হবে। যদি আপনি এই শর্তাবলিতে সম্মত না হন, তবে অনুগ্রহ করে সাইটটি ব্যবহার করা থেকে বিরত থাকুন।</p>
 
-      <h2>২. সাইটে থাকা কনটেন্টের ব্যবহার</h2>
-      <p>এই সাইটে প্রকাশিত কুরআন, হাদিস, দোয়া, তাফসীর, আর ইসলামের অন্যান্য শিক্ষামূলক সামগ্রী হালাল উদ্দেশ্যে এবং শিক্ষামূলক কাজে সরবরাহ করা হয়েছে।</p>
+      <h2>২. কনটেন্টের ব্যবহার</h2>
+      <p>Islamic Light-এ প্রকাশিত সকল ইসলামিক সামগ্রী (কুরআন, হাদিস, দোয়া, তাফসীর ইত্যাদি) শুধুমাত্র ব্যক্তিগত শিক্ষা ও দাওয়াতি কাজের উদ্দেশ্যে ব্যবহার করা যাবে।</p>
       <ul>
-        <li>কনটেন্ট পড়া ও ব্যক্তিগত শিক্ষার উদ্দেশ্যে ব্যবহার করা যাবে।</li>
-        <li>কোনো কন্টেন্ট কপি করে পাবলিক ভাবে পুনরায় প্রকাশ করার আগে অনুগ্রহ করে <strong>অধ্যাপক/সাইট-অধিকারী</strong> এর অনুমতি নিন বা উদ্ধৃতির সময় যথাযথ রেফারেন্স দিন।</li>
+        <li>ব্যক্তিগতভাবে পড়ার জন্য এবং শেয়ার করার জন্য কোনো বাধা নেই।</li>
+        <li>আমাদের কনটেন্ট হুবহু কপি করে অন্য কোনো ওয়েবসাইট বা অ্যাপে প্রকাশ করার ক্ষেত্রে অবশ্যই <strong>Islamic Light</strong>-এর রেফারেন্স বা ক্রেডিট দিতে হবে।</li>
       </ul>
 
-      <h2>৩. বুদ্ধিবৃত্তিক সম্পত্তি (Copyright)</h2>
-      <p>সাইটে থাকা সকল মূল লেখা, ডিজাইন, ছবি এবং কোডের কপিরাইট Islamic Light বা সংশ্লিষ্ট লেখক/কোম্পানির মালিকানাধীন। আপনার যদি পুনঃপ্রকাশ বা বাণিজ্যিক ব্যবহার প্রয়োজন হয়, অনুগ্রহ করে আমাদের <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a>-এ যোগাযোগ করুন।</p>
+      <h2>৩. মেধা সম্পদ ও কপিরাইট</h2>
+      <p>এই সাইটের ডিজাইন, এবং আমাদের দ্বারা প্রস্তুতকৃত বিশেষ আর্টিকেলসমূহের স্বত্ব <strong>Islamic Light</strong> কর্তৃপক্ষের। বাণিজ্যিক উদ্দেশ্যে আমাদের কোনো কন্টেন্ট অনুমতি ছাড়া ব্যবহার করা সম্পূর্ণ নিষিদ্ধ।</p>
 
-      <h2>৪. ইউজার‑জেনারেটেড কনটেন্ট</h2>
-      <p>যদি আপনি সাইটে কোনো ফর্মের মাধ্যমে কনটেন্ট/মন্তব্য/যোগাযোগ পাঠান, সেটি আমরা প্রকাশ, সম্পাদনা বা অপসারণ করার অধিকার রাখি। ব্যবহারকারী দলিলকৃত তথ্যের দায়‑দায়িত্ব বহন করবে।</p>
+      <h2>৪. সঠিকতা ও তথ্যের দায়বদ্ধতা</h2>
+      <p>আমরা সবসময় নির্ভরযোগ্য উৎস (কুরআন ও সহিহ হাদিস) থেকে তথ্য দেওয়ার চেষ্টা করি। তবে অনিচ্ছাকৃত কোনো ভুলের জন্য আমরা সবসময় সংশোধনের অধিকার রাখি। কোনো তথ্য নিয়ে সংশয় থাকলে যাচাই করার অনুরোধ রইলো।</p>
 
-      <h2>৫. নিরাপত্তা ও গোপনীয়তা</h2>
-      <p>আমরা ব্যবহারকারীর ব্যক্তিগত তথ্য সুরক্ষিত রাখতে চেষ্টা করি। বিস্তারিত তথ্যের জন্য আমাদের <a href="/privacy.html">Privacy Policy</a> দেখুন।</p>
+      <h2>৫. ব্যক্তিগত তথ্যের নিরাপত্তা</h2>
+      <p>আপনার ব্যক্তিগত তথ্যের গোপনীয়তা রক্ষা করা আমাদের দায়িত্ব। এ বিষয়ে বিস্তারিত জানতে আমাদের <a href="privacy.html">Privacy Policy</a> পেজটি ভিজিট করুন।</p>
 
-      <h2>৬. উত্তরদায়িত্ব সীমা (Disclaimer)</h2>
-      <p>সাইটে থাকা তথ্য সাধারণ তথ্য সরবরাহের উদ্দেশ্যে এবং এটি কোনো চিকিৎসা, আইনি বা আর্থিক পরামর্শ নয়। আমরা তথ্যের সঠিকতার চেষ্টা করি, কিন্তু কোনো তথ্যের পূর্ণতায় বা নির্ভুলতায় দায়িত্ব নই।</p>
+      <h2>৬. পরিবর্তন ও সংশোধন</h2>
+      <p>কর্তৃপক্ষ যেকোনো সময় এই শর্তাবলি পরিবর্তন বা পরিমার্জন করার অধিকার রাখে। পরিবর্তনের পর সাইট ব্যবহার চালিয়ে গেলে ধরে নেওয়া হবে যে আপনি নতুন শর্তাবলি মেনে নিয়েছেন।</p>
 
-      <h2>৭. তৃতীয় পক্ষের লিংক</h2>
-      <p>সাইটে তৃতীয় পক্ষের ওয়েবসাইটের লিংক থাকতে পারে। আমরা সেই সব সাইটের বিষয়বস্তু বা নীতির জন্য দায়িত্ব বহন করি না। লিংক ব্যবহারের আগে নিজেই যাচাই করুন।</p>
+      <div class="contact-box">
+        <strong>📧 যোগাযোগ:</strong><br>
+        শর্তাবলি সংক্রান্ত কোনো প্রশ্ন থাকলে সরাসরি ইমেইল করুন: 
+        <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a>
+      </div>
 
-      <h2>৮. পরিবর্তন ও আপডেট</h2>
-      <p>এই Terms &amp; Conditions যেকোনো সময়ে আপডেট করা হতে পারে। পরিবর্তন চালু হওয়ার পর সাইট ব্যবহার চালিয়ে গেলে সেটি পরিবর্তনগুলো মান্য করা হবে। পরিবর্তনগুলি এখানে প্রকাশ করা হবে এবং তারিখ উল্লেখ থাকবে।</p>
-
-      <h2>৯. যোগাযোগ</h2>
-      <p>যদি আপনার কোন প্রশ্ন থাকে Terms &amp; Conditions সম্পর্কে, অনুগ্রহ করে যোগাযোগ করুন: <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a></p>
-
-      <h2>১০. বিরোধ সমাধান</h2>
-      <p>এই শর্তাবলি সম্পর্কিত যেকোন বিরোধ স্থানীয় আইন অনুযায়ী সমাধান করা হবে।</p>
-
-      <p class="muted" style="margin-top:14px">এই নীতিমালা সর্বশেষ আপডেট করা হলো: <strong>18 November 2025</strong></p>
+      <div style="margin-top: 30px; border-top: 1px solid #f1f5f9; padding-top: 15px; text-align: center;">
+        <p class="muted">সর্বশেষ হালনাগাদ: <strong>২৯ এপ্রিল ২০২৬</strong></p>
+      </div>
     </div>
 
     <footer>
-      © <strong>Islamic Light</strong> — মোঃ আয়েশ আলি • <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a>
+      © <strong>Islamic Light</strong> — মোঃ আয়েশ আলি • ভারত
     </footer>
-     <script src="js/script.js" defer></script>
   </div>
+
+  <div id="footer"></div>
+
+  <script src="js/script.js" defer></script>
 </body>
 </html>
-
