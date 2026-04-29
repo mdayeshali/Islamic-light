@@ -5,18 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>আমাদের সম্পর্কে — Islamic Light</title>
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-
-  <link rel="stylesheet"
- href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-
- <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     /* ---------- GLOBAL ---------- */
     :root {
@@ -25,13 +18,6 @@
       --primary: #004d40;
       --accent: #009688;
       --card-bg: #ffffff;
-    }
-
-    [data-theme="dark"] {
-      --bg: #121212;
-      --text: #eaeaea;
-      --primary: #26a69a;
-      --card-bg: #1e1e1e;
     }
 
     body {
@@ -47,31 +33,6 @@
       color: var(--accent);
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .brand {
-      font-weight: 700;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .brand .moon {
-      background: white;
-      color: var(--primary);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-    }
-
-    
 
     /* ---------- HERO ---------- */
     .hero {
@@ -82,15 +43,15 @@
     }
 
     .hero h1 {
-      font-size: 2rem;
-      margin-bottom: 10px;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
     }
 
     .hero p {
-      font-size: 1rem;
+      font-size: 1.1rem;
       max-width: 700px;
       margin: 0 auto;
-      line-height: 1.6;
+      opacity: 0.9;
     }
 
     /* ---------- MAIN CONTENT ---------- */
@@ -100,57 +61,94 @@
       padding: 0 20px;
       display: grid;
       grid-template-columns: 2fr 1fr;
-      gap: 25px;
+      gap: 30px;
     }
 
     .card {
       background: var(--card-bg);
-      padding: 25px;
+      padding: 30px;
       border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
       border-top: 4px solid var(--primary);
+      margin-bottom: 25px;
     }
 
     .card h3 {
       margin-top: 0;
       color: var(--primary);
-      font-size: 1.2rem;
+      font-size: 1.4rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .card p {
-      color: var(--text);
-      margin: 10px 0;
-      font-size: 0.95rem;
+      margin: 15px 0;
+      font-size: 1rem;
     }
 
     ul.small-list {
-      list-style: disc;
-      margin-left: 20px;
-      color: var(--text);
+      list-style: none;
+      padding: 0;
     }
 
-    /* Sidebar */
-    .whatsapp-link {
-      color: #25d366;
-      display: inline-flex;
+    ul.small-list li {
+      padding: 8px 0;
+      display: flex;
       align-items: center;
-      margin-top: 5px;
-    }
-    .whatsapp-link i {
-      margin-right: 6px;
+      gap: 10px;
     }
 
-    
+    ul.small-list li::before {
+      content: "✔";
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Sidebar Button Style */
+    .contact-cta {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .btn-contact {
+      display: inline-block;
+      background: var(--primary);
+      color: white !important;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 77, 64, 0.2);
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .btn-contact:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .founder-info {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .founder-info i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
     /* ---------- RESPONSIVE ---------- */
     @media (max-width: 900px) {
-     
-
       .container {
         grid-template-columns: 1fr;
       }
-
       .hero {
-        padding: 40px 15px;
+        padding: 50px 15px;
       }
     }
   </style>
@@ -159,65 +157,59 @@
 <body>
   <div id="header"></div>
 
-  <!-- HERO -->
   <section class="hero">
     <h1>আমাদের সম্পর্কে</h1>
-    <p>Islamic Light — কুরআন ও সহিহ হাদিসের আলোকে নির্ভরযোগ্য ইসলামিক জ্ঞান সবার কাছে পৌঁছে দেওয়ার একটি প্রচেষ্টা।</p>
+    <p>Islamic Light — কুরআন ও সহিহ হাদিসের আলোকে নির্ভরযোগ্য ইসলামিক জ্ঞান সবার কাছে পৌঁছে দেওয়ার একটি ক্ষুদ্র প্রচেষ্টা।</p>
   </section>
 
-  <!-- MAIN CONTENT -->
   <main class="container">
     <section>
       <div class="card">
-        <h3>আমাদের উদ্দেশ্য</h3>
-        <p>আমাদের লক্ষ্য হলো — ইসলামের সত্যিকারের বার্তা সহজ ও প্রমাণিকভাবে পৌঁছে দেওয়া। কুরআন, সহিহ হাদিস এবং প্রখ্যাত আলেম ও গবেষকদের ব্যাখ্যা অনুযায়ী ইসলামী দিকনির্দেশনা প্রচার করা।</p>
+  <h3>আমাদের উদ্দেশ্য</h3>
+  <p>আমাদের লক্ষ্য হলো — ইসলামের সত্যিকারের বার্তা সহজ ও প্রমাণিকভাবে পৌঁছে দেওয়া। কুরআন, সহিহ হাদিস এবং প্রখ্যাত আলেম ও গবেষকদের ব্যাখ্যা অনুযায়ী ইসলামী দিকনির্দেশনা প্রচার করা।</p>
 
-        <h3>ওয়েবসাইটে যা পাবেন</h3>
-        <ul class="small-list">
-          <li>কুরআনের আরবি পাঠ ও বাংলা অনুবাদ</li>
-          <li>সহিহ হাদিস ও সহজ ব্যাখ্যা</li>
-          <li>ইসলামিক দো‘আ ও আমলসমূহ</li>
-          <li>শিক্ষামূলক প্রবন্ধ ও রেফারেন্স রিসোর্স</li>
-        </ul>
+  <h3>আমাদের বিশেষত্ব ও সেবা</h3>
+  <ul class="small-list">
+    <li>কুরআন মাজিদের শুদ্ধ আরবি পাঠ ও সাবলীল বাংলা অনুবাদ</li>
+    <li>বিশুদ্ধ ইসলামিক আকিদা ও বিশ্বাসের সঠিক ধারণা</li>
+    <li>নামাজ শিক্ষার পূর্ণাঙ্গ ও সহিহ নিয়মাবলী</li>
+    <li>দৈনন্দিন জীবনের প্রয়োজনীয় মাসনুন দোয়া ও জিকির</li>
+    <li>পবিত্র কুরআনে বর্ণিত গুরুত্বপূর্ণ দোয়া ও মুনাজাত</li>
+    <li>জীবনমুখী ও শিক্ষণীয় বিভিন্ন ইসলামিক আর্টিকেল</li>
+  </ul>
+</div>
 
-        <h3>আমরা কীভাবে কাজ করি</h3>
-        <p>আমাদের সকল কনটেন্ট বিশ্বাসযোগ্য উৎস ও সম্মানিত ইসলামি আলেমদের ব্যাখ্যা অনুসারে প্রস্তুত করা হয়। ভুল বা ত্রুটি থাকলে জানালে তা সংশোধন করা হয় ইনশাআল্লাহ।</p>
-      </div>
 
       <div class="card">
         <h3>ভিশন ও মূল্যবোধ</h3>
-        <p>আমাদের ভিশন — একটি আলোকিত সমাজ গঠন, যেখানে ইসলামিক জ্ঞান সহজবোধ্য ও জীবনমুখী হবে। আমাদের মূল্যবোধের মধ্যে রয়েছে — সত্যনিষ্ঠা, সম্মান ও দায়িত্বশীলতা।</p>
+        <p>আমাদের ভিশন — একটি আলোকিত সমাজ গঠন করা, যেখানে ইসলামিক জ্ঞান হবে সহজবোধ্য এবং জীবনমুখী। আমরা বিশ্বাস করি সঠিক জ্ঞানই পারে একজন মানুষকে সুন্দর ও সুশৃঙ্খল পথ দেখাতে।</p>
       </div>
     </section>
 
     <aside>
       <div class="card">
-        <h3>প্রতিষ্ঠাতা সম্পর্কে</h3>
-        <p>আসসালামু আলাইকুম। আমি <strong>মোঃ আয়েশ আলি</strong> — Islamic Light-এর প্রতিষ্ঠাতা। আমার লক্ষ্য হলো ইসলামিক জ্ঞান প্রচার এবং আল্লাহর সন্তুষ্টি অর্জনের মাধ্যমে সত্য ও আলো ছড়িয়ে দেওয়া।</p>
-
-        <div style="margin-top:12px;">
-          <h4>📞 যোগাযোগ</h4>
-          <p>ইমেইল: <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a></p>
-          <p>
-            <a href="https://wa.me/+918617316109" class="whatsapp-link" target="_blank">
-              <i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে বার্তা পাঠান
-            </a>
-          </p>
-          <p>ফেসবুক পেজ: <a href="https://www.facebook.com/profile.php?id=61573783316016" target="_blank">Noor-e-hidayah</a></p>
+        <div class="founder-info">
+          <i class="fa-solid fa-circle-user"></i>
+          <h3>প্রতিষ্ঠাতা</h3>
+        </div>
+        <p>আসসালামু আলাইকুম। আমি <strong>মোঃ আয়েশ আলি</strong>। আল্লাহর সন্তুষ্টি অর্জন এবং মানুষের কাছে সঠিক দ্বীনি জ্ঞান পৌঁছে দেওয়ার উদ্দেশ্যে আমি <strong>Islamic Light</strong> প্রতিষ্ঠা করেছি।</p>
+        
+        <div class="contact-cta">
+          <a href="contact.html" class="btn-contact">
+            <i class="fa-solid fa-paper-plane"></i> সরাসরি যোগাযোগ করুন
+          </a>
         </div>
       </div>
 
       <div class="card">
-        <h3>দায়িত্বশীল ব্যবহার</h3>
-        <p>Islamic Light-এর তথ্যসমূহ শুধুমাত্র শিক্ষামূলক ও দাওয়াতি উদ্দেশ্যে ব্যবহারের জন্য। কোনো তথ্য ভুল মনে হলে জানালে উৎস যাচাই করে সংশোধন করা হবে ইনশাআল্লাহ।</p>
+        <h3>দায়িত্ববদ্ধতা</h3>
+        <p>এই ওয়েবসাইটের তথ্যসমূহ দাওয়াতি ও শিক্ষামূলক উদ্দেশ্যে প্রস্তুত। কোনো তথ্য নিয়ে আপনার সংশয় থাকলে বা ভুল চোখে পড়লে দয়া করে আমাদের জানাবেন।</p>
       </div>
     </aside>
   </main>
 
- 
- <div id="footer"></div>
+  <div id="footer"></div>
 
   <script src="js/script.js" defer></script>
-  
 </body>
 </html>
