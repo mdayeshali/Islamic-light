@@ -144,6 +144,7 @@ body {
     color: #444;
     font-style: italic;
 }
+strong { color: #005d44; }
 
 /* ---------- GLOBAL INNER SHARE BUTTONS (লেখা সহ) ---------- */
 .article-inner-share {
