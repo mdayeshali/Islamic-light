@@ -251,3 +251,87 @@ body {
     font-weight: bold;
 }
 
+/* Name's of Allah*/
+.feature-section {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.feature-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 450px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  border-color: #00796b;
+}
+
+.feature-icon {
+  background: #e0f2f1;
+  color: #004d40;
+  width: 70px;
+  height: 70px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.feature-content h3 {
+  margin: 0 0 8px 0;
+  color: #004d40;
+  font-size: 1.4rem;
+}
+
+.feature-content p {
+  margin: 0 0 15px 0;
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.btn-feature {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #00796b;
+  color: #ffffff;
+  padding: 8px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.3s;
+}
+
+.btn-feature:hover {
+  background: #004d40;
+  text-decoration: none;
+  color: #fff;
+}
+
+/* মোবাইলের জন্য স্টাইল */
+@media (max-width: 500px) {
+  .feature-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+  .feature-icon {
+    margin: 0 auto;
+  }
+}
+
