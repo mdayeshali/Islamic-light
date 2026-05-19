@@ -1,3 +1,7 @@
+/* Project: Islamic Light - Sexual Ethics 
+   Author: Mohammad Ayesh Ali
+*/
+
 :root {
     --primary: #004d40;
     --accent: #009688;
@@ -7,8 +11,12 @@
     --muted: #636e72;
     --border: #dfe6e9;
     --shadow: rgba(0, 0, 0, 0.1);
+    --warn-bg: #fff3cd;
+    --warn-border: #ffca28;
+    --warn-text: #856404;
 }
 
+/* Dark Theme Variables */
 [data-theme="dark"] {
     --bg: #121212;
     --card: #1e1e1e;
@@ -16,6 +24,9 @@
     --muted: #b0b0b0;
     --border: #333333;
     --shadow: rgba(0, 0, 0, 0.5);
+    --warn-bg: #2c2510;
+    --warn-border: #ffca28;
+    --warn-text: #ffe082;
 }
 
 body {
@@ -24,65 +35,193 @@ body {
     font-family: 'SolaimanLipi', Arial, sans-serif;
     line-height: 1.6;
     margin: 0;
-    padding: 0px;
+    padding: 0;
 }
 
-.se-container { max-width: 900px; margin: 0 auto; padding-top: 100px; padding-left:10px; padding-right:10px;}
-.se-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 10px; }
-.se-lead { text-align: center; color: var(--muted); margin-bottom: 30px; }
+/* Main Container with 100px Top & 10px Side Padding */
+.se-container { 
+    max-width: 900px; 
+    margin: 0 auto; 
+    padding: 100px 10px 40px 10px; 
+}
 
-/* Disclaimer Box */
+.se-title { 
+    text-align: center; 
+    color: var(--primary); 
+    font-size: 2rem; 
+    margin-bottom: 10px; 
+}
+
+[data-theme="dark"] .se-title {
+    color: var(--accent);
+}
+
+.se-lead { 
+    text-align: center; 
+    color: var(--muted); 
+    margin-bottom: 30px; 
+}
+
+/* Search Box Styling */
+.faq-search-container { 
+    position: relative; 
+    margin-bottom: 25px; 
+}
+
+.faq-search-container input {
+    width: 100%; 
+    padding: 15px 15px 15px 50px;
+    border-radius: 30px; 
+    border: 2px solid var(--border);
+    background: var(--card); 
+    color: var(--text); 
+    font-size: 1rem;
+    outline: none; 
+    transition: 0.3s ease;
+    box-sizing: border-box;
+}
+
+.faq-search-container input:focus { 
+    border-color: var(--primary); 
+    box-shadow: 0 0 10px var(--shadow); 
+}
+
+.search-icon { 
+    position: absolute; 
+    left: 20px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: var(--muted); 
+}
+
+/* FAQ Accordion Styling */
+.faq-item {
+    background: var(--card); 
+    border-radius: 12px;
+    margin-bottom: 15px; 
+    border: 1px solid var(--border);
+    overflow: hidden; 
+    transition: 0.3s ease;
+    box-shadow: 0 2px 5px var(--shadow);
+}
+
+.faq-header {
+    padding: 18px 20px; 
+    cursor: pointer; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    gap: 10px;
+}
+
+.faq-header h3 { 
+    margin: 0; 
+    font-size: 1.15rem; 
+    color: var(--primary); 
+    flex: 1; 
+    line-height: 1.4;
+}
+
+[data-theme="dark"] .faq-header h3 {
+    color: #80cbc4;
+}
+
+.faq-header i { 
+    color: var(--accent); 
+    transition: 0.3s; 
+}
+
+.faq-content { 
+    padding: 0 20px 20px; 
+    display: none; 
+    border-top: 1px solid var(--border); 
+}
+
+.faq-item.active .faq-content { 
+    display: block; 
+}
+
+.faq-item.active .faq-header i { 
+    transform: rotate(180deg); 
+}
+
+/* Internal Elements Styling */
+.short-ans-box {
+    margin-top: 15px;
+}
+
+.main-ans {
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.arabic { 
+    font-size: 1.5rem; 
+    text-align: right; 
+    font-family: 'Amiri', serif; 
+    color: var(--primary); 
+    margin-bottom: 10px; 
+    line-height: 1.8;
+}
+
+[data-theme="dark"] .arabic {
+    color: #4db6ac;
+}
+
+.ref-tag { 
+    font-size: 0.85rem; 
+    color: var(--muted); 
+}
+
+/* Points List */
+.points-list { 
+    margin-top: 10px; 
+    padding-left: 20px; 
+}
+
+.points-list li { 
+    margin-bottom: 5px; 
+    color: var(--text); 
+    font-size: 0.95rem; 
+}
+
+/* Disclaimer Box (At the Bottom) */
 .disclaimer-box {
-    background: #fff3cd;
-    border-left: 5px solid #ffca28;
-    padding: 15px;
+    background: var(--warn-bg);
+    border-left: 5px solid var(--warn-border);
+    padding: 20px;
     border-radius: 8px;
-    margin-bottom: 30px;
-    color: #856404;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--warn-text);
     font-size: 0.95rem;
 }
-.disclaimer-header { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
 
-/* Search Box */
-.faq-search-container { position: relative; margin-bottom: 25px; }
-.faq-search-container input {
-    width: 100%; padding: 15px 15px 15px 50px;
-    border-radius: 30px; border: 2px solid var(--border);
-    background: var(--card); color: var(--text); font-size: 1rem;
-    outline: none; transition: 0.3s;
+.disclaimer-header { 
+    font-weight: bold; 
+    margin-bottom: 8px; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    font-size: 1.1rem;
 }
-.faq-search-container input:focus { border-color: var(--primary); box-shadow: 0 0 10px var(--shadow); }
-.search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted); }
 
-/* FAQ Accordion */
-.faq-item {
-    background: var(--card); border-radius: 12px;
-    margin-bottom: 15px; border: 1px solid var(--border);
-    overflow: hidden; transition: 0.3s;
-}
-.faq-header {
-    padding: 18px 20px; cursor: pointer; display: flex;
-    justify-content: space-between; align-items: center;
-}
-.faq-header h3 { margin: 0; font-size: 1.15rem; color: var(--primary); flex: 1; }
-.faq-header i { color: var(--accent); transition: 0.3s; }
-
-.faq-content { padding: 0 20px 20px; display: none; border-top: 1px solid var(--border); }
-.faq-item.active .faq-content { display: block; }
-.faq-item.active .faq-header i { transform: rotate(180deg); }
-
-/* Details & Hadith Styling */
-.short-ans { font-weight: bold; color: var(--accent); margin-bottom: 10px; display: block; }
-.details-text { margin-top: 10px; color: var(--text); }
-
-.hadith-section, .quran-section {
-    background: var(--bg); padding: 15px; border-radius: 8px;
-    margin-top: 15px; border-right: 4px solid var(--primary);
-}
-.arabic { font-size: 1.4rem; text-align: right; font-family: serif; color: var(--primary); margin-bottom: 10px; }
-.ref { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 5px; }
-
-.points-list { margin-top: 15px; padding-left: 20px; }
-.points-list li { margin-bottom: 5px; color: var(--text); font-size: 0.95rem; }
-
-.conclusion { margin-top: 15px; font-style: italic; border-top: 1px dashed var(--border); padding-top: 10px; display: block; }
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .se-container { 
+        padding-top: 85px; /* মোবাইলে হেডারের উচ্চতা অনুযায়ী সামান্য পরিবর্তন */
+    }
+    
+    .se-title { 
+        font-size: 1.6rem; 
+    }
+    
+    .faq-header h3 { 
+        font-size: 1.05rem; 
+    }
+    
+    .arabic {
+        font-size: 1.3rem;
+    }
+    }
+    
