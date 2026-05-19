@@ -27,7 +27,7 @@ body {
     padding: 0px;
 }
 
-.se-container { max-width: 900px; margin: 0 auto; padding-top: 100px; }
+.se-container { max-width: 900px; margin: 0 auto; padding-top: 100px; padding:10px; }
 .se-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 10px; }
 .se-lead { text-align: center; color: var(--muted); margin-bottom: 30px; }
 
