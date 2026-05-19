@@ -1,0 +1,88 @@
+:root {
+    --primary: #004d40;
+    --accent: #009688;
+    --bg: #f4f7f6;
+    --card: #ffffff;
+    --text: #2d3436;
+    --muted: #636e72;
+    --border: #dfe6e9;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg: #121212;
+    --card: #1e1e1e;
+    --text: #e0e0e0;
+    --muted: #b0b0b0;
+    --border: #333333;
+    --shadow: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'SolaimanLipi', Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.se-container { max-width: 900px; margin: 0 auto; }
+.se-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 10px; }
+.se-lead { text-align: center; color: var(--muted); margin-bottom: 30px; }
+
+/* Disclaimer Box */
+.disclaimer-box {
+    background: #fff3cd;
+    border-left: 5px solid #ffca28;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    color: #856404;
+    font-size: 0.95rem;
+}
+.disclaimer-header { font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 10px; }
+
+/* Search Box */
+.faq-search-container { position: relative; margin-bottom: 25px; }
+.faq-search-container input {
+    width: 100%; padding: 15px 15px 15px 50px;
+    border-radius: 30px; border: 2px solid var(--border);
+    background: var(--card); color: var(--text); font-size: 1rem;
+    outline: none; transition: 0.3s;
+}
+.faq-search-container input:focus { border-color: var(--primary); box-shadow: 0 0 10px var(--shadow); }
+.search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+
+/* FAQ Accordion */
+.faq-item {
+    background: var(--card); border-radius: 12px;
+    margin-bottom: 15px; border: 1px solid var(--border);
+    overflow: hidden; transition: 0.3s;
+}
+.faq-header {
+    padding: 18px 20px; cursor: pointer; display: flex;
+    justify-content: space-between; align-items: center;
+}
+.faq-header h3 { margin: 0; font-size: 1.15rem; color: var(--primary); flex: 1; }
+.faq-header i { color: var(--accent); transition: 0.3s; }
+
+.faq-content { padding: 0 20px 20px; display: none; border-top: 1px solid var(--border); }
+.faq-item.active .faq-content { display: block; }
+.faq-item.active .faq-header i { transform: rotate(180deg); }
+
+/* Details & Hadith Styling */
+.short-ans { font-weight: bold; color: var(--accent); margin-bottom: 10px; display: block; }
+.details-text { margin-top: 10px; color: var(--text); }
+
+.hadith-section, .quran-section {
+    background: var(--bg); padding: 15px; border-radius: 8px;
+    margin-top: 15px; border-right: 4px solid var(--primary);
+}
+.arabic { font-size: 1.4rem; text-align: right; font-family: serif; color: var(--primary); margin-bottom: 10px; }
+.ref { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 5px; }
+
+.points-list { margin-top: 15px; padding-left: 20px; }
+.points-list li { margin-bottom: 5px; color: var(--text); font-size: 0.95rem; }
+
+.conclusion { margin-top: 15px; font-style: italic; border-top: 1px dashed var(--border); padding-top: 10px; display: block; }
