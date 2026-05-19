@@ -3,10 +3,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('faqSearch');
     let allData = [];
 
-    // ১. JSON ডাটা লোড করা
+    // JSON ডাটা লোড করা
     fetch('../data/questions-sexual-ethics.json')
         .then(response => {
-            if (!response.ok) throw new Error('ফাইল খুঁজে পাওয়া যায়নি');
+            if (!response.ok) throw new Error('ফাইল পাওয়া যায়নি');
             return response.json();
         })
         .then(data => {
@@ -14,14 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
             renderFAQ(allData);
         })
         .catch(err => {
-            faqWrapper.innerHTML = `<p style="color:red; text-align:center; padding:20px;">ডাটা লোড হতে সমস্যা হয়েছে। আপনার JSON ফাইলের পাথ এবং ফরম্যাট চেক করুন।</p>`;
-            console.error("Fetch Error:", err);
+            faqWrapper.innerHTML = `<p style="color:red; text-align:center; padding:20px;">ডাটা লোড হতে সমস্যা হয়েছে।</p>`;
+            console.error(err);
         });
 
-    // ২. ডাটা রেন্ডার করার মেইন ফাংশন
     function renderFAQ(items) {
         if (items.length === 0) {
-            faqWrapper.innerHTML = '<p style="text-align:center; padding:30px; color:var(--muted);">দুঃখিত, আপনার সার্চের সাথে মিলে এমন কিছু পাওয়া যায়নি।</p>';
+            faqWrapper.innerHTML = '<p style="text-align:center; padding:20px;">দুঃখিত, কোনো ফলাফল পাওয়া যায়নি।</p>';
             return;
         }
 
@@ -32,73 +31,67 @@ document.addEventListener('DOMContentLoaded', () => {
                     <i class="fas fa-chevron-down"></i>
                 </div>
                 <div class="faq-content">
-                    <div class="short-ans-box" style="background: #e0f2f1; padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #009688;">
-                        <strong style="color: #004d40;">সংক্ষিপ্ত উত্তর:</strong> ${item.short_answer}
-                    </div>
-
-                    <div class="ans-body" style="margin-bottom: 15px; color: var(--text);">
-                        <p style="font-weight: 500; margin-bottom: 8px;">${item.answer}</p>
-                        ${item.details ? `<p style="color: #555; font-size: 0.95rem;">${item.details}</p>` : ''}
-                    </div>
+                    <span class="short-ans">সারসংক্ষেপ: ${item.short_answer}</span>
+                    <p class="details-text">${item.answer} ${item.details || ''}</p>
                     
-                    ${item.quran ? `
-                        <div class="ref-box quran" style="background: #f1f8e9; padding: 15px; border-radius: 8px; margin: 15px 0; border-right: 4px solid #558b2f;">
-                            <div class="arabic" style="font-size: 1.4rem; text-align: right; color: #2e7d32; font-family: 'Amiri', serif; margin-bottom: 10px;">${item.quran.arabic}</div>
-                            <div class="translation" style="font-size: 0.95rem;"><strong>অনুবাদ:</strong> ${item.quran.translation}</div>
-                            <span class="ref-tag" style="display: block; font-size: 0.8rem; color: #689f38; margin-top: 8px;">সূত্র: ${item.quran.reference}</span>
+                    ${item.hadith ? `
+                        <div class="hadith-section">
+                            <div class="arabic">${item.hadith.arabic}</div>
+                            ${item.hadith.transliteration ? `<div class="trans-text"><i>${item.hadith.transliteration}</i></div>` : ''}
+                            <div>${item.hadith.translation}</div>
+                            <span class="ref">সূত্র: ${item.hadith.reference}</span>
                         </div>
                     ` : ''}
 
-                    ${item.hadith ? `
-                        <div class="ref-box hadith" style="background: #e8f5e9; padding: 15px; border-radius: 8px; margin: 15px 0; border-right: 4px solid #004d40;">
-                            <div class="arabic" style="font-size: 1.4rem; text-align: right; color: #1b5e20; font-family: 'Amiri', serif; margin-bottom: 10px;">${item.hadith.arabic}</div>
-                            ${item.hadith.transliteration ? `<div class="transliteration" style="font-style: italic; font-size: 0.9rem; color: #444; margin-bottom: 5px;">${item.hadith.transliteration}</div>` : ''}
-                            <div class="translation" style="font-size: 0.95rem;"><strong>অনুবাদ:</strong> ${item.hadith.translation}</div>
-                            <span class="ref-tag" style="display: block; font-size: 0.8rem; color: #2e7d32; margin-top: 8px;">সূত্র: ${item.hadith.reference}</span>
+                    ${item.quran ? `
+                        <div class="quran-section">
+                            <div class="arabic">${item.quran.arabic}</div>
+                            <div>${item.quran.translation}</div>
+                            <span class="ref">সূত্র: ${item.quran.reference}</span>
                         </div>
+                    ` : ''}
+
+                    ${item.harmful_effects ? `
+                        <div class="points-label label-red">ক্ষতিকর দিকসমূহ:</div>
+                        <ul class="points-list harmful">
+                            ${item.harmful_effects.map(effect => `<li>${effect}</li>`).join('')}
+                        </ul>
                     ` : ''}
 
                     ${item.important_points ? `
-                        <div class="points-section" style="margin-top: 15px; padding: 10px; background: #fafafa; border-radius: 8px;">
-                            <strong style="color: #333;">মূল পয়েন্টসমূহ:</strong>
-                            <ul class="points-list" style="margin-top: 8px; padding-left: 20px; color: #444;">
-                                ${item.important_points.map(pt => `<li style="margin-bottom: 5px;">${pt}</li>`).join('')}
-                            </ul>
-                        </div>
+                        <div class="points-label">গুরুত্বপূর্ণ পয়েন্ট:</div>
+                        <ul class="points-list">
+                            ${item.important_points.map(pt => `<li>${pt}</li>`).join('')}
+                        </ul>
                     ` : ''}
 
                     ${item.solution ? `
-                        <div class="solution-section" style="margin-top: 15px;">
-                            <strong style="color: #d32f2f;">করণীয়/সমাধান:</strong>
-                            <ul style="margin-top: 5px; padding-left: 20px; color: #d32f2f;">
-                                ${item.solution.map(sol => `<li style="margin-bottom: 3px;">${sol}</li>`).join('')}
-                            </ul>
-                        </div>
+                        <div class="points-label label-blue">সমাধান ও করণীয়:</div>
+                        <ul class="points-list solution">
+                            ${item.solution.map(sol => `<li>${sol}</li>`).join('')}
+                        </ul>
                     ` : ''}
 
-                    ${item.conclusion ? `<div class="conclusion" style="margin-top: 15px; padding-top: 10px; border-top: 1px dashed #ccc; font-style: italic; color: #777; font-size: 0.9rem;">${item.conclusion}</div>` : ''}
+                    ${item.conclusion ? `<small class="conclusion">${item.conclusion}</small>` : ''}
                 </div>
             </div>
         `).join('');
 
-        // ৩. আকর্ডিয়ন ফাংশনালিটি (ক্লিক করলে ওপেন হওয়া)
+        // Accordion Action
         document.querySelectorAll('.faq-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const item = header.parentElement;
-                // অন্যগুলো বন্ধ করতে চাইলে নিচের লাইনটি ব্যবহার করুন (ঐচ্ছিক)
-                // document.querySelectorAll('.faq-item').forEach(i => { if(i !== item) i.classList.remove('active'); });
-                item.classList.toggle('active');
-            });
+            header.onclick = function() {
+                const parent = this.parentElement;
+                parent.classList.toggle('active');
+            };
         });
     }
 
-    // ৪. সার্চ ফিল্টার
+    // Search Filter
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         const filtered = allData.filter(item => 
             item.question.toLowerCase().includes(term) || 
-            item.short_answer.toLowerCase().includes(term) ||
-            item.answer.toLowerCase().includes(term)
+            item.short_answer.toLowerCase().includes(term)
         );
         renderFAQ(filtered);
     });
