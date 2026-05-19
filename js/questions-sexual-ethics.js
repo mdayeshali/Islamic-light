@@ -3,19 +3,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('faqSearch');
     let allData = [];
 
-    // JSON ডাটা লোড করা
-    fetch('data/questions-sexual-ethics.json')
-        .then(response => response.json())
+    // JSON ডাটা লোড করা (পাথটি আপনার ফোল্ডার স্ট্রাকচার অনুযায়ী চেক করুন)
+    // যদি HTML ফাইল রুটে থাকে তবে 'data/...' আর ফোল্ডারের ভেতরে থাকলে '../data/...'
+    fetch('../data/questions-sexual-ethics.json') 
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('নেটওয়ার্ক রেসপন্স ঠিক নেই');
+            }
+            return response.json();
+        })
         .then(data => {
             allData = data;
             renderFAQ(allData);
         })
         .catch(err => {
-            faqWrapper.innerHTML = `<p style="color:red; text-align:center;">ডাটা লোড করতে ব্যর্থ হয়েছে। ফোল্ডার পাথ চেক করুন।</p>`;
-            console.error(err);
+            faqWrapper.innerHTML = `<p style="color:red; text-align:center;">ডাটা লোড করতে ব্যর্থ হয়েছে। JSON ফাইলের পাথ ঠিক আছে কি না নিশ্চিত করুন।</p>`;
+            console.error("Error fetching JSON:", err);
         });
 
-    // ডাটা দেখানোর ফাংশন
     function renderFAQ(items) {
         if (items.length === 0) {
             faqWrapper.innerHTML = '<p style="text-align:center; padding:20px;">দুঃখিত, কোনো ফলাফল পাওয়া যায়নি।</p>';
@@ -35,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ${item.hadith ? `
                         <div class="hadith-section">
                             <div class="arabic">${item.hadith.arabic}</div>
+                            <div class="transliteration"><i>${item.hadith.transliteration || ''}</i></div>
                             <div>${item.hadith.translation}</div>
                             <span class="ref">সূত্র: ${item.hadith.reference}</span>
                         </div>
@@ -59,24 +65,21 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
 
-        // Accordion functionality
+        // Accordion Action
         document.querySelectorAll('.faq-header').forEach(header => {
-            header.addEventListener('click', () => {
-                const parent = header.parentElement;
-                parent.classList.toggle('active');
-            });
+            header.onclick = function() {
+                this.parentElement.classList.toggle('active');
+            };
         });
     }
 
-    // সার্চ ফিল্টার
+    // Search Filter
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         const filtered = allData.filter(item => 
             item.question.toLowerCase().includes(term) || 
-            item.answer.toLowerCase().includes(term) ||
             item.short_answer.toLowerCase().includes(term)
         );
         renderFAQ(filtered);
     });
 });
-                      
