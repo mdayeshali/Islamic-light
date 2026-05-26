@@ -58,37 +58,41 @@ body {
     margin-right: 5px;
 }
 
-/* Image Optimization (Updated for 1200x630px Image) */
+
+/* Image Optimization (কোনো স্ক্রিনেই ১ পিক্সেলও কাটবে না) */
 .article-image {
     width: 100%;
-    height: auto; /* ফিক্সড হাইট তুলে অটো করা হলো যাতে অনুপাত ঠিক থাকে */
-    aspect-ratio: 1200 / 630; /* ইমেজের আসল অনুপাত লক করে দেওয়া হলো */
-    object-fit: cover;
+    height: auto;
+    aspect-ratio: 1200 / 630; /* ইমেজের আসল রেশিও (১.৯১:১) লক করা হলো */
+    object-fit: contain; /* ছবি কখনো কাটবে না, সবসময় সম্পূর্ণ ছবি দেখাবে */
     border-radius: 10px;
     margin: 12px 0;
+    background-color: #f9f9f9; /* ইমেজের দুই পাশে যদি খালি জায়গা থাকে তবে সেখানে হালকা ব্যাকগ্রাউন্ড শো করবে */
     transition: transform 0.3s ease;
 }
 
-/* Hover Effect (আগের মতোই থাকবে) */
+/* Hover Effect */
 .article-box:hover .article-image {
-    transform: scale(1.03);
+    transform: scale(1.02);
 }
 
-/* মোবাইল স্ক্রিনের জন্য রেসপন্সিভ হাইট কন্ট্রোল */
-@media (max-width: 600px) { 
-    .article-image { 
-        aspect-ratio: 16 / 9; /* ছোট মোবাইলে ইমেজ যাতে বেশি চ্যাপ্টা না লাগে */
-        height: 180px; /* আপনার আগের সেট করা পারফেক্ট মোবাইল হাইট */
-    } 
+/* বড় স্ক্রিনের জন্য বিশেষ সমন্বয় (ল্যাপটপ ও কম্পিউটার) */
+@media screen and (min-width: 1024px) {
+    .article-image {
+        max-height: 400px; /* ল্যাপটপে যাতে ইমেজটি খুব বেশি লম্বা না দেখায় */
+        object-fit: contain; /* বড় স্ক্রিনেও ইমেজের উপর-নিচ কাটা সম্পূর্ণ বন্ধ করবে */
+        background-color: #f4f6f4; /* আপনার গ্রিন-হোয়াইট প্যালেটের সাথে ম্যাচিং হালকা ব্যাকগ্রাউন্ড */
+    }
 }
 
-/* ল্যাপটপ এবং বড় স্ক্রিনের জন্য (ইমেজ যাতে অতিরিক্ত বড় না হয়ে যায়) */
-@media (min-width: 1200px) { 
-    .article-image { 
-        max-width: 100%;
-        max-height: 380px; /* ল্যাপটপে ইমেজের স্ট্যান্ডার্ড লুকের জন্য সর্বোচ্চ সীমানা */
-    } 
+/* মোবাইল রোটেট বা ট্যাবলেটের জন্য */
+@media screen and (max-width: 900px) and (orientation: landscape) {
+    .article-image {
+        max-height: 280px; /* মোবাইল কাত (Rotate) করলে স্ক্রিন ছোট থাকে, তাই হাইট অ্যাডজাস্টমেন্ট */
+        object-fit: contain;
+    }
 }
+
 
 .article-summary {
     font-size: 16px;
