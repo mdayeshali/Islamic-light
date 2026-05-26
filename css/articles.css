@@ -58,22 +58,37 @@ body {
     margin-right: 5px;
 }
 
-/* Image Optimization */
+/* Image Optimization (Updated for 1200x630px Image) */
 .article-image {
     width: 100%;
-    height: 220px;
+    height: auto; /* ফিক্সড হাইট তুলে অটো করা হলো যাতে অনুপাত ঠিক থাকে */
+    aspect-ratio: 1200 / 630; /* ইমেজের আসল অনুপাত লক করে দেওয়া হলো */
     object-fit: cover;
     border-radius: 10px;
     margin: 12px 0;
     transition: transform 0.3s ease;
 }
 
+/* Hover Effect (আগের মতোই থাকবে) */
 .article-box:hover .article-image {
     transform: scale(1.03);
 }
 
-@media (min-width: 1200px) { .article-image { height: 260px; } }
-@media (max-width: 600px) { .article-image { height: 180px; } }
+/* মোবাইল স্ক্রিনের জন্য রেসপন্সিভ হাইট কন্ট্রোল */
+@media (max-width: 600px) { 
+    .article-image { 
+        aspect-ratio: 16 / 9; /* ছোট মোবাইলে ইমেজ যাতে বেশি চ্যাপ্টা না লাগে */
+        height: 180px; /* আপনার আগের সেট করা পারফেক্ট মোবাইল হাইট */
+    } 
+}
+
+/* ল্যাপটপ এবং বড় স্ক্রিনের জন্য (ইমেজ যাতে অতিরিক্ত বড় না হয়ে যায়) */
+@media (min-width: 1200px) { 
+    .article-image { 
+        max-width: 100%;
+        max-height: 380px; /* ল্যাপটপে ইমেজের স্ট্যান্ডার্ড লুকের জন্য সর্বোচ্চ সীমানা */
+    } 
+}
 
 .article-summary {
     font-size: 16px;
