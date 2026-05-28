@@ -1,94 +1,294 @@
+/* --- Root Variables & Theme --- */
 :root {
-    --primary: #004d40;
-    --accent: #009688;
-    --bg: #f4f7f6;
-    --card: #ffffff;
-    --text: #2d3436;
-    --muted: #636e72;
-    --border: #dfe6e9;
+    --primary: #004d40;       /* গাঢ় গ্রিন - হেডার ও প্রধান টেক্সট */
+    --accent: #009688;        /* টিল গ্রিন - অ্যাকসেন্ট ও আইকন */
+    --accent-light: #e0f2f1;  /* হালকা টিল - ব্যাকগ্রাউন্ড হাইলাইট */
+    --bg: #f7faf9;            /* অফ-হোয়াইট ব্যাকগ্রাউন্ড */
+    --card: #ffffff;          /* পিওর হোয়াইট কার্ড */
+    --text: #2d3436;          /* ডার্ক গ্রে - পড়ার সুবিধার জন্য */
+    --muted: #636e72;         /* হালকা গ্রে - সাবটাইটেল ও ফুটনোট */
+    --border: #e0e6e8;        /* বর্ডার কালার */
+    
+    /* অ্যালার্ট ও বিশেষ সেকশনের কালার */
+    --red-bg: #fff5f5;
+    --red-text: #c62828;
+    --red-border: #ffcdd2;
+    --blue-bg: #e3f2fd;
+    --blue-text: #1565c0;
+    --blue-border: #bbdefb;
 }
 
+/* --- Base Reset --- */
 body {
     background-color: var(--bg);
     color: var(--text);
-    font-family: 'SolaimanLipi', Arial, sans-serif;
-    margin: 0; padding: 0;
+    font-family: 'SolaimanLipi', 'Hind Siliguri', Arial, sans-serif;
+    margin: 0; 
+    padding: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
-/* ১০০ পিক্সেল টপ এবং ১০ পিক্সেল সাইড প্যাডিং */
+/* --- Container Style --- */
 .se-container { 
-    max-width: 900px; 
+    max-width: 850px; 
     margin: 0 auto; 
-    padding: 100px 10px 40px 10px; 
+    padding: 100px 16px 40px 16px; /* টপ ১০০ পিক্সেল ফিক্সড */
 }
 
-.se-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 10px; }
-.se-lead { text-align: center; color: var(--muted); margin-bottom: 30px; }
-
-/* Disclaimer Box at Bottom */
-.disclaimer-box {
-    background: #fff3cd;
-    border-left: 5px solid #ffca28;
-    padding: 15px;
-    border-radius: 8px;
-    margin-top: 40px;
-    color: #856404;
-    font-size: 0.95rem;
+.se-title { 
+    text-align: center; 
+    color: var(--primary); 
+    font-size: 2.2rem; 
+    margin-bottom: 8px;
+    font-weight: 700;
 }
 
-/* Search Box */
-.faq-search-container { position: relative; margin-bottom: 25px; }
+.se-lead { 
+    text-align: center; 
+    color: var(--muted); 
+    margin-bottom: 35px;
+    font-size: 1.1rem;
+}
+
+/* --- Search Box UI --- */
+.faq-search-container { 
+    position: relative; 
+    margin-bottom: 30px; 
+    box-shadow: 0 4px 12px rgba(0, 77, 64, 0.05);
+    border-radius: 30px;
+}
 .faq-search-container input {
-    width: 100%; padding: 15px 15px 15px 50px;
-    border-radius: 30px; border: 2px solid var(--border);
-    background: var(--card); color: var(--text); font-size: 1rem;
-    outline: none; box-sizing: border-box;
+    width: 100%; 
+    padding: 16px 16px 16px 55px;
+    border-radius: 30px; 
+    border: 2px solid var(--border);
+    background: var(--card); 
+    color: var(--text); 
+    font-size: 1.05rem;
+    outline: none; 
+    box-sizing: border-box; 
+    transition: all 0.3s ease;
 }
-.search-icon { position: absolute; left: 20px; top: 50%; transform: translateY(-50%); color: var(--muted); }
+.faq-search-container input:focus { 
+    border-color: var(--accent); 
+    box-shadow: 0 0 10px rgba(0, 150, 136, 0.15); 
+}
+.search-icon { 
+    position: absolute; 
+    left: 22px; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    color: var(--accent);
+    font-size: 1.1rem;
+}
 
-/* FAQ Item */
+/* --- FAQ Accordion Card --- */
 .faq-item {
-    background: var(--card); border-radius: 12px;
-    margin-bottom: 15px; border: 1px solid var(--border);
-    overflow: hidden; transition: 0.3s;
+    background: var(--card); 
+    border-radius: 12px;
+    margin-bottom: 16px; 
+    border: 1px solid var(--border);
+    overflow: hidden; 
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
 }
+.faq-item:hover {
+    box-shadow: 0 4px 15px rgba(0, 77, 64, 0.06);
+    border-color: var(--accent);
+}
+
+/* FAQ Header */
 .faq-header {
-    padding: 18px 20px; cursor: pointer; display: flex;
-    justify-content: space-between; align-items: center;
+    padding: 20px 24px; 
+    cursor: pointer; 
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background: var(--card);
+    user-select: none;
 }
-.faq-header h3 { margin: 0; font-size: 1.1rem; color: var(--primary); flex: 1; line-height: 1.4; }
-.faq-header i { color: var(--accent); transition: 0.3s; }
-
-.faq-content { padding: 0 20px 20px; display: none; border-top: 1px solid var(--border); }
-.faq-item.active .faq-content { display: block; }
-.faq-item.active .faq-header i { transform: rotate(180deg); }
-
-/* Internal Typography */
-.short-ans { font-weight: bold; color: var(--accent); margin-top: 15px; display: block; border-left: 3px solid var(--accent); padding-left: 10px; }
-.details-text { margin-top: 10px; color: var(--text); font-size: 0.98rem; }
-
-.hadith-section, .quran-section {
-    background: var(--bg); padding: 15px; border-radius: 8px;
-    margin-top: 15px; border-right: 4px solid var(--primary);
+.faq-header h3 { 
+    margin: 0; 
+    font-size: 1.2rem; 
+    color: var(--primary); 
+    flex: 1; 
+    line-height: 1.5;
+    font-weight: 600;
 }
-.arabic { font-size: 1.4rem; text-align: right; color: var(--primary); margin-bottom: 10px; font-family: serif; }
-.trans-text { font-size: 0.9rem; color: #555; margin-bottom: 5px; }
-.ref { font-size: 0.85rem; color: var(--muted); display: block; margin-top: 5px; }
+.faq-header i { 
+    color: var(--accent); 
+    transition: transform 0.3s ease; 
+    font-size: 1.1rem;
+    margin-left: 15px;
+}
 
-/* List Labels & Colors */
-.points-label { font-weight: bold; margin-top: 15px; color: var(--primary); font-size: 1rem; }
-.label-red { color: #c62828; }
-.label-blue { color: #1565c0; }
+/* FAQ Content Toggle */
+.faq-content { 
+    padding: 0 24px 24px 24px; 
+    display: none; 
+    border-top: 1px solid var(--border); 
+    background: #fafcfc; /* ভেতরের হালকা ব্যাকগ্রাউন্ড */
+}
+.faq-item.active .faq-content { 
+    display: block; 
+    animation: fadeIn 0.4s ease;
+}
+.faq-item.active .faq-header i { 
+    transform: rotate(180deg); 
+}
 
-.points-list { margin-top: 5px; padding-left: 20px; }
-.points-list li { margin-bottom: 5px; font-size: 0.95rem; }
-.points-list.harmful li { color: #d32f2f; }
-.points-list.solution li { color: #1976d2; }
+/* --- Typography & Elements inside Content --- */
+.short-ans { 
+    font-weight: bold; 
+    color: var(--accent); 
+    margin-top: 18px; 
+    display: block;
+    font-size: 1.05rem;
+    background: var(--accent-light);
+    padding: 8px 16px;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent);
+}
 
-.conclusion { margin-top: 15px; font-style: italic; border-top: 1px dashed var(--border); padding-top: 10px; display: block; color: var(--muted); }
+.details-text { 
+    margin-top: 16px; 
+    color: var(--text); 
+    line-height: 1.75;
+    font-size: 1rem;
+    text-align: justify;
+}
 
-/* Responsive Adjustments */
+/* --- Scriptural Sections (Quran & Hadith) --- */
+.quran-section, .hadith-section {
+    background: var(--card); 
+    padding: 18px 20px; 
+    border-radius: 8px;
+    margin-top: 18px; 
+    border-left: 4px solid var(--primary); /* বামে প্রফেশনাল বর্ডার */
+    border-right: 1px solid var(--border);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+}
+.arabic { 
+    font-size: 1.55rem; 
+    text-align: right; 
+    color: var(--primary); 
+    margin-bottom: 12px; 
+    font-family: 'me_quran', 'Traditional Arabic', Georgia, serif; 
+    line-height: 2; 
+    direction: rtl;
+}
+.trans-text { 
+    font-size: 0.95rem; 
+    color: #4a5568; 
+    margin-bottom: 8px; 
+    font-style: italic;
+    background: #f1f5f9;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: inline-block;
+}
+.ref { 
+    font-size: 0.85rem; 
+    color: var(--muted); 
+    display: block; 
+    margin-top: 10px; 
+    font-weight: 600;
+}
+
+/* --- Lists Headers & Layout --- */
+.points-label { 
+    font-weight: 700; 
+    margin-top: 22px; 
+    font-size: 1.05rem; 
+    padding-bottom: 6px; 
+    margin-bottom: 12px; 
+    display: flex;
+    align-items: center;
+    color: var(--primary);
+}
+.points-label::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 16px;
+    background: currentColor;
+    margin-right: 8px;
+    border-radius: 2px;
+}
+.label-red { color: var(--red-text); }
+.label-blue { color: var(--blue-text); }
+
+/* Points Lists Styling */
+.points-list { 
+    margin: 5px 0 15px 0; 
+    padding-left: 20px; 
+    list-style-type: none; 
+}
+.points-list li { 
+    margin-bottom: 8px; 
+    font-size: 0.98rem; 
+    position: relative;
+    padding-left: 15px;
+}
+/* কাস্টম বুলেট পয়েন্ট */
+.points-list li::before {
+    content: "•";
+    color: var(--accent);
+    font-weight: bold;
+    font-size: 1.2rem;
+    position: absolute;
+    left: -5px;
+    top: -2px;
+}
+
+/* ক্ষতিকর/নিষিদ্ধ কাজগুলোর জন্য লাল বক্স */
+.points-list.harmful { 
+    background: var(--red-bg); 
+    padding: 16px 20px 16px 35px; 
+    border-radius: 8px; 
+    color: var(--red-text);
+    border: 1px solid var(--red-border);
+}
+.points-list.harmful li::before { color: var(--red-text); }
+
+/* সমাধান/পদক্ষেপের জন্য নীল বক্স */
+.points-list.solution { 
+    background: var(--blue-bg); 
+    padding: 16px 20px 16px 35px; 
+    border-radius: 8px; 
+    color: var(--blue-text);
+    border: 1px solid var(--blue-border);
+}
+.points-list.solution li::before { color: var(--blue-text); }
+
+/* --- Conclusion --- */
+.conclusion { 
+    margin-top: 24px; 
+    font-style: italic; 
+    border-top: 1px dashed var(--border); 
+    padding-top: 14px; 
+    display: block; 
+    color: var(--muted); 
+    font-size: 0.92rem; 
+    line-height: 1.5;
+}
+
+/* --- CSS Animation --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Responsive Media Queries --- */
 @media (max-width: 768px) {
-    .se-container { padding-top: 85px; }
-    .se-title { font-size: 1.6rem; }
+    .se-container { padding-top: 90px; padding-left: 12px; padding-right: 12px; }
+    .se-title { font-size: 1.75rem; }
+    .faq-header { padding: 16px 18px; }
+    .faq-content { padding: 0 18px 18px 18px; }
+    .faq-header h3 { font-size: 1.08rem; }
+    .arabic { font-size: 1.35rem; }
+    .points-list.harmful, .points-list.solution { padding-left: 25px; }
 }
