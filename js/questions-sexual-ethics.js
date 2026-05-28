@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // JSON ডাটা লোড করা
     fetch('../data/questions-sexual-ethics.json')
         .then(response => {
-            if (!response.ok) throw new Error('ফাইল পাওয়া যায়নি');
+            if (!response.ok) throw new Error('JSON ফাইল পাওয়া যায়নি। পাথ ঠিক আছে কি না নিশ্চিত করুন।');
             return response.json();
         })
         .then(data => {
@@ -18,80 +18,135 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(err);
         });
 
+    // সাহায্যকারী ফাংশন: রেফারেন্স টেক্সট বা অ্যারে হলে তা হ্যান্ডেল করার জন্য
+    function formatReference(ref) {
+        if (!ref) return '';
+        if (Array.isArray(ref)) {
+            return ref.join(', ');
+        }
+        return ref;
+    }
+
+    // ডাটা রেন্ডার করার মূল ফাংশন (২১টি আইটেমের কম্বিনেশন)
     function renderFAQ(items) {
         if (items.length === 0) {
             faqWrapper.innerHTML = '<p style="text-align:center; padding:20px;">দুঃখিত, কোনো ফলাফল পাওয়া যায়নি।</p>';
             return;
         }
 
-        faqWrapper.innerHTML = items.map(item => `
-            <div class="faq-item">
-                <div class="faq-header">
-                    <h3>${item.id}. ${item.question}</h3>
-                    <i class="fas fa-chevron-down"></i>
+        faqWrapper.innerHTML = items.map(item => {
+            // ১-৫. আইডি, প্রশ্ন, উত্তর এবং বিস্তারিত
+            const id = item.id || '';
+            const question = item.question || '';
+            const shortAnswer = item.short_answer || '';
+            const answer = item.answer || '';
+            const details = item.details || '';
+            const conclusion = item.conclusion || '';
+            const medicalNote = item.medical_note || '';
+
+            // ৬-৯. কোরআন ব্লকের প্রসেসিং (সিঙ্গেল অবজেক্ট বা একাধিক অবজেক্টের অ্যারে)
+            let quranHtml = '';
+            if (item.quran) {
+                const quranItems = Array.isArray(item.quran) ? item.quran : [item.quran];
+                quranHtml = quranItems.map(q => `
+                    <div class="quran-section">
+                        ${q.arabic ? `<div class="arabic">${q.arabic}</div>` : ''}
+                        ${q.translation ? `<div>${q.translation}</div>` : ''}
+                        ${q.reference ? `<span class="ref">সূত্র: ${formatReference(q.reference)}</span>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            // ১০-১৩. হাদিস ব্লকের প্রসেসিং (সিঙ্গেল অবজেক্ট বা একাধিক অবজেক্টের অ্যারে)
+            let hadithHtml = '';
+            if (item.hadith) {
+                const hadithItems = Array.isArray(item.hadith) ? item.hadith : [item.hadith];
+                hadithHtml = hadithItems.map(h => `
+                    <div class="hadith-section">
+                        ${h.arabic ? `<div class="arabic">${h.arabic}</div>` : ''}
+                        ${h.transliteration ? `<div class="trans-text"><i>${h.transliteration}</i></div>` : ''}
+                        ${h.text ? `<div class="details-text" style="margin-top:0;">${h.text}</div>` : ''}
+                        ${h.translation ? `<div>${h.translation}</div>` : ''}
+                        ${h.reference ? `<span class="ref">সূত্র: ${formatReference(h.reference)}</span>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            // ১৪-২১. বিভিন্ন প্রকার লিস্ট বা তালিকার প্রসেসিং
+            const listsHtml = [
+                { data: item.harmful_effects, label: 'ক্ষতিকর দিকসমূহ:', class: 'harmful label-red' },
+                { data: item.forbidden_actions, label: 'নিষিদ্ধ কাজসমূহ:', class: 'harmful label-red' },
+                { data: item.why_discouraged, label: 'অনুৎসাহিত করার কারণসমূহ:', class: 'harmful label-red' },
+                { data: item.wrong_sources, label: 'ভুল বা বর্জনীয় উৎসসমূহ:', class: 'harmful label-red' },
+                { data: item.important_points, label: 'গুরুত্বপূর্ণ পয়েন্ট:', class: '' },
+                { data: item.important_topics, label: 'গুরুত্বপূর্ণ বিষয়সমূহ:', class: '' },
+                { data: item.solution, label: 'সমাধান ও করণীয়:', class: 'solution label-blue' },
+                { data: item.practical_steps, label: 'বাস্তবমুখী পদক্ষেপ বা আমল:', class: 'solution label-blue' },
+                { data: item.correct_sources, label: 'সঠিক ও নির্ভরযোগ্য উৎসসমূহ:', class: 'solution label-blue' },
+                { data: item.islamic_guidance, label: 'ইসলামিক নির্দেশনা বা পরামর্শ:', class: 'solution label-blue' }
+            ].map(list => {
+                if (list.data && Array.isArray(list.data) && list.data.length > 0) {
+                    const cleanClass = list.class.split(' ')[0] || '';
+                    const labelClass = list.class || '';
+                    return `
+                        <div class="points-label ${labelClass}">${list.label}</div>
+                        <ul class="points-list ${cleanClass}">
+                            ${list.data.map(li => `<li>${li}</li>`).join('')}
+                        </ul>
+                    `;
+                }
+                return '';
+            }).join('');
+
+            // প্রতিটি FAQ আইটেমের চূড়ান্ত HTML স্ট্রাকচার জেনারেশন
+            return `
+                <div class="faq-item">
+                    <div class="faq-header">
+                        <h3>${id}. ${question}</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-content">
+                        ${shortAnswer ? `<span class="short-ans">সারসংক্ষেপ: ${shortAnswer}</span>` : ''}
+                        
+                        ${answer || details ? `
+                            <p class="details-text">
+                                ${answer ? `<strong>উত্তর:</strong> ${answer}` : ''}
+                                ${details ? `<br><br>${details}` : ''}
+                            </p>
+                        ` : ''}
+                        
+                        ${quranHtml}
+                        ${hadithHtml}
+                        ${listsHtml}
+
+                        ${medicalNote ? `
+                            <div class="hadith-section" style="border-right-color: #009688; background: #f0fdfa;">
+                                <strong style="color: #00796b;">চিকিৎসাবিজ্ঞান ও স্বাস্থ্যগত তথ্য:</strong>
+                                <p class="details-text" style="margin-top: 5px;">${medicalNote}</p>
+                            </div>
+                        ` : ''}
+
+                        ${conclusion ? `<small class="conclusion">${conclusion}</small>` : ''}
+                    </div>
                 </div>
-                <div class="faq-content">
-                    <span class="short-ans">সারসংক্ষেপ: ${item.short_answer}</span>
-                    <p class="details-text">${item.answer} ${item.details || ''}</p>
-                    
-                    ${item.hadith ? `
-                        <div class="hadith-section">
-                            <div class="arabic">${item.hadith.arabic}</div>
-                            ${item.hadith.transliteration ? `<div class="trans-text"><i>${item.hadith.transliteration}</i></div>` : ''}
-                            <div>${item.hadith.translation}</div>
-                            <span class="ref">সূত্র: ${item.hadith.reference}</span>
-                        </div>
-                    ` : ''}
+            `;
+        }).join('');
 
-                    ${item.quran ? `
-                        <div class="quran-section">
-                            <div class="arabic">${item.quran.arabic}</div>
-                            <div>${item.quran.translation}</div>
-                            <span class="ref">সূত্র: ${item.quran.reference}</span>
-                        </div>
-                    ` : ''}
-
-                    ${item.harmful_effects ? `
-                        <div class="points-label label-red">ক্ষতিকর দিকসমূহ:</div>
-                        <ul class="points-list harmful">
-                            ${item.harmful_effects.map(effect => `<li>${effect}</li>`).join('')}
-                        </ul>
-                    ` : ''}
-
-                    ${item.important_points ? `
-                        <div class="points-label">গুরুত্বপূর্ণ পয়েন্ট:</div>
-                        <ul class="points-list">
-                            ${item.important_points.map(pt => `<li>${pt}</li>`).join('')}
-                        </ul>
-                    ` : ''}
-
-                    ${item.solution ? `
-                        <div class="points-label label-blue">সমাধান ও করণীয়:</div>
-                        <ul class="points-list solution">
-                            ${item.solution.map(sol => `<li>${sol}</li>`).join('')}
-                        </ul>
-                    ` : ''}
-
-                    ${item.conclusion ? `<small class="conclusion">${item.conclusion}</small>` : ''}
-                </div>
-            </div>
-        `).join('');
-
-        // Accordion Action
+        // আকর্ডিয়ন চালুর লজিক
         document.querySelectorAll('.faq-header').forEach(header => {
             header.onclick = function() {
-                const parent = this.parentElement;
-                parent.classList.toggle('active');
+                this.parentElement.classList.toggle('active');
             };
         });
     }
 
-    // Search Filter
+    // সার্চিং ফিচার (প্রশ্ন, সারসংক্ষেপ ও মূল উত্তরের ভেতর খুঁজবে)
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         const filtered = allData.filter(item => 
-            item.question.toLowerCase().includes(term) || 
-            item.short_answer.toLowerCase().includes(term)
+            (item.question && item.question.toLowerCase().includes(term)) || 
+            (item.short_answer && item.short_answer.toLowerCase().includes(term)) ||
+            (item.answer && item.answer.toLowerCase().includes(term))
         );
         renderFAQ(filtered);
     });
