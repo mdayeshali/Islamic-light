@@ -183,3 +183,55 @@ if (suggestionsBox) {
         })
         .catch(err => console.error("Suggestions error:", err));
                     }
+
+
+// সার্চ বক্সের উপাদানগুলো সিলেক্ট করা
+const searchInput = document.getElementById('article-search');
+const clearBtn = document.getElementById('clear-search');
+
+// ইউজার ইনপুট দিলে যা ঘটবে (Real-time Search)
+if (searchInput) {
+    searchInput.addEventListener('input', function() {
+        const query = searchInput.value.toLowerCase().trim();
+
+        // ক্লিয়ার বাটন (X) দেখানো বা লুকানো
+        if (query.length > 0) {
+            clearBtn.style.display = 'block';
+        } else {
+            clearBtn.style.display = 'none';
+        }
+
+        // আপনার ওয়েবসাইটের আর্টিকেল কার্ডগুলো সিলেক্ট করা
+        // (ধরে নেওয়া হয়েছে আপনার প্রতিটি আর্টিকেল কার্ডের ক্লাস '.article-box')
+        const articleBoxes = document.querySelectorAll('.article-box');
+
+        articleBoxes.forEach(box => {
+            // আর্টিকেলের শিরোনাম এবং সামারি রিড করা
+            const title = box.querySelector('.article-heading')?.textContent.toLowerCase() || '';
+            const summary = box.querySelector('.article-summary')?.textContent.toLowerCase() || '';
+
+            // ইউজার যা সার্চ করছে তা শিরোনাম বা সামারিতে আছে কিনা চেক করা
+            if (title.includes(query) || summary.includes(query)) {
+                box.style.display = 'block'; // মিলে গেলে দেখাবে
+            } else {
+                box.style.display = 'none';  // না মিললে লুকিয়ে ফেলবে
+            }
+        });
+    });
+}
+
+// ক্লিয়ার (X) বাটনে ক্লিক করলে সার্চ বক্স খালি করা
+if (clearBtn) {
+    clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        searchInput.focus();
+
+        // সব আর্টিকেল আবার ফিরিয়ে আনা
+        const articleBoxes = document.querySelectorAll('.article-box');
+        articleBoxes.forEach(box => {
+            box.style.display = 'block';
+        });
+    });
+}
+
