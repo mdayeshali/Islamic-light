@@ -14,6 +14,20 @@
 <!-- Header -->
 <div id="header"></div>
 
+<!-- Search Section -->
+<div class="search-section">
+    <div class="search-wrap">
+        <form action="" method="GET" class="search-form" onsubmit="return false;">
+            <div class="search-input-group">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="article-search" placeholder="পছন্দের আর্টিকেলটি খুঁজুন..." autocomplete="off">
+                <button type="button" id="clear-search" class="clear-btn" style="display: none;">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
 
 <!-- Article Feed -->
 <div class="article-feed">
@@ -23,10 +37,8 @@
 
 </div>
 
-
 <!-- Footer -->
 <div id="footer"></div>
-
 
 <!-- Scripts -->
 <script src="/js/articles.js"></script>
