@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const conclusion = item.conclusion || '';
             const medicalNote = item.medical_note || '';
 
-            // ৬-৯. কোরআন ব্লকের প্রসেসিং (সিঙ্গেল অবজেক্ট বা একাধিক অবজেক্টের অ্যারে)
+            // ৬-৯. কোরআন ব্লকের প্রসেসিং
             let quranHtml = '';
             if (item.quran) {
                 const quranItems = Array.isArray(item.quran) ? item.quran : [item.quran];
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `).join('');
             }
 
-            // ১০-১৩. হাদিস ব্লকের প্রসেসিং (সিঙ্গেল অবজেক্ট বা একাধিক অবজেক্টের অ্যারে)
+            // ১০-১৩. হাদিস ব্লকের প্রসেসিং
             let hadithHtml = '';
             if (item.hadith) {
                 const hadithItems = Array.isArray(item.hadith) ? item.hadith : [item.hadith];
@@ -68,6 +68,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         ${h.text ? `<div class="details-text" style="margin-top:0;">${h.text}</div>` : ''}
                         ${h.translation ? `<div>${h.translation}</div>` : ''}
                         ${h.reference ? `<span class="ref">সূত্র: ${formatReference(h.reference)}</span>` : ''}
+                    </div>
+                `).join('');
+            }
+
+            // --- নতুন যুক্ত করা দোয়া ব্লকের প্রসেসিং ---
+            let duaHtml = '';
+            if (item.dua) {
+                const duaItems = Array.isArray(item.dua) ? item.dua : [item.dua];
+                duaHtml = duaItems.map(d => `
+                    <div class="se-dua" style="margin: 20px 0; background: #f0fdfa; border: 1px dashed #009688; padding: 20px; border-radius: 10px; text-align: center;">
+                        ${d.arabic ? `<div class="arabic" style="font-size: 1.5rem; color: #004d40; margin-bottom: 10px; line-height: 1.8; direction: rtl;">${d.arabic}</div>` : ''}
+                        ${d.transliteration ? `<div class="transliteration" style="color: #475569; font-style: italic; margin-bottom: 6px;"><strong>উচ্চারণ:</strong> ${d.transliteration}</div>` : ''}
+                        ${d.translation ? `<div class="meaning" style="color: #004d40;"><strong>অর্থ:</strong> ${d.translation}</div>` : ''}
                     </div>
                 `).join('');
             }
@@ -117,6 +130,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         ${quranHtml}
                         ${hadithHtml}
+                        
+                        ${duaHtml} <!-- দোয়া রেন্ডার করার ট্যাগ -->
+                        
                         ${listsHtml}
 
                         ${medicalNote ? `
@@ -140,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // সার্চিং ফিচার (প্রশ্ন, সারসংক্ষেপ ও মূল উত্তরের ভেতর খুঁজবে)
+    // সার্চিং ফিচার
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase();
         const filtered = allData.filter(item => 
@@ -151,3 +167,4 @@ document.addEventListener('DOMContentLoaded', () => {
         renderFAQ(filtered);
     });
 });
+                 
