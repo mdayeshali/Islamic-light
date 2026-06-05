@@ -33,7 +33,7 @@ body {
 .se-container { 
     max-width: 850px; 
     margin: 0 auto; 
-    padding: 100px 16px 40px 16px; /* টপ ১০০ পিক্সেল ফিক্সড */
+    padding: 90px 16px 40px 16px; /* টপ ১০০ পিক্সেল ফিক্সড */
 }
 
 .se-title { 
