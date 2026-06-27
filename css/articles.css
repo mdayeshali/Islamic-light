@@ -376,3 +376,77 @@ body.dark #more-read-container h3 { color: #98ffa7; border-bottom-color: #4caf50
     }
 }
 
+/* ==========================================
+   Blockquote & FAQ Custom Styling
+   ========================================== */
+
+/* Blockquote (হাদিস ও কুরআনের আয়াতের জন্য) */
+blockquote {
+    background-color: #f4f9f6; /* হালকা সবুজ আভা */
+    border-left: 5px solid #1e7e34; /* গাঢ় সবুজ বর্ডার */
+    margin: 1.5rem 0;
+    padding: 1.2rem 1.5rem;
+    font-style: italic;
+    color: #2c3e50;
+    border-radius: 0 8px 8px 0;
+    line-height: 1.8;
+    position: relative;
+}
+
+blockquote br {
+    display: block;
+    margin-top: 0.5rem;
+    content: "";
+}
+
+/* হাদিসের রেফারেন্সের টেক্সট স্টাইল */
+blockquote cite, 
+blockquote::after {
+    font-style: normal;
+    font-weight: bold;
+    color: #1e7e34;
+}
+
+/* FAQ Container & Items */
+.faq-item {
+    background: #ffffff;
+    border: 1px solid #e2ebd5;
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+
+/* হোভার করলে হালকা ইফেক্ট */
+.faq-item:hover {
+    border-color: #1e7e34;
+    box-shadow: 0 4px 12px rgba(30, 126, 52, 0.08);
+}
+
+/* FAQ প্রশ্ন (H4) */
+.faq-item h4 {
+    color: #1e7e34; /* সবুজ কালার */
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* প্রশ্নের শুরুতে একটি সুন্দর সবুজ ডট বা আইকন ইফেক্ট (ঐচ্ছিক) */
+.faq-item h4::before {
+    content: "❓";
+    font-size: 1rem;
+}
+
+/* FAQ উত্তর (P) */
+.faq-item p {
+    color: #4a5568;
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+
