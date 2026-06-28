@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ইসলামিক প্রশ্ন-উত্তর অনুসন্ধান</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f5;
+            color: #333;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .search-container {
+            width: 100%;
+            max-width: 650px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c6b4f;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: 2px solid #2c6b4f;
+            border-radius: 30px;
+            outline: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            box-shadow: 0 4px 12px rgba(44, 107, 79, 0.2);
+        }
+
+        .results-container {
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .qa-card {
+            background: #ffffff;
+            border-left: 5px solid #2c6b4f;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .question {
+            font-weight: bold;
+            color: #2c6b4f;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .answer {
+            color: #555;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .no-result {
+            text-align: center;
+            color: #888;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+  <link rel="stylesheet" href="/css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  
+</head>
+<body>
+  <div id="header"></div>
+
+<div class="search-container">
+    <h2>ইসলামিক জিজ্ঞাসা ও জবাব</h2>
+    <input type="text" id="searchInput" class="search-box" placeholder="আপনার প্রশ্নটি এখানে সার্চ করুন... (যেমন: ওযু, সূরা, স্তম্ভ)">
+    
+    <div id="results" class="results-container"></div>
+</div>
+<div id="footer"></div>
+  
+<script>
+    let qaData = [];
+
+    // JSON ফাইল থেকে ডেটা লোড করা
+    async function loadQAData() {
+        try {
+            // আপনার json ফাইলের নাম ও পাথ ঠিক রাখবেন
+            const response = await fetch('questions.json'); 
+            qaData = await response.json();
+        } catch (error) {
+            console.error("ডেটা লোড করতে সমস্যা হয়েছে:", error);
+        }
+    }
+
+    const searchInput = document.getElementById('searchInput');
+    const resultsContainer = document.getElementById('results');
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase();
+
+        // সার্চ বক্স ফাকা থাকলে স্ক্রিন সম্পূর্ণ খালি দেখাবে
+        if (query === '') {
+            resultsContainer.innerHTML = '';
+            return;
+        }
+
+        // প্রশ্ন এবং উত্তরের মধ্যে সার্চ কুয়েরি মেলানো
+        const filteredData = qaData.filter(item => 
+            item.question.toLowerCase().includes(query) || 
+            item.answer.toLowerCase().includes(query)
+        );
+
+        // রেজাল্ট রেন্ডার করা
+        displayResults(filteredData);
+    });
+
+    function displayResults(data) {
+        if (data.length === 0) {
+            resultsContainer.innerHTML = '<p class="no-result">কোনো ফলাফল পাওয়া যায়নি। সঠিক শব্দ দিয়ে আবার চেষ্টা করুন।</p>';
+            return;
+        }
+
+        resultsContainer.innerHTML = data.map(item => `
+            <div class="qa-card">
+                <div class="question">প্রশ্ন: ${item.question}</div>
+                <div class="answer">উত্তর: ${item.answer}</div>
+            </div>
+        `).join('');
+    }
+
+    // পেজ লোড হওয়ার সাথে সাথে JSON ডেটা ফেচ হবে
+    window.onload = loadQAData;
+</script>
+<script src="/js/script.js"></script>
+  
+</body>
+</html>
