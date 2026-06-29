@@ -19,7 +19,7 @@ body {
 .search-container {
     width: 100%;
     max-width: 650px;
-    margin: 50px auto; /* auto ব্যবহারের কারণে এটি স্ক্রিনের মাঝখানে থাকবে */
+    margin: 120px auto 50px auto; /* auto ব্যবহারের কারণে এটি স্ক্রিনের মাঝখানে থাকবে */
     text-align: center;
     padding: 0 20px; /* মোবাইল স্ক্রিনের দুইপাশে সামান্য জায়গার জন্য */
 }
