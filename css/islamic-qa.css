@@ -5,20 +5,24 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ১. বডি লেআউট ঠিক করা */
 body {
     background-color: #f4f7f5;
     color: #333;
-    padding: 20px;
-    display: ;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
+    display: block; /* এখানে flex এর বদলে block হবে */
 }
 
+/* ২. সার্চ কন্টেইনারকে স্ক্রিনের মাঝখানে আনা */
 .search-container {
     width: 100%;
     max-width: 650px;
-    margin-top: 50px;
+    margin: 50px auto; /* auto ব্যবহারের কারণে এটি স্ক্রিনের মাঝখানে থাকবে */
     text-align: center;
+    padding: 0 20px; /* মোবাইল স্ক্রিনের দুইপাশে সামান্য জায়গার জন্য */
 }
+
 .page-description {
     color: #666;
     font-size: 15px;
