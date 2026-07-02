@@ -79,6 +79,7 @@ h1 {
     line-height: 1.6;
     font-size: 16px;
     margin-bottom: 10px;
+    white-space: pre-line; /* এই লাইনটি \n কে আসল লাইনে রূপান্তর করবে */
 }
 
 .meta-info {
