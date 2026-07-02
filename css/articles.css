@@ -436,11 +436,7 @@ blockquote::after {
     gap: 8px;
 }
 
-/* প্রশ্নের শুরুতে একটি সুন্দর সবুজ ডট বা আইকন ইফেক্ট (ঐচ্ছিক) */
-.faq-item h4::before {
-    content: "❓";
-    font-size: 1rem;
-}
+
 
 /* FAQ উত্তর (P) */
 .faq-item p {
