@@ -450,3 +450,108 @@ blockquote::after {
     font-size: 1rem;
 }
 
+/* ===== Ayatul Quran Box ===== */
+.ayatul-quran-box{
+    margin:25px 0;
+    background:#ffffff;
+    border:1px solid #d8e8d8;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+/* Section */
+.ayatul-quran-box > div{
+    padding:20px;
+    border-bottom:1px solid #e9f2e9;
+}
+
+.ayatul-quran-box > div:last-child{
+    border-bottom:none;
+}
+
+/* Heading */
+.ayatul-quran-box h4{
+    margin:0 0 15px;
+    padding:10px 15px;
+    background:#004d40;
+    color:#fff;
+    font-size:18px;
+    font-weight:700;
+    border-radius:8px;
+}
+
+/* Arabic */
+.arabic-text{
+    font-family:"Amiri","Scheherazade New","Traditional Arabic",serif;
+    font-size:34px;
+    line-height:2.2;
+    text-align:right;
+    direction:rtl;
+    color:#111;
+}
+
+/* Transliteration */
+.transliteration-text{
+    font-size:19px;
+    line-height:2;
+    color:#333;
+    text-align:justify;
+    font-weight:500;
+}
+
+/* Translation */
+.translation-text{
+    font-size:18px;
+    line-height:2;
+    color:#222;
+    text-align:justify;
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .ayatul-quran-box > div{
+        padding:15px;
+    }
+
+    .ayatul-quran-box h4{
+        font-size:17px;
+        padding:9px 12px;
+    }
+
+    .arabic-text{
+        font-size:28px;
+        line-height:2;
+    }
+
+    .transliteration-text,
+    .translation-text{
+        font-size:17px;
+        line-height:1.9;
+    }
+}
+
+/* Dark Mode */
+body.dark-mode .ayatul-quran-box{
+    background:#1d1d1d;
+    border-color:#2f4f4f;
+}
+
+body.dark-mode .ayatul-quran-box > div{
+    border-color:#333;
+}
+
+body.dark-mode .arabic-text{
+    color:#f5f5f5;
+}
+
+body.dark-mode .transliteration-text,
+body.dark-mode .translation-text{
+    color:#ddd;
+}
+
+body.dark-mode .ayatul-quran-box h4{
+    background:#00695c;
+}
+
