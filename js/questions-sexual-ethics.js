@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     async function loadFAQData() {
         try {
             // ক্যাশিং এবং গুগল বটের দ্রুত রেন্ডারিংয়ের জন্য
-            const response = await fetch('../data/questions-sexual-ethics.json', {
+            const response = await fetch('/data/questions-sexual-ethics.json', {
                 cache: 'no-cache' // নিশ্চিত করবে যেন একদম লেটেস্ট ডাটা আসে
             });
             
