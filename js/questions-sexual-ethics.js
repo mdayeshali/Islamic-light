@@ -1,25 +1,7 @@
-document.addEventListener('DOMContentLoaded', async () => {
+document.addEventListener('DOMContentLoaded', () => {
     const faqWrapper = document.getElementById('faq-wrapper');
     const searchInput = document.getElementById('faqSearch');
     let allData = [];
-
-    // প্রফেশনাল ও দ্রুত ডাটা লোড করার জন্য async/await ব্যবহার
-    async function loadFAQData() {
-        try {
-            // ক্যাশিং এবং গুগল বটের দ্রুত রেন্ডারিংয়ের জন্য
-            const response = await fetch('/data/questions-sexual-ethics.json', {
-                cache: 'no-cache' // নিশ্চিত করবে যেন একদম লেটেস্ট ডাটা আসে
-            });
-            
-            if (!response.ok) throw new Error('JSON ফাইল পাওয়া যায়নি। পাথ ঠিক আছে কি না নিশ্চিত করুন।');
-            
-            allData = await response.json();
-            renderFAQ(allData);
-        } catch (err) {
-            faqWrapper.innerHTML = `<p style="color:red; text-align:center; padding:20px;">ডাটা লোড হতে সমস্যা হয়েছে। অনুগ্রহ করে পেজটি রিফ্রেশ করুন।</p>`;
-            console.error('Error loading FAQ data:', err);
-        }
-    }
 
     // সাহায্যকারী ফাংশন: রেফারেন্স টেক্সট বা অ্যারে হলে তা হ্যান্ডেল করার জন্য
     function formatReference(ref) {
@@ -30,14 +12,13 @@ document.addEventListener('DOMContentLoaded', async () => {
         return ref;
     }
 
-    // ডাটা রেন্ডার করার মূল ফাংশন (২১টি আইটেমের কম্বিনেশন)
+    // ডাটা রেন্ডার করার মূল ফাংশন
     function renderFAQ(items) {
-        if (items.length === 0) {
+        if (!items || items.length === 0) {
             faqWrapper.innerHTML = '<p style="text-align:center; padding:20px;">দুঃখিত, কোনো ফলাফল পাওয়া যায়নি।</p>';
             return;
         }
 
-        // map().join() মেথডটি গুগল বটের জন্য খুবই দ্রুত HTML জেনারেট করে
         faqWrapper.innerHTML = items.map(item => {
             const id = item.id || '';
             const question = item.question || '';
@@ -114,7 +95,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 return '';
             }).join('');
 
-            // প্রতিটি FAQ আইটেমের চূড়ান্ত HTML স্ট্রাকচার জেনারেশন
+            // চূড়ান্ত HTML স্ট্রাকচার
             return `
                 <div class="faq-item">
                     <div class="faq-header" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
@@ -149,8 +130,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             `;
         }).join('');
 
-        // আকর্ডিয়ন চালুর লজিক (ইভেন্ট ডেলিগেশন ব্যবহার করা হয়েছে যা অত্যন্ত ফাস্ট কাজ করে)
-        wrapper.onclick = function(e) {
+        // আকর্ডিয়ন চালুর লজিক (ইভেন্ট ডেলিগেশন)
+        faqWrapper.onclick = function(e) {
             const header = e.target.closest('.faq-header');
             if (header) {
                 header.parentElement.classList.toggle('active');
@@ -158,10 +139,27 @@ document.addEventListener('DOMContentLoaded', async () => {
         };
     }
 
-    // সার্চিং ফিচার (স্মার্ট পারফরম্যান্সের জন্য)
+    // ডাটা লোড করার প্রফেশনাল ফাংশন
+    function loadFAQData() {
+        fetch('../data/questions-sexual-ethics.json', { cache: 'no-cache' })
+            .then(response => {
+                if (!response.ok) throw new Error('JSON ফাইল পাওয়া যায়নি।');
+                return response.json();
+            })
+            .then(data => {
+                allData = data;
+                renderFAQ(allData); // ডেটা লোড হওয়া মাত্রই প্রথমবার স্ক্রিনে পুরো লিস্ট দেখাবে
+            })
+            .catch(err => {
+                faqWrapper.innerHTML = `<p style="color:red; text-align:center; padding:20px;">ডাটা লোড হতে সমস্যা হয়েছে। অনুগ্রহ করে পেজটি রিফ্রেশ করুন।</p>`;
+                console.error(err);
+            });
+    }
+
+    // লাইভ সার্চ ফিল্টারিং সিস্টেম
     searchInput.addEventListener('input', (e) => {
         const term = e.target.value.toLowerCase().trim();
-        if(!term) {
+        if (!term) {
             renderFAQ(allData);
             return;
         }
@@ -173,7 +171,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderFAQ(filtered);
     });
 
-    // সবশেষে ডেটা লোড করার মূল ফাংশনটি রান করানো
-    await loadFAQData();
+    // পেজ ওপেন হওয়ার সাথে সাথেই ফাংশনটি চালু হবে
+    loadFAQData();
 });
                  
