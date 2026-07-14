@@ -1,22 +1,25 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     const faqWrapper = document.getElementById('faq-wrapper');
     const searchInput = document.getElementById('faqSearch');
     let allData = [];
 
-    // JSON ডাটা লোড করা
-    fetch('../data/questions-sexual-ethics.json')
-        .then(response => {
+    // প্রফেশনাল ও দ্রুত ডাটা লোড করার জন্য async/await ব্যবহার
+    async function loadFAQData() {
+        try {
+            // ক্যাশিং এবং গুগল বটের দ্রুত রেন্ডারিংয়ের জন্য
+            const response = await fetch('../data/questions-sexual-ethics.json', {
+                cache: 'no-cache' // নিশ্চিত করবে যেন একদম লেটেস্ট ডাটা আসে
+            });
+            
             if (!response.ok) throw new Error('JSON ফাইল পাওয়া যায়নি। পাথ ঠিক আছে কি না নিশ্চিত করুন।');
-            return response.json();
-        })
-        .then(data => {
-            allData = data;
+            
+            allData = await response.json();
             renderFAQ(allData);
-        })
-        .catch(err => {
-            faqWrapper.innerHTML = `<p style="color:red; text-align:center; padding:20px;">ডাটা লোড হতে সমস্যা হয়েছে।</p>`;
-            console.error(err);
-        });
+        } catch (err) {
+            faqWrapper.innerHTML = `<p style="color:red; text-align:center; padding:20px;">ডাটা লোড হতে সমস্যা হয়েছে। অনুগ্রহ করে পেজটি রিফ্রেশ করুন।</p>`;
+            console.error('Error loading FAQ data:', err);
+        }
+    }
 
     // সাহায্যকারী ফাংশন: রেফারেন্স টেক্সট বা অ্যারে হলে তা হ্যান্ডেল করার জন্য
     function formatReference(ref) {
@@ -34,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
+        // map().join() মেথডটি গুগল বটের জন্য খুবই দ্রুত HTML জেনারেট করে
         faqWrapper.innerHTML = items.map(item => {
-            // ১-৫. আইডি, প্রশ্ন, উত্তর এবং বিস্তারিত
             const id = item.id || '';
             const question = item.question || '';
             const shortAnswer = item.short_answer || '';
@@ -44,48 +47,48 @@ document.addEventListener('DOMContentLoaded', () => {
             const conclusion = item.conclusion || '';
             const medicalNote = item.medical_note || '';
 
-            // ৬-৯. কোরআন ব্লকের প্রসেসিং
+            // কোরআন ব্লকের প্রসেসিং
             let quranHtml = '';
             if (item.quran) {
                 const quranItems = Array.isArray(item.quran) ? item.quran : [item.quran];
                 quranHtml = quranItems.map(q => `
-                    <div class="quran-section">
-                        ${q.arabic ? `<div class="arabic">${q.arabic}</div>` : ''}
-                        ${q.translation ? `<div>${q.translation}</div>` : ''}
-                        ${q.reference ? `<span class="ref">সূত্র: ${formatReference(q.reference)}</span>` : ''}
+                    <div class="quran-section" style="margin: 15px 0; padding: 12px; border-right: 4px solid #4a5568; background: #f7fafc;">
+                        ${q.arabic ? `<div class="arabic" style="font-size: 1.4rem; font-weight: bold; margin-bottom: 8px; direction: rtl; text-align: right;">${q.arabic}</div>` : ''}
+                        ${q.translation ? `<div style="color: #2d3748; font-size: 1rem;">${q.translation}</div>` : ''}
+                        ${q.reference ? `<span class="ref" style="font-size: 0.85rem; color: #718096; display: block; margin-top: 5px;">সূত্র: ${formatReference(q.reference)}</span>` : ''}
                     </div>
                 `).join('');
             }
 
-            // ১০-১৩. হাদিস ব্লকের প্রসেসিং
+            // হাদিস ব্লকের প্রসেসিং
             let hadithHtml = '';
             if (item.hadith) {
                 const hadithItems = Array.isArray(item.hadith) ? item.hadith : [item.hadith];
                 hadithHtml = hadithItems.map(h => `
-                    <div class="hadith-section">
-                        ${h.arabic ? `<div class="arabic">${h.arabic}</div>` : ''}
-                        ${h.transliteration ? `<div class="trans-text"><i>${h.transliteration}</i></div>` : ''}
-                        ${h.text ? `<div class="details-text" style="margin-top:0;">${h.text}</div>` : ''}
-                        ${h.translation ? `<div>${h.translation}</div>` : ''}
-                        ${h.reference ? `<span class="ref">সূত্র: ${formatReference(h.reference)}</span>` : ''}
+                    <div class="hadith-section" style="margin: 15px 0; padding: 12px; border-right: 4px solid #319795; background: #f7fafc;">
+                        ${h.arabic ? `<div class="arabic" style="font-size: 1.4rem; font-weight: bold; margin-bottom: 8px; direction: rtl; text-align: right;">${h.arabic}</div>` : ''}
+                        ${h.transliteration ? `<div class="trans-text" style="color: #4a5568; font-style: italic; margin-bottom: 4px;"><i>${h.transliteration}</i></div>` : ''}
+                        ${h.text ? `<div class="details-text" style="margin-top:0; color: #2d3748;">${h.text}</div>` : ''}
+                        ${h.translation ? `<div style="color: #2d3748;">${h.translation}</div>` : ''}
+                        ${h.reference ? `<span class="ref" style="font-size: 0.85rem; color: #718096; display: block; margin-top: 5px;">সূত্র: ${formatReference(h.reference)}</span>` : ''}
                     </div>
                 `).join('');
             }
 
-            // --- নতুন যুক্ত করা দোয়া ব্লকের প্রসেসিং ---
+            // দোয়া ব্লকের প্রসেসিং
             let duaHtml = '';
             if (item.dua) {
                 const duaItems = Array.isArray(item.dua) ? item.dua : [item.dua];
                 duaHtml = duaItems.map(d => `
                     <div class="se-dua" style="margin: 20px 0; background: #f0fdfa; border: 1px dashed #009688; padding: 20px; border-radius: 10px; text-align: center;">
-                        ${d.arabic ? `<div class="arabic" style="font-size: 1.5rem; color: #004d40; margin-bottom: 10px; line-height: 1.8; direction: rtl;">${d.arabic}</div>` : ''}
+                        ${d.arabic ? `<div class="arabic" style="font-size: 1.5rem; color: #004d40; margin-bottom: 10px; line-height: 1.8; direction: rtl; text-align: right;">${d.arabic}</div>` : ''}
                         ${d.transliteration ? `<div class="transliteration" style="color: #475569; font-style: italic; margin-bottom: 6px;"><strong>উচ্চারণ:</strong> ${d.transliteration}</div>` : ''}
                         ${d.translation ? `<div class="meaning" style="color: #004d40;"><strong>অর্থ:</strong> ${d.translation}</div>` : ''}
                     </div>
                 `).join('');
             }
 
-            // ১৪-২১. বিভিন্ন প্রকার লিস্ট বা তালিকার প্রসেসিং
+            // বিভিন্ন প্রকার লিস্ট বা তালিকার প্রসেসিং
             const listsHtml = [
                 { data: item.harmful_effects, label: 'ক্ষতিকর দিকসমূহ:', class: 'harmful label-red' },
                 { data: item.forbidden_actions, label: 'নিষিদ্ধ কাজসমূহ:', class: 'harmful label-red' },
@@ -102,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const cleanClass = list.class.split(' ')[0] || '';
                     const labelClass = list.class || '';
                     return `
-                        <div class="points-label ${labelClass}">${list.label}</div>
+                        <div style="margin-top: 12px; font-weight: bold;" class="points-label ${labelClass}">${list.label}</div>
                         <ul class="points-list ${cleanClass}">
                             ${list.data.map(li => `<li>${li}</li>`).join('')}
                         </ul>
@@ -114,15 +117,15 @@ document.addEventListener('DOMContentLoaded', () => {
             // প্রতিটি FAQ আইটেমের চূড়ান্ত HTML স্ট্রাকচার জেনারেশন
             return `
                 <div class="faq-item">
-                    <div class="faq-header">
+                    <div class="faq-header" style="display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
                         <h3>${id}. ${question}</h3>
                         <i class="fas fa-chevron-down"></i>
                     </div>
                     <div class="faq-content">
-                        ${shortAnswer ? `<span class="short-ans">সারসংক্ষেপ: ${shortAnswer}</span>` : ''}
+                        ${shortAnswer ? `<span class="short-ans" style="display: block; font-weight: bold; margin-bottom: 8px; color: #2c5282;">সারসংক্ষেপ: ${shortAnswer}</span>` : ''}
                         
                         ${answer || details ? `
-                            <p class="details-text">
+                            <p class="details-text" style="color: #2d3748;">
                                 ${answer ? `<strong>উত্তর:</strong> ${answer}` : ''}
                                 ${details ? `<br><br>${details}` : ''}
                             </p>
@@ -130,35 +133,38 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         ${quranHtml}
                         ${hadithHtml}
-                        
-                        ${duaHtml} <!-- দোয়া রেন্ডার করার ট্যাগ -->
-                        
+                        ${duaHtml} 
                         ${listsHtml}
 
                         ${medicalNote ? `
-                            <div class="hadith-section" style="border-right-color: #009688; background: #f0fdfa;">
+                            <div class="hadith-section" style="margin: 15px 0; padding: 12px; border-right: 4px solid #009688; background: #f0fdfa;">
                                 <strong style="color: #00796b;">চিকিৎসাবিজ্ঞান ও স্বাস্থ্যগত তথ্য:</strong>
-                                <p class="details-text" style="margin-top: 5px;">${medicalNote}</p>
+                                <p class="details-text" style="margin-top: 5px; color: #2d3748;">${medicalNote}</p>
                             </div>
                         ` : ''}
 
-                        ${conclusion ? `<small class="conclusion">${conclusion}</small>` : ''}
+                        ${conclusion ? `<small class="conclusion" style="display: block; margin-top: 10px; color: #718096; font-style: italic;">উপসংহার: ${conclusion}</small>` : ''}
                     </div>
                 </div>
             `;
         }).join('');
 
-        // আকর্ডিয়ন চালুর লজিক
-        document.querySelectorAll('.faq-header').forEach(header => {
-            header.onclick = function() {
-                this.parentElement.classList.toggle('active');
-            };
-        });
+        // আকর্ডিয়ন চালুর লজিক (ইভেন্ট ডেলিগেশন ব্যবহার করা হয়েছে যা অত্যন্ত ফাস্ট কাজ করে)
+        wrapper.onclick = function(e) {
+            const header = e.target.closest('.faq-header');
+            if (header) {
+                header.parentElement.classList.toggle('active');
+            }
+        };
     }
 
-    // সার্চিং ফিচার
+    // সার্চিং ফিচার (স্মার্ট পারফরম্যান্সের জন্য)
     searchInput.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
+        const term = e.target.value.toLowerCase().trim();
+        if(!term) {
+            renderFAQ(allData);
+            return;
+        }
         const filtered = allData.filter(item => 
             (item.question && item.question.toLowerCase().includes(term)) || 
             (item.short_answer && item.short_answer.toLowerCase().includes(term)) ||
@@ -166,5 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
         );
         renderFAQ(filtered);
     });
+
+    // সবশেষে ডেটা লোড করার মূল ফাংশনটি রান করানো
+    await loadFAQData();
 });
                  
