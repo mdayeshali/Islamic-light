@@ -18,7 +18,21 @@
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5811972242681902"
      crossorigin="anonymous"></script>
    
-  
+  <!-- Manifest Link -->
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#10b981">
+
+<!-- Service Worker Register Script -->
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(reg => console.log('Service Worker Registered!'))
+        .catch(err => console.log('Service Worker Error:', err));
+    });
+  }
+               </script>
+   
 
 <!-- Title -->
 <title>Islamic Light | Quran, Hadith, Tafsir, Aqeedah, Salah, Fatwa & Dua in Bangla</title>
