@@ -337,7 +337,7 @@ body {
 
 /* ফ্লোটিং ইনস্টল বাটন স্টাইল */
 .floating-install-btn {
-  display: none; /* বাই ডিফল্ট লুকিয়ে থাকবে */
+  display: block; /* বাই ডিফল্ট লুকিয়ে থাকবে */
   position: fixed;
   bottom: 20px;
   left: 50%;
