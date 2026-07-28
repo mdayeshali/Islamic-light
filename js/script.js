@@ -200,3 +200,41 @@ function copyArticleLink() {
     alert("🔗 লিংক কপি হয়েছে!");
 }
 
+/* -------------------------------------------------------
+   এটি এ্যাপ ইন্সটল এর জন্য 
+--------------------------------------------------------- */
+
+let deferredPrompt;
+const installBtn = document.getElementById('pwaInstallBtn');
+
+// ১. PWA ইভেন্ট ডিটেক্ট হলে প্রম্পট সেভ রাখা
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
+// ২. ইউজার বাটনে ক্লিক করলে
+if (installBtn) {
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response: ${outcome}`);
+      deferredPrompt = null;
+      installBtn.style.display = 'none';
+    } else {
+      // ব্রাউজার অটো-পপআপ না দিলে ইউজারকে ৩-ডট মেনুর নির্দেশনা দেবে
+      alert("ইসলামিক লাইট অ্যাপটি ইনস্টল করতে ব্রাউজারের ওপরের ৩টি বিন্দু (Menu/3-dots) অপশনে চাপ দিয়ে 'Add to Home screen' বা 'Install app'-এ ক্লিক করুন।");
+    }
+  });
+}
+
+// ৩. ইউজার যদি অ্যাপ ইনস্টল করে ফেলে, তবে বাটন লুকিয়ে ফেলা
+window.addEventListener('appinstalled', () => {
+  if (installBtn) installBtn.style.display = 'none';
+});
+
+// ৪. অ্যাপের ভেতর থেকে (Standalone Mode) সাইট ওপেন করলে বাটন লুকিয়ে রাখা
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  if (installBtn) installBtn.style.display = 'none';
+}
