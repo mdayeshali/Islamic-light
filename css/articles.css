@@ -551,3 +551,105 @@ body.dark-mode .ayatul-quran-box h4{
     background:#00695c;
 }
 
+/* ============================================
+   DESKTOP 2-COLUMN LAYOUT ADAPTATION
+============================================ */
+
+/* ডিফল্ট (মোবাইল) লেআউট */
+.desktop-layout-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.sidebar-card {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    padding: 12px 15px;
+    margin-bottom: 15px;
+    border-top: none;
+    border-left: 4px solid #1f5f46;
+}
+
+.sidebar-thumb {
+    width: 100px;
+    height: 75px;
+    flex-shrink: 0;
+}
+
+.sidebar-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.sidebar-info {
+    flex-grow: 1;
+}
+
+.sidebar-title {
+    font-size: 16px;
+    margin: 0 0 6px 0;
+    line-height: 1.4;
+}
+
+.sidebar-title a {
+    text-decoration: none;
+    color: #1f5f46;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* টাইটেল ২ লাইনের পর অটো কাটবে */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.sidebar-meta {
+    margin-bottom: 0;
+    font-size: 12px;
+}
+
+/* 💻 বড় স্ক্রিনের জন্য (Desktop/Laptop >= 1024px) */
+@media screen and (min-width: 1024px) {
+    .article-feed {
+        max-width: 1150px; /* ডেক্সটপে উইডথ বৃদ্ধি */
+    }
+
+    .desktop-layout-wrapper {
+        display: grid;
+        grid-template-columns: 1.8fr 1.2fr; /* বামে ফিচারড পোস্ট (বড়), ডানে লিস্ট (ছোট) */
+        gap: 25px;
+        align-items: start;
+    }
+
+    .featured-box {
+        margin-bottom: 0;
+    }
+
+    /* সাইডবার স্টিকি স্ক্রোল (ডানের লিস্টটি নিচে স্ক্রোল করার সুবিধা) */
+    .sidebar-column {
+        position: sticky;
+        top: 130px;
+        max-height: calc(100vh - 150px);
+        overflow-y: auto;
+        padding-right: 5px;
+    }
+
+    /* কাস্টম স্ক্রোলবার */
+    .sidebar-column::-webkit-scrollbar {
+        width: 5px;
+    }
+    .sidebar-column::-webkit-scrollbar-thumb {
+        background: #b2dfdb;
+        border-radius: 10px;
+    }
+}
+
+/* 🌙 ডার্ক মোড সাপোর্ট */
+body.dark .sidebar-card {
+    border-left-color: #4caf50;
+}
+body.dark .sidebar-title a {
+    color: #98ffa7;
+}
+
