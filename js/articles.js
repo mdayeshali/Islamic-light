@@ -25,10 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* =========================
        ২. আর্টিকেলের ভেতরের শেয়ার বাটন (লেখা সহ)
-       আপনার ফাইলের <div class="share-buttons"></div> এখানে এটি লোড হবে
     ========================== */
     document.querySelectorAll('.share-buttons').forEach(container => {
-        // বাটনগুলো তৈরি করা হচ্ছে
         container.innerHTML = `
             <div class="article-inner-share" style="display: flex; gap: 10px; margin: 15px 0;">
                 <button class="inner-share-btn" style="background: #f1f1f1; border: 1px solid #ddd; padding: 8px 12px; border-radius: 5px; cursor: pointer; display: flex; align-items: center; gap: 5px; font-family: inherit;">
@@ -40,14 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        // বাটন ক্লিকের কাজ
         container.querySelector('.inner-share-btn').addEventListener('click', () => handleShare(document.title, pageUrl));
         container.querySelector('.inner-copy-btn').addEventListener('click', () => handleCopy(pageUrl));
     });
 
 
     /* =========================
-       ৩. মেইন পেজের বক্স লোড (শুধু আইকন)
+       ৩. মেইন পেজের বক্স লোড (বামে ফিচারড + ডানে লিস্ট)
     ========================== */
     const container = document.getElementById('article-container');
 
@@ -60,60 +57,101 @@ document.addEventListener("DOMContentLoaded", () => {
                 return res.json();
             })
             .then(data => {
-                let articlesHTML = "";
+                if (!data || data.length === 0) {
+                    container.innerHTML = `<p style="text-align:center;">কোনো আর্টিকেল পাওয়া যায়নি।</p>`;
+                    return;
+                }
 
-                data.forEach(article => {
-                    let fullUrl = article.link;
-                    if (!fullUrl.startsWith('http')) {
-                        const cleanPath = fullUrl.startsWith('/') ? fullUrl : '/' + fullUrl;
-                        // আপনার চাহিদা অনুযায়ী /articles পাথ যুক্ত করা হয়েছে
-                        fullUrl = window.location.origin + '/articles' + cleanPath;
-                    }
+                // ইউআরএল সঠিক করার ফাংশন
+                const getFullUrl = (path) => {
+                    if (path.startsWith('http')) return path;
+                    const cleanPath = path.startsWith('/') ? path : '/' + path;
+                    return window.location.origin + '/articles' + cleanPath;
+                };
 
-                    articlesHTML += `
-                        <article class="article-box">
-                            <img src="${article.image || '/images/default.webp'}" 
-                                 alt="${article.title}" 
-                                 class="article-image" loading="lazy">
+                let layoutHTML = `<div class="desktop-layout-wrapper">`;
+
+                // --- ১. সর্বশেষ (প্রথম) পোস্ট - ফিচারড আর্টিকেল (বাম পাশ) ---
+                const featured = data[0];
+                const featuredUrl = getFullUrl(featured.link);
+
+                layoutHTML += `
+                    <div class="featured-column">
+                        <article class="article-box featured-box">
+                            <a href="${featured.link}">
+                                <img src="${featured.image || '/images/default.webp'}" 
+                                     alt="${featured.title}" 
+                                     class="article-image" loading="lazy">
+                            </a>
                             
-                            <h2 class="article-heading">${article.title}</h2>
+                            <h2 class="article-heading">${featured.title}</h2>
 
                             <div class="article-meta">
                                 <span class="meta-date">
-                                    <i class="fa-regular fa-calendar-days"></i> পোস্ট: ${article.date}
+                                    <i class="fa-regular fa-calendar-days"></i> পোস্ট: ${featured.date}
                                 </span>
                                 <span class="meta-author">
-                                    <i class="fa-solid fa-user"></i> ${article.author}
+                                    <i class="fa-solid fa-user"></i> ${featured.author}
                                 </span>
                             </div>
 
-                            <p class="article-summary">${article.summary}</p>
+                            <p class="article-summary">${featured.summary}</p>
 
                             <div class="article-footer">
                                 <div class="box-icons">
-                                    <span class="share-icon" data-url="${fullUrl}" data-title="${article.title}" title="শেয়ার করুন">
+                                    <span class="share-icon" data-url="${featuredUrl}" data-title="${featured.title}" title="শেয়ার করুন">
                                         <i class="fa-solid fa-share-nodes"></i>
                                     </span>
-                                    <span class="copy-icon" data-url="${fullUrl}" title="লিংক কপি করুন">
+                                    <span class="copy-icon" data-url="${featuredUrl}" title="লিংক কপি করুন">
                                         <i class="fa-regular fa-copy"></i>
                                     </span>
                                 </div>
-                                <a href="${article.link}" class="read-more-link">আরও পড়ুন</a>
+                                <a href="${featured.link}" class="read-more-link">আরও পড়ুন</a>
+                            </div>
+                        </article>
+                    </div>
+                `;
+
+                // --- ২. অন্যান্য বাকি পোস্টসমূহ - সাইডবার লিস্ট (ডান পাশ) ---
+                layoutHTML += `<div class="sidebar-column">`;
+
+                for (let i = 1; i < data.length; i++) {
+                    const article = data[i];
+                    const articleUrl = getFullUrl(article.link);
+
+                    layoutHTML += `
+                        <article class="article-box sidebar-card">
+                            <div class="sidebar-thumb">
+                                <a href="${article.link}">
+                                    <img src="${article.image || '/images/default.webp'}" alt="${article.title}" loading="lazy">
+                                </a>
+                            </div>
+                            <div class="sidebar-info">
+                                <h3 class="article-heading sidebar-title">
+                                    <a href="${article.link}">${article.title}</a>
+                                </h3>
+                                <div class="article-meta sidebar-meta">
+                                    <span class="meta-date"><i class="fa-regular fa-calendar-days"></i> ${article.date}</span>
+                                </div>
+                                <p class="article-summary sidebar-summary-hidden" style="display:none;">${article.summary}</p>
                             </div>
                         </article>
                     `;
-                });
+                }
 
-                container.innerHTML = articlesHTML;
+                layoutHTML += `</div></div>`; // wrappers close
+
+                container.innerHTML = layoutHTML;
             })
             .catch(err => {
+                console.error(err);
                 container.innerHTML = `<p style="color:red; text-align:center;">আর্টিকেল লোড করতে সমস্যা হয়েছে।</p>`;
             });
     }
 
 
     /* =========================
-       ৪. ইভেন্ট ডেলিগেশন (মেইন পেজের বক্সের আইকনের জন্য)
+       ৪. ইভেন্ট ডেলিগেশন (আইকনের জন্য)
     ========================== */
     document.addEventListener("click", function(e) {
         const shareBtn = e.target.closest(".share-icon");
@@ -130,6 +168,10 @@ document.addEventListener("DOMContentLoaded", () => {
     window.sharePage = () => handleShare(document.title, pageUrl);
 });
 
+
+/* =========================
+   ৫. সাজেশন বক্স (আরও পড়ুন)
+========================== */
 const suggestionsBox = document.getElementById('more-read-container');
 
 if (suggestionsBox) {
@@ -137,24 +179,19 @@ if (suggestionsBox) {
         .then(res => res.json())
         .then(data => {
             let currentUrl = window.location.pathname;
-
-            // ১. বর্তমান লিঙ্কের একটি অংশ নেওয়া (যেমন: 'tech' বা 'health') রিলেটেড খোঁজার জন্য
             let urlParts = currentUrl.split('/');
             let folderName = urlParts.length > 2 ? urlParts[urlParts.length - 2] : "";
 
-            // ২. ফিল্টার করা: বর্তমান আর্টিকেল বাদে এবং যদি ফোল্ডার নাম মিলে যায়
             let relatedData = data.filter(article => {
                 let isNotCurrent = !currentUrl.includes(article.link);
                 let isRelated = folderName && article.link.includes(folderName);
                 return isNotCurrent && isRelated;
             });
 
-            // ৩. যদি রিলেটেড কিছু না পাওয়া যায়, তবে সাধারণ অন্য আর্টিকেলগুলো নেওয়া
             if (relatedData.length === 0) {
                 relatedData = data.filter(article => !currentUrl.includes(article.link));
             }
 
-            // ৪. এলোমেলো করে ১০টি আর্টিকেল নেওয়া
             let finalSelection = relatedData.sort(() => 0.5 - Math.random()).slice(0, 10);
 
             let html = `<h3>আরও পড়ুন</h3><ul class="more-read-list">`;
@@ -182,56 +219,49 @@ if (suggestionsBox) {
             suggestionsBox.innerHTML = html;
         })
         .catch(err => console.error("Suggestions error:", err));
-                    }
+}
 
 
-// সার্চ বক্সের উপাদানগুলো সিলেক্ট করা
+/* =========================
+   ৬. সার্চ সিস্টেম (Real-time Search)
+========================== */
 const searchInput = document.getElementById('article-search');
 const clearBtn = document.getElementById('clear-search');
 
-// ইউজার ইনপুট দিলে যা ঘটবে (Real-time Search)
 if (searchInput) {
     searchInput.addEventListener('input', function() {
         const query = searchInput.value.toLowerCase().trim();
 
-        // ক্লিয়ার বাটন (X) দেখানো বা লুকানো
         if (query.length > 0) {
             clearBtn.style.display = 'block';
         } else {
             clearBtn.style.display = 'none';
         }
 
-        // আপনার ওয়েবসাইটের আর্টিকেল কার্ডগুলো সিলেক্ট করা
-        // (ধরে নেওয়া হয়েছে আপনার প্রতিটি আর্টিকেল কার্ডের ক্লাস '.article-box')
         const articleBoxes = document.querySelectorAll('.article-box');
 
         articleBoxes.forEach(box => {
-            // আর্টিকেলের শিরোনাম এবং সামারি রিড করা
             const title = box.querySelector('.article-heading')?.textContent.toLowerCase() || '';
             const summary = box.querySelector('.article-summary')?.textContent.toLowerCase() || '';
 
-            // ইউজার যা সার্চ করছে তা শিরোনাম বা সামারিতে আছে কিনা চেক করা
             if (title.includes(query) || summary.includes(query)) {
-                box.style.display = 'block'; // মিলে গেলে দেখাবে
+                box.style.display = box.classList.contains('sidebar-card') ? 'flex' : 'block';
             } else {
-                box.style.display = 'none';  // না মিললে লুকিয়ে ফেলবে
+                box.style.display = 'none';
             }
         });
     });
 }
 
-// ক্লিয়ার (X) বাটনে ক্লিক করলে সার্চ বক্স খালি করা
 if (clearBtn) {
     clearBtn.addEventListener('click', function() {
         searchInput.value = '';
         clearBtn.style.display = 'none';
         searchInput.focus();
 
-        // সব আর্টিকেল আবার ফিরিয়ে আনা
         const articleBoxes = document.querySelectorAll('.article-box');
         articleBoxes.forEach(box => {
-            box.style.display = 'block';
+            box.style.display = box.classList.contains('sidebar-card') ? 'flex' : 'block';
         });
     });
 }
-
