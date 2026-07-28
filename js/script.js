@@ -3,7 +3,9 @@
  Author: Md Ayesh Ali
  Website: IslamicLight.in
 ========================================================= */
-// 🌙 Dark Mode Toggle
+/* ==============================
+🌙 Dark Mode Toggle
+ ============================== */
 const toggle = document.getElementById("themeToggle");
 
 toggle.addEventListener("click", () => {
