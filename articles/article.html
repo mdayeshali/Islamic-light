@@ -6,6 +6,10 @@
     <meta name="theme-color" content="#004d40">
     <title>Articles – Islamic Light</title>
 
+    <!-- Google Fonts / Icons Preconnect (দ্রুত লোড করার জন্য) -->
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- CSS Files -->
     <link rel="stylesheet" href="/css/articles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
@@ -18,32 +22,39 @@
 <!-- Search Section -->
 <div class="search-section">
     <div class="search-wrap">
-        <form action="" method="GET" class="search-form" onsubmit="return false;">
+        <form action="" method="GET" class="search-form" onsubmit="return false;" role="search">
             <div class="search-input-group">
-                <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                <input type="text" id="article-search" placeholder="পছন্দের আর্টিকেলটি খুঁজুন..." autocomplete="off">
-                <button type="button" id="clear-search" class="clear-btn" style="display: none;">
-                    <i class="fa-solid fa-xmark"></i>
+                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+                <input type="text" id="article-search" placeholder="পছন্দের আর্টিকেলটি খুঁজুন..." autocomplete="off" aria-label="আর্টিকেল খুঁজুন">
+                <button type="button" id="clear-search" class="clear-btn" style="display: none;" aria-label="অনুসন্ধান মুছে ফেলুন">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
             </div>
         </form>
     </div>
 </div>
 
-<!-- Article Feed -->
-<div class="article-feed">
+<!-- Article Feed Container -->
+<main class="article-feed">
+
+    <!-- JavaScript নিষ্ক্রিয় থাকলে এই মেসেজটি দেখাবে -->
+    <noscript>
+        <div style="text-align: center; padding: 20px; color: #c62828;">
+            আর্টিকেলগুলো দেখার জন্য অনুগ্রহ করে আপনার ব্রাউজারে JavaScript চালু করুন।
+        </div>
+    </noscript>
 
     <!-- Auto Articles Container -->
     <div id="article-container"></div>
 
-</div>
+</main>
 
 <!-- Footer -->
 <div id="footer"></div>
 
 <!-- Scripts -->
-<script src="/js/articles.js"></script>
-<script src="/js/script.js"></script>
+<script src="/js/articles.js" defer></script>
+<script src="/js/script.js" defer></script>
 
 </body>
 </html>
