@@ -9,32 +9,35 @@
 --------------------------------------------------------- */
 async function loadPartials() {
   try {
-    // Root path (/) ব্যবহার করা হয়েছে যেন সব ফোল্ডার থেকেই মূল ফোল্ডারের ফাইল পায়
+    // Always load from root folder
     const headerReq = await fetch("/header.html");
-    const footerReq = await footerReq = await fetch("/footer.html");
+    const footerReq = await fetch("/footer.html");
 
-    if (!headerReq.ok || !footerReq.ok) {
-      throw new Error("Header or Footer file not found.");
-    }
 
     const headerHTML = await headerReq.text();
     const footerHTML = await footerReq.text();
 
+
     // Insert Header at top
     document.body.insertAdjacentHTML("afterbegin", headerHTML);
+
 
     // Insert Footer at bottom
     document.body.insertAdjacentHTML("beforeend", footerHTML);
 
-    initNavMenu();       // Mobile menu
+
+    initNavMenu();       // Mobile menu (Updated for Dropdown + Overlay)
     initThemeToggle();   // Dark/Light mode
   } catch (err) {
     console.error("Header/Footer loading failed:", err);
   }
 }
 
-// Call header & footer loader immediately
+
+// Call immediately
 loadPartials();
+
+
 
 
 /* -------------------------------------------------------
