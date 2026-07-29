@@ -160,43 +160,48 @@ function copyArticleLink() {
 
 
 /* -------------------------------------------------------
-   7) PWA APP INSTALL LOGIC
+   7) PWA APP INSTALL LOGIC (Updated & Fixed)
 --------------------------------------------------------- */
 let deferredPrompt;
 
-// PWA Event Catching
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
-
-// Load event ensuring button click listener is registered after HTML loads
-document.addEventListener('DOMContentLoaded', () => {
+// ১. পেজ লোড হওয়ার সাথে সাথে চেক করা অ্যাপ অলরেডি ইনস্টল করা আছে কি না
+window.addEventListener('DOMContentLoaded', () => {
   const installBtn = document.getElementById('pwaInstallBtn');
 
+  // যদি অ্যাপটি অলরেডি ইনস্টল করা থাকে (Standalone Mode), তবে বাটন চিরতরে লুকিয়ে ফেলবে
+  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    if (installBtn) installBtn.style.display = 'none';
+    return; // আর কোনো কোড রান করবে না
+  }
+
+  // PWA Event Catching
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+  });
+
+  // বাটনে ক্লিক করলে কী ঘটবে
   if (installBtn) {
     installBtn.addEventListener('click', async () => {
       if (deferredPrompt) {
+        // ব্রাউজারের নিজস্ব ইনস্টল পপআপ ওপেন করা
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
         console.log(`User response: ${outcome}`);
         deferredPrompt = null;
-        installBtn.style.display = 'none';
+        if (outcome === 'accepted') {
+          installBtn.style.display = 'none';
+        }
       } else {
-        alert("ইসলামিক লাইট অ্যাপটি ইনস্টল করতে ব্রাউজারের ওপরের ৩টি বিন্দু (Menu/3-dots) অপশনে চাপ দিয়ে 'Add to Home screen' বা 'Install app'-এ ক্লিক করুন।");
+        // যদি ব্রাউজার সরাসরি পপআপ না দেয়, তবে পরিষ্কার নির্দেশনা পপআপ দেখাবে
+        alert("📲 ইসলামিক লাইট অ্যাপটি ইনস্টল করতে:\n\n১. ব্রাউজারের ওপরের ডানপাশের ৩টি বিন্দু (Menu/3-dots) অপশনে ক্লিক করুন।\n২. এরপর 'Install app' বা 'Add to Home screen'-এ চাপ দিন।");
       }
     });
   }
-
-  // Hide button if opened as standalone app
-  if (window.matchMedia('(display-mode: standalone)').matches) {
-    if (installBtn) installBtn.style.display = 'none';
-  }
 });
 
-// Hide button when installed
+// ৩. ইনস্টল সম্পন্ন হয়ে গেলে বাটন লুকিয়ে ফেলা
 window.addEventListener('appinstalled', () => {
   const installBtn = document.getElementById('pwaInstallBtn');
   if (installBtn) installBtn.style.display = 'none';
 });
-   
