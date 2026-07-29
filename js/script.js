@@ -9,9 +9,9 @@
 --------------------------------------------------------- */
 async function loadPartials() {
   try {
-    // Relative path used for GitHub Pages / any folder compatibility
-    const headerReq = await fetch("./header.html");
-    const footerReq = await fetch("./footer.html");
+    // Root path (/) ব্যবহার করা হয়েছে যেন সব ফোল্ডার থেকেই মূল ফোল্ডারের ফাইল পায়
+    const headerReq = await fetch("/header.html");
+    const footerReq = await footerReq = await fetch("/footer.html");
 
     if (!headerReq.ok || !footerReq.ok) {
       throw new Error("Header or Footer file not found.");
