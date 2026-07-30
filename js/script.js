@@ -160,48 +160,44 @@ function copyArticleLink() {
 
 
 /* -------------------------------------------------------
-   7) PWA APP INSTALL LOGIC (Updated & Fixed)
+   7) PWA APP INSTALL LOGIC (Direct & Simple Fix)
 --------------------------------------------------------- */
 let deferredPrompt;
 
-// ১. পেজ লোড হওয়ার সাথে সাথে চেক করা অ্যাপ অলরেডি ইনস্টল করা আছে কি না
-window.addEventListener('DOMContentLoaded', () => {
-  const installBtn = document.getElementById('pwaInstallBtn');
-
-  // যদি অ্যাপটি অলরেডি ইনস্টল করা থাকে (Standalone Mode), তবে বাটন চিরতরে লুকিয়ে ফেলবে
-  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-    if (installBtn) installBtn.style.display = 'none';
-    return; // আর কোনো কোড রান করবে না
-  }
-
-  // PWA Event Catching
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-  });
-
-  // বাটনে ক্লিক করলে কী ঘটবে
-  if (installBtn) {
-    installBtn.addEventListener('click', async () => {
-      if (deferredPrompt) {
-        // ব্রাউজারের নিজস্ব ইনস্টল পপআপ ওপেন করা
-        deferredPrompt.prompt();
-        const { outcome } = await deferredPrompt.userChoice;
-        console.log(`User response: ${outcome}`);
-        deferredPrompt = null;
-        if (outcome === 'accepted') {
-          installBtn.style.display = 'none';
-        }
-      } else {
-        // যদি ব্রাউজার সরাসরি পপআপ না দেয়, তবে পরিষ্কার নির্দেশনা পপআপ দেখাবে
-        alert("📲 ইসলামিক লাইট অ্যাপটি ইনস্টল করতে:\n\n১. ব্রাউজারের ওপরের ডানপাশের ৩টি বিন্দু (Menu/3-dots) অপশনে ক্লিক করুন।\n২. এরপর 'Install app' বা 'Add to Home screen'-এ চাপ দিন।");
-      }
-    });
-  }
+// ব্রাউজার ইনস্টল প্রম্পট রেডি রাখা
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
 });
 
-// ৩. ইনস্টল সম্পন্ন হয়ে গেলে বাটন লুকিয়ে ফেলা
+// সরাসরি বাটনে ক্লিক ইভেন্ট যুক্ত করা (DOMContentLoaded ছাড়াই)
+const installBtn = document.getElementById('pwaInstallBtn');
+
+if (installBtn) {
+  // যদি অলরেডি ইনস্টল করা থাকে তবে সাথে সাথে লুকিয়ে ফেলা
+  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+    installBtn.style.display = 'none';
+  }
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      // ব্রাউজারের নিজস্ব ইনস্টল পপআপ ওপেন করা
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response: ${outcome}`);
+      if (outcome === 'accepted') {
+        installBtn.style.display = 'none';
+      }
+      deferredPrompt = null;
+    } else {
+      // যদি ব্রাউজার সরাসরি পপআপ না দেয়, তবে সুনির্দিষ্ট নির্দেশনা অ্যালার্ট দেখাবে
+      alert("📲 ইসলামিক লাইট অ্যাপটি ইনস্টল করতে:\n\n১. ব্রাউজারের ওপরের ডানপাশের ৩টি বিন্দু (Menu / 3-dots) অপশনে ক্লিক করুন।\n২. এরপর 'Install app' বা 'Add to Home screen' অপশনে চাপ দিন।");
+    }
+  });
+}
+
+// ইনস্টল হয়ে গেলে বাটন লুকিয়ে ফেলা
 window.addEventListener('appinstalled', () => {
-  const installBtn = document.getElementById('pwaInstallBtn');
-  if (installBtn) installBtn.style.display = 'none';
+  const btn = document.getElementById('pwaInstallBtn');
+  if (btn) btn.style.display = 'none';
 });
