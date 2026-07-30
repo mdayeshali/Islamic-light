@@ -1,4 +1,4 @@
-/* =======================================================
+/*  =======================================================
  🌙 Islamic Light — Global JavaScript
  Author: Md Ayesh Ali
  Website: IslamicLight.in
