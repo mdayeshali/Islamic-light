@@ -1,43 +1,47 @@
-/*  =======================================================
+/* =======================================================
  🌙 Islamic Light — Global JavaScript
  Author: Md Ayesh Ali
  Website: IslamicLight.in
 ========================================================= */
 
+let deferredPrompt;
+
+// ১. ব্রাউজার ইনস্টল প্রম্পট রেডি রাখা (Global Event)
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+});
+
 /* -------------------------------------------------------
-   1) AUTO-LOAD HEADER & FOOTER (Works in any folder)
+   1) AUTO-LOAD HEADER & FOOTER
 --------------------------------------------------------- */
 async function loadPartials() {
   try {
-    // Always load from root folder
     const headerReq = await fetch("/header.html");
     const footerReq = await fetch("/footer.html");
 
+    if (!headerReq.ok || !footerReq.ok) {
+      throw new Error("Header or Footer file not found.");
+    }
 
     const headerHTML = await headerReq.text();
     const footerHTML = await footerReq.text();
 
-
-    // Insert Header at top
+    // Insert Header & Footer
     document.body.insertAdjacentHTML("afterbegin", headerHTML);
-
-
-    // Insert Footer at bottom
     document.body.insertAdjacentHTML("beforeend", footerHTML);
 
-
-    initNavMenu();       // Mobile menu (Updated for Dropdown + Overlay)
-    initThemeToggle();   // Dark/Light mode
+    // হেডার-ফুটার পেজে বসার পর সব ফাংশন চালু করা
+    initNavMenu();       
+    initThemeToggle();   
+    initInstallBtn();    // <--- ইনস্টল বাটন সেটআপ
   } catch (err) {
     console.error("Header/Footer loading failed:", err);
   }
 }
 
-
 // Call immediately
 loadPartials();
-
-
 
 
 /* -------------------------------------------------------
@@ -160,28 +164,22 @@ function copyArticleLink() {
 
 
 /* -------------------------------------------------------
-   7) PWA APP INSTALL LOGIC (Direct & Simple Fix)
+   7) PWA APP INSTALL LOGIC (Runs AFTER Footer Loads)
 --------------------------------------------------------- */
-let deferredPrompt;
+function initInstallBtn() {
+  const installBtn = document.getElementById('pwaInstallBtn');
 
-// ব্রাউজার ইনস্টল প্রম্পট রেডি রাখা
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-});
+  if (!installBtn) return;
 
-// সরাসরি বাটনে ক্লিক ইভেন্ট যুক্ত করা (DOMContentLoaded ছাড়াই)
-const installBtn = document.getElementById('pwaInstallBtn');
-
-if (installBtn) {
-  // যদি অলরেডি ইনস্টল করা থাকে তবে সাথে সাথে লুকিয়ে ফেলা
+  // যদি অলরেডি ইনস্টল করা অ্যাপ থেকে দেখা হয়, বাটন লুকানো থাকবে
   if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
     installBtn.style.display = 'none';
+    return;
   }
 
+  // বাটনে ক্লিক লজিক
   installBtn.addEventListener('click', async () => {
     if (deferredPrompt) {
-      // ব্রাউজারের নিজস্ব ইনস্টল পপআপ ওপেন করা
       deferredPrompt.prompt();
       const { outcome } = await deferredPrompt.userChoice;
       console.log(`User response: ${outcome}`);
@@ -190,14 +188,15 @@ if (installBtn) {
       }
       deferredPrompt = null;
     } else {
-      // যদি ব্রাউজার সরাসরি পপআপ না দেয়, তবে সুনির্দিষ্ট নির্দেশনা অ্যালার্ট দেখাবে
+      // ব্রাউজার ইভেন্ট না দিলে ইউজারকে ৩-ডট গাইডলাইন মেসেজ দেখাবে
       alert("📲 ইসলামিক লাইট অ্যাপটি ইনস্টল করতে:\n\n১. ব্রাউজারের ওপরের ডানপাশের ৩টি বিন্দু (Menu / 3-dots) অপশনে ক্লিক করুন।\n২. এরপর 'Install app' বা 'Add to Home screen' অপশনে চাপ দিন।");
     }
   });
 }
 
-// ইনস্টল হয়ে গেলে বাটন লুকিয়ে ফেলা
+// ইনস্টল সফল হয়ে গেলে বাটন লুকানো
 window.addEventListener('appinstalled', () => {
   const btn = document.getElementById('pwaInstallBtn');
   if (btn) btn.style.display = 'none';
 });
+ 
