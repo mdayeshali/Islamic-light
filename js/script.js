@@ -194,9 +194,17 @@ function initInstallBtn() {
   });
 }
 
-// ইনস্টল সফল হয়ে গেলে বাটন লুকানো
+// ইনস্টল হয়ে গেলে বাটন লুকিয়ে ফেলা এবং Google Analytics-এ ডাটা পাঠানো
 window.addEventListener('appinstalled', () => {
   const btn = document.getElementById('pwaInstallBtn');
   if (btn) btn.style.display = 'none';
+
+  // Google Analytics (GA4) Custom Event
+  if (typeof gtag === 'function') {
+    gtag('event', 'pwa_installed', {
+      'event_category': 'App Install',
+      'event_label': 'Islamic Light PWA'
+    });
+  }
 });
- 
+
