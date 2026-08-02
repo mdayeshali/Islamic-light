@@ -1,232 +1,364 @@
 /* ==========================================================================
-   Sexual Ethics & Article Styling (Green & White Theme)
+   Sexual Ethics Section - Main stylesheet
+   Author: Md Ayesh Ali
+   Domain: Islamic Light
    ========================================================================== */
 
-/* --- Variables & Colors --- */
-:root {
-    --primary-green: #004d40;     /* গাঢ় গ্রিন - হেডার ও মেইন টাইটেল */
-    --accent-teal: #009688;       /* টিল গ্রিন - ব্যাজ, বাটন ও লিংক */
-    --light-teal: #e0f2f1;        /* ব্যাকগ্রাউন্ড হাইলাইট */
-    --bg-light: #f8faf9;          /* হালকা গ্রে-গ্রিন ব্যাকগ্রাউন্ড */
-    --text-dark: #2d3436;         /* আর্টিকেলের মূল টেক্সট কালার */
-    --text-muted: #57606f;        /* সাব-টেক্সট ও নোটের জন্য */
-    --border-color: #e0e6e8;      /* হালকা বর্ডার */
-    --white: #ffffff;
-}
-
-/* --- Smooth Fade-in Animation --- */
-.fade-in {
-    animation: fadeInEffect 0.6s ease-out forwards;
-}
-
-@keyframes fadeInEffect {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- Container & Layout --- */
+/* --------------------------------------------------------------------------
+   1. Base & Layout Container
+   -------------------------------------------------------------------------- */
 .se-container {
-    max-width: 800px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 100px 20px 50px 20px; /* টপ ১০০ পিক্সেল ফিক্সড */
-    font-family: 'SolaimanLipi', 'Hind Siliguri', sans-serif;
-    color: var(--text-dark);
-}
-
-.se-title {
-    font-size: 2.3rem;
-    color: var(--primary-green);
-    text-align: center;
-    line-height: 1.4;
-    margin-bottom: 15px;
-    font-weight: 700;
-}
-
-.se-lead {
-    font-size: 1.15rem;
+    padding: 20px 15px;
+    font-family: 'SolaimanLipi', 'Kalpurush', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #2c3e50;
     line-height: 1.8;
-    color: var(--text-dark);
-    text-align: justify;
-    margin-bottom: 35px;
-    background: var(--white);
-    padding: 20px;
-    border-radius: 12px;
-    border-left: 5px solid var(--accent-teal);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
-/* --- Article Content Structure --- */
-.se-article {
-    background: var(--white);
-    padding: 35px;
-    border-radius: 16px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 20px rgba(0, 77, 64, 0.03);
+/* Entry Animation */
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
 }
 
-.se-article h2 {
-    font-size: 1.6rem;
-    color: var(--primary-green);
-    margin-top: 40px;
-    margin-bottom: 18px;
-    border-bottom: 2px solid var(--light-teal);
-    padding-bottom: 8px;
-    font-weight: 600;
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.se-article h3 {
-    font-size: 1.25rem;
-    color: var(--accent-teal);
-    margin-top: 30px;
-    margin-bottom: 12px;
-    font-weight: 600;
+/* --------------------------------------------------------------------------
+   2. Header, Meta & Typography
+   -------------------------------------------------------------------------- */
+.se-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-.se-article p {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 16px;
-    text-align: justify;
-}
-
-/* --- Badges & Share Area --- */
 .se-badge {
-    background: var(--primary-green);
-    color: var(--white);
+    background-color: #e6f4ea;
+    color: #004d40;
     padding: 6px 14px;
     border-radius: 20px;
     font-size: 0.85rem;
-    font-weight: bold;
-    letter-spacing: 0.5px;
+    font-weight: 600;
 }
 
-/* --- Lists Styling (Custom Bullets) --- */
-.article-list {
-    list-style: none;
-    padding-left: 5px;
+.se-title {
+    font-size: 2.1rem;
+    color: #004d40;
+    margin-bottom: 20px;
+    line-height: 1.3;
+    font-weight: 700;
+}
+
+/* Author Info Card */
+.se-author-info {
+    background-color: #f8f9fa;
+    border-left: 4px solid #004d40;
+    padding: 12px 16px;
+    border-radius: 4px;
     margin-bottom: 25px;
+    font-size: 0.9rem;
+    color: #555;
 }
 
-.article-list li {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 12px;
-    padding-left: 28px;
-    position: relative;
+.se-author-info p {
+    margin: 0;
 }
 
-/* স্ট্রং পয়েন্টের ভেতর আইকন বা কাস্টম বুলেটের জায়গা ঠিক রাখা */
-.article-list li strong {
-    color: var(--primary-green);
+.se-author-info i {
+    color: #004d40;
+    margin-right: 4px;
 }
 
-/* --- Islamic Quran & Quotes Blocks --- */
-.quran-verse {
-    background: #f0fdfa; /* আকর্ষণীয় হালকা গ্রিন টোন */
-    padding: 22px;
+/* Lead Paragraph Box */
+.se-lead {
+    font-size: 1.12rem;
+    color: #1f2937;
+    background-color: #f0fdf4;
+    padding: 18px 22px;
+    border-radius: 8px;
+    border: 1px solid #bbf7d0;
+    margin-bottom: 30px;
+}
+
+/* Featured Image Wrapper */
+.se-featured-image {
+    width: 100%;
+    margin-bottom: 25px;
     border-radius: 10px;
-    border-right: 5px solid var(--primary-green); /* ডানপাশে ইসলামিক স্টাইল বর্ডার */
-    margin: 25px 0;
-    box-shadow: inset 0 0 10px rgba(0, 77, 64, 0.02);
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.quran-verse .translation {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--primary-green);
-    font-style: italic;
-    text-align: center;
+.se-featured-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
-blockquote {
-    background: var(--bg-light);
-    border-left: 4px solid var(--text-muted);
-    padding: 15px 20px;
+/* Section Headings */
+.se-article h2 {
+    font-size: 1.5rem;
+    color: #004d40;
+    margin-top: 40px;
+    margin-bottom: 18px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.se-article h3 {
+    font-size: 1.2rem;
+    color: #004d40;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+/* Quotes */
+.se-quote {
+    background-color: #f9fafb;
+    border-left: 4px solid #10b981;
     margin: 25px 0;
+    padding: 16px 20px;
     font-style: italic;
-    color: var(--text-muted);
+    color: #374151;
     border-radius: 0 8px 8px 0;
 }
 
-/* --- Duas (Supplications) UI --- */
+.se-quote cite {
+    display: block;
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #004d40;
+}
+
+/* Lists */
+.se-list {
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+.se-list li {
+    margin-bottom: 8px;
+}
+
+/* --------------------------------------------------------------------------
+   3. Content Blocks (Steps, Tables, Dua)
+   -------------------------------------------------------------------------- */
+/* Practical Step Cards */
+.step-box {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #004d40;
+    padding: 18px 20px;
+    margin-bottom: 18px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.step-box p {
+    margin: 0;
+    font-size: 0.98rem;
+}
+
+.step-box ul {
+    margin-top: 10px;
+    margin-bottom: 0;
+    padding-left: 20px;
+}
+
+.step-box ul li {
+    margin-bottom: 5px;
+}
+
+/* Recovery Table */
+.se-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.95rem;
+    background-color: #ffffff;
+}
+
+.se-table th, 
+.se-table td {
+    border: 1px solid #e5e7eb;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.se-table th {
+    background-color: #004d40;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.se-table tr:nth-child(even) {
+    background-color: #f9fafb;
+}
+
+/* Dua Display Cards */
 .se-dua {
-    background: var(--white);
-    border: 1px solid var(--border-color);
-    border-top: 4px solid var(--accent-teal); /* টপ কালার বার */
+    background-color: #f4fbf7;
+    border: 1px solid #d1fae5;
     padding: 22px;
     border-radius: 8px;
     margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
     text-align: center;
 }
 
 .se-dua .arabic {
-    font-family: 'Traditional Arabic', Georgia, serif;
-    font-size: 1.7rem;
-    color: var(--primary-green);
+    font-size: 1.6rem;
+    font-family: 'Amiri', 'Traditional Arabic', 'Scheherazade', serif;
+    color: #064e3b;
     margin-bottom: 12px;
-    direction: rtl;
     line-height: 2;
 }
 
-.se-dua .meaning {
-    font-size: 1rem;
-    color: var(--text-dark);
-    line-height: 1.6;
+.se-dua .translation {
+    font-size: 0.95rem;
+    color: #374151;
+    line-height: 1.7;
 }
 
-/* --- Back Buttons --- */
-.se-btn {
+/* --------------------------------------------------------------------------
+   4. Related Articles Section
+   -------------------------------------------------------------------------- */
+.se-related-articles {
+    margin-top: 45px;
+    padding: 22px;
+    background-color: #f8faf9;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.se-related-articles h2 {
+    font-size: 1.3rem;
+    color: #004d40;
+    margin-top: 0;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #004d40;
+    padding-bottom: 6px;
+    display: inline-block;
+}
+
+.se-related-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.se-related-list li {
+    margin-bottom: 12px;
+}
+
+.se-related-list li:last-child {
+    margin-bottom: 0;
+}
+
+.se-related-list a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 0.98rem;
+    font-weight: 500;
+    transition: color 0.2s ease, transform 0.2s ease;
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    background: var(--accent-teal);
-    color: var(--white) !important;
-    padding: 12px 24px;
-    border-radius: 30px;
+}
+
+.se-related-list a:hover {
+    color: #004d40;
+    text-decoration: underline;
+}
+
+.se-related-list i {
+    color: #004d40;
+    margin-right: 10px;
+    font-size: 0.85rem;
+}
+
+/* --------------------------------------------------------------------------
+   5. Footer Navigation & Global Elements
+   -------------------------------------------------------------------------- */
+.se-footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 35px;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+}
+
+.se-btn {
+    display: inline-block;
+    padding: 9px 20px;
+    background-color: #004d40;
+    color: #ffffff;
     text-decoration: none;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 150, 136, 0.2);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .se-btn:hover {
-    background: var(--primary-green);
-    transform: translateX(-3px);
-    box-shadow: 0 6px 15px rgba(0, 77, 64, 0.25);
+    background-color: #00332c;
+    color: #ffffff;
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
+/* --------------------------------------------------------------------------
+   6. Responsive Layout Adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
     .se-container {
-        padding-top: 85px;
-        padding-left: 15px;
-        padding-right: 15px;
+        padding: 15px 12px;
     }
-    
+
     .se-title {
-        font-size: 1.8rem;
+        font-size: 1.55rem;
     }
-    
+
+    .se-meta-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
     .se-lead {
-        font-size: 1.05rem;
-        padding: 15px;
+        font-size: 1rem;
+        padding: 14px 16px;
     }
-    
-    .se-article {
-        padding: 20px;
-    }
-    
+
     .se-article h2 {
+        font-size: 1.3rem;
+    }
+
+    .se-table th, 
+    .se-table td {
+        padding: 8px 10px;
+        font-size: 0.85rem;
+    }
+
+    .se-dua .arabic {
         font-size: 1.35rem;
     }
-    
-    .se-article h3 {
-        font-size: 1.15rem;
+
+    .se-related-articles {
+        padding: 16px;
     }
-    
-    .se-dua .arabic {
-        font-size: 1.45rem;
+
+    .se-related-list a {
+        font-size: 0.9rem;
     }
 }
