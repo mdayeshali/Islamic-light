@@ -653,3 +653,28 @@ body.dark .sidebar-title a {
     color: #98ffa7;
 }
 
+
+/* App Notice Box Styling */
+.app-notice {
+  text-align: center;
+  font-weight: bold;
+  color: #004d40;
+  margin-top: 15px;
+  padding: 12px;
+  background-color: #e0f2f1;
+  border-radius: 6px;
+  border: 1px solid #b2dfdb;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.app-notice i {
+  margin-right: 6px;
+  color: #004d40;
+}
+
+.app-notice strong {
+  color: #00251a;
+  text-decoration: underline;
+}
+
