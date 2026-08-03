@@ -107,19 +107,17 @@ img {
   font-size: 1.4rem;
   font-weight: 700;
   color: white;
+  text-decoration: none;
 }
 
-.brand .moon {
-  background: white;
-  color: var(--primary);
+/* আগের .brand .moon এর পরিবর্তে নতুন লোগোর জন্য সিএসএস */
+.brand .brand-logo {
   width: 35px;
   height: 35px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
+  object-fit: contain;
+  border-radius: 50%; /* লোগোটি গোল শেপে সুন্দর দেখানোর জন্য */
 }
+
 
 
 .desktop-nav {
