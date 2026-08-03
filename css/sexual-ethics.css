@@ -329,10 +329,12 @@
         font-size: 1.55rem;
     }
 
-    .se-meta-top {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+.se-meta-top {
+        display: flex !important;
+        flex-direction: row !important; /* কলামের বদলে রো থাকবে */
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 10px;
     }
 
     .se-lead {
