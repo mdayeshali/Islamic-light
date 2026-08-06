@@ -168,12 +168,14 @@ function copyArticleLink() {
 --------------------------------------------------------- */
 function initInstallBtn() {
   const installBtn = document.getElementById('pwaInstallBtn');
+  const installContainer = document.getElementById('pwaInstallContainer'); // বাটন ও নোটিশের কন্টেইনার
 
   if (!installBtn) return;
 
-  // যদি অলরেডি ইনস্টল করা অ্যাপ থেকে দেখা হয়, বাটন লুকানো থাকবে
-  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
-    installBtn.style.display = 'none';
+  // যদি অলরেডি ইনস্টল করা অ্যাপ থেকে দেখা হয়, বাটন ও নোটিশ কন্টেইনার সম্পূর্ণ লুকানো থাকবে
+  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || navigator.userAgent.includes("IslamicLightApp")) {
+    if (installContainer) installContainer.style.display = 'none';
+    else installBtn.style.display = 'none';
     return;
   }
 
@@ -184,7 +186,8 @@ function initInstallBtn() {
       const { outcome } = await deferredPrompt.userChoice;
       console.log(`User response: ${outcome}`);
       if (outcome === 'accepted') {
-        installBtn.style.display = 'none';
+        if (installContainer) installContainer.style.display = 'none';
+        else installBtn.style.display = 'none';
       }
       deferredPrompt = null;
     } else {
@@ -194,10 +197,16 @@ function initInstallBtn() {
   });
 }
 
-// ইনস্টল হয়ে গেলে বাটন লুকিয়ে ফেলা এবং Google Analytics-এ ডাটা পাঠানো
+// ইনস্টল হয়ে গেলে বাটন ও নোটিশ লুকিয়ে ফেলা এবং Google Analytics-এ ডাটা পাঠানো
 window.addEventListener('appinstalled', () => {
+  const installContainer = document.getElementById('pwaInstallContainer');
   const btn = document.getElementById('pwaInstallBtn');
-  if (btn) btn.style.display = 'none';
+  
+  if (installContainer) {
+    installContainer.style.display = 'none';
+  } else if (btn) {
+    btn.style.display = 'none';
+  }
 
   // Google Analytics (GA4) Custom Event
   if (typeof gtag === 'function') {
@@ -207,4 +216,3 @@ window.addEventListener('appinstalled', () => {
     });
   }
 });
-
