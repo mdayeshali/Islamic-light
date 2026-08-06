@@ -455,6 +455,24 @@ img {
 */
 
 /* ফ্লোটিং ইনস্টল বাটন স্টাইল */
+.floating-install-container {
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.footer-app-notice {
+  font-size: 0.95rem;
+  color: #004d40;
+  background-color: #e0f2f1;
+  padding: 8px 15px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 10px;
+  border: 1px solid #b2dfdb;
+}
+
+
 .floating-install-btn {
   display: block; /* বাই ডিফল্ট লুকিয়ে থাকবে */
   position: fixed;
