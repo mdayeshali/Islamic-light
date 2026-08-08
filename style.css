@@ -1,40 +1,55 @@
 /* ---------- GLOBAL ---------- */
+:root {
+  /* Light Theme Variables */
+  --bg: #f7fafc;
+  --text: #222222;
+  --text-muted: #555555;
+  --primary: #004d40;
+  --accent: #00796b;
+  --card-bg: #ffffff;
+  --artcel-bx: #f4f7f5;
+  --verse-bg: #f1f8e9;
+  --border-color: #e2e8f0;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.2);
+  --icon-bg: #e0f2f1;
+  --icon-text: #004d40;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Variables (Premium Look) */
+  --bg: #121514; /* Deep dark teal background */
+  --text: #e2e8f0;
+  --text-muted: #a0aec0;
+  --primary: #4db6ac; /* Lighter teal for readability on dark */
+  --accent: #26a69a;
+  --card-bg: #1a201e;
+  --artcel-bx: #151b1a;
+  --verse-bg: #142a26; /* Dark greenish background */
+  --border-color: #2d3748;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --shadow-hover: rgba(0, 0, 0, 0.5);
+  --icon-bg: #213f3b;
+  --icon-text: #80cbc4;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans Bengali", Arial, sans-serif;
   background-color: var(--bg);
   color: var(--text);
-  transition: 0.4s ease;
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
-
-:root {
-  --bg: #f7fafc;
-  --text: #222;
-  --primary: #004d40;
-  --accent: #00796b;
-  --card-bg: #ffffff;
-}
-
-[data-theme="dark"] {
-  --bg: #121212;
-  --text: #eaeaea;
-  --primary: #26a69a;
-  --card-bg: #1e1e1e;
-}
-
-
-
-
-
 
 .dark-toggle {
   background: transparent;
-  border: 1px solid white;
-  color: white;
+  border: 1px solid var(--text);
+  color: var(--text);
   border-radius: 50%;
   width: 35px;
   height: 35px;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
 /* ---------- HERO ---------- */
@@ -73,29 +88,31 @@ body {
   padding: 25px;
   border-radius: 15px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px var(--shadow);
   border-top: 5px solid var(--primary);
-  transition: 0.3s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 15px var(--shadow-hover);
 }
 
 .card h2 a {
   text-decoration: none;
   color: var(--primary);
+  transition: color 0.3s ease;
 }
 
 .button {
   background: var(--primary);
-  color: white;
+  color: #ffffff !important;
   padding: 8px 16px;
   border-radius: 8px;
   text-decoration: none;
   font-weight: bold;
-  transition: 0.3s;
+  transition: background 0.3s;
+  display: inline-block;
 }
 
 .button:hover {
@@ -108,150 +125,52 @@ body {
   padding: 45px 25px;
   margin: 50px auto;
   max-width: 900px;
-  background: #f1f8e9;
+  background: var(--verse-bg);
   border-radius: 15px;
   border-left: 6px solid var(--primary);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
-
-
-/* ---------- RESPONSIVE MENU (Mobile Optimized) ---------- */
-@media (max-width: 768px) {
-
- 
-  /* Hero optimization for mobile */
-  .hero {
-    background: linear-gradient(to right, #004d40, #00796b);
-    padding: 20px 15px;
-  }
-
-  .hero h1 {
-    font-size: 1.2rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-  }
-
-  /* Cards: make them smaller but clear */
-  .container {
-    padding: 20px 10px;
-    gap: 15px;
-  }
-
-  .card {
-    padding: 18px;
-  }
-
-  .card h2 a {
-    font-size: 1.1rem;
-  }
-
-  .button {
-    padding: 7px 14px;
-    font-size: 0.9rem;
-  }
-
-  /* Hide long Quran verse on small screens */
-  .quran-verse {
-    display: none;
-  }
-
- 
-}
-/* ARTICLE SECTION */
-.articles-section {
-    padding: 40px 20px;
-    margin-top: 40px;
-    background: #f4f7f5;
-    border-radius: 10px;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 26px;
-    margin-bottom: 25px;
-    color: #1f5f46;
-}
-
-.articles-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
-
-.article-card {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.08);
-}
-
-.article-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #222;
-}
-
-.article-card p {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 15px;
-}
-
-.article-button {
-    background: #1f5f46;
-    color: white;
-    padding: 8px 20px;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
-.view-all-articles {
-    text-align: center;
-    margin-top: 25px;
-}
-
-.view-all-articles a {
-    background: #1f5f46;
-    color: white;
-    padding: 10px 25px;
-    text-decoration: none;
-    border-radius: 6px;
-}
-
+/* ---------- ARTICLE BOX ---------- */
 .single-article-box {
-    background: #f4f7f5;
-    padding: 25px;
-    border-radius: 12px;
-    text-align: center;
-    margin-top: 40px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+  background: var(--artcel-bx);
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px var(--shadow);
+  transition: background 0.4s ease;
 }
 
 .single-article-box h2 {
-    font-size: 24px;
-    margin-bottom: 12px;
-    color: #1f5f46;
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: var(--primary);
 }
 
 .single-article-box p {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 18px;
+  font-size: 15px;
+  color: var(--text-muted);
+  margin-bottom: 18px;
 }
 
 .single-article-box .article-button {
-    background: #1f5f46;
-    color: white;
-    padding: 10px 25px;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: bold;
+  background: var(--primary);
+  color: white;
+  padding: 10px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background 0.3s ease;
 }
 
-/* Name's of Allah*/
+.single-article-box .article-button:hover {
+  background: var(--accent);
+}
+
+/* ---------- FEATURE SECTION (Names of Allah) ---------- */
 .feature-section {
   padding: 40px 20px;
   display: flex;
@@ -259,7 +178,7 @@ body {
 }
 
 .feature-card {
-  background: #ffffff;
+  background: var(--card-bg);
   border-radius: 20px;
   padding: 30px;
   max-width: 450px;
@@ -267,19 +186,19 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px var(--shadow);
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.4s ease;
 }
 
 .feature-card:hover {
   transform: translateY(-5px);
-  border-color: #00796b;
+  border-color: var(--primary);
 }
 
 .feature-icon {
-  background: #e0f2f1;
-  color: #004d40;
+  background: var(--icon-bg);
+  color: var(--icon-text);
   width: 70px;
   height: 70px;
   border-radius: 15px;
@@ -288,17 +207,18 @@ body {
   justify-content: center;
   font-size: 2rem;
   flex-shrink: 0;
+  transition: background 0.4s ease, color 0.4s ease;
 }
 
 .feature-content h3 {
   margin: 0 0 8px 0;
-  color: #004d40;
+  color: var(--primary);
   font-size: 1.4rem;
 }
 
 .feature-content p {
   margin: 0 0 15px 0;
-  color: #64748b;
+  color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.5;
 }
@@ -307,8 +227,8 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #00796b;
-  color: #ffffff;
+  background: var(--accent);
+  color: #ffffff !important;
   padding: 8px 18px;
   border-radius: 50px;
   text-decoration: none;
@@ -318,12 +238,40 @@ body {
 }
 
 .btn-feature:hover {
-  background: #004d40;
-  text-decoration: none;
-  color: #fff;
+  background: var(--primary);
 }
 
-/* মোবাইলের জন্য স্টাইল */
+/* ---------- RESPONSIVE DESIGN ---------- */
+@media (max-width: 768px) {
+  .hero {
+    background: linear-gradient(to right, #004d40, #00796b);
+    padding: 20px 15px;
+  }
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  .container {
+    padding: 20px 10px;
+    gap: 15px;
+  }
+  .card {
+    padding: 18px;
+  }
+  .card h2 a {
+    font-size: 1.1rem;
+  }
+  .button {
+    padding: 7px 14px;
+    font-size: 0.9rem;
+  }
+  .quran-verse {
+    display: none;
+  }
+}
+
 @media (max-width: 500px) {
   .feature-card {
     flex-direction: column;
@@ -334,4 +282,3 @@ body {
     margin: 0 auto;
   }
 }
-
