@@ -1,10 +1,12 @@
 /* ============================================
    ARTICLE PAGE – Islamic Light UI
    Author: Md Ayesh Ali
-   (Updated with Full Dark Mode Support)
+   Version: 2.0 (Cleaned & Optimized with Full Dark Mode)
 ============================================ */
 
-/* ---------- CSS Variables (Light & Dark Theme) ---------- */
+/* ==========================================
+   1. CSS VARIABLES (LIGHT & DARK THEME)
+   ========================================== */
 :root {
     /* Light Mode Colors */
     --bg-color: #f7fafc;
@@ -18,34 +20,28 @@
     --border-light: #f0f0f0;
     --border-accent: #1f5f46;
     --img-bg: #f9f9f9;
-    
     --quran-bg: #e9f7f1;
     --quran-text: #1f5f46;
-    
     --btn-bg: #f1f1f1;
     --btn-border: #ddd;
-    
     --search-bg: #ffffff;
     --search-border: #e2e8f0;
     --search-icon: #94a3b8;
-    
     --blockquote-bg: #f4f9f6;
     --blockquote-border: #1e7e34;
-    
     --faq-bg: #ffffff;
     --faq-border: #e2ebd5;
-    
     --quran-box-bg: #ffffff;
     --quran-box-border: #d8e8d8;
-    
     --notice-bg: #e0f2f1;
     --notice-border: #b2dfdb;
     --notice-text: #004d40;
     --notice-strong: #00251a;
+    --text-highlight: #1f5f46;
 }
 
-body.dark, body.dark-mode {
-    /* Dark Mode Colors (Premium Greenish-Dark Tone) */
+/* Dark Mode Colors (Premium Greenish-Dark Tone) */
+body.dark, body.dark-mode, [data-theme="dark"] {
     --bg-color: #0f1a17;
     --card-bg: #16221f;
     --text-main: #e6e6e6;
@@ -57,33 +53,29 @@ body.dark, body.dark-mode {
     --border-light: #274138;
     --border-accent: #4caf50;
     --img-bg: #13201d;
-    
     --quran-bg: #1d2e2a;
     --quran-text: #a5d6a7;
-    
     --btn-bg: #1d2e2a;
     --btn-border: #274138;
-    
     --search-bg: #16221f;
     --search-border: #274138;
     --search-icon: #aaaaaa;
-    
     --blockquote-bg: #13241f;
     --blockquote-border: #4caf50;
-    
     --faq-bg: #16221f;
     --faq-border: #274138;
-    
     --quran-box-bg: #16221f;
     --quran-box-border: #274138;
-    
     --notice-bg: #13241f;
     --notice-border: #274138;
     --notice-text: #a5d6a7;
     --notice-strong: #81c784;
+    --text-highlight: #98ffa7; /* Special light green for dark mode highlights */
 }
 
-/* ---------- Base Styles ---------- */
+/* ==========================================
+   2. BASE STYLES & TYPOGRAPHY
+   ========================================== */
 body {
     font-family: "Noto Sans Bengali", sans-serif;
     margin: 0;
@@ -93,14 +85,18 @@ body {
     transition: background 0.3s ease, color 0.3s ease;
 }
 
-/* Main Feed Container */
+strong { color: var(--primary); transition: color 0.3s ease; }
+h3 { color: var(--primary); transition: color 0.3s ease; }
+
 .article-feed {
     max-width: 900px;
     margin: 30px auto;
     padding: 10px;
 }
 
-/* ---------- ARTICLE BOX (Main Card) ---------- */
+/* ==========================================
+   3. ARTICLE BOX (MAIN CARD)
+   ========================================== */
 .article-box {
     background: var(--card-bg);
     padding: 20px 22px;
@@ -140,7 +136,17 @@ body {
     margin-right: 5px;
 }
 
-/* Image Optimization */
+.article-summary {
+    font-size: 16px;
+    color: var(--text-summary);
+    line-height: 1.7;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+/* ==========================================
+   4. IMAGE OPTIMIZATION
+   ========================================== */
 .article-image {
     width: 100%;
     height: auto;
@@ -157,38 +163,22 @@ body {
 }
 
 @media screen and (min-width: 1024px) {
-    .article-image {
-        max-height: 400px;
-        object-fit: contain;
-    }
+    .article-image { max-height: 400px; object-fit: contain; }
 }
-
 @media screen and (max-width: 900px) and (orientation: landscape) {
-    .article-image {
-        max-height: 280px;
-        object-fit: contain;
-    }
+    .article-image { max-height: 280px; object-fit: contain; }
 }
 
-.article-summary {
-    font-size: 16px;
-    color: var(--text-summary);
-    line-height: 1.7;
-    margin-bottom: 12px;
-    transition: color 0.3s ease;
-}
-
-/* ---------- FOOTER & ICONS ---------- */
+/* ==========================================
+   5. BUTTONS, ICONS & SHARE
+   ========================================== */
 .article-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.box-icons {
-    display: flex;
-    gap: 12px;
-}
+.box-icons { display: flex; gap: 12px; }
 
 .share-icon, .copy-icon {
     cursor: pointer;
@@ -196,10 +186,7 @@ body {
     color: var(--accent);
     transition: color 0.2s;
 }
-
-.share-icon:hover, .copy-icon:hover {
-    color: var(--primary-hover);
-}
+.share-icon:hover, .copy-icon:hover { color: var(--primary-hover); }
 
 .read-more-link {
     padding: 7px 16px;
@@ -210,44 +197,8 @@ body {
     font-size: 14px;
     transition: background 0.3s;
 }
+.read-more-link:hover { background: var(--primary-hover); }
 
-.read-more-link:hover {
-    background: var(--primary-hover);
-}
-
-/* ---------- QURAN VERSE BLOCK ---------- */
-.quran-verse {
-    background: var(--quran-bg);
-    padding: 18px;
-    border-left: 5px solid var(--border-accent);
-    border-radius: 6px;
-    margin: 20px 0;
-    transition: background 0.3s ease, border-color 0.3s ease;
-}
-
-.quran-verse .arabic {
-    display: block;
-    text-align: center;
-    font-size: 22px;
-    color: var(--quran-text);
-    font-weight: bold;
-    margin-bottom: 10px;
-    transition: color 0.3s ease;
-}
-
-.quran-verse .translation {
-    display: block;
-    text-align: center;
-    font-size: 16px;
-    color: var(--text-summary);
-    font-style: italic;
-    transition: color 0.3s ease;
-}
-
-strong { color: var(--primary); transition: color 0.3s ease; }
-h3 { color: var(--primary); transition: color 0.3s ease; }
-
-/* ---------- GLOBAL INNER SHARE BUTTONS ---------- */
 .article-inner-share {
     display: flex;
     gap: 10px;
@@ -268,221 +219,41 @@ h3 { color: var(--primary); transition: color 0.3s ease; }
     font-family: inherit;
     transition: all 0.3s ease;
 }
-
 .inner-share-btn:hover, .inner-copy-btn:hover {
     background: var(--primary);
     color: #ffffff;
     border-color: var(--primary);
 }
 
-/* ---------- AUTOMATIC 'MORE READ' ---------- */
-#more-read-container {
-    margin-top: 40px;
-    padding-top: 25px;
-    border-top: 2px solid var(--border-light);
-    transition: border-color 0.3s ease;
-}
-
-#more-read-container h3 {
-    color: var(--primary);
-    font-size: 22px;
-    margin-bottom: 18px;
-    display: inline-block;
-    border-bottom: 3px solid var(--primary);
-}
-
-.more-read-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.more-read-list li {
-    margin-bottom: 14px;
-    border-bottom: 1px solid var(--border-light);
-    padding-bottom: 8px;
-    transition: border-color 0.3s ease;
-}
-
-.more-read-list li:last-child { border-bottom: none; }
-
-.more-read-list li a {
-    text-decoration: none;
-    color: var(--text-main);
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    transition: color 0.3s, padding-left 0.3s;
-}
-
-.more-read-list li a i {
-    font-size: 14px;
-    color: var(--primary);
-}
-
-.more-read-list li a:hover {
-    color: var(--primary);
-    padding-left: 8px;
-}
-
-.view-all-link {
-    display: inline-block;
-    margin-top: 15px;
-    font-size: 15px;
-    color: var(--primary);
-    font-weight: bold;
-    text-decoration: none;
-    border-bottom: 1px dashed var(--primary);
-    transition: color 0.3s ease;
-}
-
-/* ---------- Search Section Styles ---------- */
-.search-section {
-    width: 100%;
-    max-width: 1200px;
-    margin: 30px auto 10px auto;
-    padding: 0 20px;
-    box-sizing: border-box;
-    position: sticky;
-    top: 70px;
-    z-index: 999;
-}
-
-.search-wrap {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.search-input-group {
-    position: relative;
-    display: flex;
-    align-items: center;
-    background: var(--search-bg);
-    border: 2px solid var(--search-border);
-    border-radius: 50px;
-    padding: 6px 20px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-}
-
-.search-input-group:focus-within {
-    border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
-}
-
-.search-icon {
-    color: var(--search-icon);
-    font-size: 18px;
-    margin-right: 12px;
-    transition: color 0.3s ease;
-}
-
-.search-input-group:focus-within .search-icon {
-    color: var(--primary);
-}
-
-.search-input-group input {
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 16px;
-    padding: 10px 0;
-    color: var(--text-main);
-    background: transparent;
-    font-family: inherit;
-}
-
-.search-input-group input::placeholder {
-    color: var(--search-icon);
-}
-
-.clear-btn {
-    background: none;
-    border: none;
-    color: var(--search-icon);
-    font-size: 18px;
-    cursor: pointer;
-    padding: 0 5px;
-    transition: color 0.2s ease;
-}
-
-.clear-btn:hover {
-    color: #ef4444;
-}
-
-@media (max-width: 768px) {
-    .search-section { margin: 20px auto 5px auto; }
-    .search-input-group { padding: 4px 15px; }
-    .search-input-group input { font-size: 15px; padding: 8px 0; }
-}
-
 /* ==========================================
-   Blockquote & FAQ Custom Styling
+   6. QURAN VERSE & AYATUL QURAN BOX
    ========================================== */
-
-blockquote {
-    background-color: var(--blockquote-bg);
-    border-left: 5px solid var(--blockquote-border);
-    margin: 1.5rem 0;
-    padding: 1.2rem 1.5rem;
-    font-style: italic;
-    color: var(--text-summary);
-    border-radius: 0 8px 8px 0;
-    line-height: 1.8;
-    position: relative;
-    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+.quran-verse {
+    background: var(--quran-bg);
+    padding: 18px;
+    border-left: 5px solid var(--border-accent);
+    border-radius: 6px;
+    margin: 20px 0;
+    transition: background 0.3s ease, border-color 0.3s ease;
 }
-
-blockquote br {
+.quran-verse .arabic {
     display: block;
-    margin-top: 0.5rem;
-    content: "";
-}
-
-blockquote cite, 
-blockquote::after {
-    font-style: normal;
+    text-align: center;
+    font-size: 22px;
+    color: var(--quran-text);
     font-weight: bold;
-    color: var(--primary);
-}
-
-.faq-item {
-    background: var(--faq-bg);
-    border: 1px solid var(--faq-border);
-    border-radius: 8px;
-    padding: 1.2rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
-    transition: all 0.3s ease;
-}
-
-.faq-item:hover {
-    border-color: var(--primary);
-    box-shadow: 0 4px 12px rgba(30, 126, 52, 0.08);
-}
-
-.faq-item h4 {
-    color: var(--primary);
-    margin-top: 0;
-    margin-bottom: 0.6rem;
-    font-size: 1.15rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 8px;
+    margin-bottom: 10px;
     transition: color 0.3s ease;
 }
-
-.faq-item p {
+.quran-verse .translation {
+    display: block;
+    text-align: center;
+    font-size: 16px;
     color: var(--text-summary);
-    margin: 0;
-    line-height: 1.7;
-    font-size: 1rem;
+    font-style: italic;
     transition: color 0.3s ease;
 }
 
-/* ===== Ayatul Quran Box ===== */
 .ayatul-quran-box {
     margin: 25px 0;
     background: var(--quran-box-bg);
@@ -492,17 +263,12 @@ blockquote::after {
     box-shadow: 0 3px 12px rgba(0,0,0,.08);
     transition: background 0.3s ease, border-color 0.3s ease;
 }
-
 .ayatul-quran-box > div {
     padding: 20px;
     border-bottom: 1px solid var(--quran-box-border);
     transition: border-color 0.3s ease;
 }
-
-.ayatul-quran-box > div:last-child {
-    border-bottom: none;
-}
-
+.ayatul-quran-box > div:last-child { border-bottom: none; }
 .ayatul-quran-box h4 {
     margin: 0 0 15px;
     padding: 10px 15px;
@@ -513,7 +279,6 @@ blockquote::after {
     border-radius: 8px;
     transition: background 0.3s ease;
 }
-
 .arabic-text {
     font-family: "Amiri", "Scheherazade New", "Traditional Arabic", serif;
     font-size: 34px;
@@ -523,7 +288,6 @@ blockquote::after {
     color: var(--text-main);
     transition: color 0.3s ease;
 }
-
 .transliteration-text {
     font-size: 19px;
     line-height: 2;
@@ -532,7 +296,6 @@ blockquote::after {
     font-weight: 500;
     transition: color 0.3s ease;
 }
-
 .translation-text {
     font-size: 18px;
     line-height: 2;
@@ -548,16 +311,180 @@ blockquote::after {
     .transliteration-text, .translation-text { font-size: 17px; line-height: 1.9; }
 }
 
-/* ============================================
-   DESKTOP 2-COLUMN LAYOUT ADAPTATION
-============================================ */
-
-.desktop-layout-wrapper {
+/* ==========================================
+   7. MORE READ SECTION
+   ========================================== */
+#more-read-container {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 2px solid var(--border-light);
+    transition: border-color 0.3s ease;
+}
+#more-read-container h3 {
+    color: var(--primary);
+    font-size: 22px;
+    margin-bottom: 18px;
+    display: inline-block;
+    border-bottom: 3px solid var(--primary);
+}
+.more-read-list { list-style: none; padding: 0; margin: 0; }
+.more-read-list li {
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 8px;
+    transition: border-color 0.3s ease;
+}
+.more-read-list li:last-child { border-bottom: none; }
+.more-read-list li a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 16px;
     display: flex;
-    flex-direction: column;
-    gap: 20px;
+    align-items: center;
+    gap: 12px;
+    transition: color 0.3s, padding-left 0.3s;
+}
+.more-read-list li a i {
+    font-size: 14px;
+    color: var(--primary);
+}
+.more-read-list li a:hover {
+    color: var(--primary);
+    padding-left: 8px;
+}
+.view-all-link {
+    display: inline-block;
+    margin-top: 15px;
+    font-size: 15px;
+    color: var(--primary);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
+    transition: color 0.3s ease;
 }
 
+/* ==========================================
+   8. SEARCH SECTION
+   ========================================== */
+.search-section {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto 10px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    position: sticky;
+    top: 70px;
+    z-index: 999;
+}
+.search-wrap { max-width: 600px; margin: 0 auto; }
+.search-input-group {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: var(--search-bg);
+    border: 2px solid var(--search-border);
+    border-radius: 50px;
+    padding: 6px 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.search-input-group:focus-within {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(46, 125, 50, 0.15);
+}
+.search-icon {
+    color: var(--search-icon);
+    font-size: 18px;
+    margin-right: 12px;
+    transition: color 0.3s ease;
+}
+.search-input-group:focus-within .search-icon { color: var(--primary); }
+.search-input-group input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 0;
+    color: var(--text-main);
+    background: transparent;
+    font-family: inherit;
+}
+.search-input-group input::placeholder { color: var(--search-icon); }
+.clear-btn {
+    background: none;
+    border: none;
+    color: var(--search-icon);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 5px;
+    transition: color 0.2s ease;
+}
+.clear-btn:hover { color: #ef4444; }
+
+@media (max-width: 768px) {
+    .search-section { margin: 20px auto 5px auto; }
+    .search-input-group { padding: 4px 15px; }
+    .search-input-group input { font-size: 15px; padding: 8px 0; }
+}
+
+/* ==========================================
+   9. BLOCKQUOTE & FAQ
+   ========================================== */
+blockquote {
+    background-color: var(--blockquote-bg);
+    border-left: 5px solid var(--blockquote-border);
+    margin: 1.5rem 0;
+    padding: 1.2rem 1.5rem;
+    font-style: italic;
+    color: var(--text-summary);
+    border-radius: 0 8px 8px 0;
+    line-height: 1.8;
+    position: relative;
+    transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+blockquote br { display: block; margin-top: 0.5rem; content: ""; }
+blockquote cite, blockquote::after {
+    font-style: normal;
+    font-weight: bold;
+    color: var(--primary);
+}
+
+.faq-item {
+    background: var(--faq-bg);
+    border: 1px solid var(--faq-border);
+    border-radius: 8px;
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+.faq-item:hover {
+    border-color: var(--primary);
+    box-shadow: 0 4px 12px rgba(30, 126, 52, 0.08);
+}
+.faq-item h4 {
+    color: var(--primary);
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.3s ease;
+}
+.faq-item p {
+    color: var(--text-summary);
+    margin: 0;
+    line-height: 1.7;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+/* ==========================================
+   10. DESKTOP 2-COLUMN LAYOUT
+   ========================================== */
+.desktop-layout-wrapper { display: flex; flex-direction: column; gap: 20px; }
 .sidebar-card {
     display: flex;
     gap: 15px;
@@ -568,30 +495,10 @@ blockquote::after {
     border-left: 4px solid var(--border-accent);
     transition: border-color 0.3s ease;
 }
-
-.sidebar-thumb {
-    width: 100px;
-    height: 75px;
-    flex-shrink: 0;
-}
-
-.sidebar-thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 8px;
-}
-
-.sidebar-info {
-    flex-grow: 1;
-}
-
-.sidebar-title {
-    font-size: 16px;
-    margin: 0 0 6px 0;
-    line-height: 1.4;
-}
-
+.sidebar-thumb { width: 100px; height: 75px; flex-shrink: 0; }
+.sidebar-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+.sidebar-info { flex-grow: 1; }
+.sidebar-title { font-size: 16px; margin: 0 0 6px 0; line-height: 1.4; }
 .sidebar-title a {
     text-decoration: none;
     color: var(--primary);
@@ -601,12 +508,7 @@ blockquote::after {
     overflow: hidden;
     transition: color 0.3s ease;
 }
-
-.sidebar-meta {
-    margin-bottom: 0;
-    font-size: 12px;
-    color: var(--text-muted);
-}
+.sidebar-meta { margin-bottom: 0; font-size: 12px; color: var(--text-muted); }
 
 @media screen and (min-width: 1024px) {
     .article-feed { max-width: 1150px; }
@@ -631,7 +533,9 @@ blockquote::after {
     }
 }
 
-/* ---------- App Notice Box Styling ---------- */
+/* ==========================================
+   11. APP NOTICE BOX
+   ========================================== */
 .app-notice {
     text-align: center;
     font-weight: bold;
@@ -645,126 +549,68 @@ blockquote::after {
     line-height: 1.6;
     transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
-
-.app-notice i {
-    margin-right: 6px;
-    color: var(--notice-text);
-}
-
+.app-notice i { margin-right: 6px; color: var(--notice-text); }
 .app-notice strong {
     color: var(--notice-strong);
     text-decoration: underline;
     transition: color 0.3s ease;
 }
-/* ==========================================
-   FIXES FOR DARK MODE (Article Text, Blockquote, More Read)
-   ========================================== */
-
-/* ১. Article Text & Summary Fix (1000038186.jpg) */
-body.dark .article-summary,
-body.dark-mode .article-summary,
-[data-theme="dark"] .article-summary,
-body.dark .article-box p,
-body.dark-mode .article-box p,
-[data-theme="dark"] .article-box p {
-    color: #cccccc !important; /* ডার্ক মোডে লেখাগুলো হালকা ধূসর/সাদা হবে */
-}
-
-/* ২. Blockquote Fix (1000038188.jpg) */
-body.dark blockquote,
-body.dark-mode blockquote,
-[data-theme="dark"] blockquote {
-    background-color: #13241f !important; /* ডার্ক গ্রিন ব্যাকগ্রাউন্ড */
-    border-left-color: #4caf50 !important; /* বর্ডার কালার */
-    color: #cccccc !important; /* টেক্সট কালার */
-}
-
-body.dark blockquote cite, 
-body.dark-mode blockquote cite,
-[data-theme="dark"] blockquote cite,
-body.dark blockquote::after,
-body.dark-mode blockquote::after,
-[data-theme="dark"] blockquote::after {
-    color: #81c784 !important; /* রেফারেন্সের কালার */
-}
-
-/* ৩. More Read Container Fix (1000038184.jpg) */
-body.dark #more-read-container,
-body.dark-mode #more-read-container,
-[data-theme="dark"] #more-read-container {
-    border-top-color: #274138 !important;
-}
-
-body.dark #more-read-container h3,
-body.dark-mode #more-read-container h3,
-[data-theme="dark"] #more-read-container h3 {
-    color: #4caf50 !important;
-    border-bottom-color: #4caf50 !important;
-}
-
-body.dark .more-read-list li,
-body.dark-mode .more-read-list li,
-[data-theme="dark"] .more-read-list li {
-    border-bottom-color: #274138 !important;
-}
-
-/* লিংকের কালার ঠিক করা হলো */
-body.dark .more-read-list li a,
-body.dark-mode .more-read-list li a,
-[data-theme="dark"] .more-read-list li a {
-    color: #e6e6e6 !important; 
-}
-
-body.dark .more-read-list li a:hover,
-body.dark-mode .more-read-list li a:hover,
-[data-theme="dark"] .more-read-list li a:hover {
-    color: #98ffa7 !important; /* হোভার করলে হালকা সবুজ হবে */
-}
-
-body.dark .more-read-list li a i,
-body.dark-mode .more-read-list li a i,
-[data-theme="dark"] .more-read-list li a i {
-    color: #4caf50 !important;
-   }
 
 /* ==========================================
-   FIX FOR FAQ SECTION (Dark Mode)
+   12. DARK MODE OVERRIDES (GUARANTEED FIXES)
    ========================================== */
+/* Article Text & Blockquote */
+body.dark .article-summary, body.dark-mode .article-summary, [data-theme="dark"] .article-summary,
+body.dark .article-box p, body.dark-mode .article-box p, [data-theme="dark"] .article-box p {
+    color: var(--text-summary) !important;
+}
 
-/* FAQ বক্সের ব্যাকগ্রাউন্ড ও বর্ডার ফিক্স */
-body.dark .faq-item,
-body.dark-mode .faq-item,
-[data-theme="dark"] .faq-item {
-    background-color: #16221f !important; /* ডার্ক কার্ড ব্যাকগ্রাউন্ড */
-    border-color: #274138 !important; /* ডার্ক বর্ডার */
+body.dark blockquote, body.dark-mode blockquote, [data-theme="dark"] blockquote {
+    background-color: var(--blockquote-bg) !important;
+    border-left-color: var(--blockquote-border) !important;
+    color: var(--text-summary) !important;
+}
+body.dark blockquote cite, body.dark-mode blockquote cite, [data-theme="dark"] blockquote cite,
+body.dark blockquote::after, body.dark-mode blockquote::after, [data-theme="dark"] blockquote::after {
+    color: var(--primary-hover) !important;
+}
+
+/* More Read Overrides */
+body.dark #more-read-container, body.dark-mode #more-read-container, [data-theme="dark"] #more-read-container {
+    border-top-color: var(--border-light) !important;
+}
+body.dark #more-read-container h3, body.dark-mode #more-read-container h3, [data-theme="dark"] #more-read-container h3 {
+    color: var(--primary) !important;
+    border-bottom-color: var(--primary) !important;
+}
+body.dark .more-read-list li, body.dark-mode .more-read-list li, [data-theme="dark"] .more-read-list li {
+    border-bottom-color: var(--border-light) !important;
+}
+body.dark .more-read-list li a, body.dark-mode .more-read-list li a, [data-theme="dark"] .more-read-list li a {
+    color: var(--text-main) !important;
+}
+body.dark .more-read-list li a:hover, body.dark-mode .more-read-list li a:hover, [data-theme="dark"] .more-read-list li a:hover {
+    color: var(--text-highlight) !important;
+}
+body.dark .more-read-list li a i, body.dark-mode .more-read-list li a i, [data-theme="dark"] .more-read-list li a i {
+    color: var(--primary) !important;
+}
+
+/* FAQ Overrides */
+body.dark .faq-item, body.dark-mode .faq-item, [data-theme="dark"] .faq-item {
+    background-color: var(--faq-bg) !important;
+    border-color: var(--faq-border) !important;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
 }
-
-/* হোভার করলে বর্ডারের কালার */
-body.dark .faq-item:hover,
-body.dark-mode .faq-item:hover,
-[data-theme="dark"] .faq-item:hover {
-    border-color: #4caf50 !important;
+body.dark .faq-item:hover, body.dark-mode .faq-item:hover, [data-theme="dark"] .faq-item:hover {
+    border-color: var(--primary) !important;
     box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15) !important;
 }
-
-/* FAQ প্রশ্ন (Heading / Strong) এর কালার */
-body.dark .faq-item h4,
-body.dark-mode .faq-item h4,
-[data-theme="dark"] .faq-item h4,
-body.dark .faq-item strong,
-body.dark-mode .faq-item strong,
-[data-theme="dark"] .faq-item strong {
-    color: #98ffa7 !important; /* সুন্দর একটি হালকা সবুজ কালার */
+body.dark .faq-item h4, body.dark-mode .faq-item h4, [data-theme="dark"] .faq-item h4,
+body.dark .faq-item strong, body.dark-mode .faq-item strong, [data-theme="dark"] .faq-item strong {
+    color: var(--text-highlight) !important;
 }
-
-/* FAQ উত্তর (Paragraph) এর কালার */
-body.dark .faq-item p,
-body.dark-mode .faq-item p,
-[data-theme="dark"] .faq-item p,
-body.dark .faq-item span,
-body.dark-mode .faq-item span,
-[data-theme="dark"] .faq-item span {
-    color: #cccccc !important; /* সহজে পড়ার জন্য হালকা ধূসর কালার */
+body.dark .faq-item p, body.dark-mode .faq-item p, [data-theme="dark"] .faq-item p,
+body.dark .faq-item span, body.dark-mode .faq-item span, [data-theme="dark"] .faq-item span {
+    color: var(--text-summary) !important;
 }
-
