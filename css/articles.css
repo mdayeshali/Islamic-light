@@ -726,3 +726,45 @@ body.dark-mode .more-read-list li a i,
 [data-theme="dark"] .more-read-list li a i {
     color: #4caf50 !important;
    }
+
+/* ==========================================
+   FIX FOR FAQ SECTION (Dark Mode)
+   ========================================== */
+
+/* FAQ বক্সের ব্যাকগ্রাউন্ড ও বর্ডার ফিক্স */
+body.dark .faq-item,
+body.dark-mode .faq-item,
+[data-theme="dark"] .faq-item {
+    background-color: #16221f !important; /* ডার্ক কার্ড ব্যাকগ্রাউন্ড */
+    border-color: #274138 !important; /* ডার্ক বর্ডার */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* হোভার করলে বর্ডারের কালার */
+body.dark .faq-item:hover,
+body.dark-mode .faq-item:hover,
+[data-theme="dark"] .faq-item:hover {
+    border-color: #4caf50 !important;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15) !important;
+}
+
+/* FAQ প্রশ্ন (Heading / Strong) এর কালার */
+body.dark .faq-item h4,
+body.dark-mode .faq-item h4,
+[data-theme="dark"] .faq-item h4,
+body.dark .faq-item strong,
+body.dark-mode .faq-item strong,
+[data-theme="dark"] .faq-item strong {
+    color: #98ffa7 !important; /* সুন্দর একটি হালকা সবুজ কালার */
+}
+
+/* FAQ উত্তর (Paragraph) এর কালার */
+body.dark .faq-item p,
+body.dark-mode .faq-item p,
+[data-theme="dark"] .faq-item p,
+body.dark .faq-item span,
+body.dark-mode .faq-item span,
+[data-theme="dark"] .faq-item span {
+    color: #cccccc !important; /* সহজে পড়ার জন্য হালকা ধূসর কালার */
+}
+
