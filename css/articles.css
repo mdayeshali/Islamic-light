@@ -656,3 +656,73 @@ blockquote::after {
     text-decoration: underline;
     transition: color 0.3s ease;
 }
+/* ==========================================
+   FIXES FOR DARK MODE (Article Text, Blockquote, More Read)
+   ========================================== */
+
+/* ১. Article Text & Summary Fix (1000038186.jpg) */
+body.dark .article-summary,
+body.dark-mode .article-summary,
+[data-theme="dark"] .article-summary,
+body.dark .article-box p,
+body.dark-mode .article-box p,
+[data-theme="dark"] .article-box p {
+    color: #cccccc !important; /* ডার্ক মোডে লেখাগুলো হালকা ধূসর/সাদা হবে */
+}
+
+/* ২. Blockquote Fix (1000038188.jpg) */
+body.dark blockquote,
+body.dark-mode blockquote,
+[data-theme="dark"] blockquote {
+    background-color: #13241f !important; /* ডার্ক গ্রিন ব্যাকগ্রাউন্ড */
+    border-left-color: #4caf50 !important; /* বর্ডার কালার */
+    color: #cccccc !important; /* টেক্সট কালার */
+}
+
+body.dark blockquote cite, 
+body.dark-mode blockquote cite,
+[data-theme="dark"] blockquote cite,
+body.dark blockquote::after,
+body.dark-mode blockquote::after,
+[data-theme="dark"] blockquote::after {
+    color: #81c784 !important; /* রেফারেন্সের কালার */
+}
+
+/* ৩. More Read Container Fix (1000038184.jpg) */
+body.dark #more-read-container,
+body.dark-mode #more-read-container,
+[data-theme="dark"] #more-read-container {
+    border-top-color: #274138 !important;
+}
+
+body.dark #more-read-container h3,
+body.dark-mode #more-read-container h3,
+[data-theme="dark"] #more-read-container h3 {
+    color: #4caf50 !important;
+    border-bottom-color: #4caf50 !important;
+}
+
+body.dark .more-read-list li,
+body.dark-mode .more-read-list li,
+[data-theme="dark"] .more-read-list li {
+    border-bottom-color: #274138 !important;
+}
+
+/* লিংকের কালার ঠিক করা হলো */
+body.dark .more-read-list li a,
+body.dark-mode .more-read-list li a,
+[data-theme="dark"] .more-read-list li a {
+    color: #e6e6e6 !important; 
+}
+
+body.dark .more-read-list li a:hover,
+body.dark-mode .more-read-list li a:hover,
+[data-theme="dark"] .more-read-list li a:hover {
+    color: #98ffa7 !important; /* হোভার করলে হালকা সবুজ হবে */
+}
+
+body.dark .more-read-list li a i,
+body.dark-mode .more-read-list li a i,
+[data-theme="dark"] .more-read-list li a i {
+    color: #4caf50 !important;
+   }
