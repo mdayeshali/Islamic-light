@@ -159,11 +159,11 @@ nav a:hover {
 
 /* =============== MEANING (অনুবাদ) =============== */
 .meaning {
-  background: #fefefe;
+  background: var(--transliteration-bg);
   padding: 12px 15px;
   border-radius: 8px;
   font-size: 1rem;
-  color: #444;
+  color: var(--primary);
   line-height: 1.8rem;
   border-left: 4px solid #c8e6c9;
 }
