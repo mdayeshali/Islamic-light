@@ -1,167 +1,200 @@
 /* 🌙 Islamic Light | Namaz Education Page */
 /* Author: Md Ayesh Ali | 2025 */
 
-/* ---------- GLOBAL ---------- */
+/* ==========================================
+   1. CSS VARIABLES (LIGHT & DARK THEME)
+   ========================================== */
 :root {
-  --bg-light: #e9f5ef;
-  --bg-dark: #121212;
-  --text-light: #1c1c1c;
-  --text-dark: #eaeaea;
-  --primary: #004d40;
-  --accent: #009688;
-  --card-bg: #ffffff;
-  --card-dark: #1e1e1e;
+    /* Light Mode Colors */
+    --bg-color: #e9f5ef;
+    --card-bg: #ffffff;
+    --text-main: #1c1c1c;
+    --text-muted: #555555;
+    --primary: #004d40;
+    --accent: #009688;
+    --translit-bg: #eef6f3;
+    --translit-text: #2e3532;
+    --section-gradient: linear-gradient(to right, #004d40, #00796b);
+    --shadow-normal: rgba(0, 0, 0, 0.08);
+    --shadow-hover: rgba(0, 0, 0, 0.1);
 }
 
-/* Dark Theme */
-[data-theme="dark"] {
-  --bg-light: var(--bg-dark);
-  --text-light: var(--text-dark);
-  --card-bg: var(--card-dark);
+/* Dark Theme (Premium Greenish-Dark Tone) */
+body.dark, body.dark-mode, [data-theme="dark"] {
+    --bg-color: #121514; 
+    --card-bg: #1a201e;
+    --text-main: #eaeaea;
+    --text-muted: #aaaaaa;
+    --primary: #4caf50;
+    --accent: #81c784;
+    --translit-bg: #22302c;
+    --translit-text: #cccccc;
+    --section-gradient: linear-gradient(to right, #1b4d3e, #206859);
+    --shadow-normal: rgba(0, 0, 0, 0.3);
+    --shadow-hover: rgba(0, 0, 0, 0.5);
 }
 
-/* ---------- BODY ---------- */
+/* ==========================================
+   2. BASE STYLES
+   ========================================== */
 body {
-  margin: 0;
-  font-family: "Noto Sans Bengali", Arial, sans-serif;
-  background: var(--bg-light);
-  color: var(--text-light);
-  line-height: 1.8;
-  scroll-behavior: smooth;
-  transition: background 0.4s, color 0.4s;
+    margin: 0;
+    font-family: "Noto Sans Bengali", Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.8;
+    scroll-behavior: smooth;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
-
-/* ---------- DARK MODE BUTTON ---------- */
 .dark-toggle {
-  background: transparent;
-  border: 1px solid white;
-  color: white;
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  font-size: 18px;
-  margin-left: 15px;
+    background: transparent;
+    border: 1px solid var(--text-main);
+    color: var(--text-main);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 15px;
+    transition: 0.3s ease;
 }
 
-/* ---------- PAGE CONTAINER ---------- */
+/* ==========================================
+   3. PAGE CONTAINER & TITLES
+   ========================================== */
 .container {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 0 18px 60px;
-  animation: fadeIn 0.8s ease;
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 18px 60px;
+    animation: fadeIn 0.8s ease;
+}
+
+/* ফেইড-ইন এনিমেশন (আপনার কোডে এটি মিসিং ছিল) */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .page-title {
-  text-align: center;
-  color: var(--primary);
-  font-size: 1.9rem;
-  margin-bottom: 8px;
+    text-align: center;
+    color: var(--primary);
+    font-size: 1.9rem;
+    margin-bottom: 8px;
+    transition: color 0.3s ease;
 }
 
 .note {
-  text-align: center;
-  color: #555;
-  margin-bottom: 30px;
-  font-style: italic;
+    text-align: center;
+    color: var(--text-muted);
+    margin-bottom: 30px;
+    font-style: italic;
+    transition: color 0.3s ease;
 }
 
-/* ---------- SECTION ---------- */
+.divider {
+    text-align: center;
+    font-size: 22px;
+    margin: 25px 0;
+    color: var(--accent);
+    transition: color 0.3s ease;
+}
+
+/* ==========================================
+   4. SECTIONS & STEPS
+   ========================================== */
 .section-title {
-  background: linear-gradient(to right, #004d40, #00796b);
-  color: white;
-  padding: 10px 16px;
-  border-radius: 8px;
-  margin-top: 40px;
-  font-size: 1.3rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background: var(--section-gradient);
+    color: white;
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-top: 40px;
+    font-size: 1.3rem;
+    box-shadow: 0 4px 10px var(--shadow-normal);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ---------- STEP (INFO) ---------- */
 .step {
-  background: var(--card-bg);
-  border-left: 5px solid var(--accent);
-  border-radius: 10px;
-  padding: 15px;
-  margin-top: 10px;
-  font-size: 1.05rem;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
-}
-.step:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-.ref {
-  margin-top: 6px;
-  font-size: 0.9rem;
-  color: var(--accent);
-  font-style: italic;
+    background: var(--card-bg);
+    border-left: 5px solid var(--accent);
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: 1.05rem;
+    box-shadow: 0 3px 8px var(--shadow-normal);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
 }
 
-/* ---------- DUA ---------- */
-.dua {
-  background: var(--card-bg);
-  padding: 25px 20px;
-  border-radius: 12px;
-  margin-top: 15px;
-  text-align: center;
-  border-top: 4px solid var(--primary);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
+.step:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px var(--shadow-hover);
 }
+
+.ref {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-style: italic;
+    transition: color 0.3s ease;
+}
+
+/* ==========================================
+   5. DUA BOXES
+   ========================================== */
+.dua {
+    background: var(--card-bg);
+    padding: 25px 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    text-align: center;
+    border-top: 4px solid var(--primary);
+    box-shadow: 0 4px 10px var(--shadow-normal);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
 .dua:hover {
-  transform: scale(1.02);
+    transform: scale(1.02);
+    box-shadow: 0 6px 15px var(--shadow-hover);
 }
 
 .dua .arabic {
-  font-family: "Amiri Quran", "Scheherazade", serif;
-  font-size: 1.8rem;
-  color: var(--primary);
-  line-height: 2;
-  margin-bottom: 10px;
+    font-family: "Amiri Quran", "Amiri", "Scheherazade", serif;
+    font-size: 1.8rem;
+    color: var(--primary);
+    line-height: 2;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
 }
 
 .dua .translit {
-  color: #2e3532;
-  font-size: 1rem;
-  background: #eef6f3;
-  display: inline-block;
-  padding: 6px 12px;
-  border-radius: 6px;
-  margin: 6px 0;
+    color: var(--translit-text);
+    background: var(--translit-bg);
+    font-size: 1rem;
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    margin: 6px 0;
+    transition: background 0.3s ease, color 0.3s ease;
 }
 
 .dua .meaning {
-  color: #444;
-  font-size: 1rem;
-  margin-top: 8px;
+    color: var(--text-muted);
+    font-size: 1rem;
+    margin-top: 8px;
+    transition: color 0.3s ease;
 }
 
-/* ---------- DIVIDER ---------- */
-.divider {
-  text-align: center;
-  font-size: 22px;
-  margin: 25px 0;
-  color: var(--accent);
-}
-
-
-
-
-
-
-/* ---------- RESPONSIVE ---------- */
+/* ==========================================
+   6. RESPONSIVE DESIGN
+   ========================================== */
 @media (max-width: 768px) {
-  
-  .page-title {
-    font-size: 1.5rem;
-  }
-  .dua .arabic {
-    font-size: 1.4rem;
-  }
-  .dua {
-    padding: 15px;
-  }
+    .page-title {
+        font-size: 1.5rem;
+    }
+    .dua .arabic {
+        font-size: 1.4rem;
+    }
+    .dua {
+        padding: 15px;
+    }
 }
