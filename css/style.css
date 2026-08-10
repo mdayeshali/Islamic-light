@@ -23,6 +23,7 @@
 /* 🌙 Dark Mode */
 
 [data-theme="dark"] {
+ --primary: #004d40;
   --bg: #0f0f0f;
   --text: #f1f1f1;
   --card-bg: #1c1c1c;
