@@ -1,0 +1,402 @@
+[
+  {
+    "id": 1,
+    "name_bn": "আবরার",
+    "name_en": "Abrar",
+    "name_ar": "أبرار",
+    "meaning": "সৎ, পুণ্যবান ও চরিত্রবান",
+    "gender": "boy"
+  },
+  {
+    "id": 2,
+    "name_bn": "আয়েশা",
+    "name_en": "Ayesha",
+    "name_ar": "عائشة",
+    "meaning": "সমৃদ্ধশালী, সুন্দর জীবনযাপনকারী",
+    "gender": "girl"
+  },
+  {
+    "id": 3,
+    "name_bn": "আইয়ান",
+    "name_en": "Ayan",
+    "name_ar": "أيان",
+    "meaning": "আল্লাহর উপহার, সময়",
+    "gender": "boy"
+  },
+  {
+    "id": 4,
+    "name_bn": "আফরা",
+    "name_en": "Afra",
+    "name_ar": "عفراء",
+    "meaning": "সাদা, উজ্জ্বল, রূপসী",
+    "gender": "girl"
+  },
+  {
+    "id": 5,
+    "name_bn": "আহনাফ",
+    "name_en": "Ahnaf",
+    "name_ar": "أحنف",
+    "meaning": "একনিষ্ঠ সত্য ধর্মীয় বিশ্বাসী",
+    "gender": "boy"
+  },
+  {
+    "id": 6,
+    "name_bn": "আতিয়া",
+    "name_en": "Atiya",
+    "name_ar": "عطية",
+    "meaning": "উপহার, দান",
+    "gender": "girl"
+  },
+  {
+    "id": 7,
+    "name_bn": "আরিয়ান",
+    "name_en": "Aryan",
+    "name_ar": "আریان",
+    "meaning": "উচ্চ মর্যাদা সম্পন্ন, যোদ্ধা",
+    "gender": "boy"
+  },
+  {
+    "id": 8,
+    "name_bn": "আসমাহ",
+    "name_en": "Asmah",
+    "name_ar": "أسمة",
+    "meaning": "উচ্চ মর্যাদা ও সম্মানীয়",
+    "gender": "girl"
+  },
+  {
+    "id": 9,
+    "name_bn": "ইভান",
+    "name_en": "Ivan",
+    "name_ar": "إيفان",
+    "meaning": "আল্লাহর দয়াময় উপহার, যোদ্ধা",
+    "gender": "boy"
+  },
+  {
+    "id": 10,
+    "name_bn": "ইফরাত",
+    "name_en": "Ifrat",
+    "name_ar": "إفراط",
+    "meaning": "সুন্দর ও আনন্দদায়ক অনুভূতি",
+    "gender": "girl"
+  },
+  {
+    "id": 11,
+    "name_bn": "ইমরান",
+    "name_en": "Imran",
+    "name_ar": "عمران",
+    "meaning": "উন্নতি, সমৃদ্ধি ও জনবসতি",
+    "gender": "boy"
+  },
+  {
+    "id": 12,
+    "name_bn": "ইশরাত",
+    "name_en": "Ishrat",
+    "name_ar": "عشرت",
+    "meaning": "উচ্ছ্বাস, আনন্দ, ভালোবাসা",
+    "gender": "girl"
+  },
+  {
+    "id": 13,
+    "name_bn": "উসামা",
+    "name_en": "Usama",
+    "name_ar": "أسامة",
+    "meaning": "সিংহ, বীর পুরুষ",
+    "gender": "boy"
+  },
+  {
+    "id": 14,
+    "name_bn": "উমাইজা",
+    "name_en": "Umaiza",
+    "name_ar": "عميزة",
+    "meaning": "উজ্জ্বল হৃদয়ের অধিকারী, সুন্দর",
+    "gender": "girl"
+  },
+  {
+    "id": 15,
+    "name_bn": "ওমর",
+    "name_en": "Omar",
+    "name_ar": "عمر",
+    "meaning": "দীর্ঘায়ু, সমৃদ্ধিশালী",
+    "gender": "boy"
+  },
+  {
+    "id": 16,
+    "name_bn": "কাসিম",
+    "name_en": "Qasim",
+    "name_ar": "قاسم",
+    "meaning": "বণ্টনকারী, যে ভালো কিছু ভাগ করে",
+    "gender": "boy"
+  },
+  {
+    "id": 17,
+    "name_bn": "কারিমাহ",
+    "name_en": "Karimah",
+    "name_ar": "كريمة",
+    "meaning": "দানশীল, মহতী ও সম্মানিত",
+    "gender": "girl"
+  },
+  {
+    "id": 18,
+    "name_bn": "খালিদ",
+    "name_en": "Khalid",
+    "name_ar": "خالد",
+    "meaning": "স্থায়ী, অমর, চিরন্তন",
+    "gender": "boy"
+  },
+  {
+    "id": 19,
+    "name_bn": "খাদিজা",
+    "name_en": "Khadija",
+    "name_ar": "خديجة",
+    "meaning": "বিশ্বস্ত, প্রথম ও সম্মানিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 20,
+    "name_bn": "জায়েদ",
+    "name_en": "Zayed",
+    "name_ar": "زايد",
+    "meaning": "বৃদ্ধি পাওয়া, প্রাচুর্যময়",
+    "gender": "boy"
+  },
+  {
+    "id": 21,
+    "name_bn": "জয়নব",
+    "name_en": "Zainab",
+    "name_ar": "زينب",
+    "meaning": "সুন্দর ও সুবাসিত ফুল",
+    "gender": "girl"
+  },
+  {
+    "id": 22,
+    "name_bn": "জাওয়াদ",
+    "name_en": "Jawad",
+    "name_ar": "جواد",
+    "meaning": "উদার ও পরম দয়ালু",
+    "gender": "boy"
+  },
+  {
+    "id": 23,
+    "name_bn": "জারা",
+    "name_en": "Zara",
+    "name_ar": "زارة",
+    "meaning": "রাজকুমারী, প্রস্ফুটিত ফুল",
+    "gender": "girl"
+  },
+  {
+    "id": 24,
+    "name_bn": "তৌহিদ",
+    "name_en": "Tawhid",
+    "name_ar": "توحيد",
+    "meaning": "আল্লাহর একত্ববাদ",
+    "gender": "boy"
+  },
+  {
+    "id": 25,
+    "name_bn": "তাসনিয়া",
+    "name_en": "Tasniya",
+    "name_ar": "تثنية",
+    "meaning": "প্রশংসিত, সুন্দর গুণসম্পন্ন",
+    "gender": "girl"
+  },
+  {
+    "id": 26,
+    "name_bn": "তৈয়ব",
+    "name_en": "Tayyib",
+    "name_ar": "طيب",
+    "meaning": "পবিত্র, উত্তম ও সুস্বাদু",
+    "gender": "boy"
+  },
+  {
+    "id": 27,
+    "name_bn": "তাহসিন",
+    "name_en": "Tahsin",
+    "name_ar": "تحسين",
+    "meaning": "সুন্দরকরণ, শোভাবর্ধন",
+    "gender": "boy"
+  },
+  {
+    "id": 28,
+    "name_bn": "তাহমিদা",
+    "name_en": "Tahmida",
+    "name_ar": "تحميدة",
+    "meaning": "আল্লাহর প্রশংসা উপস্থাপনকারী",
+    "gender": "girl"
+  },
+  {
+    "id": 29,
+    "name_bn": "নাবিল",
+    "name_en": "Nabil",
+    "name_ar": "نبيل",
+    "meaning": "মহৎ, মার্জিত, বুদ্ধিমান",
+    "gender": "boy"
+  },
+  {
+    "id": 30,
+    "name_bn": "নুসাইবা",
+    "name_en": "Nusaiba",
+    "name_ar": "نسيبة",
+    "meaning": "উচ্চ বংশীয়, বিশিষ্ট নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 31,
+    "name_bn": "নাদিম",
+    "name_en": "Nadim",
+    "name_ar": "نديم",
+    "meaning": "সচ্চরিত্র বন্ধু, সঙ্গী",
+    "gender": "boy"
+  },
+  {
+    "id": 32,
+    "name_bn": "নাজিফা",
+    "name_en": "Nazifa",
+    "name_ar": "نظيفة",
+    "meaning": "পবিত্র, পরিষ্কার ও নিষ্কয়া",
+    "gender": "girl"
+  },
+  {
+    "id": 33,
+    "name_bn": "ফাহাদ",
+    "name_en": "Fahad",
+    "name_ar": "فهد",
+    "meaning": "চিতাবাঘ, দ্রুতগামী ও চটপটে",
+    "gender": "boy"
+  },
+  {
+    "id": 34,
+    "name_bn": "ফারিয়া",
+    "name_en": "Fariya",
+    "name_ar": "فارية",
+    "meaning": "আনন্দময়ী, সুখী ও উৎফুল্ল",
+    "gender": "girl"
+  },
+  {
+    "id": 35,
+    "name_bn": "ফুয়াদ",
+    "name_en": "Fuad",
+    "name_ar": "فؤاد",
+    "meaning": "হৃদয়, অন্তর, বিবেক",
+    "gender": "boy"
+  },
+  {
+    "id": 36,
+    "name_bn": "ফাতিহা",
+    "name_en": "Fatiha",
+    "name_ar": "فاتحة",
+    "meaning": "সূচনা, বিজয়ী, শুভ আরম্ভ",
+    "gender": "girl"
+  },
+  {
+    "id": 37,
+    "name_bn": "বিলাল",
+    "name_en": "Bilal",
+    "name_ar": "بلال",
+    "meaning": "পানি, সিক্ততা (রাসূলুল্লাহর মুয়াজ্জিন)",
+    "gender": "boy"
+  },
+  {
+    "id": 38,
+    "name_bn": "বুশরা",
+    "name_en": "Bushra",
+    "name_ar": "بشرى",
+    "meaning": "সুসংবাদ, আনন্দের বার্তা",
+    "gender": "girl"
+  },
+  {
+    "id": 39,
+    "name_bn": "মাহির",
+    "name_en": "Mahir",
+    "name_ar": "ماهر",
+    "meaning": "দক্ষ, চতুর, পারদর্শী",
+    "gender": "boy"
+  },
+  {
+    "id": 40,
+    "name_bn": "মারিয়াম",
+    "name_en": "Mariyam",
+    "name_ar": "مريم",
+    "meaning": "ইবাদতকারিনী, পবিত্র নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 41,
+    "name_bn": "মুস্তাকিম",
+    "name_en": "Mustakim",
+    "name_ar": "مستقيم",
+    "meaning": "সহজ-সরল ও সঠিক পথগামী",
+    "gender": "boy"
+  },
+  {
+    "id": 42,
+    "name_bn": "মেহজাবিন",
+    "name_en": "Mehjabin",
+    "name_ar": "مهجبين",
+    "meaning": "চাঁদের মতো সুন্দর কপাল বিশিষ্ট",
+    "gender": "girl"
+  },
+  {
+    "id": 43,
+    "name_bn": "রাইয়ান",
+    "name_en": "Raiyan",
+    "name_ar": "ريان",
+    "meaning": "জান্নাতের একটি দরজার নাম, তৃপ্ত",
+    "gender": "boy"
+  },
+  {
+    "id": 44,
+    "name_bn": "রুহানি",
+    "name_en": "Ruhani",
+    "name_ar": "روحاني",
+    "meaning": "আধ্যাত্মিক, পবিত্র মনভাবাপন্ন",
+    "gender": "girl"
+  },
+  {
+    "id": 45,
+    "name_bn": "রাফি",
+    "name_en": "Rafi",
+    "name_ar": "رافع",
+    "meaning": "উচ্চ মর্যাদাবান, উন্নত",
+    "gender": "boy"
+  },
+  {
+    "id": 46,
+    "name_bn": "সামির",
+    "name_en": "Samir",
+    "name_ar": "سمير",
+    "meaning": "গল্পপ্রিয় ও বিশ্বস্ত নৈশ সঙ্গী",
+    "gender": "boy"
+  },
+  {
+    "id": 47,
+    "name_bn": "সামিয়া",
+    "name_en": "Samiya",
+    "name_ar": "سامية",
+    "meaning": "উচ্চ মর্যাদাসম্পন্ন, সম্মানিত",
+    "gender": "girl"
+  },
+  {
+    "id": 48,
+    "name_bn": "সাদমান",
+    "name_en": "Sadman",
+    "name_ar": "شدمان",
+    "meaning": "সদা আনন্দিত, প্রফুল্ল চিত্ত",
+    "gender": "boy"
+  },
+  {
+    "id": 49,
+    "name_bn": "সাফওয়ান",
+    "name_en": "Safwan",
+    "name_ar": "صفوان",
+    "meaning": "স্বচ্ছ, মসৃণ পাথর, খাঁটি",
+    "gender": "boy"
+  },
+  {
+    "id": 50,
+    "name_bn": "হানিফ",
+    "name_en": "Hanif",
+    "name_ar": "حنيف",
+    "meaning": "একনিষ্ঠ সত্যধর্মের অনুসারী",
+    "gender": "boy"
+  }
+]
