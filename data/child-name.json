@@ -1199,8 +1199,410 @@
     "name_ar": "তসনীম",
     "meaning": "জান্নাতের সুমিষ্টি ঝরনা",
     "gender": "girl"
+  },
+  {
+    "id": 151,
+    "name_bn": "নাভীদ",
+    "name_en": "Navid",
+    "name_ar": "نويد",
+    "meaning": "শুভ সংবাদ, আশার বার্তা",
+    "gender": "boy"
+  },
+  {
+    "id": 152,
+    "name_bn": "নাজিয়া",
+    "name_en": "Naziya",
+    "name_ar": "ناجية",
+    "meaning": "নিরাপদ, যে মুক্তি পেয়েছে",
+    "gender": "girl"
+  },
+  {
+    "id": 153,
+    "name_bn": "নাসিম",
+    "name_en": "Nasim",
+    "name_ar": "نسيم",
+    "meaning": "মৃদু বাতাস, স্নিগ্ধ সুবাতাস",
+    "gender": "boy"
+  },
+  {
+    "id": 154,
+    "name_bn": "নাসরিন",
+    "name_en": "Nasrin",
+    "name_ar": "نسرين",
+    "meaning": "এক প্রকার বুনো সুবাসিত ফুল",
+    "gender": "girl"
+  },
+  {
+    "id": 155,
+    "name_bn": "নাভিদ",
+    "name_en": "Navid",
+    "name_ar": "نويد",
+    "meaning": "সুসংবাদ বহনকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 156,
+    "name_bn": "নুসরাত",
+    "name_en": "Nusrat",
+    "name_ar": "নসরাত",
+    "meaning": "সাহায্য, সহযোগিতা, সফলতা",
+    "gender": "girl"
+  },
+  {
+    "id": 157,
+    "name_bn": "নূর",
+    "name_en": "Noor",
+    "name_ar": "نور",
+    "meaning": "আলো, ঐশ্বরিক জ্যোতি",
+    "gender": "boy"
+  },
+  {
+    "id": 158,
+    "name_bn": "নূজাহাত",
+    "name_en": "Nuzhat",
+    "name_ar": "نزهة",
+    "meaning": "পবিত্রতা, চিত্তবিনোদন, প্রফুল্লতা",
+    "gender": "girl"
+  },
+  {
+    "id": 159,
+    "name_bn": "ফয়সাল",
+    "name_en": "Faisal",
+    "name_ar": "فيصل",
+    "meaning": "বিচারক, সিদ্ধান্ত গ্রহণকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 160,
+    "name_bn": "ফাহমিদা",
+    "name_en": "Fahmida",
+    "name_ar": "فهميدة",
+    "meaning": "বুদ্ধিমতী, বিচক্ষণ ও জ্ঞানী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 161,
+    "name_bn": "ফারুক",
+    "name_en": "Farooq",
+    "name_ar": "فاروق",
+    "meaning": "সত্য ও মিথ্যার পার্থক্যকারী (উমর রা.-এর উপাধি)",
+    "gender": "boy"
+  },
+  {
+    "id": 162,
+    "name_bn": "ফাতেমা",
+    "name_en": "Fatema",
+    "name_ar": "فاطمة",
+    "meaning": "পাপ থেকে মুক্ত (রাসূলুল্লাহর সা. কন্যা)",
+    "gender": "girl"
+  },
+  {
+    "id": 163,
+    "name_bn": "ফায়াদ",
+    "name_en": "Fayyad",
+    "name_ar": "فياض",
+    "meaning": "দানশীল, অত্যন্ত উদার",
+    "gender": "boy"
+  },
+  {
+    "id": 164,
+    "name_bn": "ফিরদৌস",
+    "name_en": "Firdous",
+    "name_ar": "فردوس",
+    "meaning": "জান্নাতের সর্বোচ্চ বাগান",
+    "gender": "girl"
+  },
+  {
+    "id": 165,
+    "name_bn": "বোরহান",
+    "name_en": "Borhan",
+    "name_ar": "برهان",
+    "meaning": "স্পষ্ট প্রমাণ, দলিল",
+    "gender": "boy"
+  },
+  {
+    "id": 166,
+    "name_bn": "বাসমাহ",
+    "name_en": "Basmah",
+    "name_ar": "بسمة",
+    "meaning": "হাসি, মৃদু হাসি",
+    "gender": "girl"
+  },
+  {
+    "id": 167,
+    "name_bn": "বাশির",
+    "name_en": "Bashir",
+    "name_ar": "بشير",
+    "meaning": "সুসংবাদদাতা",
+    "gender": "boy"
+  },
+  {
+    "id": 168,
+    "name_bn": "বিলকিস",
+    "name_en": "Bilqis",
+    "name_ar": "بلقيس",
+    "meaning": "সাবার রানীর নাম, সম্মানিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 169,
+    "name_bn": "মনসুর",
+    "name_en": "Mansur",
+    "name_ar": "منصور",
+    "meaning": "সাহায্যপ্রাপ্ত, বিজয়ী",
+    "gender": "boy"
+  },
+  {
+    "id": 170,
+    "name_bn": "মাকসুদা",
+    "name_en": "Maksuda",
+    "name_ar": "مقصودة",
+    "meaning": "আকাঙ্ক্ষিত, কাঙ্ক্ষিত লক্ষ্য",
+    "gender": "girl"
+  },
+  {
+    "id": 171,
+    "name_bn": "মাহমুদ",
+    "name_en": "Mahmud",
+    "name_ar": "محمود",
+    "meaning": "প্রশংসিত, প্রীতিভাজন",
+    "gender": "boy"
+  },
+  {
+    "id": 172,
+    "name_bn": "মাহজাবিন",
+    "name_en": "Mahjabin",
+    "name_ar": "ماهجبين",
+    "meaning": "চাঁদের মতো উজ্জ্বল চেহারার অধিকারী",
+    "gender": "girl"
+  },
+  {
+    "id": 173,
+    "name_bn": "মুনতাসির",
+    "name_en": "Muntasir",
+    "name_ar": "منتصر",
+    "meaning": "বিজয়ী, লাভবান",
+    "gender": "boy"
+  },
+  {
+    "id": 174,
+    "name_bn": "মুমতাহিনা",
+    "name_en": "Mumtahina",
+    "name_ar": "ممتحنة",
+    "meaning": "পরীক্ষিত, খাঁটি নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 175,
+    "name_bn": "মুস্তফা",
+    "name_en": "Mustafa",
+    "name_ar": "مصطفى",
+    "meaning": "মনোনীত, নির্বাচিত (রাসূলুল্লাহর সা. নাম)",
+    "gender": "boy"
+  },
+  {
+    "id": 176,
+    "name_bn": "মুনিরা",
+    "name_en": "Munira",
+    "name_ar": "منيرة",
+    "meaning": "দীপ্তিমান, আলোকোজ্জ্বল",
+    "gender": "girl"
+  },
+  {
+    "id": 177,
+    "name_bn": "ইয়াসিন",
+    "name_en": "Yasin",
+    "name_ar": "যাসীন",
+    "meaning": "পবিত্র কুরআনের এক সূরার নাম, রাসুলুল্লাহর উপাধি",
+    "gender": "boy"
+  },
+  {
+    "id": 178,
+    "name_bn": "ইয়াসমিন",
+    "name_en": "Yasmin",
+    "name_ar": "ياسمين",
+    "meaning": "জুঁই ফুল, সুবাসিত সাদা ফুল",
+    "gender": "girl"
+  },
+  {
+    "id": 179,
+    "name_bn": "ইউসুফ",
+    "name_en": "Yusuf",
+    "name_ar": "يوسف",
+    "meaning": "আল্লাহ বৃদ্ধি করেন (একজন বিখ্যাত নবীর নাম)",
+    "gender": "boy"
+  },
+  {
+    "id": 180,
+    "name_bn": "ইউসরা",
+    "name_en": "Yusra",
+    "name_ar": "يسرى",
+    "meaning": "সহজতা, প্রাচুর্য, স্বাচ্ছন্দ্য",
+    "gender": "girl"
+  },
+  {
+    "id": 181,
+    "name_bn": "রশীদ",
+    "name_en": "Rashid",
+    "name_ar": "رشيد",
+    "meaning": "সঠিক পথপ্রদর্শক, বিচক্ষণ",
+    "gender": "boy"
+  },
+  {
+    "id": 182,
+    "name_bn": "রাবিয়া",
+    "name_en": "Rabia",
+    "name_ar": "رابعة",
+    "meaning": "চতুর্থ কন্যা, বসন্তকাল",
+    "gender": "girl"
+  },
+  {
+    "id": 183,
+    "name_bn": "রহিম",
+    "name_en": "Rahim",
+    "name_ar": "رحيم",
+    "meaning": "দয়ালু, সহানুভূতিশীল",
+    "gender": "boy"
+  },
+  {
+    "id": 184,
+    "name_bn": "রহিমা",
+    "name_en": "Rahima",
+    "name_ar": "رحيمة",
+    "meaning": "দয়াবতী, করুণাময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 185,
+    "name_bn": "রিফাত",
+    "name_en": "Rifat",
+    "name_ar": "رفعت",
+    "meaning": "উচ্চ মর্যাদা, শ্রেষ্ঠত্ব",
+    "gender": "boy"
+  },
+  {
+    "id": 186,
+    "name_bn": "রোদেলা",
+    "name_en": "Rodela",
+    "name_ar": "روديلة",
+    "meaning": "সূর্যের আলোকময়, উজ্জ্বল",
+    "gender": "girl"
+  },
+  {
+    "id": 187,
+    "name_bn": "শাফিন",
+    "name_en": "Shafin",
+    "name_ar": "شافين",
+    "meaning": "আরোগ্যকারী, যে নিরাময় করে",
+    "gender": "boy"
+  },
+  {
+    "id": 188,
+    "name_bn": "শামীমা",
+    "name_en": "Shamima",
+    "name_ar": "شميمة",
+    "meaning": "মিষ্টি সুবাস, সুগন্ধি বায়ু",
+    "gender": "girl"
+  },
+  {
+    "id": 189,
+    "name_bn": "শাহেদ",
+    "name_en": "Shahed",
+    "name_ar": "شاهد",
+    "meaning": "সাক্ষী, সত্যের পর্যবেক্ষক",
+    "gender": "boy"
+  },
+  {
+    "id": 190,
+    "name_bn": "শাহীনুর",
+    "name_en": "Shahinur",
+    "name_ar": "شاهينور",
+    "meaning": "রাজকীয় আলো",
+    "gender": "girl"
+  },
+  {
+    "id": 191,
+    "name_bn": "সাবিত",
+    "name_en": "Sabit",
+    "name_ar": "ثابت",
+    "meaning": "অটল, দৃঢ়, অবিচল",
+    "gender": "boy"
+  },
+  {
+    "id": 192,
+    "name_bn": "সামিহা",
+    "name_en": "Samiha",
+    "name_ar": "سميحة",
+    "meaning": "উদার, ক্ষমাশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 193,
+    "name_bn": "সালাহ",
+    "name_en": "Salah",
+    "name_ar": "صلاح",
+    "meaning": "সৎভাব, ধার্মিকতা, কল্যাণ",
+    "gender": "boy"
+  },
+  {
+    "id": 194,
+    "name_bn": "সালমা",
+    "name_en": "Salma",
+    "name_ar": "سلمى",
+    "meaning": "শান্তিপূর্ণ, নিরাপদ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 195,
+    "name_bn": "সাইফ",
+    "name_en": "Saif",
+    "name_ar": "سيف",
+    "meaning": "তলোয়ার, রক্ষক",
+    "gender": "boy"
+  },
+  {
+    "id": 196,
+    "name_bn": "সাইদা",
+    "name_en": "Saida",
+    "name_ar": "سعيدة",
+    "meaning": "সৌভাগ্যবতী, আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 197,
+    "name_bn": "সোহান",
+    "name_en": "Sohan",
+    "name_ar": "سوهان",
+    "meaning": "সুন্দর, সুদর্শন, আকর্ষণীয়",
+    "gender": "boy"
+  },
+  {
+    "id": 198,
+    "name_bn": "সুবাহ",
+    "name_en": "Subah",
+    "name_ar": "صباح",
+    "meaning": "প্রভাত, সুন্দর সকাল",
+    "gender": "girl"
+  },
+  {
+    "id": 199,
+    "name_bn": "হাবিবুল্লাহ",
+    "name_en": "Habibullah",
+    "name_ar": "حبيب الله",
+    "meaning": "আল্লাহর প্রিয় বন্ধু",
+    "gender": "boy"
+  },
+  {
+    "id": 200,
+    "name_bn": "হাসিনা",
+    "name_en": "Hasina",
+    "name_ar": "حسينة",
+    "meaning": "সুন্দরী, রূপসী, উত্তম চরিত্রা",
+    "gender": "girl"
   }
-    ]
+]
+
+
   
 
 
