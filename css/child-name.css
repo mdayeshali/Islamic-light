@@ -1,0 +1,317 @@
+/* CSS Variables for Light & Dark Theme */
+:root {
+  --primary-color: #004d40;
+  --secondary-color: #00796b;
+  --accent-color: #e0f2f1;
+  --text-color: #2c3e50;
+  --text-muted: #666666;
+  --bg-color: #f4f7f6;
+  --card-bg: #ffffff;
+  --border-color: #eeeeee;
+  --input-border: #e0e0e0;
+  --hover-bg: #f9f9f9;
+  
+  --badge-boy-bg: #e3f2fd;
+  --badge-boy-text: #0d47a1;
+  --badge-girl-bg: #ffebee;
+  --badge-girl-text: #b71c1c;
+
+  --share-btn-bg: #e0f2f1;
+  --share-btn-border: #00796b;
+  --share-btn-text: #004d40;
+  
+  --letter-btn-bg: #f0f4f3;
+  --letter-btn-border: #b2dfdb;
+}
+
+/* Automatic Dark Theme Support based on OS/Device Setting */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #00796b;
+    --secondary-color: #4db6ac;
+    --accent-color: #00332c;
+    --text-color: #e0e0e0;
+    --text-muted: #aaa;
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --border-color: #333333;
+    --input-border: #444444;
+    --hover-bg: #2a2a2a;
+
+    --badge-boy-bg: #0d47a1;
+    --badge-boy-text: #e3f2fd;
+    --badge-girl-bg: #b71c1c;
+    --badge-girl-text: #ffebee;
+
+    --share-btn-bg: #00332c;
+    --share-btn-border: #4db6ac;
+    --share-btn-text: #80cbc4;
+
+    --letter-btn-bg: #2a2a2a;
+    --letter-btn-border: #444444;
+  }
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 20px 10px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Header Section */
+header {
+  text-align: center;
+  padding: 35px 15px;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  margin-bottom: 25px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+}
+
+header p {
+  font-size: 1.1rem;
+  opacity: 0.95;
+}
+
+/* Hadith Guidance Section */
+.hadith-section {
+  background: var(--card-bg);
+  padding: 25px;
+  border-radius: 10px;
+  border-right: 5px solid var(--primary-color);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  margin-bottom: 25px;
+  transition: background 0.3s;
+}
+
+.hadith-section h2 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+}
+
+.hadith-card {
+  background: var(--accent-color);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-style: italic;
+  border: 1px solid var(--border-color);
+}
+
+.hadith-reference {
+  display: block;
+  margin-top: 8px;
+  font-weight: bold;
+  font-style: normal;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+/* Search Container */
+.search-container {
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 25px;
+  transition: background 0.3s;
+}
+
+.search-box-wrapper {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 2;
+  min-width: 240px;
+  padding: 14px 18px;
+  border: 2px solid var(--input-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+.search-input:focus {
+  border-color: var(--secondary-color);
+}
+
+.filter-select {
+  flex: 1;
+  min-width: 150px;
+  padding: 14px;
+  border: 2px solid var(--input-border);
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.3s, background 0.3s;
+}
+
+/* Alphabet Filter Buttons */
+.alphabet-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed var(--border-color);
+}
+
+.letter-btn {
+  background-color: var(--letter-btn-bg);
+  border: 1px solid var(--letter-btn-border);
+  color: var(--text-color);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.letter-btn:hover,
+.letter-btn.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+/* Table Container & Table */
+.table-container {
+  background: var(--card-bg);
+  border-radius: 10px;
+  overflow-x: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: background 0.3s;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th, td {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+th {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+tr:hover {
+  background-color: var(--hover-bg);
+}
+
+.arabic-text {
+  font-family: 'Traditional Arabic', 'Amiri', serif;
+  font-size: 1.4rem;
+  direction: rtl;
+  text-align: right;
+}
+
+/* Gender Badges */
+.badge-boy {
+  color: var(--badge-boy-text);
+  background-color: var(--badge-boy-bg);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.badge-girl {
+  color: var(--badge-girl-text);
+  background-color: var(--badge-girl-bg);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Share Button Style */
+.share-btn {
+  background-color: var(--share-btn-bg);
+  border: 1px solid var(--share-btn-border);
+  color: var(--share-btn-text);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 auto;
+  transition: all 0.2s ease;
+}
+
+.share-btn:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
+.no-data {
+  text-align: center;
+  padding: 30px;
+  color: var(--text-muted);
+}
+
+/* Footer Section */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  padding: 20px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Responsive Rules */
+@media (max-width: 600px) {
+  header h1 { 
+    font-size: 1.7rem; 
+  }
+  .search-box-wrapper { 
+    flex-direction: column; 
+  }
+}
