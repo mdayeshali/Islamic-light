@@ -326,17 +326,6 @@ body {
   padding: 25px 30px;
 }
 
-.baby-card-content .badge {
-  background-color: var(--icon-bg);
-  color: var(--icon-text);
-  font-size: 0.8rem;
-  font-weight: 700;
-  padding: 4px 12px;
-  border-radius: 20px;
-  display: inline-block;
-  margin-bottom: 12px;
-}
-
 .baby-card-content h2 {
   font-size: 1.5rem;
   color: var(--primary);
