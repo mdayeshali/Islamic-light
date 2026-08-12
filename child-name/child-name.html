@@ -86,7 +86,7 @@
       </div>
     </section>
 
-    <!-- Search & Filter Controls -->
+    <!-- Search & Alphabet Filter Controls -->
     <section class="search-container">
       <div class="search-box-wrapper">
         <input 
@@ -101,6 +101,24 @@
           <option value="boy">ছেলেদের নাম</option>
           <option value="girl">মেয়েদের নাম</option>
         </select>
+      </div>
+
+      <!-- অক্ষর দিয়ে ফিল্টার করার বোতাম (Alphabet Filter) -->
+      <div class="alphabet-filter" id="alphabetContainer">
+        <button class="letter-btn active" data-letter="all">সব</button>
+        <!-- বাংলা অক্ষর -->
+        <button class="letter-btn" data-letter="অ">অ</button>
+        <button class="letter-btn" data-letter="আ">আ</button>
+        <button class="letter-btn" data-letter="ই">ই</button>
+        <button class="letter-btn" data-letter="উ">উ</button>
+        <button class="letter-btn" data-letter="ক">ক</button>
+        <button class="letter-btn" data-letter="ম">ম</button>
+        <button class="letter-btn" data-letter="র">র</button>
+        <!-- ইংরেজি অক্ষর -->
+        <button class="letter-btn" data-letter="A">A</button>
+        <button class="letter-btn" data-letter="B">B</button>
+        <button class="letter-btn" data-letter="M">M</button>
+        <button class="letter-btn" data-letter="R">R</button>
       </div>
     </section>
 
@@ -121,42 +139,6 @@
           <!-- Data loaded dynamically via JS -->
         </tbody>
       </table>
-      <!-- Search & Filter Controls -->
-<section class="search-container">
-  <div class="search-box-wrapper">
-    <input 
-      type="text" 
-      id="searchInput" 
-      class="search-input" 
-      placeholder="বাংলা বা ইংরেজিতে নাম লিখুন (যেমন: Abrar বা আবরার)..."
-      aria-label="নাম সার্চ করুন"
-    >
-    <select id="genderFilter" class="filter-select" aria-label="লিঙ্গ অনুযায়ী ফিল্টার">
-      <option value="all">সকল নাম</option>
-      <option value="boy">ছেলেদের নাম</option>
-      <option value="girl">মেয়েদের নাম</option>
-    </select>
-  </div>
-
-  <!-- অক্ষর দিয়ে ফিল্টার করার বোতাম (Alphabet Filter) -->
-  <div class="alphabet-filter" id="alphabetContainer">
-    <button class="letter-btn active" data-letter="all">সব</button>
-    <!-- বাংলা অক্ষর -->
-    <button class="letter-btn" data-letter="অ">অ</button>
-    <button class="letter-btn" data-letter="আ">আ</button>
-    <button class="letter-btn" data-letter="ই">ই</button>
-    <button class="letter-btn" data-letter="উ">উ</button>
-    <button class="letter-btn" data-letter="ক">ক</button>
-    <button class="letter-btn" data-letter="ম">ম</button>
-    <button class="letter-btn" data-letter="র">র</button>
-    <!-- ইংরেজি অক্ষর (প্রয়োজনীয় বাকি বোতামগুলো সহজে যোগ করতে পারেন) -->
-    <button class="letter-btn" data-letter="A">A</button>
-    <button class="letter-btn" data-letter="B">B</button>
-    <button class="letter-btn" data-letter="M">M</button>
-    <button class="letter-btn" data-letter="R">R</button>
-  </div>
-</section>
-      
     </main>
 
     <!-- Footer Section -->
