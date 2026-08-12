@@ -282,3 +282,116 @@ body {
     margin: 0 auto;
   }
 }
+
+/* Baby Names Banner Box - Matched with Theme Variables */
+.baby-names-card {
+  display: flex;
+  align-items: center;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--shadow);
+  margin: 30px 0;
+  border: 1px solid var(--border-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.baby-names-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px var(--shadow-hover);
+}
+
+.baby-card-image {
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.baby-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.baby-names-card:hover .baby-card-image img {
+  transform: scale(1.05);
+}
+
+.baby-card-content {
+  flex: 2;
+  padding: 25px 30px;
+}
+
+.baby-card-content .badge {
+  background-color: var(--icon-bg);
+  color: var(--icon-text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 12px;
+}
+
+.baby-card-content h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.baby-card-content p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.btn-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--primary);
+  color: #ffffff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, gap 0.2s ease;
+}
+
+.btn-explore:hover {
+  background-color: var(--accent);
+  gap: 12px;
+}
+
+/* Dark Theme Specific Button Color Adjustment */
+[data-theme="dark"] .btn-explore {
+  color: #121514; /* Dark text on bright teal button */
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 650px) {
+  .baby-names-card {
+    flex-direction: column;
+  }
+  
+  .baby-card-image {
+    width: 100%;
+    max-width: 100%;
+    height: 180px;
+  }
+  
+  .baby-card-content {
+    padding: 20px;
+  }
+  
+  .baby-card-content h2 {
+    font-size: 1.3rem;
+  }
+}
