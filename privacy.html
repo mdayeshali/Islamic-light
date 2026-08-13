@@ -1,13 +1,28 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>গোপনীয়তা নীতি — Islamic Light</title>
-  <meta name="description" content="Islamic Light ওয়েবসাইট ও অ্যাপের গোপনীয়তা নীতি (Privacy Policy)" />
-  
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>গোপনীয়তা নীতি — Islamic Light</title>
+
+  <meta
+    name="description"
+    content="Islamic Light-এর গোপনীয়তা নীতি। ব্যক্তিগত তথ্য, cookies, analytics, Google AdSense, বিজ্ঞাপন, location এবং নামাজের সময়সূচী ব্যবহারের ক্ষেত্রে তথ্য কীভাবে সংগ্রহ ও ব্যবহার করা হয় তা এখানে উল্লেখ করা হয়েছে।"
+  >
+
+  <meta name="robots" content="index, follow">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  >
+
   <link rel="stylesheet" href="css/style.css">
 
   <style>
@@ -16,129 +31,757 @@
       font-family: "Noto Sans Bengali", Arial, sans-serif;
       background-color: var(--bg, #f7fafc);
       color: var(--text, #222);
-      transition: 0.4s ease;
       line-height: 1.8;
     }
 
-    /* ---------- HERO ---------- */
+    /* =========================
+       HERO
+    ========================== */
+
     .hero {
       text-align: center;
       background: linear-gradient(to right, #004d40, #00796b);
-      color: white;
+      color: #fff;
       padding: 70px 20px;
     }
+
     .hero h1 {
       font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    .hero p {
-      max-width: 700px;
-      margin: 0 auto;
-      font-size: 1.05rem;
-      opacity: 0.9;
+      margin: 0 0 10px;
     }
 
-    /* ---------- CONTENT ---------- */
+    .hero p {
+      max-width: 760px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      opacity: 0.92;
+    }
+
+    /* =========================
+       MAIN CONTENT
+    ========================== */
+
     .content {
       max-width: 900px;
       margin: 40px auto;
+      padding: 40px;
       background: var(--card-bg, #fff);
       border-radius: 15px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-      padding: 40px;
       border-top: 5px solid var(--primary, #004d40);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      box-sizing: border-box;
     }
-    
-    h2 {
+
+    .content h2 {
       color: var(--primary, #004d40);
       border-bottom: 2px solid #e0f2f1;
       padding-bottom: 8px;
-      margin-top: 30px;
+      margin-top: 34px;
       font-size: 1.4rem;
     }
 
-    ul {
-      padding-left: 20px;
+    .content h3 {
+      color: #00695c;
+      margin-top: 24px;
+      font-size: 1.15rem;
     }
 
-    a {
+    .content p {
+      margin: 0 0 15px;
+    }
+
+    .content ul {
+      padding-left: 24px;
+    }
+
+    .content li {
+      margin-bottom: 9px;
+    }
+
+    .content a {
       color: var(--accent, #009688);
       text-decoration: none;
       font-weight: 500;
+      overflow-wrap: anywhere;
     }
-    
-    a:hover {
+
+    .content a:hover {
       text-decoration: underline;
     }
 
-    .muted {
-      color: #777;
-      font-size: 0.9rem;
-    }
+    /* =========================
+       UPDATE BADGE
+    ========================== */
 
     .status-badge {
       display: inline-block;
       background: #e0f2f1;
       color: #00695c;
-      padding: 2px 12px;
+      padding: 4px 14px;
       border-radius: 20px;
       font-size: 0.85rem;
-      font-weight: bold;
+      font-weight: 700;
       margin-bottom: 20px;
     }
 
+    /* =========================
+       INFORMATION BOXES
+    ========================== */
+
+    .notice {
+      background: #f1f8f6;
+      border-left: 4px solid #00796b;
+      padding: 16px 18px;
+      margin: 22px 0;
+      border-radius: 7px;
+    }
+
+    .location-notice {
+      background: #f5faf9;
+      border: 1px solid #b2dfdb;
+      padding: 18px;
+      margin: 22px 0;
+      border-radius: 8px;
+    }
+
+    .important {
+      background: #fff8e1;
+      border-left: 4px solid #ffb300;
+      padding: 16px 18px;
+      margin: 22px 0;
+      border-radius: 7px;
+    }
+
+    .contact-box {
+      background: #f7fafc;
+      padding: 20px;
+      border-radius: 9px;
+      margin-top: 15px;
+    }
+
+    .muted {
+      color: #777;
+      font-size: 0.9rem;
+      margin-top: 30px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================== */
+
     @media (max-width: 768px) {
-      .hero { padding: 50px 15px; }
-      .hero h1 { font-size: 1.7rem; }
-      .content { margin: 20px 15px; padding: 25px; }
+
+      .hero {
+        padding: 50px 15px;
+      }
+
+      .hero h1 {
+        font-size: 1.7rem;
+      }
+
+      .hero p {
+        font-size: 0.98rem;
+      }
+
+      .content {
+        margin: 20px 15px;
+        padding: 25px 20px;
+      }
+
+      .content h2 {
+        font-size: 1.25rem;
+      }
+
+      .content h3 {
+        font-size: 1.08rem;
+      }
     }
   </style>
 </head>
+
 <body>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
   <div id="header"></div>
 
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
   <section class="hero">
+
     <h1>🔒 গোপনীয়তা নীতি</h1>
-    <p>Islamic Light ব্যবহারের ক্ষেত্রে আপনার তথ্যের নিরাপত্তা ও গোপনীয়তা রক্ষা করা আমাদের সর্বোচ্চ অগ্রাধিকার।</p>
+
+    <p>
+      Islamic Light ব্যবহারকারীদের গোপনীয়তা,
+      তথ্যের নিরাপত্তা এবং ব্যক্তিগত পছন্দকে
+      গুরুত্বের সঙ্গে বিবেচনা করে।
+    </p>
+
   </section>
 
-  <main class="content">
-    <div class="status-badge">সর্বশেষ হালনাগাদ: এপ্রিল ২০২৬</div>
 
-    <p><strong>Islamic Light</strong> (ইউআরএল: <a href="https://www.islamiclight.in" target="_blank">www.islamiclight.in</a>) ব্যবহারকারীদের গোপনীয়তাকে অত্যন্ত গুরুত্বের সাথে বিবেচনা করে। এই নীতির মাধ্যমে আমরা পরিষ্কার করতে চাই যে, আমরা কোন ধরনের তথ্য সংগ্রহ করি এবং তা কীভাবে ব্যবহার করা হয়।</p>
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main class="content">
+
+    <div class="status-badge">
+      সর্বশেষ হালনাগাদ: আগস্ট ২০২৬
+    </div>
+
+
+    <!-- INTRODUCTION -->
+
+    <p>
+      <strong>Islamic Light</strong>
+      (ওয়েবসাইট:
+      <a
+        href="https://www.islamiclight.in"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        www.islamiclight.in
+      </a>
+      )
+      একটি ইসলামিক তথ্যভিত্তিক ওয়েবসাইট।
+      এখানে কুরআন, হাদিস, আকীদাহ, দোয়া, নামাজ শিক্ষা,
+      নামাজের সময়সূচী, ইসলামিক প্রশ্নোত্তর এবং
+      বিভিন্ন ইসলামিক শিক্ষামূলক কনটেন্ট প্রদান করা হয়।
+    </p>
+
+    <p>
+      এই গোপনীয়তা নীতিতে ব্যাখ্যা করা হয়েছে যে,
+      Islamic Light ব্যবহার করার সময় কী ধরনের তথ্য
+      সংগ্রহ, ব্যবহার বা প্রক্রিয়া করা হতে পারে,
+      কেন তা করা হয় এবং ব্যবহারকারীর গোপনীয়তা
+      রক্ষায় আমরা কী ধরনের ব্যবস্থা গ্রহণ করি।
+    </p>
+
+
+    <!-- =========================
+         1. INFORMATION COLLECTION
+    ========================== -->
 
     <h2>১. তথ্য সংগ্রহ ও ব্যবহার</h2>
+
+    <p>
+      Islamic Light-এর সাধারণ কনটেন্ট দেখার জন্য
+      ব্যবহারকারীর কাছ থেকে কোনো ব্যক্তিগত তথ্য
+      প্রদান করা বাধ্যতামূলক নয়।
+    </p>
+
     <ul>
-      <li><strong>ব্যক্তিগত তথ্য:</strong> আমাদের ওয়েবসাইট ভিজিট করার জন্য কোনো ব্যক্তিগত তথ্য প্রদানের প্রয়োজন নেই। তবে আপনি যদি যোগাযোগ ফর্ম বা ইমেইলের মাধ্যমে আমাদের সাথে যোগাযোগ করেন, তবে আপনার নাম ও ইমেইল ঠিকানা শুধুমাত্র আপনার বার্তার উত্তর দেওয়ার জন্য সংরক্ষিত রাখা হতে পারে।</li>
-      <li><strong>অ্যানালিটিকস ডাটা:</strong> ওয়েবসাইটের মান উন্নয়নের লক্ষ্যে আমরা গুগল অ্যানালিটিকসের মতো টুল ব্যবহার করতে পারি, যা আপনার ব্রাউজার টাইপ, ডিভাইসের ধরন এবং ভিজিট করা পেজ সম্পর্কে সাধারণ (Non-personal) তথ্য সংগ্রহ করে।</li>
+
+      <li>
+        <strong>যোগাযোগের তথ্য:</strong>
+        আপনি যদি ইমেইল, যোগাযোগ ফর্ম বা অন্য কোনো
+        যোগাযোগের মাধ্যমে আমাদের সঙ্গে যোগাযোগ করেন,
+        তাহলে আপনার নাম, ইমেইল ঠিকানা এবং পাঠানো
+        বার্তার তথ্য আপনার প্রশ্নের উত্তর বা
+        যোগাযোগের উদ্দেশ্যে সংরক্ষণ করা হতে পারে।
+      </li>
+
+      <li>
+        <strong>প্রযুক্তিগত তথ্য:</strong>
+        ওয়েবসাইট ব্যবহারের সময় ব্রাউজারের ধরন,
+        ডিভাইসের ধরন, অপারেটিং সিস্টেম, IP address,
+        ভিজিট করা পেজ এবং অন্যান্য সাধারণ প্রযুক্তিগত
+        তথ্য স্বয়ংক্রিয়ভাবে সংগ্রহ হতে পারে।
+      </li>
+
+      <li>
+        <strong>ব্যবহারের তথ্য:</strong>
+        ব্যবহারকারীরা কোন পেজ দেখছেন বা ওয়েবসাইটের
+        কোন অংশ ব্যবহার করছেন—এ ধরনের পরিসংখ্যানগত
+        তথ্য ওয়েবসাইটের কার্যকারিতা ও কনটেন্ট উন্নত
+        করার জন্য ব্যবহার করা হতে পারে।
+      </li>
+
     </ul>
 
-    <h2>২. বিজ্ঞাপন নীতি (শরীয়তসম্মত)</h2>
-    <p>আমরা আমাদের ওয়েবসাইটে শুধুমাত্র <strong>শরীয়তসম্মত ও হালাল বিজ্ঞাপন</strong> প্রদর্শনের নীতি মেনে চলি। কোনো ধরনের সুদ, জুয়া, কুরুচিপূর্ণ পণ্য বা ইসলামবিরোধী প্রচারণাকে আমরা কঠোরভাবে বর্জন করি।</p>
 
-    <h2>৩. কুকিজ (Cookies)</h2>
-    <p>ব্যবহারকারীর অভিজ্ঞতা উন্নত করতে আমরা ছোট কুকি ফাইল ব্যবহার করতে পারি। আপনি চাইলে আপনার ব্রাউজার সেটিংস থেকে এটি বন্ধ করে রাখতে পারেন।</p>
+    <!-- =========================
+         2. LOCATION
+    ========================== -->
 
-    <h2>৪. তৃতীয় পক্ষের লিংক</h2>
-    <p>Islamic Light-এর আর্টিকেলে অন্য কোনো ওয়েবসাইটের রেফারেন্স বা লিংক থাকতে পারে। ঐ সকল ওয়েবসাইটের নিজস্ব নীতিমালা রয়েছে, যার জন্য Islamic Light কর্তৃপক্ষ দায়ী নয়।</p>
+    <h2>২. নামাজের সময়সূচী ও Location Data</h2>
 
-    <h2>৫. শিশুদের গোপনীয়তা</h2>
-    <p>Islamic Light একটি সম্পূর্ণ পরিবার ও শিশু-বান্ধব প্ল্যাটফর্ম। আমরা অপ্রাপ্তবয়স্কদের কাছ থেকে জেনেশুনে কোনো ব্যক্তিগত তথ্য সংগ্রহ করি না।</p>
-
-    <h2>৬. তথ্যের নিরাপত্তা</h2>
-    <p>আপনার দেওয়া তথ্যের নিরাপত্তা রক্ষায় আমরা আধুনিক টেকনিক্যাল ব্যবস্থা গ্রহণ করি। তবে ইন্টারনেটে ডাটা আদান-প্রদানের ক্ষেত্রে শতভাগ নিরাপত্তার নিশ্চয়তা দেওয়া কারিগরিভাবে সম্ভব নয়, তাই আমরা সর্বোচ্চ সতর্ক থাকার চেষ্টা করি।</p>
-
-    <h2>৭. যোগাযোগ</h2>
-    <p>এই গোপনীয়তা নীতি নিয়ে আপনার কোনো প্রশ্ন বা পরামর্শ থাকলে সরাসরি যোগাযোগ করুন:</p>
     <p>
-      <strong>মোঃ আয়েশ আলি</strong><br>
-      📧 <a href="mailto:mdayeshali433@gmail.com">mdayeshali433@gmail.com</a><br>
-      🌍 ভারত
+      Islamic Light-এ ব্যবহারকারীর অবস্থান অনুযায়ী
+      স্থানীয় নামাজের সময়সূচী প্রদর্শনের সুবিধা রয়েছে।
+      এই সুবিধা ব্যবহার করার সময় ব্যবহারকারী চাইলে
+      তার ডিভাইসের location permission প্রদান করতে পারেন।
     </p>
+
+    <div class="location-notice">
+
+      <strong>Location কীভাবে ব্যবহার করা হয়:</strong>
+
+      <p>
+        আপনি location permission দিলে আপনার ডিভাইসের
+        latitude ও longitude নামাজের সময়সূচী নির্ধারণ
+        এবং location-based feature পরিচালনার জন্য
+        ব্যবহার করা হতে পারে।
+      </p>
+
+      <p>
+        আপনার অবস্থানের ভিত্তিতে শহর, এলাকা, রাজ্য
+        বা দেশের নাম প্রদর্শনের জন্য একটি third-party
+        geolocation service ব্যবহার করা হতে পারে।
+      </p>
+
+      <p>
+        স্থানীয় নামাজের সময়সূচী পাওয়ার জন্য
+        আপনার অবস্থান-সংক্রান্ত তথ্য একটি third-party
+        prayer-time service/API-তে পাঠানো হতে পারে।
+      </p>
+
+    </div>
+
+
+    <h3>Location Permission ঐচ্ছিক</h3>
+
+    <p>
+      Location permission প্রদান করা বাধ্যতামূলক নয়।
+      আপনি location permission না দিলেও Islamic Light-এর
+      সাধারণ কনটেন্ট ব্যবহার করতে পারবেন।
+    </p>
+
+    <p>
+      যেখানে সুবিধাটি উপলব্ধ থাকবে, সেখানে ব্যবহারকারী
+      ম্যানুয়ালি শহর বা অবস্থান নির্বাচন করে নামাজের
+      সময়সূচী দেখতে পারবেন।
+    </p>
+
+
+    <h3>Location Data-এর ব্যবহার</h3>
+
+    <p>
+      Location information মূলত ব্যবহারকারীর নির্বাচিত
+      Prayer Time feature-এর জন্য ব্যবহার করা হয়।
+      এটি নামাজের সময় নির্ধারণ এবং ব্যবহারকারীর
+      প্রাসঙ্গিক অবস্থানের নাম প্রদর্শনে সহায়তা করে।
+    </p>
+
+    <p>
+      Islamic Light-এর বর্তমান Prayer Time implementation
+      অনুযায়ী location-এর নাম এবং সর্বশেষ নামাজের
+      সময়সূচীর কিছু তথ্য ব্যবহারকারীর ব্রাউজারের
+      local storage-এ সংরক্ষিত হতে পারে।
+    </p>
+
+    <p>
+      বর্তমান implementation-এ latitude ও longitude
+      localStorage-এ সংরক্ষণ করা হয় না।
+    </p>
+
+
+    <h3>Third-Party Location ও Prayer-Time Services</h3>
+
+    <p>
+      Prayer Time feature-এর বর্তমান implementation-এ
+      নিচের third-party services ব্যবহার করা হতে পারে:
+    </p>
+
+    <ul>
+
+      <li>
+        <strong>OpenStreetMap Nominatim:</strong>
+        latitude ও longitude থেকে অবস্থানের নাম
+        নির্ধারণ করার জন্য।
+      </li>
+
+      <li>
+        <strong>AlAdhan API:</strong>
+        latitude ও longitude এবং নির্বাচিত মাযহাবের
+        calculation setting অনুযায়ী নামাজের
+        সময়সূচী পাওয়ার জন্য।
+      </li>
+
+    </ul>
+
+    <p>
+      এই third-party services তাদের নিজস্ব privacy policy,
+      terms এবং data practices অনুসরণ করতে পারে।
+      ব্যবহারকারীদের সংশ্লিষ্ট পরিষেবাগুলোর
+      privacy policy পর্যালোচনা করার পরামর্শ দেওয়া হচ্ছে।
+    </p>
+
+    <div class="important">
+
+      <strong>আপনার নিয়ন্ত্রণ:</strong>
+
+      <p>
+        আপনি আপনার ব্রাউজার বা ডিভাইসের settings থেকে
+        Islamic Light-এর location permission যেকোনো
+        সময় অনুমোদন, পরিবর্তন বা বন্ধ করতে পারেন।
+      </p>
+
+    </div>
+
+
+    <!-- =========================
+         3. ANALYTICS
+    ========================== -->
+
+    <h2>৩. Google Analytics ও Website Analytics</h2>
+
+    <p>
+      ওয়েবসাইটের কার্যকারিতা, ব্যবহারকারীর অভিজ্ঞতা
+      এবং কনটেন্টের মান উন্নত করার জন্য Islamic Light
+      Google Analytics বা অনুরূপ analytics service
+      ব্যবহার করতে পারে।
+    </p>
+
+    <p>
+      এসব পরিষেবা ব্রাউজারের ধরন, ডিভাইসের ধরন,
+      ভিজিট করা পেজ, আনুমানিক অবস্থান এবং অন্যান্য
+      পরিসংখ্যানগত তথ্য সংগ্রহ করতে পারে।
+    </p>
+
+    <p>
+      এই তথ্যগুলো মূলত ওয়েবসাইটের ব্যবহার বিশ্লেষণ,
+      technical performance উন্নত করা এবং ব্যবহারকারীদের
+      জন্য আরও ভালো কনটেন্ট ও অভিজ্ঞতা তৈরির উদ্দেশ্যে
+      ব্যবহার করা হয়।
+    </p>
+
+
+    <!-- =========================
+         4. COOKIES
+    ========================== -->
+
+    <h2>৪. Cookies ও অনুরূপ প্রযুক্তি</h2>
+
+    <p>
+      Islamic Light ব্যবহারকারীর অভিজ্ঞতা উন্নত করতে
+      cookies এবং অনুরূপ প্রযুক্তি ব্যবহার করতে পারে।
+      Cookies হলো ছোট ডেটা ফাইল, যা আপনার ব্রাউজারে
+      সংরক্ষিত হতে পারে।
+    </p>
+
+    <p>
+      Cookies ব্যবহার করা হতে পারে ওয়েবসাইটের
+      কার্যকারিতা, ব্যবহারকারীর পছন্দ, analytics,
+      নিরাপত্তা এবং বিজ্ঞাপন পরিষেবার কার্যকারিতা
+      পরিমাপের জন্য।
+    </p>
+
+    <p>
+      ব্যবহারকারীরা তাদের ব্রাউজারের settings থেকে
+      cookies গ্রহণ বা প্রত্যাখ্যান করতে পারেন।
+      তবে cookies বন্ধ করলে ওয়েবসাইটের কিছু
+      feature সঠিকভাবে কাজ নাও করতে পারে।
+    </p>
+
+
+    <!-- =========================
+         5. GOOGLE ADSENSE
+    ========================== -->
+
+    <h2>৫. Google AdSense ও তৃতীয় পক্ষের বিজ্ঞাপন</h2>
+
+    <p>
+      Islamic Light-এ Google AdSense বা অন্যান্য
+      তৃতীয় পক্ষের বিজ্ঞাপন পরিষেবা ব্যবহার করা
+      হতে পারে।
+    </p>
+
+    <p>
+      Google এবং অন্যান্য অনুমোদিত third-party vendors
+      বিজ্ঞাপন প্রদর্শনের জন্য cookies, web beacons,
+      IP address বা অনুরূপ প্রযুক্তি ব্যবহার করতে পারে।
+    </p>
+
+    <p>
+      তৃতীয় পক্ষের vendors ব্যবহারকারীর এই ওয়েবসাইটে
+      বা অন্যান্য ওয়েবসাইটে পূর্ববর্তী ভিজিটের ভিত্তিতে
+      প্রাসঙ্গিক বা ব্যক্তিগতকৃত বিজ্ঞাপন প্রদর্শন করতে
+      পারে, যেখানে প্রযোজ্য।
+    </p>
+
+    <p>
+      Google-এর advertising cookies Google এবং তার
+      advertising partners-কে ব্যবহারকারীর পূর্ববর্তী
+      ভিজিটের ভিত্তিতে বিজ্ঞাপন প্রদর্শনে সহায়তা
+      করতে পারে।
+    </p>
+
+    <div class="notice">
+
+      <strong>বিজ্ঞাপন সম্পর্কিত তথ্য:</strong>
+
+      <p>
+        Islamic Light তৃতীয় পক্ষের বিজ্ঞাপনের সম্পূর্ণ
+        বিষয়বস্তু বা বিজ্ঞাপনদাতার data practices
+        সরাসরি নিয়ন্ত্রণ করে না।
+        তৃতীয় পক্ষের বিজ্ঞাপনদাতারা তাদের নিজস্ব
+        privacy policy ও data practices অনুসরণ করতে পারে।
+      </p>
+
+    </div>
+
+
+    <!-- =========================
+         6. PERSONALIZED ADS
+    ========================== -->
+
+    <h2>৬. ব্যক্তিগতকৃত বিজ্ঞাপন ও ব্যবহারকারীর পছন্দ</h2>
+
+    <p>
+      Google-এর বিজ্ঞাপন পরিষেবা ব্যবহার করা হলে,
+      যেখানে প্রযোজ্য, ব্যবহারকারীর পূর্ববর্তী browsing
+      activity বা অন্যান্য অনুমোদিত তথ্যের ভিত্তিতে
+      ব্যক্তিগতকৃত বিজ্ঞাপন প্রদর্শিত হতে পারে।
+    </p>
+
+    <p>
+      ব্যবহারকারীরা Google Ads Settings-এর মাধ্যমে
+      ব্যক্তিগতকৃত বিজ্ঞাপন সংক্রান্ত তাদের পছন্দ
+      পরিবর্তন করতে পারেন।
+    </p>
+
+    <p>
+      <a
+        href="https://adssettings.google.com/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Google Ads Settings
+      </a>
+    </p>
+
+    <p>
+      Google কীভাবে তাদের অংশীদারদের ওয়েবসাইট ও
+      অ্যাপ থেকে তথ্য ব্যবহার করে সে সম্পর্কে জানতে
+      নিচের পেজটি দেখতে পারেন:
+    </p>
+
+    <p>
+      <a
+        href="https://policies.google.com/technologies/partner-sites"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        How Google uses information from sites or apps
+        that use our services
+      </a>
+    </p>
+
+
+    <!-- =========================
+         7. THIRD PARTY SERVICES
+    ========================== -->
+
+    <h2>৭. তৃতীয় পক্ষের পরিষেবা ও API</h2>
+
+    <p>
+      Islamic Light-এর কিছু feature বা তথ্য প্রদানের
+      জন্য তৃতীয় পক্ষের service, API বা external resource
+      ব্যবহার করা হতে পারে।
+    </p>
+
+    <p>
+      এসব পরিষেবা তাদের নিজস্ব server-এ তথ্য
+      প্রক্রিয়া করতে পারে এবং তাদের নিজস্ব
+      privacy policy ও terms প্রযোজ্য হতে পারে।
+    </p>
+
+    <p>
+      তৃতীয় পক্ষের পরিষেবাগুলোর ব্যবহার তাদের নিজস্ব
+      নীতিমালা অনুযায়ী পরিচালিত হতে পারে।
+    </p>
+
+
+    <!-- =========================
+         8. EXTERNAL LINKS
+    ========================== -->
+
+    <h2>৮. তৃতীয় পক্ষের লিংক</h2>
+
+    <p>
+      Islamic Light-এর বিভিন্ন আর্টিকেল, রিসোর্স,
+      reference বা অন্যান্য পেজে তৃতীয় পক্ষের
+      ওয়েবসাইটের লিংক থাকতে পারে।
+    </p>
+
+    <p>
+      এসব বাহ্যিক ওয়েবসাইটের নিজস্ব privacy policy,
+      terms এবং data practices রয়েছে।
+      কোনো বাহ্যিক ওয়েবসাইটে প্রবেশ করার পর সেই
+      ওয়েবসাইটের কার্যক্রমের জন্য Islamic Light
+      দায়ী নয়।
+    </p>
+
+
+    <!-- =========================
+         9. CHILDREN
+    ========================== -->
+
+    <h2>৯. শিশুদের গোপনীয়তা</h2>
+
+    <p>
+      Islamic Light একটি পরিবারবান্ধব ইসলামিক
+      তথ্যভিত্তিক ওয়েবসাইট।
+    </p>
+
+    <p>
+      আমরা জেনেশুনে শিশুদের কাছ থেকে ব্যক্তিগত
+      তথ্য সংগ্রহ করার উদ্দেশ্যে কোনো ব্যবস্থা
+      পরিচালনা করি না।
+    </p>
+
+    <p>
+      কোনো অভিভাবক যদি মনে করেন যে কোনো শিশু
+      আমাদের কাছে ব্যক্তিগত তথ্য প্রদান করেছে,
+      তাহলে অনুগ্রহ করে আমাদের সঙ্গে যোগাযোগ করুন।
+      বিষয়টি যাচাই করে প্রয়োজনীয় ব্যবস্থা নেওয়ার
+      চেষ্টা করা হবে।
+    </p>
+
+
+    <!-- =========================
+         10. SECURITY
+    ========================== -->
+
+    <h2>১০. তথ্যের নিরাপত্তা</h2>
+
+    <p>
+      ব্যবহারকারীর তথ্যের নিরাপত্তা রক্ষার জন্য আমরা
+      যুক্তিসঙ্গত প্রযুক্তিগত ও সাংগঠনিক ব্যবস্থা
+      গ্রহণ করার চেষ্টা করি।
+    </p>
+
+    <p>
+      তবে ইন্টারনেটের মাধ্যমে কোনো তথ্য আদান-প্রদানের
+      ক্ষেত্রে শতভাগ নিরাপত্তার নিশ্চয়তা দেওয়া
+      সম্ভব নয়।
+      তাই ব্যবহারকারীদেরও নিজেদের ব্যক্তিগত তথ্য
+      অনলাইনে শেয়ার করার ক্ষেত্রে সতর্ক থাকার
+      পরামর্শ দেওয়া হচ্ছে।
+    </p>
+
+
+    <!-- =========================
+         11. DATA RETENTION
+    ========================== -->
+
+    <h2>১১. তথ্য সংরক্ষণ</h2>
+
+    <p>
+      যোগাযোগের মাধ্যমে প্রাপ্ত ব্যক্তিগত তথ্য
+      শুধুমাত্র প্রয়োজনীয় যোগাযোগ, প্রশ্নের উত্তর
+      এবং সংশ্লিষ্ট বৈধ উদ্দেশ্যে প্রয়োজনীয় সময়
+      পর্যন্ত সংরক্ষণ করা হতে পারে।
+    </p>
+
+    <p>
+      Prayer Time feature-এর ক্ষেত্রে কিছু তথ্য
+      ব্যবহারকারীর ব্রাউজারের local storage-এ
+      সাময়িকভাবে বা পরবর্তী ভিজিটে সুবিধা দেওয়ার
+      জন্য সংরক্ষিত হতে পারে।
+    </p>
+
+    <p>
+      ব্যবহারকারী তার ব্রাউজারের site data বা
+      local storage পরিষ্কার করলে এই ধরনের
+      স্থানীয়ভাবে সংরক্ষিত তথ্য মুছে যেতে পারে।
+    </p>
+
+
+    <!-- =========================
+         12. USER CONTROL
+    ========================== -->
+
+    <h2>১২. ব্যবহারকারীর নিয়ন্ত্রণ ও পছন্দ</h2>
+
+    <p>
+      ব্যবহারকারীরা তাদের ডিভাইস ও ব্রাউজারের
+      settings ব্যবহার করে cookies, location permission
+      এবং অন্যান্য অনুমতির ওপর নিয়ন্ত্রণ রাখতে পারেন।
+    </p>
+
+    <p>
+      আপনি যদি আমাদের সঙ্গে যোগাযোগের মাধ্যমে কোনো
+      ব্যক্তিগত তথ্য প্রদান করে থাকেন এবং সেই তথ্য
+      সম্পর্কে কোনো প্রশ্ন বা অনুরোধ থাকে, তাহলে
+      আমাদের সঙ্গে যোগাযোগ করতে পারেন।
+    </p>
+
+
+    <!-- =========================
+         13. POLICY CHANGES
+    ========================== -->
+
+    <h2>১৩. Privacy Policy-এর পরিবর্তন</h2>
+
+    <p>
+      Islamic Light প্রয়োজন অনুযায়ী এই Privacy Policy
+      পরিবর্তন বা হালনাগাদ করতে পারে।
+    </p>
+
+    <p>
+      কোনো পরিবর্তন করা হলে এই পেজে নতুন
+      “সর্বশেষ হালনাগাদ” তারিখ উল্লেখ করা হবে।
+    </p>
+
+    <p>
+      ব্যবহারকারীদের সময়ে সময়ে এই পেজটি পর্যালোচনা
+      করার পরামর্শ দেওয়া হচ্ছে।
+    </p>
+
+
+    <!-- =========================
+         14. CONTACT
+    ========================== -->
+
+    <h2>১৪. যোগাযোগ</h2>
+
+    <p>
+      এই Privacy Policy সম্পর্কে আপনার কোনো প্রশ্ন,
+      পরামর্শ বা অভিযোগ থাকলে আমাদের সঙ্গে যোগাযোগ
+      করতে পারেন।
+    </p>
+
+    <div class="contact-box">
+
+      <strong>মোঃ আয়েশ আলি</strong><br>
+
+      📧
+      <a href="mailto:mdayeshali433@gmail.com">
+        mdayeshali433@gmail.com
+      </a>
+
+      <br>
+
+      🌍 ভারত
+
+    </div>
+
+
+    <!-- =========================
+         FINAL NOTE
+    ========================== -->
+
+    <p class="muted">
+      এই Privacy Policy Islamic Light-এর বর্তমান
+      website features, Prayer Time, location-based
+      services, analytics, cookies এবং সম্ভাব্য
+      advertising services বিবেচনায় রেখে প্রস্তুত করা হয়েছে।
+      ভবিষ্যতে website-এর feature বা third-party
+      service পরিবর্তিত হলে এই নীতিও প্রয়োজন অনুযায়ী
+      হালনাগাদ করা হতে পারে।
+    </p>
+
   </main>
+<div id="footer"></div>
+<script src="js/script.js" defer></script>
 
-  <div id="footer"></div>
-
-  <script src="js/script.js" defer></script>
 </body>
 </html>
