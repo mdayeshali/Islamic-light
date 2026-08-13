@@ -93,12 +93,11 @@ function filterNames() {
   displayNames(filtered);
 }
 
-// ৫. লিঙ্ক ও নাম সহ শেয়ার ফাংশনালিটি
+// ৫. নির্দিষ্ট একক নাম ও লিঙ্ক শেয়ার করার ফাংশন
 function shareName(nameBn, nameEn, meaning) {
   const currentUrl = window.location.href;
   const shareText = `শিশুর সুন্দর ইসলামিক নাম:\nনাম: ${nameBn} (${nameEn})\nঅর্থ: ${meaning}\n\nবিস্তারিত দেখুন: ${currentUrl}`;
 
-  // মোবাইল বা আধুনিক ব্রাউজারের নেটিভ শেয়ার অপশন
   if (navigator.share) {
     navigator.share({
       title: `${nameBn} - ইসলামিক নাম`,
@@ -108,7 +107,6 @@ function shareName(nameBn, nameEn, meaning) {
       console.log('শেয়ার বাতিল করা হয়েছে:', err);
     });
   } else {
-    // নেটিভ শেয়ার না থাকলে ক্লিপবোর্ডে কপি করার সুবিধা
     navigator.clipboard.writeText(shareText).then(() => {
       alert('নামের বিস্তারিত এবং লিঙ্ক ক্লিপবোর্ডে কপি করা হয়েছে!');
     }).catch(err => {
@@ -117,24 +115,99 @@ function shareName(nameBn, nameEn, meaning) {
   }
 }
 
-// ৬. অক্ষর ফিল্টার বোতামে ক্লিকে ইভেন্ট হ্যান্ডলার
-document.getElementById('alphabetContainer').addEventListener('click', (e) => {
-  if (e.target.classList.contains('letter-btn')) {
-    // আগের এক্টিভ ক্লাসের স্টাইল সরানো
-    document.querySelectorAll('.letter-btn').forEach(btn => btn.classList.remove('active'));
-    
-    // নতুন সিলেক্ট করা বোতামে এক্টিভ ক্লাস যুক্ত করা
-    e.target.classList.add('active');
-    
-    // সিলেক্ট করা অক্ষর আপডেট করে ফিল্টার চালু করা
-    selectedLetter = e.target.getAttribute('data-letter');
-    filterNames();
-  }
-});
+// ৬. [নতুন ফিচার] সোশ্যাল শেয়ার এবং পুরো পেজের লিঙ্ক কপি করার সুবিধা
+function setupShareBox() {
+  const currentUrl = window.location.href;
+  const shareTitle = "শিশুদের সুন্দর ১০০০টি ইসলামিক নাম ও অর্থ | Islamic Light";
 
-// ৭. ইনপুট ও ড্রপডাউন ইভেন্ট লিসেনার
+  // লিঙ্ক কপি বাটন
+  const copyBtn = document.getElementById('copyLinkBtn');
+  const copyText = document.getElementById('copyText');
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(currentUrl).then(() => {
+        copyText.textContent = "লিংক কপি হয়েছে!";
+        copyBtn.style.backgroundColor = "#e8f5e9";
+        copyBtn.style.color = "#2e7d32";
+
+        setTimeout(() => {
+          copyText.textContent = "লিংক কপি করুন";
+          copyBtn.style.backgroundColor = "";
+          copyBtn.style.color = "";
+        }, 2000);
+      }).catch(err => {
+        console.error("কপি করতে সমস্যা হয়েছে: ", err);
+      });
+    });
+  }
+
+  // হোয়াটসঅ্যাপ শেয়ার
+  const whatsappBtn = document.getElementById('whatsappShareBtn');
+  if (whatsappBtn) {
+    const whatsappUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareTitle + " - " + currentUrl)}`;
+    whatsappBtn.setAttribute('href', whatsappUrl);
+  }
+
+  // ফেসবুক শেয়ার
+  const facebookBtn = document.getElementById('facebookShareBtn');
+  if (facebookBtn) {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`;
+    facebookBtn.setAttribute('href', facebookUrl);
+  }
+}
+
+// ৭. [নতুন ফিচার] অক্ষর ফিল্টার প্রসারিত/সংকুচিত (Accordion) করার সুবিধা
+function setupAlphabetToggle() {
+  const lettersContainer = document.getElementById('lettersContainer');
+  const toggleBtn = document.getElementById('toggleLettersBtn');
+  
+  if (!lettersContainer || !toggleBtn) return;
+  
+  const btnText = toggleBtn.querySelector('.btn-text');
+
+  // টগল বাটনে ক্লিকে কন্টেইনার খোলা/বন্ধ হওয়া
+  toggleBtn.addEventListener('click', () => {
+    const isExpanded = lettersContainer.classList.toggle('expanded');
+    toggleBtn.classList.toggle('active', isExpanded);
+
+    if (isExpanded) {
+      btnText.textContent = 'সংকুচিত করুন';
+    } else {
+      btnText.textContent = 'সব অক্ষর দেখুন';
+    }
+  });
+
+  // যেকোনো অক্ষরে ক্লিক করলে ফিল্টার হওয়ার সাথে সাথে কন্টেইনার গুটিয়ে যাওয়া
+  lettersContainer.addEventListener('click', (e) => {
+    if (e.target.classList.contains('letter-btn')) {
+      // আগের এক্টিভ ক্লাসের স্টাইল সরানো
+      document.querySelectorAll('.letter-btn').forEach(btn => btn.classList.remove('active'));
+      
+      // নতুন সিলেক্ট করা বোতামে এক্টিভ ক্লাস যুক্ত করা
+      e.target.classList.add('active');
+      
+      // সিলেক্ট করা অক্ষর আপডেট করে ফিল্টার চালু করা
+      selectedLetter = e.target.getAttribute('data-letter');
+      filterNames();
+
+      // যদি কন্টেইনার খোলা থাকে তবে অটো গুটিয়ে নেওয়া
+      if (lettersContainer.classList.contains('expanded')) {
+        lettersContainer.classList.remove('expanded');
+        toggleBtn.classList.remove('active');
+        btnText.textContent = 'সব অক্ষর দেখুন';
+      }
+    }
+  });
+}
+
+// ৮. ইনপুট ও ড্রপডাউন ইভেন্ট লিসেনার
 document.getElementById('searchInput').addEventListener('input', filterNames);
 document.getElementById('genderFilter').addEventListener('change', filterNames);
 
-// ৮. পেজ লোড সম্পন্ন হলে জেসন ডাটা লোড কল করা
-window.addEventListener('DOMContentLoaded', fetchNamesData);
+// ৯. পেজ লোড সম্পন্ন হলে সব সুবিধাগুলো সক্রিয় করা
+window.addEventListener('DOMContentLoaded', () => {
+  fetchNamesData();
+  setupShareBox();
+  setupAlphabetToggle();
+});
