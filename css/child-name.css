@@ -22,33 +22,34 @@
   
   --letter-btn-bg: #f0f4f3;
   --letter-btn-border: #b2dfdb;
+  --letter-btn-text: #004d40;
 }
 
- [data-theme="dark"] {
-    --primary-color: #00796b;
-    --secondary-color: #4db6ac;
-    --accent-color: #00332c;
-    --text-color: #e0e0e0;
-    --text-muted: #aaa;
-    --bg-color: #121212;
-    --card-bg: #1e1e1e;
-    --border-color: #333333;
-    --input-border: #444444;
-    --hover-bg: #2a2a2a;
+[data-theme="dark"] {
+  --primary-color: #00796b;
+  --secondary-color: #4db6ac;
+  --accent-color: #00332c;
+  --text-color: #e0e0e0;
+  --text-muted: #aaa;
+  --bg-color: #121212;
+  --card-bg: #1e1e1e;
+  --border-color: #333333;
+  --input-border: #444444;
+  --hover-bg: #2a2a2a;
 
-    --badge-boy-bg: #0d47a1;
-    --badge-boy-text: #e3f2fd;
-    --badge-girl-bg: #b71c1c;
-    --badge-girl-text: #ffebee;
+  --badge-boy-bg: #0d47a1;
+  --badge-boy-text: #e3f2fd;
+  --badge-girl-bg: #b71c1c;
+  --badge-girl-text: #ffebee;
 
-    --share-btn-bg: #00332c;
-    --share-btn-border: #4db6ac;
-    --share-btn-text: #80cbc4;
+  --share-btn-bg: #00332c;
+  --share-btn-border: #4db6ac;
+  --share-btn-text: #80cbc4;
 
-    --letter-btn-bg: #2a2a2a;
-    --letter-btn-border: #444444;
-  }
-
+  --letter-btn-bg: #2a2a2a;
+  --letter-btn-border: #444444;
+  --letter-btn-text: #e0e0e0;
+}
 
 /* Global Reset */
 * {
@@ -68,6 +69,7 @@ body {
 .container {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 15px;
 }
 
 /* Header Section */
@@ -123,6 +125,50 @@ header p {
   font-style: normal;
   color: var(--secondary-color);
   font-size: 0.9rem;
+}
+
+/* Share Container Box (NEW) */
+.share-box-container {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.share-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+}
+
+.share-buttons-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.share-buttons-group .share-btn {
+  margin: 0;
+}
+
+.whatsapp-btn {
+  background-color: #25d366 !important;
+  color: #ffffff !important;
+  border: none !important;
+  text-decoration: none;
+}
+
+.facebook-btn {
+  background-color: #1877f2 !important;
+  color: #ffffff !important;
+  border: none !important;
+  text-decoration: none;
 }
 
 /* Search Container */
@@ -188,12 +234,31 @@ header p {
   margin-bottom: 12px;
 }
 
+/* অক্ষর বাটন ডিজাইন (UPDATED) */
+.letter-btn {
+  padding: 6px 12px;
+  background-color: var(--letter-btn-bg);
+  border: 1px solid var(--letter-btn-border);
+  color: var(--letter-btn-text);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.letter-btn:hover, .letter-btn.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border-color: var(--primary-color);
+}
+
 /* প্রসারিত (Expanded) অবস্থা */
 .letters-container.expanded {
   max-height: 1200px !important; /* সম্পূর্ণ খুলবে */
 }
 
-/* টগল বাটন ডিজাইন */
+/* টগল বাটন ডিজাইন (UPDATED FOR DARK MODE) */
 .toggle-letters-btn {
   display: flex;
   align-items: center;
@@ -201,9 +266,9 @@ header p {
   gap: 8px;
   width: 100%;
   padding: 10px 15px;
-  background-color: var(--artcel-bx, #f4f7f5);
-  color: var(--primary, #004d40);
-  border: 1px solid var(--border-color, #e2e8f0);
+  background-color: var(--bg-color);
+  color: var(--primary-color);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 0.95rem;
   font-weight: 600;
@@ -213,7 +278,7 @@ header p {
 }
 
 .toggle-letters-btn:hover {
-  background-color: var(--icon-bg, #e0f2f1);
+  background-color: var(--accent-color);
 }
 
 .arrow-icon {
@@ -292,7 +357,7 @@ tr:hover {
   border-radius: 6px;
   cursor: pointer;
   font-size: 0.85rem;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
@@ -334,5 +399,12 @@ footer a {
   }
   .search-box-wrapper { 
     flex-direction: column; 
+  }
+  .share-buttons-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  .share-buttons-group .share-btn {
+    width: 100%;
   }
 }
