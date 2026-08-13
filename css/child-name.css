@@ -73,12 +73,11 @@ body {
 }
 
 /* Header Section */
-header {
+hdr {
   text-align: center;
   padding: 35px 15px;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: #ffffff;
-  border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   margin-bottom: 25px;
 }
