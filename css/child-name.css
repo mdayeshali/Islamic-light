@@ -172,33 +172,58 @@ header p {
   transition: border-color 0.3s, background 0.3s;
 }
 
-/* Alphabet Filter Buttons */
-.alphabet-filter {
+/* অক্ষরের ফিল্টার কন্টেইনার */
+.alphabet-filter-wrapper {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.letters-container {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: 15px;
-  padding-top: 15px;
-  border-top: 1px dashed var(--border-color);
+  max-height: 88px; /* ডিফল্টভাবে ২ লাইন দেখাবে */
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out;
+  margin-bottom: 12px;
 }
 
-.letter-btn {
-  background-color: var(--letter-btn-bg);
-  border: 1px solid var(--letter-btn-border);
-  color: var(--text-color);
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
+/* প্রসারিত (Expanded) অবস্থা */
+.letters-container.expanded {
+  max-height: 1200px !important; /* সম্পূর্ণ খুলবে */
+}
+
+/* টগল বাটন ডিজাইন */
+.toggle-letters-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 15px;
+  background-color: var(--artcel-bx, #f4f7f5);
+  color: var(--primary, #004d40);
+  border: 1px solid var(--border-color, #e2e8f0);
+  border-radius: 8px;
+  font-size: 0.95rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.2s ease;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-.letter-btn:hover,
-.letter-btn.active {
-  background-color: var(--primary-color);
-  color: #ffffff;
-  border-color: var(--primary-color);
+.toggle-letters-btn:hover {
+  background-color: var(--icon-bg, #e0f2f1);
+}
+
+.arrow-icon {
+  font-size: 0.75rem;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.toggle-letters-btn.active .arrow-icon {
+  transform: rotate(180deg);
 }
 
 /* Table Container & Table */
