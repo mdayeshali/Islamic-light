@@ -1,4 +1,4 @@
-/* 🌙 Islamic Light | Namaz Education Page */
+/* 🌙 Islamic Light | Child Names & Namaz Education Page */
 /* Author: Md Ayesh Ali | 2025 */
 
 /* ==========================================
@@ -15,11 +15,14 @@
     --translit-bg: #eef6f3;
     --translit-text: #2e3532;
     --card-border: transparent; /* Light mode এ বর্ডার অদৃশ্য থাকবে */
+    --border-color: #e2e8f0;
     --shadow-normal: rgba(0, 0, 0, 0.08);
     --shadow-hover: rgba(0, 0, 0, 0.1);
+    --icon-bg: #e0f2f1;
+    --artcel-bx: #f4f7f5;
 }
 
-/* Dark Theme (Matched Exactly with Homepage - 1000038337.jpg) */
+/* Dark Theme (Matched Exactly with Homepage) */
 body.dark, body.dark-mode, [data-theme="dark"] {
     --bg-color: #121212; 
     --card-bg: #1e1e1e;
@@ -30,8 +33,11 @@ body.dark, body.dark-mode, [data-theme="dark"] {
     --translit-bg: #2d3748;
     --translit-text: #e2e8f0;
     --card-border: #2d3748; /* হোমপেজের কার্ডের মতো হালকা বর্ডার */
+    --border-color: #2d3748;
     --shadow-normal: rgba(0, 0, 0, 0.3);
     --shadow-hover: rgba(0, 0, 0, 0.5);
+    --icon-bg: #213f3b;
+    --artcel-bx: #1a201e;
 }
 
 /* ==========================================
@@ -100,9 +106,130 @@ body {
 }
 
 /* ==========================================
-   4. SECTIONS & STEPS
+   4. SHARE & COPY LINK BOX STYLES (NEW FEATURE)
    ========================================== */
-/* হেডার/সেকশন টাইটেলের রং ফিক্সড করা হলো (!important) */
+.share-box-container {
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border, var(--border-color));
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin: 25px 0;
+    box-shadow: 0 4px 12px var(--shadow-normal);
+    text-align: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.share-title {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 14px;
+}
+
+.share-buttons-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.copy-btn {
+    background-color: var(--artcel-bx);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+}
+
+.copy-btn:hover {
+    background-color: var(--icon-bg);
+    color: var(--primary);
+}
+
+.whatsapp-btn {
+    background-color: #25d366;
+    color: #ffffff;
+}
+
+.whatsapp-btn:hover {
+    background-color: #1ebc57;
+}
+
+.facebook-btn {
+    background-color: #1877f2;
+    color: #ffffff;
+}
+
+.facebook-btn:hover {
+    background-color: #1160c9;
+}
+
+/* ==========================================
+   5. EXPANDABLE ALPHABET FILTER STYLES (NEW FEATURE)
+   ========================================== */
+.alphabet-filter-wrapper {
+    margin-top: 15px;
+}
+
+.letters-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-height: 88px; /* ২ লাইনের মতো উচ্চতা রাখছে */
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-bottom: 12px;
+}
+
+.letters-container.expanded {
+    max-height: 1000px; /* খুললে পুরো উচ্চতা পাবে */
+}
+
+.toggle-letters-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 9px 12px;
+    background-color: var(--artcel-bx);
+    color: var(--primary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.toggle-letters-btn:hover {
+    background-color: var(--icon-bg);
+}
+
+.toggle-letters-btn i {
+    transition: transform 0.3s ease;
+}
+
+.toggle-letters-btn.active i {
+    transform: rotate(180deg);
+}
+
+/* ==========================================
+   6. SECTIONS & STEPS
+   ========================================== */
 .section-title {
     background: linear-gradient(to right, #004d40, #00796b) !important;
     color: #ffffff !important;
@@ -115,7 +242,7 @@ body {
 
 .step {
     background: var(--card-bg);
-    border: 1px solid var(--card-border); /* হোমপেজের সাথে মিলানোর জন্য */
+    border: 1px solid var(--card-border);
     border-left: 5px solid var(--accent);
     border-radius: 10px;
     padding: 15px;
@@ -140,11 +267,11 @@ body {
 }
 
 /* ==========================================
-   5. DUA BOXES
+   7. DUA BOXES
    ========================================== */
 .dua {
     background: var(--card-bg);
-    border: 1px solid var(--card-border); /* হোমপেজের সাথে মিলানোর জন্য */
+    border: 1px solid var(--card-border);
     border-top: 4px solid var(--primary);
     padding: 25px 20px;
     border-radius: 12px;
@@ -188,7 +315,7 @@ body {
 }
 
 /* ==========================================
-   6. RESPONSIVE DESIGN
+   8. RESPONSIVE DESIGN
    ========================================== */
 @media (max-width: 768px) {
     .page-title {
@@ -200,4 +327,16 @@ body {
     .dua {
         padding: 15px;
     }
-  }
+}
+
+@media (max-width: 480px) {
+    .share-buttons-group {
+        flex-direction: column;
+        width: 100%;
+    }
+    .share-btn {
+        width: 100%;
+        justify-content: center;
+    }
+       }
+   
