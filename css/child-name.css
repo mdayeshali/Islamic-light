@@ -24,9 +24,7 @@
   --letter-btn-border: #b2dfdb;
 }
 
-/* Automatic Dark Theme Support based on OS/Device Setting */
-@media (prefers-color-scheme: dark) {
-  :root {
+ [data-theme="dark"] {
     --primary-color: #00796b;
     --secondary-color: #4db6ac;
     --accent-color: #00332c;
@@ -50,7 +48,7 @@
     --letter-btn-bg: #2a2a2a;
     --letter-btn-border: #444444;
   }
-}
+
 
 /* Global Reset */
 * {
