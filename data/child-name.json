@@ -3999,8 +3999,810 @@
     "name_ar": "زيد",
     "meaning": "প্রাচুর্যময়, বৃদ্ধি পাওয়া (রাসূলুল্লাহর প্রিয় সাহাবি)",
     "gender": "boy"
+  },
+  {
+    "id": 501,
+    "name_bn": "আব্দুল্লাহ",
+    "name_en": "Abdullah",
+    "name_ar": "عبد الله",
+    "meaning": "আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 502,
+    "name_bn": "আব্দুর রহমান",
+    "name_en": "Abdur Rahman",
+    "name_ar": "عبد الرحمن",
+    "meaning": "পরম দয়ালু আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 503,
+    "name_bn": "আব্দুর রহিম",
+    "name_en": "Abdur Rahim",
+    "name_ar": "عبد الرحيم",
+    "meaning": "অতিশয় করুণাময় আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 504,
+    "name_bn": "আব্দুল মালিক",
+    "name_en": "Abdul Malik",
+    "name_ar": "عبد الملك",
+    "meaning": "সর্বভৌম মালিক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 505,
+    "name_bn": "আব্দুল কুদ্দুস",
+    "name_en": "Abdul Quddus",
+    "name_ar": "عبد القدوس",
+    "meaning": "পবিত্রতম আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 506,
+    "name_bn": "আব্দুস সালাম",
+    "name_en": "Abdus Salam",
+    "name_ar": "عبد السلام",
+    "meaning": "শান্তিদাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 507,
+    "name_bn": "আব্দুল মুমিন",
+    "name_en": "Abdul Mumin",
+    "name_ar": "عبد المؤمن",
+    "meaning": "নিরাপত্তাদাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 508,
+    "name_bn": "আব্দুল মুহাইমিন",
+    "name_en": "Abdul Muhaymin",
+    "name_ar": "عبد المهيمن",
+    "meaning": "রক্ষণাবেক্ষণকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 509,
+    "name_bn": "আব্দুল আজিজ",
+    "name_en": "Abdul Aziz",
+    "name_ar": "عبد العزيز",
+    "meaning": "পরাক্রমশালী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 510,
+    "name_bn": "আব্দুল জব্বার",
+    "name_en": "Abdul Jabbar",
+    "name_ar": "عبد الجبار",
+    "meaning": "দুর্নিবার আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 511,
+    "name_bn": "আব্দুল মুতাকাব্বির",
+    "name_en": "Abdul Mutakabbir",
+    "name_ar": "عبد المتكبر",
+    "meaning": "মহামহিম আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 512,
+    "name_bn": "আব্দুল খালিক",
+    "name_en": "Abdul Khaliq",
+    "name_ar": "عبد الخالق",
+    "meaning": "সৃষ্টিকর্তা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 513,
+    "name_bn": "আব্দুল বারি",
+    "name_en": "Abdul Bari",
+    "name_ar": "عبد البارئ",
+    "meaning": "সঠিক বিন্যাসকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 514,
+    "name_bn": "আব্দুল মুসাব্বির",
+    "name_en": "Abdul Musawwir",
+    "name_ar": "عبد المصور",
+    "meaning": "রূপদাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 515,
+    "name_bn": "আব্দুল গাফফার",
+    "name_en": "Abdul Ghaffar",
+    "name_ar": "عبد الغفار",
+    "meaning": "মহাক্ষমাশীল আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 516,
+    "name_bn": "আব্দুল কাহহার",
+    "name_en": "Abdul Qahhar",
+    "name_ar": "عبد القهار",
+    "meaning": "কঠোর দমনকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 517,
+    "name_bn": "আব্দুল ওয়াহহাব",
+    "name_en": "Abdul Wahhab",
+    "name_ar": "عبد الوهاب",
+    "meaning": "মহাদাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 518,
+    "name_bn": "আব্দুর রাজ্জাক",
+    "name_en": "Abdur Razzaq",
+    "name_ar": "عبد الرزاق",
+    "meaning": "রিজিকদাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 519,
+    "name_bn": "আব্দুল ফাত্তাহ",
+    "name_en": "Abdul Fattah",
+    "name_ar": "عبد الفتاح",
+    "meaning": "বিজয়দাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 520,
+    "name_bn": "আব্দুল আলিম",
+    "name_en": "Abdul Alim",
+    "name_ar": "عبد عليم",
+    "meaning": "সর্বজ্ঞ আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 521,
+    "name_bn": "আব্দুল কাবিদ",
+    "name_en": "Abdul Qabid",
+    "name_ar": "عبد القابض",
+    "meaning": "সংকোচনকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 522,
+    "name_bn": "আব্দুল বাসিত",
+    "name_en": "Abdul Basit",
+    "name_ar": "عبد الباسط",
+    "meaning": "সম্প্রসারণকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 523,
+    "name_bn": "আব্দুল খাফিদ",
+    "name_en": "Abdul Khafid",
+    "name_ar": "عبد الخافض",
+    "meaning": "অবনতকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 524,
+    "name_bn": "আব্দুর রাফি",
+    "name_en": "Abdur Rafi",
+    "name_ar": "عبد الرافع",
+    "meaning": "উন্নতকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 525,
+    "name_bn": "আব্দুল মুইজ",
+    "name_en": "Abdul Muizz",
+    "name_ar": "عبد المعز",
+    "meaning": "সম্মানদাতাদের বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 526,
+    "name_bn": "আব্দুল মুজিল",
+    "name_en": "Abdul Muzill",
+    "name_ar": "عبد المذل",
+    "meaning": "অপমানকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 527,
+    "name_bn": "আব্দুস সামি",
+    "name_en": "Abdus Sami",
+    "name_ar": "عبد السميع",
+    "meaning": "সর্বশ্রোতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 528,
+    "name_bn": "আব্দুল বাসির",
+    "name_en": "Abdul Basir",
+    "name_ar": "عبد البصير",
+    "meaning": "সর্বদ্রষ্টা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 529,
+    "name_bn": "আব্দুল হাকাম",
+    "name_en": "Abdul Hakam",
+    "name_ar": "عبد الحكم",
+    "meaning": "বিচারপতি আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 530,
+    "name_bn": "আব্দুল আদল",
+    "name_en": "Abdul Adl",
+    "name_ar": "عبد العدل",
+    "meaning": "ন্যায়পরায়ণ আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 531,
+    "name_bn": "আব্দুল লতিফ",
+    "name_en": "Abdul Latif",
+    "name_ar": "عبد اللطيف",
+    "meaning": "সূক্ষ্মদর্শী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 532,
+    "name_bn": "আব্দুল খাবির",
+    "name_en": "Abdul Khabir",
+    "name_ar": "عبد الخبير",
+    "meaning": "সম্যক সম্যকরূপ অবহিত আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 533,
+    "name_bn": "আব্দুল হালিম",
+    "name_en": "Abdul Halim",
+    "name_ar": "عبد الحليم",
+    "meaning": "ধৈর্যশীল আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 534,
+    "name_bn": "আব্দুল আজিম",
+    "name_en": "Abdul Azim",
+    "name_ar": "عبد العظيم",
+    "meaning": "মহামহিম আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 535,
+    "name_bn": "আব্দুল গাফুর",
+    "name_en": "Abdul Ghafur",
+    "name_ar": "عبد الغفور",
+    "meaning": "ক্ষমাশীল আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 536,
+    "name_bn": "আব্দুস শাকুর",
+    "name_en": "Abdus Shakur",
+    "name_ar": "عبد الشكور",
+    "meaning": "গুণগ্রাহী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 537,
+    "name_bn": "আব্দুল আলিয়্যি",
+    "name_en": "Abdul Aliyyu",
+    "name_ar": "عبد العلي",
+    "meaning": "উচ্চ মর্যাদাশালী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 538,
+    "name_bn": "আব্দুল কাবির",
+    "name_en": "Abdul Kabir",
+    "name_ar": "عبد الكبير",
+    "meaning": "মহা মহীয়ান আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 539,
+    "name_bn": "আব্দুল হাফিজ",
+    "name_en": "Abdul Hafiz",
+    "name_ar": "عبد الحفيظ",
+    "meaning": "সংরক্ষক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 540,
+    "name_bn": "আব্দুল মুকীত",
+    "name_en": "Abdul Muqit",
+    "name_ar": "عبد المقيت",
+    "meaning": "সর্বশক্তিমান রিজিকদাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 541,
+    "name_bn": "আব্দুল হাসিব",
+    "name_en": "Abdul Hasib",
+    "name_ar": "عبد الحسيب",
+    "meaning": "হিসাবগ্রহণকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 542,
+    "name_bn": "আব্দুল জলিল",
+    "name_en": "Abdul Jalil",
+    "name_ar": "عبد الجليل",
+    "meaning": "প্রতাপশালী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 543,
+    "name_bn": "আব্দুল কারিম",
+    "name_en": "Abdul Karim",
+    "name_ar": "عبد الكريم",
+    "meaning": "মহানুভব ও দাতা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 544,
+    "name_bn": "আব্দুর রকিব",
+    "name_en": "Abdur Raqib",
+    "name_ar": "عبد الرقيب",
+    "meaning": "তত্ত্বাবধানকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 545,
+    "name_bn": "আব্দুল মুজিব",
+    "name_en": "Abdul Mujib",
+    "name_ar": "عبد المجيب",
+    "meaning": "দোয়া কবুলকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 546,
+    "name_bn": "আব্দুল ওয়াসি",
+    "name_en": "Abdul Wasi",
+    "name_ar": "عبد الواسع",
+    "meaning": "সর্বব্যাপী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 547,
+    "name_bn": "আব্দুল হাকিম",
+    "name_en": "Abdul Hakim",
+    "name_ar": "عبد الحكيم",
+    "meaning": "প্রজ্ঞাময় আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 548,
+    "name_bn": "আব্দুল ওয়াদুদ",
+    "name_en": "Abdul Wadud",
+    "name_ar": "عبد الودود",
+    "meaning": "প্রেমময় আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 549,
+    "name_bn": "আব্দুল মাজিদ",
+    "name_en": "Abdul Majid",
+    "name_ar": "عبد المجيد",
+    "meaning": "মহামহিম আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 550,
+    "name_bn": "আব্দুল বায়ীস",
+    "name_en": "Abdul Baith",
+    "name_ar": "عبد الباعث",
+    "meaning": "পুনরুত্থানকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 551,
+    "name_bn": "আব্দুস শাহিদ",
+    "name_en": "Abdus Shahid",
+    "name_ar": "عبد الشهيد",
+    "meaning": "সর্বদর্শী প্রত্যক্ষদর্শী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 552,
+    "name_bn": "আব্দুল হক্ক",
+    "name_en": "Abdul Haqq",
+    "name_ar": "عبد الحق",
+    "meaning": "পরম সত্য আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 553,
+    "name_bn": "আব্দুল ওয়াকিল",
+    "name_en": "Abdul Wakil",
+    "name_ar": "عبد الوكيل",
+    "meaning": "কর্মসংপাদনকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 554,
+    "name_bn": "আব্দুল কাবিই",
+    "name_en": "Abdul Qawi",
+    "name_ar": "عبد القوي",
+    "meaning": "পরাক্রমশালী শক্তির অধিকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 555,
+    "name_bn": "আব্দুল মাতিন",
+    "name_en": "Abdul Matin",
+    "name_ar": "عبد المتين",
+    "meaning": "সুদৃঢ় ক্ষমতার অধিকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 556,
+    "name_bn": "আব্দুল ওয়ালিই",
+    "name_en": "Abdul Wali",
+    "name_ar": "عبد ولي",
+    "meaning": "অভিভাবক বন্ধু আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 557,
+    "name_bn": "আব্দুল হামিদ",
+    "name_en": "Abdul Hamid",
+    "name_ar": "عبد الحميد",
+    "meaning": "সকল প্রশংসার অধিকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 558,
+    "name_bn": "আব্দুল মুহসি",
+    "name_en": "Abdul Muhsi",
+    "name_ar": "عبد المحصي",
+    "meaning": "গণনাকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 559,
+    "name_bn": "আব্দুল মুবদি",
+    "name_en": "Abdul Mubdi",
+    "name_ar": "عبد المبدئ",
+    "meaning": "প্রারম্ভকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 560,
+    "name_bn": "আব্দুল মুঈদ",
+    "name_en": "Abdul Muid",
+    "name_ar": "عبد المعيد",
+    "meaning": "পুনর্বার সৃষ্টিকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 561,
+    "name_bn": "আব্দুল মুহয়ী",
+    "name_en": "Abdul Muhyi",
+    "name_ar": "عبد المحيي",
+    "meaning": "জীবনদানকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 562,
+    "name_bn": "আব্দুল মুমিত",
+    "name_en": "Abdul Mumit",
+    "name_ar": "عبد المميت",
+    "meaning": "মৃত্যুদানকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 563,
+    "name_bn": "আব্দুল হাইয়্যু",
+    "name_en": "Abdul Hayyu",
+    "name_ar": "عبد الحي",
+    "meaning": "চিরঞ্জীব আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 564,
+    "name_bn": "আব্দুল কাইয়্যুম",
+    "name_en": "Abdul Qayyum",
+    "name_ar": "عبد القيوم",
+    "meaning": "স্বয়ংসম্পূর্ণ রক্ষক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 565,
+    "name_bn": "আব্দুল ওয়াজিদ",
+    "name_en": "Abdul Wajid",
+    "name_ar": "عبد الواجد",
+    "meaning": "অফুরন্ত সম্পদের অধিকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 566,
+    "name_bn": "আব্দুল মাজিদ",
+    "name_en": "Abdul Majid",
+    "name_ar": "عبد الماجد",
+    "meaning": "শ্রেষ্ঠত্বময় আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 567,
+    "name_bn": "আব্দুল ওয়াহিদ",
+    "name_en": "Abdul Wahid",
+    "name_ar": "عبد الواحد",
+    "meaning": "একক অনন্য আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 568,
+    "name_bn": "আব্দুল আহাদ",
+    "name_en": "Abdul Ahad",
+    "name_ar": "عبد الأحد",
+    "meaning": "অদ্বিতীয় আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 569,
+    "name_bn": "আব্দুস সামাদ",
+    "name_en": "Abdus Samad",
+    "name_ar": "عبد الصمد",
+    "meaning": "অমুখাপেক্ষী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 570,
+    "name_bn": "আব্দুল কাদির",
+    "name_en": "Abdul Qadir",
+    "name_ar": "عبد القادر",
+    "meaning": "সর্বশক্তিমান আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 571,
+    "name_bn": "আব্দুল মুক্তাদির",
+    "name_en": "Abdul Muqtadir",
+    "name_ar": "عبد مقتدر",
+    "meaning": "প্রভাবশালী ক্ষমতার অধিকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 572,
+    "name_bn": "আব্দুল মুকাদ্দিম",
+    "name_en": "Abdul Muqaddim",
+    "name_ar": "عبد المقدم",
+    "meaning": "অগ্রসরকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 573,
+    "name_bn": "আব্দুল মুআখখির",
+    "name_en": "Abdul Muakhkhir",
+    "name_ar": "عبد المؤخر",
+    "meaning": "পশ্চাতে আনয়নকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 574,
+    "name_bn": "আব্দুল আউয়াল",
+    "name_en": "Abdul Awwal",
+    "name_ar": "عبد الأول",
+    "meaning": "অনাদি আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 575,
+    "name_bn": "আব্দুল আখির",
+    "name_en": "Abdul Akhir",
+    "name_ar": "عبد الآخر",
+    "meaning": "অনন্ত আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 576,
+    "name_bn": "আব্দুজ জাহির",
+    "name_en": "Abduz Zahir",
+    "name_ar": "عبد الظاهر",
+    "meaning": "প্রকাশ্য আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 577,
+    "name_bn": "আব্দুল বাতিন",
+    "name_en": "Abdul Batin",
+    "name_ar": "عبد الباطن",
+    "meaning": "গুপ্ত আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 578,
+    "name_bn": "আব্দুল ওয়ালী",
+    "name_en": "Abdul Wali",
+    "name_ar": "عبد الوالي",
+    "meaning": "অভিভাবক বিশ্বনিয়ন্তা আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 579,
+    "name_bn": "আব্দুল মুতআলী",
+    "name_en": "Abdul Mutaali",
+    "name_ar": "عبد المتعالي",
+    "meaning": "সুউচ্চ বিচারক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 580,
+    "name_bn": "আব্দুল বার্র",
+    "name_en": "Abdul Barr",
+    "name_ar": "عبد البر",
+    "meaning": "সদাচারী ও পরম পরোপকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 581,
+    "name_bn": "অাত তাওয়াব",
+    "name_en": "Abdul Tawwab",
+    "name_ar": "عبد التواب",
+    "meaning": "তওবা কবুলকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 582,
+    "name_bn": "আব্দুল মুনতাক্বিম",
+    "name_en": "Abdul Muntaqim",
+    "name_ar": "عبد المنتقم",
+    "meaning": "প্রতিশোধ গ্রহণকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 583,
+    "name_bn": "আব্দুল আফুউও",
+    "name_en": "Abdul Afuw",
+    "name_ar": "عبد العفو",
+    "meaning": "পরম ক্ষমাশীল আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 584,
+    "name_bn": "আব্দুর রউফ",
+    "name_en": "Abdur Rauf",
+    "name_ar": "عبد الرؤوف",
+    "meaning": "পরম স্নেহশীল আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 585,
+    "name_bn": "আব্দুল মালিকুল মুলক",
+    "name_en": "Abdul Malikul Mulk",
+    "name_ar": "عبد مالك الملك",
+    "meaning": "সমগ্র বিশ্বজাহানের মালিক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 586,
+    "name_bn": "আব্দুল জুল জালালে ওয়াল ইকরাম",
+    "name_en": "Abdul Dhul Jalali Wal Ikram",
+    "name_ar": "عبد ذو الجلال والإكرام",
+    "meaning": "মহত্ত্ব ও মহানুভবতার মালিক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 587,
+    "name_bn": "আব্দুল মুকসিত",
+    "name_en": "Abdul Muqsit",
+    "name_ar": "عبد المقسط",
+    "meaning": "সুবিচারক ইনসাফকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 588,
+    "name_bn": "আব্দুল জামি",
+    "name_en": "Abdul Jami",
+    "name_ar": "عبد الجامع",
+    "meaning": "একত্রিতকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 589,
+    "name_bn": "আব্দুল গানিই",
+    "name_en": "Abdul Ghani",
+    "name_ar": "عبد الغني",
+    "meaning": "ধনী অমুখাপেক্ষী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 590,
+    "name_bn": "আব্দুল মুগনি",
+    "name_en": "Abdul Mughni",
+    "name_ar": "عبد المغني",
+    "meaning": "ধনী দানকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 591,
+    "name_bn": "আব্দুল মানি",
+    "name_en": "Abdul Mani",
+    "name_ar": "عبد المانع",
+    "meaning": "প্রতিরোধকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 592,
+    "name_bn": "আব্দুদ দারর",
+    "name_en": "Abduz Darr",
+    "name_ar": "عبد الضار",
+    "meaning": "ক্ষতিসাধনকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 593,
+    "name_bn": "আব্দু নানফি",
+    "name_en": "Abdul Nafi",
+    "name_ar": "عبد النافع",
+    "meaning": "উপকারকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 594,
+    "name_bn": "আব্দুন নূর",
+    "name_en": "Abdun Nur",
+    "name_ar": "عبد النور",
+    "meaning": "জ্যোতি আলোকময় আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 595,
+    "name_bn": "আব্দুল হাদী",
+    "name_en": "Abdul Hadi",
+    "name_ar": "عبد الهادي",
+    "meaning": "হেদায়েতকারী সুপথ প্রদর্শক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 596,
+    "name_bn": "আব্দুল বাদী",
+    "name_en": "Abdul Badi",
+    "name_ar": "عبد البديع",
+    "meaning": "অনুপম রূপকার আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 597,
+    "name_bn": "আব্দুল বাকী",
+    "name_en": "Abdul Baqi",
+    "name_ar": "عبد الباقي",
+    "meaning": "চিরস্থায়ী চিরন্তন আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 598,
+    "name_bn": "আব্দুল ওয়ারিস",
+    "name_en": "Abdul Warith",
+    "name_ar": "عبد الوارث",
+    "meaning": "চূড়ান্ত উত্তরাধিকারী আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 599,
+    "name_bn": "আব্দুর রশীদ",
+    "name_en": "Abdur Rashid",
+    "name_ar": "عبد الرشيد",
+    "meaning": "সঠিক দিকনির্দেশক আল্লাহর বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 600,
+    "name_bn": "আব্দুস সাবুর",
+    "name_en": "Abdus Sabur",
+    "name_ar": "عبد الصبور",
+    "meaning": "অসীম ধৈর্যশীল আল্লাহর বান্দা",
+    "gender": "boy"
   }
     ]
+    
+    
     
 
 
