@@ -75,6 +75,7 @@ body {
 /* Header Section */
 .hdr {
   text-align: center;
+  padding: 35px 15px;
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   color: #ffffff;
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
