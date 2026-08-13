@@ -5599,8 +5599,2414 @@
     "name_ar": "ياسمين اختر",
     "meaning": "জুঁই ফুল সমতুল্য উজ্জ্বল তারা",
     "gender": "girl"
+  },
+  {
+    "id": 701,
+    "name_bn": "আফরা তাসনিয়া",
+    "name_en": "Afra Tasniya",
+    "name_ar": "عفراء تثنية",
+    "meaning": "উজ্জ্বল রূপসী ও প্রশংসিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 702,
+    "name_bn": "আয়েশা হুমায়রা",
+    "name_en": "Ayesha Humayra",
+    "name_ar": "عائشة حميراء",
+    "meaning": "সমৃদ্ধশালী ও গোলাপি রূপসী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 703,
+    "name_bn": "আতিয়া বুশরা",
+    "name_en": "Atiya Bushra",
+    "name_ar": "عطية بشرى",
+    "meaning": "উপহারস্বরূপ সুসংবাদ",
+    "gender": "girl"
+  },
+  {
+    "id": 704,
+    "name_bn": "আরিফা পারভীন",
+    "name_en": "Arifa Parveen",
+    "name_ar": "عارفة پروين",
+    "meaning": "জ্ঞানী ও দীপ্তিমান তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 705,
+    "name_bn": "আসমাহ নাওয়াল",
+    "name_en": "Asmah Nawal",
+    "name_ar": "أسمة نوال",
+    "meaning": "সম্মানিত ও আল্লাহর উপহার",
+    "gender": "girl"
+  },
+  {
+    "id": 706,
+    "name_bn": "আনিসা সাফা",
+    "name_en": "Anisa Safa",
+    "name_ar": "أنيسة صفا",
+    "meaning": "ঘনিষ্ঠ সখী ও পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 707,
+    "name_bn": "আফিয়া তানজিম",
+    "name_en": "Afiya Tanjim",
+    "name_ar": "عافية تنظيم",
+    "meaning": "সুস্থ, নিরাপদ ও সুশৃঙ্খল",
+    "gender": "girl"
+  },
+  {
+    "id": 708,
+    "name_bn": "আদিবা ওয়াসিমা",
+    "name_en": "Adiba Wasima",
+    "name_ar": "أديبة وسيمة",
+    "meaning": "শিষ্টাচারসম্পন্ন ও রূপসী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 709,
+    "name_bn": "আমিনা নূসরাত",
+    "name_en": "Amina Nusrat",
+    "name_ar": "آمنة نصرت",
+    "meaning": "নিরাপদ ও সফল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 710,
+    "name_bn": "আফিয়া সাবিহা",
+    "name_en": "Afiya Sabiha",
+    "name_ar": "عافية صبيحة",
+    "meaning": "সুস্থ ও সুন্দর প্রভাত",
+    "gender": "girl"
+  },
+  {
+    "id": 711,
+    "name_bn": "ইফফাত জোহরা",
+    "name_en": "Iffat Zohra",
+    "name_ar": "عفة زهرة",
+    "meaning": "পবিত্র ও প্রস্ফুটিত ফুল",
+    "gender": "girl"
+  },
+  {
+    "id": 712,
+    "name_bn": "ইশরাত সাবিহা",
+    "name_en": "Ishrat Sabiha",
+    "name_ar": "عشرت صبيحة",
+    "meaning": "আনন্দ ও সুন্দর প্রভাত",
+    "gender": "girl"
+  },
+  {
+    "id": 713,
+    "name_bn": "ইসমাত আনজুম",
+    "name_en": "Ismat Anjum",
+    "name_ar": "عصمت أنجم",
+    "meaning": "পবিত্রতা ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 714,
+    "name_bn": "ইরাম তাসনিম",
+    "name_en": "Iram Tasnim",
+    "name_ar": "إرم تسنيم",
+    "meaning": "জান্নাতের বাগান ও সুমিষ্টি ঝরনা",
+    "gender": "girl"
+  },
+  {
+    "id": 715,
+    "name_bn": "ইনায়াহ সানজিদা",
+    "name_en": "Inayah Sanjida",
+    "name_ar": "عناية ساجدة",
+    "meaning": "আল্লাহর সাহায্য ও সিজদাকারিণী",
+    "gender": "girl"
+  },
+  {
+    "id": 716,
+    "name_bn": "উমাইজা ফারিহা",
+    "name_en": "Umaiza Fariha",
+    "name_ar": "عميرة فريحة",
+    "meaning": "উজ্জ্বল হৃদয়ের প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 717,
+    "name_bn": "উমামা সালিহা",
+    "name_en": "Umama Saliha",
+    "name_ar": "أمامة صالحة",
+    "meaning": "সম্মানিত ও পুণ্যবতী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 718,
+    "name_bn": "উম্মে সালমা",
+    "name_en": "Umme Salma",
+    "name_ar": "أم سلمى",
+    "meaning": "শান্তিপূর্ণ মা (রাসূলুল্লাহর স্ত্রী)",
+    "gender": "girl"
+  },
+  {
+    "id": 719,
+    "name_bn": "উম্মে রুমমান",
+    "name_en": "Umme Rumman",
+    "name_ar": "أم رومان",
+    "meaning": "মিষ্টি স্বভাবের মা (হযরত আয়েশার মা)",
+    "gender": "girl"
+  },
+  {
+    "id": 720,
+    "name_bn": "উমায়রা তাহসিন",
+    "name_en": "Omaira Tahsin",
+    "name_ar": "عميرة تحسين",
+    "meaning": "সুদীর্ঘ জীবনের অধিকারী ও সুন্দরী",
+    "gender": "girl"
+  },
+  {
+    "id": 721,
+    "name_bn": "ওয়াসিমা নাবিহা",
+    "name_en": "Wasima Nabiha",
+    "name_ar": "وسيمة نبيهة",
+    "meaning": "রূপসী ও বুদ্ধিমতী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 722,
+    "name_bn": "ওয়ার্দা তাবাসসুম",
+    "name_en": "Warda Tabassum",
+    "name_ar": "وردة تبسم",
+    "meaning": "গোলাপ ফুল ও মিষ্টি হাসি",
+    "gender": "girl"
+  },
+  {
+    "id": 723,
+    "name_bn": "ওয়াজিহা তাহসিন",
+    "name_en": "Wajiha Tahsin",
+    "name_ar": "وجيهة تحسين",
+    "meaning": "সম্মানিত ও সৌন্দর্যময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 724,
+    "name_bn": "কানিজ বুশরা",
+    "name_en": "Kaniz Bushra",
+    "name_ar": "كنيز بشرى",
+    "meaning": "অনুগত সেবিকা ও সুসংবাদ",
+    "gender": "girl"
+  },
+  {
+    "id": 725,
+    "name_bn": "কুলসুম ফারিহা",
+    "name_en": "Kulsum Fariha",
+    "name_ar": "كلثوم فريحة",
+    "meaning": "সুন্দর গালবিশিষ্ট প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 726,
+    "name_bn": "খাদিজা জোহরা",
+    "name_en": "Khadija Zohra",
+    "name_ar": "خديجة زهرة",
+    "meaning": "বিশ্বস্ত ও প্রস্ফুটিত গোলাপ",
+    "gender": "girl"
+  },
+  {
+    "id": 727,
+    "name_bn": "কারিমাহ সামিয়া",
+    "name_en": "Karimah Samiya",
+    "name_ar": "كريمة سامية",
+    "meaning": "উদার ও উচ্চ মর্যাদাসম্পন্ন",
+    "gender": "girl"
+  },
+  {
+    "id": 728,
+    "name_bn": "গাজালা পারভীন",
+    "name_en": "Ghazala Parveen",
+    "name_ar": "غزالة پروين",
+    "meaning": "সুন্দর হরিণ ও দীপ্তিমান তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 729,
+    "name_bn": "জয়নব সুমাইয়া",
+    "name_en": "Zainab Sumaiya",
+    "name_ar": "زينب سمية",
+    "meaning": "সুন্দর ফুল ও উচ্চ মর্যাদা",
+    "gender": "girl"
+  },
+  {
+    "id": 730,
+    "name_bn": "জারা ফাহমিদা",
+    "name_en": "Zara Fahmida",
+    "name_ar": "زارة فهميدة",
+    "meaning": "প্রস্ফুটিত রাজকুমারী ও বিচক্ষণ",
+    "gender": "girl"
+  },
+  {
+    "id": 731,
+    "name_bn": "জাকিয়া মেহজাবিন",
+    "name_en": "Zakiya Mehjabin",
+    "name_ar": "زكية مهجبين",
+    "meaning": "পবিত্র ও চাঁদের মতো সুন্দর",
+    "gender": "girl"
+  },
+  {
+    "id": 732,
+    "name_bn": "জুয়াইরিয়া নাওয়াল",
+    "name_en": "Juwairiyah Nawal",
+    "name_ar": "جويرية نوال",
+    "meaning": "ছোট বালিকা ও উপহার",
+    "gender": "girl"
+  },
+  {
+    "id": 733,
+    "name_bn": "জোবায়দা নূসরাত",
+    "name_en": "Zobaida Nusrat",
+    "name_ar": "زبيدة نصرت",
+    "meaning": "উত্তম পছন্দ ও সফলতা",
+    "gender": "girl"
+  },
+  {
+    "id": 734,
+    "name_bn": "তাহমিদা সাবরিন",
+    "name_en": "Tahmida Sabrin",
+    "name_ar": "تحميدة سابرين",
+    "meaning": "প্রশংসাকারিণী ও ধৈর্যশীলা",
+    "gender": "girl"
+  },
+  {
+    "id": 735,
+    "name_bn": "তাহিরা ফারিহা",
+    "name_en": "Tahira Fariha",
+    "name_ar": "طاهرة فريحة",
+    "meaning": "পবিত্র ও আনন্দময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 736,
+    "name_bn": "তাসনিম মারিয়াম",
+    "name_en": "Tasnim Mariyam",
+    "name_ar": "تسنيم مريم",
+    "meaning": "জান্নাতের ঝরনা ও ইবাদতকারিনী",
+    "gender": "girl"
+  },
+  {
+    "id": 737,
+    "name_bn": "তানজিলা তাহসিন",
+    "name_en": "Tanjila Tahsin",
+    "name_ar": "تنزيلة تحسين",
+    "meaning": "আসমানী উপহার ও সৌন্দর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 738,
+    "name_bn": "তাসনোভা ফারহিন",
+    "name_en": "Tasnova Farhin",
+    "name_ar": "تسنوفا فرحين",
+    "meaning": "আধুনিক ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 739,
+    "name_bn": "তাহসিনা ফারজানা",
+    "name_en": "Tahsina Farzana",
+    "name_ar": "تحسينة فرزانة",
+    "meaning": "সুন্দর ও বিচক্ষণ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 740,
+    "name_bn": "তাজকিয়া আক্তার",
+    "name_en": "Tazkiya Akhtar",
+    "name_ar": "تزكية اختر",
+    "meaning": "আত্মশুদ্ধি ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 741,
+    "name_bn": "নুসাইবা বুশরা",
+    "name_en": "Nusaiba Bushra",
+    "name_ar": "نسيبة بشرى",
+    "meaning": "উচ্চ বংশীয় ও সুসংবাদ",
+    "gender": "girl"
+  },
+  {
+    "id": 742,
+    "name_bn": "নাজিফা আনজুম",
+    "name_en": "Nazifa Anjum",
+    "name_ar": "نظيفة أنجم",
+    "meaning": "পবিত্র ও উজ্জ্বল তারকামন্ডলী",
+    "gender": "girl"
+  },
+  {
+    "id": 743,
+    "name_bn": "নাবিহা রহমান",
+    "name_en": "Nabiha Rahman",
+    "name_ar": "نبيهة رحمن",
+    "meaning": "বুদ্ধিমতী ও পরম দয়ালুর বান্দী",
+    "gender": "girl"
+  },
+  {
+    "id": 744,
+    "name_bn": "নুসরাত সাবরিন",
+    "name_en": "Nusrat Sabrin",
+    "name_ar": "نصرت سابرين",
+    "meaning": "সাহায্য, সফলতা ও ধৈর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 745,
+    "name_bn": "নূরজাহান তাহসিন",
+    "name_en": "Nurjahan Tahsin",
+    "name_ar": "نور جهان تحسين",
+    "meaning": "জগতের আলো ও সৌন্দর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 746,
+    "name_bn": "নূজাহাত সাফা",
+    "name_en": "Nuzhat Safa",
+    "name_ar": "نزهة صفا",
+    "meaning": "প্রফুল্লতা ও চরম পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 747,
+    "name_bn": "নাঈমা তাবাসসুম",
+    "name_en": "Naima Tabassum",
+    "name_ar": "نعيمة تبسم",
+    "meaning": "সুখ-শান্তি ও মিষ্টি হাসিমুখ",
+    "gender": "girl"
+  },
+  {
+    "id": 748,
+    "name_bn": "নাজিয়া হুমায়রা",
+    "name_en": "Naziya Humayra",
+    "name_ar": "ناجية حميراء",
+    "meaning": "নিরাপদ ও গোলাপি রূপসী",
+    "gender": "girl"
+  },
+  {
+    "id": 749,
+    "name_bn": "নাফিসা সাবিহা",
+    "name_en": "Nafisa Sabiha",
+    "name_ar": "نفيسة صبيحة",
+    "meaning": "মূল্যবান রত্ন ও সুন্দর প্রভাত",
+    "gender": "girl"
+  },
+  {
+    "id": 750,
+    "name_bn": "নাবিলা আনজুম",
+    "name_en": "Nabila Anjum",
+    "name_ar": "نبيلة أنجم",
+    "meaning": "সংক্রান্ত ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 751,
+    "name_bn": "ফারিয়া তাসনিয়া",
+    "name_en": "Fariya Tasniya",
+    "name_ar": "فارية تثنية",
+    "meaning": "আনন্দময়ী ও প্রশংসিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 752,
+    "name_bn": "ফাতিহা আক্তার",
+    "name_en": "Fatiha Akhtar",
+    "name_ar": "فاتحة اختر",
+    "meaning": "শুভ সূচনা ও উজ্জ্বল তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 753,
+    "name_bn": "ফাতেমা আনজুম",
+    "name_en": "Fatema Anjum",
+    "name_ar": "فاطمة أنجم",
+    "meaning": "পাপমুক্ত নারী ও উজ্জ্বল তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 754,
+    "name_bn": "ফাহমিদা নওয়াল",
+    "name_en": "Fahmida Nawal",
+    "name_ar": "فهميدة نوال",
+    "meaning": "বিচক্ষণ ও আল্লাহর উপহার",
+    "gender": "girl"
+  },
+  {
+    "id": 755,
+    "name_bn": "ফারজানা সাবিহা",
+    "name_en": "Farzana Sabiha",
+    "name_ar": "فرزانة صبيحة",
+    "meaning": "জ্ঞানী ও প্রাতের সৌন্দর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 756,
+    "name_bn": "ফারাহ বুশরা",
+    "name_en": "Farah Bushra",
+    "name_ar": "فرح بشرى",
+    "meaning": "আনন্দ ও শুভ বার্তা",
+    "gender": "girl"
+  },
+  {
+    "id": 757,
+    "name_bn": "ফিরদৌস আক্তার",
+    "name_en": "Firdous Akhtar",
+    "name_ar": "فردوس اختر",
+    "meaning": "জান্নাতের বাগান ও তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 758,
+    "name_bn": "ফাওজিয়া পারভীন",
+    "name_en": "Fawzia Parveen",
+    "name_ar": "فوزية پروين",
+    "meaning": "সফল ও দীপ্তিমান তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 759,
+    "name_bn": "বুশরা হুমায়রা",
+    "name_en": "Bushra Humayra",
+    "name_ar": "بشرى حميراء",
+    "meaning": "সুসংবাদ ও গোলাপি রূপসী",
+    "gender": "girl"
+  },
+  {
+    "id": 760,
+    "name_bn": "বিলকিস সুলতানা",
+    "name_en": "Bilqis Sultana",
+    "name_ar": "بلقيس سلطانة",
+    "meaning": "সাবার রানী ও সম্মানিত নেত্রী",
+    "gender": "girl"
+  },
+  {
+    "id": 761,
+    "name_bn": "মালিহা আনজুম",
+    "name_en": "Maliha Anjum",
+    "name_ar": "مليحة أنجم",
+    "meaning": "লাবণ্যময়ী ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 762,
+    "name_bn": "মারিয়াম সাবরিন",
+    "name_en": "Mariyam Sabrin",
+    "name_ar": "مريم سابرين",
+    "meaning": "ইবাদতকারিনী ও ধৈর্যশীলা",
+    "gender": "girl"
+  },
+  {
+    "id": 763,
+    "name_bn": "মেহজাবিন নূসরাত",
+    "name_en": "Mehjabin Nusrat",
+    "name_ar": "مهجبين نصرت",
+    "meaning": "চাঁদের কপাল ও সফলতা",
+    "gender": "girl"
+  },
+  {
+    "id": 764,
+    "name_bn": "মাকসুদা বুশরা",
+    "name_en": "Maksuda Bushra",
+    "name_ar": "مقصودة بشرى",
+    "meaning": "কাঙ্ক্ষিত আনন্দময় বার্তা",
+    "gender": "girl"
+  },
+  {
+    "id": 765,
+    "name_bn": "মুমতাহিনা ফারিহা",
+    "name_en": "Mumtahina Fariha",
+    "name_ar": "ممتحنة فريحة",
+    "meaning": "পরীক্ষিত ও আনন্দময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 766,
+    "name_bn": "মুনিরা তাবাসসুম",
+    "name_en": "Munira Tabassum",
+    "name_ar": "منيرة تبسم",
+    "meaning": "দীপ্তিমান আলো ও মিষ্টি হাসি",
+    "gender": "girl"
+  },
+  {
+    "id": 767,
+    "name_bn": "মুনতাহা ফাহমিদা",
+    "name_en": "Muntaha Fahmida",
+    "name_ar": "منتهى فهميدة",
+    "meaning": "সর্বোচ্চ সীমা ও বিচক্ষণ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 768,
+    "name_bn": "মাহনুর সাবরিন",
+    "name_en": "Mahnur Sabrin",
+    "name_ar": "ماهنور سابرين",
+    "meaning": "চাঁদের আলো ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 769,
+    "name_bn": "মায়শা রহমান",
+    "name_en": "Maysha Rahman",
+    "name_ar": "مائشة رحمن",
+    "meaning": "সুখী জীবন ও পরম দয়ালুর বান্দী",
+    "gender": "girl"
+  },
+  {
+    "id": 770,
+    "name_bn": "মাসুমা তাহসিন",
+    "name_en": "Masuma Tahsin",
+    "name_ar": "معصومة تحسين",
+    "meaning": "নিষ্পাপ পবিত্র ও রূপসী",
+    "gender": "girl"
+  },
+  {
+    "id": 771,
+    "name_bn": "রুহানি ফারিহা",
+    "name_en": "Ruhani Fariha",
+    "name_ar": "روحاني فريحة",
+    "meaning": "আধ্যাত্মিক ও আনন্দময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 772,
+    "name_bn": "রুকাইয়া তাসনিয়া",
+    "name_en": "Ruqayya Tasniya",
+    "name_ar": "رقية تثنية",
+    "meaning": "উচ্চতর ও প্রশংসিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 773,
+    "name_bn": "রেহানা বুশরা",
+    "name_en": "Rehana Bushra",
+    "name_ar": "ريحانة بشرى",
+    "meaning": "সুভাষিত ফুল ও সুসংবাদ",
+    "gender": "girl"
+  },
+  {
+    "id": 774,
+    "name_bn": "রাবিয়া তাছনিম",
+    "name_en": "Rabia Tasnim",
+    "name_ar": "رابعة تسنيم",
+    "meaning": "চতুর্থা ও জান্নাতের সুমিষ্টি ঝরনা",
+    "gender": "girl"
+  },
+  {
+    "id": 775,
+    "name_bn": "রামিসা ফারিহা",
+    "name_en": "Ramisa Fariha",
+    "name_ar": "رامسة فريحة",
+    "meaning": "নিরাপদ সাদা গোলাপ ও প্রফুল্লতা",
+    "gender": "girl"
+  },
+  {
+    "id": 776,
+    "name_bn": "রাইসা তাহসিন",
+    "name_en": "Raisa Tahsin",
+    "name_ar": "رئيسة تحسين",
+    "meaning": "নেত্রী ও সৌন্দর্যময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 777,
+    "name_bn": "রুকসানা ফাহমিদা",
+    "name_en": "Ruksana Fahmida",
+    "name_ar": "روكسانا فهميدة",
+    "meaning": "উজ্জ্বল মুখমণ্ডল ও বিচক্ষণ",
+    "gender": "girl"
+  },
+  {
+    "id": 778,
+    "name_bn": "রোদেলা তাসনিয়া",
+    "name_en": "Rodela Tasniya",
+    "name_ar": "روديلة تثنية",
+    "meaning": "উজ্জ্বল কিরণ ও প্রশংসিত",
+    "gender": "girl"
+  },
+  {
+    "id": 779,
+    "name_bn": "শাহরিয়ার সাবরিন",
+    "name_en": "Shahriar Sabrin",
+    "name_ar": "شهريار سابرين",
+    "meaning": "রাজকীয় ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 780,
+    "name_bn": "শাবানা আনজুম",
+    "name_en": "Shabana Anjum",
+    "name_ar": "شبانه أنجم",
+    "meaning": "রাতের সুবাস ও উজ্জ্বল তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 781,
+    "name_bn": "শামসিয়া সাবিহা",
+    "name_en": "Shamsiya Sabiha",
+    "name_ar": "شمسية صبيحة",
+    "meaning": "সূর্যের আলো ও সুন্দর প্রভাত",
+    "gender": "girl"
+  },
+  {
+    "id": 782,
+    "name_bn": "শিফা ফারিহা",
+    "name_en": "Shifa Fariha",
+    "name_ar": "شفاء فريحة",
+    "meaning": "আরোগ্য ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 783,
+    "name_bn": "সাবিহা আনজুম",
+    "name_en": "Sabiha Anjum",
+    "name_ar": "صبيحة أنجم",
+    "meaning": "প্রভাতের সৌন্দর্য ও তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 784,
+    "name_bn": "সাবরিনা তাসনিয়া",
+    "name_en": "Sabrina Tasniya",
+    "name_ar": "سابرينة تثنية",
+    "meaning": "ধৈর্যশীল ও প্রশংসিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 785,
+    "name_bn": "সুফিয়া ফাহমিদা",
+    "name_en": "Sufiya Fahmida",
+    "name_ar": "صوفية فهميدة",
+    "meaning": "পবিত্র মনের বিচক্ষণ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 786,
+    "name_bn": "সুরাইয়া বুশরা",
+    "name_en": "Suraiya Bushra",
+    "name_ar": "ثريا بشرى",
+    "meaning": "উজ্জ্বল তারকামন্ডলী ও সুসংবাদ",
+    "gender": "girl"
+  },
+  {
+    "id": 787,
+    "name_bn": "সামিয়া তাবাসসুম",
+    "name_en": "Samiya Tabassum",
+    "name_ar": "سامية تبسم",
+    "meaning": "উচ্চ মর্যাদা ও মিষ্টি হাসি",
+    "gender": "girl"
+  },
+  {
+    "id": 788,
+    "name_bn": "সামিহা ফারহিন",
+    "name_en": "Samiha Farhin",
+    "name_ar": "سميحة فرحين",
+    "meaning": "উদার ক্ষমাশীল ও আনন্দিত",
+    "gender": "girl"
+  },
+  {
+    "id": 789,
+    "name_bn": "সালমা আক্তার",
+    "name_en": "Salma Akhtar",
+    "name_ar": "سلمى اختر",
+    "meaning": "শান্তিপূর্ণ ও নিরাপদ তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 790,
+    "name_bn": "সাইদা বুশরা",
+    "name_en": "Saida Bushra",
+    "name_ar": "سعيدة بشرى",
+    "meaning": "সৌভাগ্যবতী ও আনন্দ বার্তা",
+    "gender": "girl"
+  },
+  {
+    "id": 791,
+    "name_bn": "সুবাহ ফারিহা",
+    "name_en": "Subah Fariha",
+    "name_ar": "صباح فريحة",
+    "meaning": "সুন্দর সকাল ও আনন্দময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 792,
+    "name_bn": "হাসিনা আনজুম",
+    "name_en": "Hasina Anjum",
+    "name_ar": "حسينة أنجم",
+    "meaning": "সুন্দরী রূপসী ও উজ্জ্বল তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 793,
+    "name_bn": "হাবিবা তাছনিম",
+    "name_en": "Habiba Tasnim",
+    "name_ar": "حبيبة تسنيم",
+    "meaning": "প্রিয়তমা ও জান্নাতের ঝরনা",
+    "gender": "girl"
+  },
+  {
+    "id": 794,
+    "name_bn": "হালিমা বুশরা",
+    "name_en": "Halima Bushra",
+    "name_ar": "حليمة بشرى",
+    "meaning": "ধৈর্যশীল নারী ও সুসংবাদ",
+    "gender": "girl"
+  },
+  {
+    "id": 795,
+    "name_bn": "হুমায়রা ফাহমিদা",
+    "name_en": "Humayra Fahmida",
+    "name_ar": "حميراء فهميدة",
+    "meaning": "গোলাপি রূপসী ও বিচক্ষণ",
+    "gender": "girl"
+  },
+  {
+    "id": 796,
+    "name_bn": "হানিয়া সাবরিন",
+    "name_en": "Haniya Sabrin",
+    "name_ar": "هنية سابرين",
+    "meaning": "সুখী প্রফুল্ল ও ধৈর্যশীল",
+    "gender": "girl"
+  },
+  {
+    "id": 797,
+    "name_bn": "হিবাহ ফারিহা",
+    "name_en": "Hibah Fariha",
+    "name_ar": "هبة فريحة",
+    "meaning": "আল্লাহর উপহার ও প্রফুল্লতা",
+    "gender": "girl"
+  },
+  {
+    "id": 798,
+    "name_bn": "হুদা তাছনিম",
+    "name_en": "Huda Tasnim",
+    "name_ar": "هدى تسنيم",
+    "meaning": "হেদায়েত ও জান্নাতী ঝরনা",
+    "gender": "girl"
+  },
+  {
+    "id": 799,
+    "name_bn": "হাসনা তাহসিন",
+    "name_en": "Hasna Tahsin",
+    "name_ar": "حسناء تحسين",
+    "meaning": "সুন্দরী রূপসী ও শুভকামনা",
+    "gender": "girl"
+  },
+  {
+    "id": 800,
+    "name_bn": "ইয়াসমিন সুলতানা",
+    "name_en": "Yasmin Sultana",
+    "name_ar": "ياسمين سلطانة",
+    "meaning": "জুঁই ফুল ও সম্মানিত নেত্রী",
+    "gender": "girl"
+  },
+  {
+    "id": 801,
+    "name_bn": "আফিয়া সিদ্দিকা",
+    "name_en": "Afiya Siddiqua",
+    "name_ar": "عافية الصديقة",
+    "meaning": "সুস্থ, নিরাপদ ও পরম সত্যবাদী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 802,
+    "name_bn": "আয়েশা তাহসিন",
+    "name_en": "Ayesha Tahsin",
+    "name_ar": "عائشة تحسين",
+    "meaning": "সমৃদ্ধশালী ও সৌন্দর্যময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 803,
+    "name_bn": "আতিয়া ফাহমিদা",
+    "name_en": "Atiya Fahmida",
+    "name_ar": "عطية فهميدة",
+    "meaning": "উপহারস্বরূপ বিচক্ষণ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 804,
+    "name_bn": "আরিফা সাবরিন",
+    "name_en": "Arifa Sabrin",
+    "name_ar": "عارفة سابرين",
+    "meaning": "জ্ঞানী ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 805,
+    "name_bn": "আসমাহ তাসনিয়া",
+    "name_en": "Asmah Tasniya",
+    "name_ar": "أسمة تثنية",
+    "meaning": "সম্মানিত ও প্রশংসিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 806,
+    "name_bn": "আনিসা তারান্নুম",
+    "name_en": "Anisa Tarannum",
+    "name_ar": "أنيسة ترنم",
+    "meaning": "ঘনিষ্ঠ সখী ও সুমিষ্টি সুর",
+    "gender": "girl"
+  },
+  {
+    "id": 807,
+    "name_bn": "আফিয়া ফারজানা",
+    "name_en": "Afiya Farzana",
+    "name_ar": "عافية فرزانة",
+    "meaning": "সুস্থ, নিরাপদ ও চতুর নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 808,
+    "name_bn": "আদিবা মেহজাবিন",
+    "name_en": "Adiba Mehjabin",
+    "name_ar": "أديبة مهجبين",
+    "meaning": "শিষ্টাচারসম্পন্ন ও চাঁদের মতো সুন্দর",
+    "gender": "girl"
+  },
+  {
+    "id": 809,
+    "name_bn": "আমিনা বুশরা",
+    "name_en": "Amina Bushra",
+    "name_ar": "آمنة بشرى",
+    "meaning": "নিরাপদ ও আনন্দের সুসংবাদ",
+    "gender": "girl"
+  },
+  {
+    "id": 810,
+    "name_bn": "আফরা তাবাচ্ছুম",
+    "name_en": "Afra Tabassum",
+    "name_ar": "عفراء تبسم",
+    "meaning": "উজ্জ্বল রূপসী ও মিষ্টি হাসি",
+    "gender": "girl"
+  },
+  {
+    "id": 811,
+    "name_bn": "ইফফাত ফারহিন",
+    "name_en": "Iffat Farhin",
+    "name_ar": "عفة فرحين",
+    "meaning": "পবিত্র ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 812,
+    "name_bn": "ইশরাত ফারিহা",
+    "name_en": "Ishrat Fariha",
+    "name_ar": "عشرت فريحة",
+    "meaning": "সুখ, আনন্দ ও প্রফুল্লতা",
+    "gender": "girl"
+  },
+  {
+    "id": 813,
+    "name_bn": "ইসমাত তাহসিন",
+    "name_en": "Ismat Tahsin",
+    "name_ar": "عصمت تحسين",
+    "meaning": "পবিত্রতা ও সৌন্দর্যময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 814,
+    "name_bn": "ইরাম সাবরিন",
+    "name_en": "Iram Sabrin",
+    "name_ar": "إرم سابرين",
+    "meaning": "জান্নাতের বাগান ও ধৈর্যশীলা",
+    "gender": "girl"
+  },
+  {
+    "id": 815,
+    "name_bn": "ইনায়াহ তাসনিয়া",
+    "name_en": "Inayah Tasniya",
+    "name_ar": "عناية تثنية",
+    "meaning": "আল্লাহর যত্ন ও প্রশংসিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 816,
+    "name_bn": "উমাইজা সাফা",
+    "name_en": "Umaiza Safa",
+    "name_ar": "عميرة صفا",
+    "meaning": "উজ্জ্বল হৃদয় ও পরম পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 817,
+    "name_bn": "উমামা তাহসিন",
+    "name_en": "Umama Tahsin",
+    "name_ar": "أمامة تحسين",
+    "meaning": "সম্মানিত ও রূপসী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 818,
+    "name_bn": "উম্মে ফাতেমা",
+    "name_en": "Umme Fatema",
+    "name_ar": "أم فاطمة",
+    "meaning": "পাপমুক্তা নারীর মা",
+    "gender": "girl"
+  },
+  {
+    "id": 819,
+    "name_bn": "উম্মে গুলসুম",
+    "name_en": "Umme Kulsum",
+    "name_ar": "أم كلثوم",
+    "meaning": "ভরাট গালবিশিষ্ট সুন্দর মা",
+    "gender": "girl"
+  },
+  {
+    "id": 820,
+    "name_bn": "উমায়রা তারান্নুম",
+    "name_en": "Omaira Tarannum",
+    "name_ar": "عميرة ترنم",
+    "meaning": "দীর্ঘায়ু প্রাপ্ত ও মিষ্টি সুরের প্রকাশ",
+    "gender": "girl"
+  },
+  {
+    "id": 821,
+    "name_bn": "ওয়াসিমা ফারিহা",
+    "name_en": "Wasima Fariha",
+    "name_ar": "وسيمة فريحة",
+    "meaning": "রূপসী ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 822,
+    "name_bn": "ওয়ার্দা সাবরিন",
+    "name_en": "Warda Sabrin",
+    "name_ar": "وردة سابرين",
+    "meaning": "গোলাপ ফুল ও ধৈর্যশীলা",
+    "gender": "girl"
+  },
+  {
+    "id": 823,
+    "name_bn": "ওয়াজিহা আনজুম",
+    "name_en": "Wajiha Anjum",
+    "name_ar": "وجيهة أنجم",
+    "meaning": "সম্মানিত নারী ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 824,
+    "name_bn": "কানিজ তাসনিয়া",
+    "name_en": "Kaniz Tasniya",
+    "name_ar": "كنيز تثنية",
+    "meaning": "অনুগত সেবিকা ও প্রশংসিত",
+    "gender": "girl"
+  },
+  {
+    "id": 825,
+    "name_bn": "কুলসুম সাবরিন",
+    "name_en": "Kulsum Sabrin",
+    "name_ar": "كلثوم سابرين",
+    "meaning": "সুন্দর গালবিশিষ্ট ও ধৈর্যশীলা",
+    "gender": "girl"
+  },
+  {
+    "id": 826,
+    "name_bn": "খাদিজা ফারিহা",
+    "name_en": "Khadija Fariha",
+    "name_ar": "خديجة فريحة",
+    "meaning": "বিশ্বস্ত ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 827,
+    "name_bn": "কারিমাহ তাহসিন",
+    "name_en": "Karimah Tahsin",
+    "name_ar": "كريمة تحسين",
+    "meaning": "দানশীল ও সৌন্দর্যময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 828,
+    "name_bn": "গাজালা ফারহিন",
+    "name_en": "Ghazala Farhin",
+    "name_ar": "غزالة فرحين",
+    "meaning": "সুন্দর হরিণ ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 829,
+    "name_bn": "জয়নব তারান্নুম",
+    "name_en": "Zainab Tarannum",
+    "name_ar": "زينب ترنم",
+    "meaning": "সুন্দর ফুল ও সুমিষ্টি সুর",
+    "gender": "girl"
+  },
+  {
+    "id": 830,
+    "name_bn": "জারা সানজিদা",
+    "name_en": "Zara Sanjida",
+    "name_ar": "زارة ساجدة",
+    "meaning": "প্রস্ফুটিত রাজকুমারী ও সিজদাকারিণী",
+    "gender": "girl"
+  },
+  {
+    "id": 831,
+    "name_bn": "জাকিয়া ফাহমিদা",
+    "name_en": "Zakiya Fahmida",
+    "name_ar": "زكية فهميدة",
+    "meaning": "পবিত্র, মেধা সম্পন্ন ও বিচক্ষণ",
+    "gender": "girl"
+  },
+  {
+    "id": 832,
+    "name_bn": "জুয়াইরিয়া সাবিহা",
+    "name_en": "Juwairiyah Sabiha",
+    "name_ar": "جويرية صبيحة",
+    "meaning": "ছোট বালিকা ও প্রভাতের সৌন্দর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 833,
+    "name_bn": "জোবায়দা ফারিহা",
+    "name_en": "Zobaida Fariha",
+    "name_ar": "زبيدة فريحة",
+    "meaning": "উত্তম পছন্দ ও আনন্দময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 834,
+    "name_bn": "তাহমিদা ফারহিন",
+    "name_en": "Tahmida Farhin",
+    "name_ar": "تحميدة فرحين",
+    "meaning": "প্রশংসাকারিণী ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 835,
+    "name_bn": "তাহিরা আনজুম",
+    "name_en": "Tahira Anjum",
+    "name_ar": "طاهرة أنجم",
+    "meaning": "পবিত্র ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 836,
+    "name_bn": "তাসনিম ফাহমিদা",
+    "name_en": "Tasnim Fahmida",
+    "name_ar": "تسنيم فهميدة",
+    "meaning": "জান্নাতের ঝরনা ও বিচক্ষণ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 837,
+    "name_bn": "তানজিলা সাফা",
+    "name_en": "Tanjila Safa",
+    "name_ar": "تنزيلة صفا",
+    "meaning": "অবতীর্ণ বার্তা ও পরম পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 838,
+    "name_bn": "তাসনোভা সাবরিন",
+    "name_en": "Tasnova Sabrin",
+    "name_ar": "تسنوفا سابرين",
+    "meaning": "আধুনিক ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 839,
+    "name_bn": "তাহসিনা ফারহিন",
+    "name_en": "Tahsina Farhin",
+    "name_ar": "تحسينة فرحين",
+    "meaning": "সুন্দর ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 840,
+    "name_bn": "তাজকিয়া সাবিহা",
+    "name_en": "Tazkiya Sabiha",
+    "name_ar": "تزكية صبيحة",
+    "meaning": "আত্মশুদ্ধি ও প্রভাতের রূপ",
+    "gender": "girl"
+  },
+  {
+    "id": 841,
+    "name_bn": "নুসাইবা তাহসিন",
+    "name_en": "Nusaiba Tahsin",
+    "name_ar": "نسيبة تحسين",
+    "meaning": "উচ্চ বংশীয় ও অত্যন্ত সুন্দর",
+    "gender": "girl"
+  },
+  {
+    "id": 842,
+    "name_bn": "নাজিফা ফারহিন",
+    "name_en": "Nazifa Farhin",
+    "name_ar": "نظيفة فرحين",
+    "meaning": "পবিত্র ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 843,
+    "name_bn": "নাবিহা সাবিহা",
+    "name_en": "Nabiha Sabiha",
+    "name_ar": "نبيهة صبيحة",
+    "meaning": "বুদ্ধিমতী ও প্রভাতের সৌন্দর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 844,
+    "name_bn": "নুসরাত তাসনিয়া",
+    "name_en": "Nusrat Tasniya",
+    "name_ar": "نصرت تثنية",
+    "meaning": "সাহায্য, সফলতা ও প্রশংসিত",
+    "gender": "girl"
+  },
+  {
+    "id": 845,
+    "name_bn": "নূরজাহান ফারিহা",
+    "name_en": "Nurjahan Fariha",
+    "name_ar": "نور جهان فريحة",
+    "meaning": "জগতের আলো ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 846,
+    "name_bn": "নূজাহাত আনজুম",
+    "name_en": "Nuzhat Anjum",
+    "name_ar": "نزهة أنجم",
+    "meaning": "প্রফুল্লতা ও উজ্জ্বল তারকামন্ডলী",
+    "gender": "girl"
+  },
+  {
+    "id": 847,
+    "name_bn": "নাঈমা ফারজানা",
+    "name_en": "Naima Farzana",
+    "name_ar": "نعيمة فرزانة",
+    "meaning": "সুখ-শান্তি প্রাপ্ত ও বিচক্ষণ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 848,
+    "name_bn": "নাজিয়া তারান্নুম",
+    "name_en": "Naziya Tarannum",
+    "name_ar": "ناجية ترنم",
+    "meaning": "নিরাপদ ও সুমিষ্টি সুরের বিকাশ",
+    "gender": "girl"
+  },
+  {
+    "id": 849,
+    "name_bn": "নাফিসা তাহসিন",
+    "name_en": "Nafisa Tahsin",
+    "name_ar": "نفيسة تحسين",
+    "meaning": "মূল্যবান রত্ন ও সুন্দর রূপসী",
+    "gender": "girl"
+  },
+  {
+    "id": 850,
+    "name_bn": "নাবিলা তাবাসসুম",
+    "name_en": "Nabila Tabassum",
+    "name_ar": "نبيلة تبسم",
+    "meaning": "সংক্রান্ত ও মিষ্টি হাসিমুখ",
+    "gender": "girl"
+  },
+  {
+    "id": 851,
+    "name_bn": "ফারিয়া সাবরিন",
+    "name_en": "Fariya Sabrin",
+    "name_ar": "فارية سابرين",
+    "meaning": "আনন্দময়ী ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 852,
+    "name_bn": "ফাতিহা মেহজাবিন",
+    "name_en": "Fatiha Mehjabin",
+    "name_ar": "فاتحة مهجبين",
+    "meaning": "শুভ সূচনা ও চাঁদের রূপসী",
+    "gender": "girl"
+  },
+  {
+    "id": 853,
+    "name_bn": "ফাতেমা সাবিহা",
+    "name_en": "Fatema Sabiha",
+    "name_ar": "فاطمة صبيحة",
+    "meaning": "পাপমুক্ত নারী ও প্রভাতের সৌন্দর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 854,
+    "name_bn": "ফাহমিদা আনজুম",
+    "name_en": "Fahmida Anjum",
+    "name_ar": "فهميدة أنجم",
+    "meaning": "বিচক্ষণ নারী ও উজ্জ্বল তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 855,
+    "name_bn": "ফারজানা তাহসিন",
+    "name_en": "Farzana Tahsin",
+    "name_ar": "فرزانة تحسين",
+    "meaning": "জ্ঞানী, বিচক্ষণ ও সৌন্দর্যময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 856,
+    "name_bn": "ফারাহ তারান্নুম",
+    "name_en": "Farah Tarannum",
+    "name_ar": "فرح ترنم",
+    "meaning": "আনন্দ ও মিষ্টি সুমিষ্টি সুর",
+    "gender": "girl"
+  },
+  {
+    "id": 857,
+    "name_bn": "ফিরদৌস সাবরিন",
+    "name_en": "Firdous Sabrin",
+    "name_ar": "فردوس سابرين",
+    "meaning": "জান্নাতের বাগান ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 858,
+    "name_bn": "ফাওজিয়া ফারহিন",
+    "name_en": "Fawzia Farhin",
+    "name_ar": "فوزية فرحين",
+    "meaning": "সফল, বিজয়ী ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 859,
+    "name_bn": "বুশরা তাছনিম",
+    "name_en": "Bushra Tasnim",
+    "name_ar": "بشرى تسنيم",
+    "meaning": "সুসংবাদ ও জান্নাতের সুমিষ্টি ঝরনা",
+    "gender": "girl"
+  },
+  {
+    "id": 860,
+    "name_bn": "বিলকিস ফারিহা",
+    "name_en": "Bilqis Fariha",
+    "name_ar": "بلقيس فريحة",
+    "meaning": "সাবার রানী ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 861,
+    "name_bn": "মালিহা ফারহিন",
+    "name_en": "Maliha Farhin",
+    "name_ar": "مليحة فرحين",
+    "meaning": "লাবণ্যময়ী ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 862,
+    "name_bn": "মারিয়াম তারান্নুম",
+    "name_en": "Mariyam Tarannum",
+    "name_ar": "مريم ترنم",
+    "meaning": "ইবাদতকারিনী ও মিষ্টি সুর",
+    "gender": "girl"
+  },
+  {
+    "id": 863,
+    "name_bn": "মেহজাবিন ফারিহা",
+    "name_en": "Mehjabin Fariha",
+    "name_ar": "مهجبين فريحة",
+    "meaning": "চাঁদের কপাল ও আনন্দময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 864,
+    "name_bn": "মাকসুদা সাফা",
+    "name_en": "Maksuda Safa",
+    "name_ar": "مقصودة صفا",
+    "meaning": "কাঙ্ক্ষিত লক্ষ্য ও পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 865,
+    "name_bn": "মুমতাহিনা সাবিহা",
+    "name_en": "Mumtahina Sabiha",
+    "name_ar": "ممتحنة صبيحة",
+    "meaning": "পরীক্ষিত ও প্রভাতের সৌন্দর্য",
+    "gender": "girl"
+  },
+  {
+    "id": 866,
+    "name_bn": "মুনিরা আনজুম",
+    "name_en": "Munira Anjum",
+    "name_ar": "منيرة أنجم",
+    "meaning": "দীপ্তিমান আলো ও উজ্জ্বল তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 867,
+    "name_bn": "মুনতাহা সাবরিন",
+    "name_en": "Muntaha Sabrin",
+    "name_ar": "منتهى سابرين",
+    "meaning": "সর্বোচ্চ সীমা ও ধৈর্যশীলা",
+    "gender": "girl"
+  },
+  {
+    "id": 868,
+    "name_bn": "মাহনুর তাছনিম",
+    "name_en": "Mahnur Tasnim",
+    "name_ar": "ماهنور تسنيم",
+    "meaning": "চাঁদের আলো ও জান্নাতের ঝরনা",
+    "gender": "girl"
+  },
+  {
+    "id": 869,
+    "name_bn": "মায়শা পারভীন",
+    "name_en": "Maysha Parveen",
+    "name_ar": "مائشة پروين",
+    "meaning": "সুখী জীবন ও দীপ্তিমান তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 870,
+    "name_bn": "মাসুমা ফারহিন",
+    "name_en": "Masuma Farhin",
+    "name_ar": "معصومة فرحين",
+    "meaning": "নিষ্পাপ পবিত্র ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 871,
+    "name_bn": "রুহানি তাবাসসুম",
+    "name_en": "Ruhani Tabassum",
+    "name_ar": "روحاني تبسم",
+    "meaning": "আধ্যাত্মিক ও মিষ্টি হাসিমুখ",
+    "gender": "girl"
+  },
+  {
+    "id": 872,
+    "name_bn": "রুকাইয়া তাহসিন",
+    "name_en": "Ruqayya Tahsin",
+    "name_ar": "رقية تحسين",
+    "meaning": "উচ্চতর ও সৌন্দর্যময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 873,
+    "name_bn": "রেহানা আনজুম",
+    "name_en": "Rehana Anjum",
+    "name_ar": "ريحانة أنجم",
+    "meaning": "সুভাষিত ফুল ও উজ্জ্বল তারা",
+    "gender": "girl"
+  },
+  {
+    "id": 874,
+    "name_bn": "রাবিয়া সাবরিন",
+    "name_en": "Rabia Sabrin",
+    "name_ar": "رابعة سابرين",
+    "meaning": "চতুর্থা ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 875,
+    "name_bn": "রামিসা তাছনিম",
+    "name_en": "Ramisa Tasnim",
+    "name_ar": "رامسة تسنيم",
+    "meaning": "নিরাপদ সাদা গোলাপ ও জান্নাতী ঝরনা",
+    "gender": "girl"
+  },
+  {
+    "id": 876,
+    "name_bn": "রাইসা ফাহমিদা",
+    "name_en": "Raisa Fahmida",
+    "name_ar": "رئيسة فهميدة",
+    "meaning": "নেত্রী ও বিচক্ষণ প্রজ্ঞাবান",
+    "gender": "girl"
+  },
+  {
+    "id": 877,
+    "name_bn": "রুকসানা আনজুম",
+    "name_en": "Ruksana Anjum",
+    "name_ar": "روكسانا أنجم",
+    "meaning": "উজ্জ্বল মুখমণ্ডল ও তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 878,
+    "name_bn": "রোদেলা সাফা",
+    "name_en": "Rodela Safa",
+    "name_ar": "روديلة صفا",
+    "meaning": "উজ্জ্বল কিরণ ও পরম পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 879,
+    "name_bn": "শাহরিয়ার ফারিহা",
+    "name_en": "Shahriar Fariha",
+    "name_ar": "شهريار فريحة",
+    "meaning": "রাজকীয় ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 880,
+    "name_bn": "শাবানা ফারহিন",
+    "name_en": "Shabana Farhin",
+    "name_ar": "شبانه فرحين",
+    "meaning": "রাতের সুবাস ও আনন্দিত নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 881,
+    "name_bn": "শামসিয়া তাহসিন",
+    "name_en": "Shamsiya Tahsin",
+    "name_ar": "شمسية تحسين",
+    "meaning": "সূর্যের আলো ও সৌন্দর্যময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 882,
+    "name_bn": "শিফা সাবিহা",
+    "name_en": "Shifa Sabiha",
+    "name_ar": "شفاء صبيحة",
+    "meaning": "আরোগ্য ও প্রভাতের রূপ",
+    "gender": "girl"
+  },
+  {
+    "id": 883,
+    "name_bn": "সাবিহা ফারিহা",
+    "name_en": "Sabiha Fariha",
+    "name_ar": "صبيحة فريحة",
+    "meaning": "প্রভাতের সৌন্দর্য ও প্রফুল্লতা",
+    "gender": "girl"
+  },
+  {
+    "id": 884,
+    "name_bn": "সাবরিনা ফাহমিদা",
+    "name_en": "Sabrina Fahmida",
+    "name_ar": "سابرينة فهميدة",
+    "meaning": "ধৈর্যশীল ও বিচক্ষণ নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 885,
+    "name_bn": "সুফিয়া আনজুম",
+    "name_en": "Sufiya Anjum",
+    "name_ar": "صوفية أنجم",
+    "meaning": "পবিত্র মনের অধিকারী ও তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 886,
+    "name_bn": "সুরাইয়া তাহসিন",
+    "name_en": "Suraiya Tahsin",
+    "name_ar": "ثريا تحسين",
+    "meaning": "উজ্জ্বল তারকামন্ডলী ও রূপসী",
+    "gender": "girl"
+  },
+  {
+    "id": 887,
+    "name_bn": "সামিয়া সাফা",
+    "name_en": "Samiya Safa",
+    "name_ar": "سامية صفا",
+    "meaning": "উচ্চ মর্যাদা ও পরম পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 888,
+    "name_bn": "সামিহা আনজুম",
+    "name_en": "Samiha Anjum",
+    "name_ar": "سميحة أنجم",
+    "meaning": "উদার ক্ষমাশীল ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 889,
+    "name_bn": "সালমা ফারিহা",
+    "name_en": "Salma Fariha",
+    "name_ar": "سلمى فريحة",
+    "meaning": "শান্তিপূর্ণ ও আনন্দময়ী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 890,
+    "name_bn": "সাইদা তাহসিন",
+    "name_en": "Saida Tahsin",
+    "name_ar": "سعيدة تحسين",
+    "meaning": "সৌভাগ্যবতী ও রূপসী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 891,
+    "name_bn": "সুবাহ তাবাসসুম",
+    "name_en": "Subah Tabassum",
+    "name_ar": "صباح تبسم",
+    "meaning": "সুন্দর সকাল ও মিষ্টি হাসি",
+    "gender": "girl"
+  },
+  {
+    "id": 892,
+    "name_bn": "হাসিনা ফারিহা",
+    "name_en": "Hasina Fariha",
+    "name_ar": "حسينة فريحة",
+    "meaning": "সুন্দরী রূপসী ও আনন্দময়ী",
+    "gender": "girl"
+  },
+  {
+    "id": 893,
+    "name_bn": "হাবিবা সাবরিন",
+    "name_en": "Habiba Sabrin",
+    "name_ar": "حبيبة سابرين",
+    "meaning": "প্রিয়তমা ও ধৈর্যশীল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 894,
+    "name_bn": "হালিমা তারান্নুম",
+    "name_en": "Halima Tarannum",
+    "name_ar": "حليمة ترنم",
+    "meaning": "ধৈর্যশীল নারী ও সুমিষ্টি সুর",
+    "gender": "girl"
+  },
+  {
+    "id": 895,
+    "name_bn": "হুমায়রা তারান্নুম",
+    "name_en": "Humayra Tarannum",
+    "name_ar": "حميراء ترنم",
+    "meaning": "গোলাপি রূপসী ও সুমিষ্টি সুর",
+    "gender": "girl"
+  },
+  {
+    "id": 896,
+    "name_bn": "হানিয়া তাহসিন",
+    "name_en": "Haniya Tahsin",
+    "name_ar": "هنية تحسين",
+    "meaning": "সুখী প্রফুল্ল ও রূপসী নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 897,
+    "name_bn": "হিবাহ সাফা",
+    "name_en": "Hibah Safa",
+    "name_ar": "هبة صفا",
+    "meaning": "আল্লাহর উপহার ও পরম পবিত্রতা",
+    "gender": "girl"
+  },
+  {
+    "id": 898,
+    "name_bn": "হুদা আনজুম",
+    "name_en": "Huda Anjum",
+    "name_ar": "هدى أنجم",
+    "meaning": "হেদায়েত ও উজ্জ্বল তারকা",
+    "gender": "girl"
+  },
+  {
+    "id": 899,
+    "name_bn": "হাসনা ফারহিন",
+    "name_en": "Hasna Farhin",
+    "name_ar": "حسناء فرحين",
+    "meaning": "সুন্দরী রূপসী ও প্রফুল্ল নারী",
+    "gender": "girl"
+  },
+  {
+    "id": 900,
+    "name_bn": "ইয়াসমিন মেহজাবিন",
+    "name_en": "Yasmin Mehjabin",
+    "name_ar": "ياسمين مهجبين",
+    "meaning": "জুঁই ফুল ও চাঁদের মতো সুন্দর",
+    "gender": "girl"
+  },
+  {
+    "id": 901,
+    "name_bn": "আবরার ফাহাদ",
+    "name_en": "Abrar Fahad",
+    "name_ar": "أبرار فهد",
+    "meaning": "পুণ্যবান ও চটপটে সিংহ",
+    "gender": "boy"
+  },
+  {
+    "id": 902,
+    "name_bn": "আহনাফ তাশফীক",
+    "name_en": "Ahnaf Tashfeeq",
+    "name_ar": "أحنف تشفيق",
+    "meaning": "একনিষ্ঠ সত্য বিশ্বাসী ও সহানুভূতিশীল",
+    "gender": "boy"
+  },
+  {
+    "id": 903,
+    "name_bn": "আরিয়ান মাহমুদ",
+    "name_en": "Aryan Mahmud",
+    "name_ar": "آريان محمود",
+    "meaning": "উচ্চ মর্যাদাবান ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 904,
+    "name_bn": "আতিফ শাহরিয়ার",
+    "name_en": "Atif Shahriar",
+    "name_ar": "عاطف شهريار",
+    "meaning": "সহানুভূশীল রাজা",
+    "gender": "boy"
+  },
+  {
+    "id": 905,
+    "name_bn": "আইয়ান রাহমান",
+    "name_en": "Ayan Rahman",
+    "name_ar": "أيان رحمن",
+    "meaning": "আল্লাহর উপহার ও দয়াময়",
+    "gender": "boy"
+  },
+  {
+    "id": 906,
+    "name_bn": "আফফান হাবিব",
+    "name_en": "Affan Habib",
+    "name_ar": "عفان حبيب",
+    "meaning": "পবিত্র ও প্রিয় বন্ধু",
+    "gender": "boy"
+  },
+  {
+    "id": 907,
+    "name_bn": "আকিব জাবেদ",
+    "name_en": "Aqib Javed",
+    "name_ar": "عاقب جاويد",
+    "meaning": "অনুসারী ও অমর",
+    "gender": "boy"
+  },
+  {
+    "id": 908,
+    "name_bn": "আসিফ ইকবাল",
+    "name_en": "Asif Iqbal",
+    "name_ar": "آصف إقبال",
+    "meaning": "বিচক্ষণ ও সৌভাগ্যবান",
+    "gender": "boy"
+  },
+  {
+    "id": 909,
+    "name_bn": "আমানুল্লাহ হাসান",
+    "name_en": "Amanullah Hasan",
+    "name_ar": "أمان الله حسن",
+    "meaning": "আল্লাহর নিরাপত্তা ও সুন্দর",
+    "gender": "boy"
+  },
+  {
+    "id": 910,
+    "name_bn": "আরিফ বিল্লাহ",
+    "name_en": "Arif Billah",
+    "name_ar": "عارف بالله",
+    "meaning": "আল্লাহ সম্পর্কে প্রজ্ঞাবান",
+    "gender": "boy"
+  },
+  {
+    "id": 911,
+    "name_bn": "ইভান ফায়াজ",
+    "name_en": "Ivan Fayaz",
+    "name_ar": "إيفان فياض",
+    "meaning": "আল্লাহর উপহার ও অত্যন্ত উদার",
+    "gender": "boy"
+  },
+  {
+    "id": 912,
+    "name_bn": "ইমরান হোসেন",
+    "name_en": "Imran Hossain",
+    "name_ar": "عمران حسين",
+    "meaning": "সমৃদ্ধি ও সুন্দর ব্যক্তিত্ব",
+    "gender": "boy"
+  },
+  {
+    "id": 913,
+    "name_bn": "ইশরাক আহমেদ",
+    "name_en": "Ishraq Ahmed",
+    "name_ar": "إشراق أحمد",
+    "meaning": "প্রভাতের আলো ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 914,
+    "name_bn": "ইমতয়াজ আলী",
+    "name_en": "Imtiaz Ali",
+    "name_ar": "امتياز علي",
+    "meaning": "সুখ্যাত ও উচ্চ মর্যাদাবান",
+    "gender": "boy"
+  },
+  {
+    "id": 915,
+    "name_bn": "ইরাম জুবায়ের",
+    "name_en": "Iram Zubayer",
+    "name_ar": "إرم زبير",
+    "meaning": "জান্নাতের বাগান ও শক্তিশালী",
+    "gender": "boy"
+  },
+  {
+    "id": 916,
+    "name_bn": "উসামা হাসনাত",
+    "name_en": "Usama Hasnat",
+    "name_ar": "أسامة حسنات",
+    "meaning": "সাহসী বীর ও ভালো কাজ",
+    "gender": "boy"
+  },
+  {
+    "id": 917,
+    "name_bn": "উমাইর তানজিম",
+    "name_en": "Umair Tanjim",
+    "name_ar": "عمير تنظيم",
+    "meaning": "দীর্ঘায়ু ও সুশৃঙ্খল",
+    "gender": "boy"
+  },
+  {
+    "id": 918,
+    "name_bn": "ওমর ফারুক",
+    "name_en": "Omar Farooq",
+    "name_ar": "عمر فاروق",
+    "meaning": "দীর্ঘায়ু ও সত্য-মিথ্যার পার্থক্যকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 919,
+    "name_bn": "ওয়াসিফ সিয়াম",
+    "name_en": "Wasif Siam",
+    "name_ar": "واصف صيام",
+    "meaning": "গুণ বর্ণনাকারী ও আত্মসংযমী",
+    "gender": "boy"
+  },
+  {
+    "id": 920,
+    "name_bn": "ওয়ালিদ হাসান",
+    "name_en": "Walid Hasan",
+    "name_ar": "وليد حسن",
+    "meaning": "সুন্দর নবজাতক",
+    "gender": "boy"
+  },
+  {
+    "id": 921,
+    "name_bn": "কাসিম সাফওয়ান",
+    "name_en": "Qasim Safwan",
+    "name_ar": "قاسم صفوان",
+    "meaning": "বণ্টনকারী ও খাঁটি হৃদয়ের",
+    "gender": "boy"
+  },
+  {
+    "id": 922,
+    "name_bn": "কাওসার আহমেদ",
+    "name_en": "Kawsar Ahmed",
+    "name_ar": "كوثر أحمد",
+    "meaning": "প্রচুর কল্যাণ ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 923,
+    "name_bn": "খালিদ সাইফাত",
+    "name_en": "Khalid Saifat",
+    "name_ar": "خالد سيفات",
+    "meaning": "স্থায়ী তলোয়ারের তীক্ষ্ণতা",
+    "gender": "boy"
+  },
+  {
+    "id": 924,
+    "name_bn": "খলিলুর রহমান",
+    "name_en": "Khalilur Rahman",
+    "name_ar": "خليل الرحمن",
+    "meaning": "পরম দয়ালুর ঘনিষ্ঠ বন্ধু",
+    "gender": "boy"
+  },
+  {
+    "id": 925,
+    "name_bn": "জায়েদ তাশফীন",
+    "name_en": "Zayed Tashfeen",
+    "name_ar": "زايد تشفين",
+    "meaning": "প্রাচুর্যময় ও দয়ালু রক্ষক",
+    "gender": "boy"
+  },
+  {
+    "id": 926,
+    "name_bn": "জাওয়াদ ফারহান",
+    "name_en": "Jawad Farhan",
+    "name_ar": "جواد فرحان",
+    "meaning": "উদার ও প্রফুল্ল চিত্ত",
+    "gender": "boy"
+  },
+  {
+    "id": 927,
+    "name_bn": "জাবের সাঈদ",
+    "name_en": "Jaber Saeed",
+    "name_ar": "جابر سعيد",
+    "meaning": "সাহায্যকারী ও সৌভাগ্যবান",
+    "gender": "boy"
+  },
+  {
+    "id": 928,
+    "name_bn": "জাকির হোসেন",
+    "name_en": "Zakir Hossain",
+    "name_ar": "ذاكر حسين",
+    "meaning": "জিকিরকারী ও সুন্দর",
+    "gender": "boy"
+  },
+  {
+    "id": 929,
+    "name_bn": "জুবায়ের আহমেদ",
+    "name_en": "Zubayer Ahmed",
+    "name_ar": "زبير أحمد",
+    "meaning": "শক্তিশালী বীর ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 930,
+    "name_bn": "জিয়ান সাবিত",
+    "name_en": "Zian Sabit",
+    "name_ar": "زيان ثابت",
+    "meaning": "সুন্দর ও অটল অবিচল",
+    "gender": "boy"
+  },
+  {
+    "id": 931,
+    "name_bn": "তৌহিদ তানজিম",
+    "name_en": "Tawhid Tanjim",
+    "name_ar": "توحيد تنظيم",
+    "meaning": "একত্ববাদ ও সুশৃঙ্খল",
+    "gender": "boy"
+  },
+  {
+    "id": 932,
+    "name_bn": "তাহসিন মুস্তাকিম",
+    "name_en": "Tahsin Mustakim",
+    "name_ar": "تحسين مستقيم",
+    "meaning": "সুন্দর ও সঠিক পথগামী",
+    "gender": "boy"
+  },
+  {
+    "id": 933,
+    "name_bn": "তৈয়ব শাহরিয়ার",
+    "name_en": "Tayyib Shahriar",
+    "name_ar": "طيب شهريار",
+    "meaning": "পবিত্র ও মর্যাদাবান রাজা",
+    "gender": "boy"
+  },
+  {
+    "id": 934,
+    "name_bn": "তাজরিয়ান সাজিদ",
+    "name_en": "Tazrian Sajid",
+    "name_ar": "تزريان ساجد",
+    "meaning": "প্রবহমান ও সিজদাকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 935,
+    "name_bn": "তরিকুল ইসলাম",
+    "name_en": "Tariqul Islam",
+    "name_ar": "طارق الإسلام",
+    "meaning": "ইসলামের উজ্জ্বল তারা",
+    "gender": "boy"
+  },
+  {
+    "id": 936,
+    "name_bn": "তানভীর আহমেদ",
+    "name_en": "Tanveer Ahmed",
+    "name_ar": "تنوير أحمد",
+    "meaning": "আলোকিত ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 937,
+    "name_bn": "তাহমিদ হাসান",
+    "name_en": "Tahmid Hasan",
+    "name_ar": "تحميد حسن",
+    "meaning": "প্রশংসাকারী ও উত্তম",
+    "gender": "boy"
+  },
+  {
+    "id": 938,
+    "name_bn": "নাবিল ফুয়াদ",
+    "name_en": "Nabil Fuad",
+    "name_ar": "نبيل فؤاد",
+    "meaning": "মহৎ হৃদয়ের অধিকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 939,
+    "name_bn": "নাদিম মাহির",
+    "name_en": "Nadim Mahir",
+    "name_ar": "نديم ماهر",
+    "meaning": "সচ্চরিত্র দক্ষ বন্ধু",
+    "gender": "boy"
+  },
+  {
+    "id": 940,
+    "name_bn": "নাঈম তাহসিন",
+    "name_en": "Naim Tahsin",
+    "name_ar": "نعيم تحسين",
+    "meaning": "সুখ-শান্তি ও সৌন্দর্য",
+    "gender": "boy"
+  },
+  {
+    "id": 941,
+    "name_bn": "নাসিম আক্তার",
+    "name_en": "Nasim Akhtar",
+    "name_ar": "نسيم اختر",
+    "meaning": "স্নিগ্ধ বাতাসের তারা",
+    "gender": "boy"
+  },
+  {
+    "id": 942,
+    "name_bn": "নাসির উদ্দিন",
+    "name_en": "Nasir Uddin",
+    "name_ar": "ناصر الدين",
+    "meaning": "দ্বীনের সাহায্যকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 943,
+    "name_bn": "নাভিদ আনোয়ার",
+    "name_en": "Navid Anwar",
+    "name_ar": "نويد أنوار",
+    "meaning": "শুভ সংবাদ ও উজ্জ্বল আলো",
+    "gender": "boy"
+  },
+  {
+    "id": 944,
+    "name_bn": "নূর মোহাম্মদ",
+    "name_en": "Noor Mohammad",
+    "name_ar": "نور محمد",
+    "meaning": "প্রশংসিত প্রদীপ্ত আলো",
+    "gender": "boy"
+  },
+  {
+    "id": 945,
+    "name_bn": "নেয়ামুল হক",
+    "name_en": "Niyamul Haque",
+    "name_ar": "نعمة الحق",
+    "meaning": "সত্যের নেয়ামত বা অনুগ্রহ",
+    "gender": "boy"
+  },
+  {
+    "id": 946,
+    "name_bn": "পারভেজ মোশাররফ",
+    "name_en": "Parvez Mosharraf",
+    "name_ar": "پرويز مشرف",
+    "meaning": "সফল ও মহাসম্মানিত",
+    "gender": "boy"
+  },
+  {
+    "id": 947,
+    "name_bn": "ফাহাদ আলিম",
+    "name_en": "Fahad Alim",
+    "name_ar": "فهد عليم",
+    "meaning": "চটপটে ও সর্বজ্ঞ চতুর",
+    "gender": "boy"
+  },
+  {
+    "id": 948,
+    "name_bn": "ফুয়াদ হাসান",
+    "name_en": "Fuad Hasan",
+    "name_ar": "فؤاد حسن",
+    "meaning": "সুন্দর অন্তরের অধিকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 949,
+    "name_bn": "ফাহিম মুনতাসির",
+    "name_en": "Fahim Muntasir",
+    "name_ar": "فهيم منتصر",
+    "meaning": "বিচক্ষণ ও সফল বিজয়ী",
+    "gender": "boy"
+  },
+  {
+    "id": 950,
+    "name_bn": "ফারহান সিয়াম",
+    "name_en": "Farhan Siam",
+    "name_ar": "فرحان صيام",
+    "meaning": "আনন্দিত ও রোজা পালনকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 951,
+    "name_bn": "ফয়সাল মাহমুদ",
+    "name_en": "Faisal Mahmud",
+    "name_ar": "فيصل محمود",
+    "meaning": "সুবিচারক ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 952,
+    "name_bn": "ফারুক আহমেদ",
+    "name_en": "Farooq Ahmed",
+    "name_ar": "فاروق أحمد",
+    "meaning": "পার্থক্যকারী ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 953,
+    "name_bn": "ফারিস সাফওয়ান",
+    "name_en": "Faris Safwan",
+    "name_ar": "فارس صفوان",
+    "meaning": "বীর অশ্বারোহী ও খাঁটি",
+    "gender": "boy"
+  },
+  {
+    "id": 954,
+    "name_bn": "ফিরদৌস আলম",
+    "name_en": "Firdous Alam",
+    "name_ar": "فردوس عالم",
+    "meaning": "জগতের জান্নাতী প্রান্তর",
+    "gender": "boy"
+  },
+  {
+    "id": 955,
+    "name_bn": "বোরহান উদ্দিন",
+    "name_en": "Borhan Uddin",
+    "name_ar": "برهان الدين",
+    "meaning": "দ্বীনের স্পষ্ট দলিল",
+    "gender": "boy"
+  },
+  {
+    "id": 956,
+    "name_bn": "বাশির আহমেদ",
+    "name_en": "Bashir Ahmed",
+    "name_ar": "بشير أحمد",
+    "meaning": "সুসংবাদদাতা ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 957,
+    "name_bn": "বাসিত মাহমুদ",
+    "name_en": "Basit Mahmud",
+    "name_ar": "باسط محمود",
+    "meaning": "উদার ও প্রশংসিত ব্যক্তি",
+    "gender": "boy"
+  },
+  {
+    "id": 958,
+    "name_bn": "বিল্লাল হোসেন",
+    "name_en": "Billal Hossain",
+    "name_ar": "بلال حسين",
+    "meaning": "সিক্ততা ও সুন্দর রূপ",
+    "gender": "boy"
+  },
+  {
+    "id": 959,
+    "name_bn": "মাহির শাহরিয়ার",
+    "name_en": "Mahir Shahriar",
+    "name_ar": "ماهر شهريار",
+    "meaning": "দক্ষ ও গুণী রাজা",
+    "gender": "boy"
+  },
+  {
+    "id": 960,
+    "name_bn": "মুস্তাকিম রাহমান",
+    "name_en": "Mustakim Rahman",
+    "name_ar": "مستقيم رحمن",
+    "meaning": "সরল পথের দয়ালু বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 961,
+    "name_bn": "মাসুদ পারভেজ",
+    "name_en": "Masud Parvez",
+    "name_ar": "مسعود پرويز",
+    "meaning": "সৌভাগ্যবান ও বিজয়ী",
+    "gender": "boy"
+  },
+  {
+    "id": 962,
+    "name_bn": "মুহতাসিম ফুয়াদ",
+    "name_en": "Muhtasim Fuad",
+    "name_ar": "محتشم فؤاد",
+    "meaning": "পাপমুক্ত সুসংযত হৃদয়",
+    "gender": "boy"
+  },
+  {
+    "id": 963,
+    "name_bn": "মনসুর হেলাল",
+    "name_en": "Mansur Helal",
+    "name_ar": "منصور هلال",
+    "meaning": "সাহায্যপ্রাপ্ত নতুন চাঁদ",
+    "gender": "boy"
+  },
+  {
+    "id": 964,
+    "name_bn": "মাহমুদ হাসান",
+    "name_en": "Mahmud Hasan",
+    "name_ar": "محمود حسن",
+    "meaning": "প্রশংসিত ও সুন্দর আচরণী",
+    "gender": "boy"
+  },
+  {
+    "id": 965,
+    "name_bn": "মুনতাসির মাহাদ",
+    "name_en": "Muntasir Mahad",
+    "name_ar": "منتصر مهاد",
+    "meaning": "বিজয়ী ও সংগঠিত",
+    "gender": "boy"
+  },
+  {
+    "id": 966,
+    "name_bn": "মুস্তফা কামাল",
+    "name_en": "Mustafa Kamal",
+    "name_ar": "مصطفى كمال",
+    "meaning": "মনোনীত পূর্ণাঙ্গ পুরুষ",
+    "gender": "boy"
+  },
+  {
+    "id": 967,
+    "name_bn": "মুয়াজ আহমেদ",
+    "name_en": "Muadh Ahmed",
+    "name_ar": "معاذ أحمد",
+    "meaning": "সুরক্ষিত ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 968,
+    "name_bn": "মুজাম্মিল হক",
+    "name_en": "Muzammil Haque",
+    "name_ar": "مزمل الحق",
+    "meaning": "চাদরাবৃত সত্যের সেবক",
+    "gender": "boy"
+  },
+  {
+    "id": 969,
+    "name_bn": "রাইয়ান সিয়াম",
+    "name_en": "Raiyan Siam",
+    "name_ar": "ريان صيام",
+    "meaning": "জান্নাতের দরজা ও রোজা",
+    "gender": "boy"
+  },
+  {
+    "id": 970,
+    "name_bn": "রাফি মুস্তাকিম",
+    "name_en": "Rafi Mustakim",
+    "name_ar": "رافع مستقيم",
+    "meaning": "উচ্চ মর্যাদার সঠিক পথগামী",
+    "gender": "boy"
+  },
+  {
+    "id": 971,
+    "name_bn": "রাকিব হাসান",
+    "name_en": "Rakib Hasan",
+    "name_ar": "رقيب حسن",
+    "meaning": "তত্ত্বাবধানকারী ও সুন্দর",
+    "gender": "boy"
+  },
+  {
+    "id": 972,
+    "name_bn": "রিদওয়ান আহমেদ",
+    "name_en": "Ridwan Ahmed",
+    "name_ar": "رضوان أحمد",
+    "meaning": "সন্তুষ্টি ও প্রশংসিত ব্যক্তি",
+    "gender": "boy"
+  },
+  {
+    "id": 973,
+    "name_bn": "রাশেদ চৌধুরী",
+    "name_en": "Rashed Chowdhury",
+    "name_ar": "راشد চৌধুরী",
+    "meaning": "সঠিক পথপ্রাপ্ত নেতা",
+    "gender": "boy"
+  },
+  {
+    "id": 974,
+    "name_bn": "রাফিদ ফায়াজ",
+    "name_en": "Rafid Fayaz",
+    "name_ar": "رافد فياض",
+    "meaning": "সহযোগিতাকারী ও অত্যন্ত দাতা",
+    "gender": "boy"
+  },
+  {
+    "id": 975,
+    "name_bn": "রহমাতুল্লাহ গালিব",
+    "name_en": "Rahmatullah Ghalib",
+    "name_ar": "رحمة الله غالب",
+    "meaning": "আল্লাহর রহমতের বিজয়ী",
+    "gender": "boy"
+  },
+  {
+    "id": 976,
+    "name_bn": "রামিন সাফওয়ান",
+    "name_en": "Ramin Safwan",
+    "name_ar": "رامين صفوان",
+    "meaning": "শান্তিপূর্ণ ও খাঁটি মনের",
+    "gender": "boy"
+  },
+  {
+    "id": 977,
+    "name_bn": "সামির ফাহাদ",
+    "name_en": "Samir Fahad",
+    "name_ar": "سمير فهد",
+    "meaning": "বিশ্বস্ত বন্ধু ও সাহসী",
+    "gender": "boy"
+  },
+  {
+    "id": 978,
+    "name_bn": "সাদমান সাকিব",
+    "name_en": "Sadman Sakib",
+    "name_ar": "شدمان ثاقب",
+    "meaning": "সদা প্রফুল্ল ও উজ্জ্বল মেধা",
+    "gender": "boy"
+  },
+  {
+    "id": 979,
+    "name_bn": "সাফওয়ান তাহসিন",
+    "name_en": "Safwan Tahsin",
+    "name_ar": "صفوان تحسين",
+    "meaning": "স্বচ্ছ খাঁটি ও সুন্দরকরণ",
+    "gender": "boy"
+  },
+  {
+    "id": 980,
+    "name_bn": "শাহরিয়ার নাফিস",
+    "name_en": "Shahriar Nafis",
+    "name_ar": "شهريار نفيس",
+    "meaning": "মর্যাদাবান ও মূলবান রাজা",
+    "gender": "boy"
+  },
+  {
+    "id": 981,
+    "name_bn": "শাকিল আহমেদ",
+    "name_en": "Shakil Ahmed",
+    "name_ar": "شكيل أحمد",
+    "meaning": "সুদর্শন ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 982,
+    "name_bn": "সাফকাত হোসেন",
+    "name_en": "Shafqat Hossain",
+    "name_ar": "شفقت حسين",
+    "meaning": "স্নেহ মায়া ও সুন্দর",
+    "gender": "boy"
+  },
+  {
+    "id": 983,
+    "name_bn": "সাজিদ মাহমুদ",
+    "name_en": "Sajid Mahmud",
+    "name_ar": "ساجد محمود",
+    "meaning": "সিজদাকারী ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 984,
+    "name_bn": "সালাহউদ্দিন আইয়ুবি",
+    "name_en": "Salahuddin Ayubi",
+    "name_ar": "صلاح الدين أيوبي",
+    "meaning": "দ্বীনের সংস্কারক ও দূরদর্শী বীর",
+    "gender": "boy"
+  },
+  {
+    "id": 985,
+    "name_bn": "সোহেল রানা",
+    "name_en": "Sohel Rana",
+    "name_ar": "سهيل رانا",
+    "meaning": "উজ্জ্বল তারা ও রাজপুত্র",
+    "gender": "boy"
+  },
+  {
+    "id": 986,
+    "name_bn": "সাইফ হাসান",
+    "name_en": "Saif Hasan",
+    "name_ar": "سيف حسن",
+    "meaning": "সুন্দর তলোয়ার বা রক্ষক",
+    "gender": "boy"
+  },
+  {
+    "id": 987,
+    "name_bn": "সোহান তানজিম",
+    "name_en": "Sohan Tanjim",
+    "name_ar": "سوهان تنظيم",
+    "meaning": "আকর্ষণীয় ও গোছানো সুশৃঙ্খল",
+    "gender": "boy"
+  },
+  {
+    "id": 988,
+    "name_bn": "সাবিত ইমতিয়াজ",
+    "name_en": "Sabit Imtiaz",
+    "name_ar": "ثابت إمتياز",
+    "meaning": "অটল অবিচল ও বিশেষ খ্যাতিমান",
+    "gender": "boy"
+  },
+  {
+    "id": 989,
+    "name_bn": "সালাহ তানভীর",
+    "name_en": "Salah Tanveer",
+    "name_ar": "صلاح تنوير",
+    "meaning": "কল্যাণময় উজ্জ্বল আলো",
+    "gender": "boy"
+  },
+  {
+    "id": 990,
+    "name_bn": "সাবিক ফায়াজ",
+    "name_en": "Sabik Fayaz",
+    "name_ar": "سابق فياض",
+    "meaning": "অগ্রগামী বিজয়ী ও উদার",
+    "gender": "boy"
+  },
+  {
+    "id": 991,
+    "name_bn": "সাদিকুর রহমান",
+    "name_en": "Sadiqur Rahman",
+    "name_ar": "صادق الرحمن",
+    "meaning": "পরম দয়ালুর সত্যবাদী বান্দা",
+    "gender": "boy"
+  },
+  {
+    "id": 992,
+    "name_bn": "সাজ্জাদ হোসেন",
+    "name_en": "Sajjad Hossain",
+    "name_ar": "سجاد حسين",
+    "meaning": "অধিক সিজদাকারী সুন্দর পুরুষ",
+    "gender": "boy"
+  },
+  {
+    "id": 993,
+    "name_bn": "সানিফ মাহমুদ",
+    "name_en": "Sanif Mahmud",
+    "name_ar": "صانف محمود",
+    "meaning": "প্রশংসাকারী ও মার্জিত",
+    "gender": "boy"
+  },
+  {
+    "id": 994,
+    "name_bn": "শিহাব উদ্দিন",
+    "name_en": "Shihab Uddin",
+    "name_ar": "شهاب الدين",
+    "meaning": "দ্বীনের দীপ্তিময় নক্ষত্র",
+    "gender": "boy"
+  },
+  {
+    "id": 995,
+    "name_bn": "সোয়াইব আহমেদ",
+    "name_en": "Shoaib Ahmed",
+    "name_ar": "شعيب أحمد",
+    "meaning": "সঠিক পথপ্রদর্শক ও প্রশংসিত",
+    "gender": "boy"
+  },
+  {
+    "id": 996,
+    "name_bn": "সিরাজুল ইসলাম",
+    "name_en": "Sirajul Islam",
+    "name_ar": "سراج الإسلام",
+    "meaning": "ইসলামের উজ্জ্বল প্রদীপ",
+    "gender": "boy"
+  },
+  {
+    "id": 997,
+    "name_bn": "সুফিয়ান গালিব",
+    "name_en": "Sufyan Ghalib",
+    "name_ar": "سفيان غالب",
+    "meaning": "দ্রুতগামী সাহাবি ও বিজয়ী",
+    "gender": "boy"
+  },
+  {
+    "id": 998,
+    "name_bn": "তাহসিন আবিদ",
+    "name_en": "Tahsin Abid",
+    "name_ar": "تحسين عابد",
+    "meaning": "সুন্দর আচরণী ইবাদতকারী",
+    "gender": "boy"
+  },
+  {
+    "id": 999,
+    "name_bn": "তাজওয়ার রায়হান",
+    "name_en": "Tajwar Rayhan",
+    "name_ar": "تاجوار ريحان",
+    "meaning": "মুকুটধারী রাজা ও সুবাসিত ফুল",
+    "gender": "boy"
+  },
+  {
+    "id": 1000,
+    "name_bn": "হানিফ আল দ্বীন",
+    "name_en": "Hanif Al Deen",
+    "name_ar": "حنيف الدين",
+    "meaning": "একনিষ্ঠ খাঁটি ধর্মের অনুসারী",
+    "gender": "boy"
   }
-]
+    ]
+    
+
+
+
+
+
 
     
     
