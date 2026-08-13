@@ -157,7 +157,6 @@ function setupShareBox() {
   }
 }
 
-// ৭. [নতুন ফিচার] অক্ষর ফিল্টার প্রসারিত/সংকুচিত (Accordion) করার সুবিধা
 function setupAlphabetToggle() {
   const lettersContainer = document.getElementById('lettersContainer');
   const toggleBtn = document.getElementById('toggleLettersBtn');
@@ -166,8 +165,11 @@ function setupAlphabetToggle() {
   
   const btnText = toggleBtn.querySelector('.btn-text');
 
-  // টগল বাটনে ক্লিকে কন্টেইনার খোলা/বন্ধ হওয়া
-  toggleBtn.addEventListener('click', () => {
+  // টগল বাটনে ক্লিক
+  toggleBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
     const isExpanded = lettersContainer.classList.toggle('expanded');
     toggleBtn.classList.toggle('active', isExpanded);
 
@@ -178,20 +180,16 @@ function setupAlphabetToggle() {
     }
   });
 
-  // যেকোনো অক্ষরে ক্লিক করলে ফিল্টার হওয়ার সাথে সাথে কন্টেইনার গুটিয়ে যাওয়া
+  // যেকোনো অক্ষরে ক্লিক করলে
   lettersContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('letter-btn')) {
-      // আগের এক্টিভ ক্লাসের স্টাইল সরানো
       document.querySelectorAll('.letter-btn').forEach(btn => btn.classList.remove('active'));
-      
-      // নতুন সিলেক্ট করা বোতামে এক্টিভ ক্লাস যুক্ত করা
       e.target.classList.add('active');
       
-      // সিলেক্ট করা অক্ষর আপডেট করে ফিল্টার চালু করা
       selectedLetter = e.target.getAttribute('data-letter');
       filterNames();
 
-      // যদি কন্টেইনার খোলা থাকে তবে অটো গুটিয়ে নেওয়া
+      // অক্ষর সিলেক্ট করলে কন্টেইনার গুটিয়ে যাওয়া
       if (lettersContainer.classList.contains('expanded')) {
         lettersContainer.classList.remove('expanded');
         toggleBtn.classList.remove('active');
@@ -200,6 +198,7 @@ function setupAlphabetToggle() {
     }
   });
 }
+
 
 // ৮. ইনপুট ও ড্রপডাউন ইভেন্ট লিসেনার
 document.getElementById('searchInput').addEventListener('input', filterNames);
