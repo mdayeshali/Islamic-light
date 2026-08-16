@@ -707,3 +707,94 @@ body {
     margin: 0 auto;
   }
 }
+/* =======================================================
+   🕌 HERO RIGHT COLUMN & PRAYER TIME BAR
+========================================================= */
+
+.hero-right-col {
+  flex: 0.8;
+  max-width: 340px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* ক্যালেন্ডার ও নামাজের বারের মাঝে গ্যাপ */
+}
+
+/* এক লাইনের নামাজের লিংক বার */
+.prayer-time-bar {
+  background: var(--card-bg);
+  border: 1.5px solid var(--accent);
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.prayer-time-bar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px var(--shadow-hover);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.prayer-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prayer-icon {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.prayer-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: color 0.3s ease;
+}
+
+.prayer-arrow {
+  font-size: 0.95rem;
+  color: var(--accent);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* হোভার করলে টেক্সট ও তীরের কালার সাদা হবে */
+.prayer-time-bar:hover .prayer-text,
+.prayer-time-bar:hover .prayer-arrow {
+  color: #ffffff;
+}
+
+.prayer-time-bar:hover .prayer-arrow {
+  transform: translateX(4px);
+}
+
+/* ডার্ক মোড সাপোর্ট */
+[data-theme="dark"] .prayer-time-bar {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+[data-theme="dark"] .prayer-time-bar:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+[data-theme="dark"] .prayer-time-bar:hover .prayer-text,
+[data-theme="dark"] .prayer-time-bar:hover .prayer-arrow {
+  color: #121514; /* ডার্ক মোডে ব্রাইট বাটন টেক্সট */
+}
+
+/* রেসপনসিভ এডজাস্টমেন্ট */
+@media (max-width: 820px) {
+  .hero-right-col {
+    width: 100%;
+    max-width: 100%;
+  }
+}
