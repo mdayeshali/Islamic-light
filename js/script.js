@@ -271,6 +271,7 @@ function getHijriData(date) {
 }
 
 // বাংলা মাসের হিসাব
+
 function getBengaliDate(date) {
   const banglaMonths = [
     "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন",
@@ -278,26 +279,36 @@ function getBengaliDate(date) {
   ];
   
   const d = date.getDate();
-  const m = date.getMonth();
+  const m = date.getMonth(); // 0 = Jan, 7 = Aug
   const y = date.getFullYear();
 
-  let bDay, bMonthIndex, bYear;
-  bYear = (m < 3 || (m === 3 && d < 14)) ? y - 594 : y - 593;
+  // প্রতি ইংরেজি মাসের শুরুর দিন অনুযায়ী বাংলা ক্যালেন্ডার ম্যাপিং
+  // Jan(14), Feb(13), Mar(15), Apr(14), May(15), Jun(15), Jul(16), Aug(16), Sep(16), Oct(16), Nov(15), Dec(15)
+  const startDay = [14, 13, 15, 14, 15, 15, 16, 16, 16, 16, 15, 15];
+  const banglaMonthLengths = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 30];
 
-  const startDay = [14, 15, 15, 16, 16, 16, 17, 16, 15, 14, 13, 14];
-  const daysInMonth = [31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 30];
+  // লিপ ইয়ার চেক (ফাল্গুন মাসের জন্য)
+  const isLeapYear = (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
+  if (isLeapYear) banglaMonthLengths[10] = 30;
+
+  let bDay, bMonthIndex;
+  let bYear = (m < 3 || (m === 3 && d < 14)) ? y - 594 : y - 593;
 
   if (d >= startDay[m]) {
     bDay = d - startDay[m] + 1;
-    bMonthIndex = (m + 8) % 12;
+    // ইংরেজি মাসের সাথে সরাসরি বাংলা মাসের মিল
+    const monthMapping = [8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8];
+    bMonthIndex = monthMapping[m];
   } else {
-    let prevM = (m - 1 + 12) % 12;
-    bDay = daysInMonth[prevM] - (startDay[m] - d - 1);
-    bMonthIndex = (m + 7) % 12;
+    const prevMonthMapping = [7, 8, 9, 11, 0, 1, 2, 3, 4, 5, 6, 7];
+    bMonthIndex = prevMonthMapping[m];
+    const prevMonthDays = banglaMonthLengths[bMonthIndex];
+    bDay = prevMonthDays - (startDay[m] - d - 1);
   }
 
   return `${toBnNum(bDay)} ${banglaMonths[bMonthIndex]}, ${toBnNum(bYear)}`;
 }
+
 
 let viewDate = new Date();
 
