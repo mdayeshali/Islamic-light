@@ -1,39 +1,35 @@
 /* =======================================================
-   🌙 Islamic Light — Complete Home & Global Style
+   🌙 Islamic Light — Clean & Unified CSS
    Author: Md Ayesh Ali | IslamicLight.in
 ========================================================= */
 
 /* ------------------------------
-   🌿 Base Theme Colors & Fonts
+   🌿 Global Variables & Base
 ------------------------------ */
 :root {
-  /* Light Theme Variables */
   --bg: #f7fafc;
   --text: #222222;
   --text-muted: #555555;
   --primary: #004d40;
   --accent: #00796b;
   --card-bg: #ffffff;
-  --artcel-bx: #f4f7f5;
   --verse-bg: #f1f8e9;
   --border-color: #e2e8f0;
-  --shadow: rgba(0, 0, 0, 0.1);
-  --shadow-hover: rgba(0, 0, 0, 0.2);
+  --shadow: rgba(0, 0, 0, 0.08);
+  --shadow-hover: rgba(0, 0, 0, 0.16);
   --icon-bg: #e0f2f1;
   --icon-text: #004d40;
   --cal-cell-bg: rgba(0, 0, 0, 0.03);
 }
 
 [data-theme="dark"] {
-  /* Dark Theme Variables (Premium Look) */
-  --bg: #121514; /* Deep dark teal background */
+  --bg: #121514;
   --text: #e2e8f0;
   --text-muted: #a0aec0;
-  --primary: #4db6ac; /* Lighter teal for readability on dark */
+  --primary: #4db6ac;
   --accent: #26a69a;
   --card-bg: #1a201e;
-  --artcel-bx: #151b1a;
-  --verse-bg: #142a26; /* Dark greenish background */
+  --verse-bg: #142a26;
   --border-color: #2d3748;
   --shadow: rgba(0, 0, 0, 0.3);
   --shadow-hover: rgba(0, 0, 0, 0.5);
@@ -42,298 +38,38 @@
   --cal-cell-bg: rgba(255, 255, 255, 0.05);
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: "Noto Sans Bengali", Arial, sans-serif;
   background-color: var(--bg);
   color: var(--text);
+  line-height: 1.6;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-.dark-toggle {
-  background: transparent;
-  border: 1px solid var(--text);
-  color: var(--text);
-  border-radius: 50%;
-  width: 35px;
-  height: 35px;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-
 /* ------------------------------
-   🌸 Cards Grid
+   📦 Unified Layout Container
 ------------------------------ */
-.container {
-  padding: 40px 20px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+.site-main {
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.card {
-  background: var(--card-bg);
-  padding: 25px;
-  border-radius: 15px;
-  text-align: center;
-  box-shadow: 0 4px 10px var(--shadow);
-  border-top: 5px solid var(--primary);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
-}
-
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px var(--shadow-hover);
-}
-
-.card h2 a {
-  text-decoration: none;
-  color: var(--primary);
-  transition: color 0.3s ease;
-}
-
-.button {
-  background: var(--primary);
-  color: #ffffff !important;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s;
-  display: inline-block;
-}
-
-.button:hover {
-  background: var(--accent);
-}
-
-
-/* ------------------------------
-   📖 Quran Verse Box
------------------------------- */
-.quran-verse {
-  text-align: center;
-  padding: 45px 25px;
-  margin: 50px auto;
-  max-width: 900px;
-  background: var(--verse-bg);
-  border-radius: 15px;
-  border-left: 6px solid var(--primary);
-  box-shadow: 0 4px 12px var(--shadow);
-  transition: background 0.4s ease, box-shadow 0.4s ease;
-}
-
-
-/* ------------------------------
-   📝 Single Article Box
------------------------------- */
-.single-article-box {
-  background: var(--artcel-bx);
-  padding: 25px;
-  border-radius: 12px;
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 10px var(--shadow);
-  transition: background 0.4s ease;
-}
-
-.single-article-box h2 {
-  font-size: 24px;
-  margin-bottom: 12px;
-  color: var(--primary);
-}
-
-.single-article-box p {
-  font-size: 15px;
-  color: var(--text-muted);
-  margin-bottom: 18px;
-}
-
-.single-article-box .article-button {
-  background: var(--primary);
-  color: white;
-  padding: 10px 25px;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: background 0.3s ease;
-}
-
-.single-article-box .article-button:hover {
-  background: var(--accent);
-}
-
-
-/* ------------------------------
-   ✨ Feature Section (99 Names)
------------------------------- */
-.feature-section {
   padding: 40px 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 35px;
 }
-
-.feature-card {
-  background: var(--card-bg);
-  border-radius: 20px;
-  padding: 30px;
-  max-width: 450px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid var(--border-color);
-  box-shadow: 0 10px 25px var(--shadow);
-  transition: transform 0.3s ease, border-color 0.3s ease, background 0.4s ease;
-}
-
-.feature-card:hover {
-  transform: translateY(-5px);
-  border-color: var(--primary);
-}
-
-.feature-icon {
-  background: var(--icon-bg);
-  color: var(--icon-text);
-  width: 70px;
-  height: 70px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  flex-shrink: 0;
-  transition: background 0.4s ease, color 0.4s ease;
-}
-
-.feature-content h3 {
-  margin: 0 0 8px 0;
-  color: var(--primary);
-  font-size: 1.4rem;
-}
-
-.feature-content p {
-  margin: 0 0 15px 0;
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
-.btn-feature {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--accent);
-  color: #ffffff !important;
-  padding: 8px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: background 0.3s;
-}
-
-.btn-feature:hover {
-  background: var(--primary);
-}
-
 
 /* ------------------------------
-   👶 Baby Names Banner Box
+   🌙 Hero & Header Widgets
 ------------------------------ */
-.baby-names-card {
-  display: flex;
-  align-items: center;
-  background-color: var(--card-bg);
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 4px 15px var(--shadow);
-  margin: 30px 0;
-  border: 1px solid var(--border-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-.baby-names-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 25px var(--shadow-hover);
-}
-
-.baby-card-image {
-  flex: 1;
-  min-width: 200px;
-  max-width: 280px;
-  height: 100%;
-  overflow: hidden;
-}
-
-.baby-card-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.5s ease;
-}
-
-.baby-names-card:hover .baby-card-image img {
-  transform: scale(1.05);
-}
-
-.baby-card-content {
-  flex: 2;
-  padding: 25px 30px;
-}
-
-.baby-card-content h2 {
-  font-size: 1.5rem;
-  color: var(--primary);
-  margin-bottom: 10px;
-  line-height: 1.3;
-}
-
-.baby-card-content p {
-  color: var(--text-muted);
-  font-size: 0.95rem;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.btn-explore {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--primary);
-  color: #ffffff;
-  padding: 10px 20px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: background-color 0.2s ease, gap 0.2s ease;
-}
-
-.btn-explore:hover {
-  background-color: var(--accent);
-  gap: 12px;
-}
-
-[data-theme="dark"] .btn-explore {
-  color: #121514;
-}
-
-
-/* =======================================================
-   🌙 HERO & ISLAMIC CALENDAR STYLES (UPDATED)
-========================================================= */
-
 .hero-wrapper {
   background: linear-gradient(135deg, rgba(0, 77, 64, 0.05), rgba(0, 150, 136, 0.12));
   padding: 40px 20px;
   border-bottom: 1px solid var(--border-color);
-  transition: background 0.4s ease;
 }
 
 [data-theme="dark"] .hero-wrapper {
@@ -341,7 +77,7 @@ body {
 }
 
 .hero-container {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -354,29 +90,34 @@ body {
 }
 
 .hero-content h1 {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
   color: var(--primary);
-  line-height: 1.4;
-  margin-bottom: 15px;
+  line-height: 1.3;
+  margin-bottom: 12px;
 }
 
 .hero-content p {
   font-size: 1.05rem;
-  color: var(--text);
-  opacity: 0.9;
+  color: var(--text-muted);
 }
 
-/* Mini Date Card */
-.islamic-date-card {
+.hero-right-col {
   flex: 0.8;
-  max-width: 340px;
+  max-width: 350px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Islamic Date Card */
+.islamic-date-card {
   background: var(--card-bg);
   border: 1.5px solid var(--accent);
   border-radius: 16px;
   padding: 20px;
   box-shadow: 0 8px 24px var(--shadow);
   cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   user-select: none;
 }
 
@@ -428,11 +169,10 @@ body {
 .hijri-year {
   font-size: 0.9rem;
   color: var(--text-muted);
-  font-weight: 600;
 }
 
 .sub-dates {
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--cal-cell-bg);
   padding: 10px 12px;
   border-radius: 8px;
   font-size: 0.88rem;
@@ -441,14 +181,9 @@ body {
   gap: 4px;
 }
 
-[data-theme="dark"] .sub-dates {
-  background: rgba(255, 255, 255, 0.05);
-}
-
 .sub-date-item {
   display: flex;
   justify-content: space-between;
-  color: var(--text);
 }
 
 .card-hint {
@@ -459,17 +194,312 @@ body {
   font-weight: 600;
 }
 
+/* Prayer Time Bar */
+.prayer-time-bar {
+  background: var(--card-bg);
+  border: 1.5px solid var(--accent);
+  border-radius: 12px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-decoration: none;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: all 0.3s ease;
+}
 
-/* =======================================================
-   🌙 FULL MONTH CALENDAR MODAL (OVERFLOW & THEME FIXED)
-========================================================= */
+.prayer-time-bar:hover {
+  transform: translateY(-2px);
+  background: var(--primary);
+  border-color: var(--primary);
+}
 
+.prayer-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.prayer-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--primary);
+  transition: color 0.3s;
+}
+
+.prayer-arrow {
+  color: var(--accent);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.prayer-time-bar:hover .prayer-text,
+.prayer-time-bar:hover .prayer-arrow {
+  color: #ffffff;
+}
+
+.prayer-time-bar:hover .prayer-arrow {
+  transform: translateX(4px);
+}
+
+[data-theme="dark"] .prayer-time-bar:hover .prayer-text,
+[data-theme="dark"] .prayer-time-bar:hover .prayer-arrow {
+  color: #121514;
+}
+
+/* ------------------------------
+   🌸 Universal Cards & Buttons
+------------------------------ */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  width: 100%;
+}
+
+.cards-grid.dual-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.card {
+  background: var(--card-bg);
+  padding: 30px 25px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 4px 15px var(--shadow);
+  border-top: 5px solid var(--primary);
+  border-left: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px var(--shadow-hover);
+}
+
+.card h2 {
+  margin: 0 0 12px 0;
+  font-size: 1.35rem;
+}
+
+.card h2 a {
+  text-decoration: none;
+  color: var(--primary);
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin: 0 0 20px 0;
+}
+
+/* Reusable Buttons */
+.button {
+  background: var(--primary);
+  color: #ffffff !important;
+  padding: 9px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background: var(--accent);
+}
+
+.button-accent {
+  background: var(--accent);
+  border-radius: 50px;
+}
+
+.button-accent:hover {
+  background: var(--primary);
+}
+
+[data-theme="dark"] .button-accent {
+  color: #121514 !important;
+}
+
+/* ------------------------------
+   ✨ Feature Card (99 Names)
+------------------------------ */
+.feature-section {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 30px;
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 20px var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+}
+
+.feature-icon {
+  background: var(--icon-bg);
+  color: var(--icon-text);
+  width: 70px;
+  height: 70px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.feature-content h3 {
+  margin: 0 0 8px 0;
+  color: var(--primary);
+  font-size: 1.35rem;
+}
+
+.feature-content p {
+  margin: 0 0 15px 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ------------------------------
+   🛡️ Morality Section & Dua Box
+------------------------------ */
+.morality-card {
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.dua-box {
+  background: var(--cal-cell-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 15px;
+  margin: 15px 0 20px 0;
+  width: 100%;
+}
+
+.dua-arabic {
+  font-size: 1.4rem;
+  color: var(--primary);
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.dua-translit {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.dua-meaning {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* ------------------------------
+   👶 Baby Names Promotion Banner
+------------------------------ */
+.baby-names-card {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px var(--shadow);
+  border: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.baby-card-image {
+  flex: 1;
+  min-width: 220px;
+  max-width: 300px;
+  height: 100%;
+}
+
+.baby-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.baby-card-content {
+  flex: 2;
+  padding: 30px;
+}
+
+.baby-card-content h2 {
+  font-size: 1.5rem;
+  color: var(--primary);
+  margin: 0 0 10px 0;
+}
+
+.baby-card-content p {
+  color: var(--text-muted);
+  margin: 0 0 20px 0;
+}
+
+/* ------------------------------
+   📖 Quran Verse Section
+------------------------------ */
+.quran-verse {
+  text-align: center;
+  padding: 40px 25px;
+  background: var(--verse-bg);
+  border-radius: 16px;
+  border-left: 6px solid var(--primary);
+  box-shadow: 0 4px 15px var(--shadow);
+}
+
+.verse-arabic {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 12px;
+}
+
+.verse-meaning {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.verse-meaning span {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+/* ------------------------------
+   🗓️ Calendar Modal
+------------------------------ */
 .cal-modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
+  inset: 0;
   background: rgba(0, 0, 0, 0.65);
   backdrop-filter: blur(4px);
   z-index: 100000;
@@ -478,7 +508,6 @@ body {
   align-items: center;
   padding: 12px;
   opacity: 0;
-  box-sizing: border-box;
   transition: opacity 0.3s ease;
 }
 
@@ -491,13 +520,12 @@ body {
   background: var(--card-bg);
   color: var(--text);
   width: 100%;
-  max-width: 380px; /* মোবাইলে অতিরিক্ত বড় হওয়া রোধ */
+  max-width: 380px;
   border-radius: 20px;
-  padding: 16px 12px; /* প্যাডিং ফিক্সড */
+  padding: 16px 12px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border-color);
   position: relative;
-  box-sizing: border-box;
   animation: modalScale 0.3s ease forwards;
 }
 
@@ -511,7 +539,6 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 15px;
-  position: relative;
 }
 
 .cal-modal-title {
@@ -521,7 +548,7 @@ body {
 .cal-modal-title h3 {
   font-size: 1.2rem;
   color: var(--primary);
-  margin: 0 0 2px 0;
+  margin: 0;
 }
 
 .cal-modal-title p {
@@ -553,8 +580,8 @@ body {
 
 .cal-close-btn {
   position: absolute;
-  top: -8px;
-  right: -2px;
+  top: 10px;
+  right: 12px;
   background: none;
   border: none;
   font-size: 1.7rem;
@@ -577,8 +604,7 @@ body {
 .cal-grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 4px; /* গ্যাপ অপ্টিমাইজড যেন কোনো বার কেটে না যায় */
-  width: 100%;
+  gap: 4px;
 }
 
 .cal-cell {
@@ -591,27 +617,22 @@ body {
   font-size: 0.85rem;
   font-weight: bold;
   background: var(--cal-cell-bg);
-  border: 1px solid transparent;
   color: var(--text);
-  padding: 2px;
-  box-sizing: border-box;
 }
 
 .cal-cell .eng-sub {
   font-size: 0.62rem;
   font-weight: normal;
   color: var(--text-muted);
-  line-height: 1;
 }
 
-/* আজকের তারিখ হাইলাইট */
 .cal-cell.today {
   background: var(--primary);
   color: #ffffff !important;
 }
 
 [data-theme="dark"] .cal-cell.today {
-  color: #121514 !important; /* ডার্ক মোডে ব্রাইট টেক্সট স্পষ্ট করার জন্য */
+  color: #121514 !important;
 }
 
 .cal-cell.today .eng-sub {
@@ -622,7 +643,6 @@ body {
   background: transparent;
 }
 
-
 /* ------------------------------
    📱 Responsive Queries
 ------------------------------ */
@@ -632,12 +652,12 @@ body {
     text-align: center;
     gap: 25px;
   }
-  
+
   .hero-content h1 {
-    font-size: 1.6rem;
+    font-size: 1.7rem;
   }
 
-  .islamic-date-card {
+  .hero-right-col {
     width: 100%;
     max-width: 100%;
   }
@@ -648,52 +668,24 @@ body {
 }
 
 @media (max-width: 768px) {
-  .hero {
-    background: linear-gradient(to right, #004d40, #00796b);
-    padding: 20px 15px;
+  .site-main {
+    padding: 25px 15px;
+    gap: 25px;
   }
-  .hero h1 {
-    font-size: 1.2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-  .container {
-    padding: 20px 10px;
-    gap: 15px;
-  }
-  .card {
-    padding: 18px;
-  }
-  .card h2 a {
-    font-size: 1.1rem;
-  }
-  .button {
-    padding: 7px 14px;
-    font-size: 0.9rem;
-  }
-  .quran-verse {
-    display: none;
-  }
-}
 
-@media (max-width: 650px) {
   .baby-names-card {
     flex-direction: column;
   }
-  
+
   .baby-card-image {
     width: 100%;
     max-width: 100%;
     height: 180px;
   }
-  
+
   .baby-card-content {
     padding: 20px;
-  }
-  
-  .baby-card-content h2 {
-    font-size: 1.3rem;
+    text-align: center;
   }
 }
 
@@ -701,100 +693,6 @@ body {
   .feature-card {
     flex-direction: column;
     text-align: center;
-    padding: 25px;
-  }
-  .feature-icon {
-    margin: 0 auto;
-  }
-}
-/* =======================================================
-   🕌 HERO RIGHT COLUMN & PRAYER TIME BAR
-========================================================= */
-
-.hero-right-col {
-  flex: 0.8;
-  max-width: 340px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px; /* ক্যালেন্ডার ও নামাজের বারের মাঝে গ্যাপ */
-}
-
-/* এক লাইনের নামাজের লিংক বার */
-.prayer-time-bar {
-  background: var(--card-bg);
-  border: 1.5px solid var(--accent);
-  border-radius: 12px;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  text-decoration: none;
-  box-shadow: 0 4px 12px var(--shadow);
-  transition: all 0.3s ease;
-  user-select: none;
-}
-
-.prayer-time-bar:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px var(--shadow-hover);
-  background: var(--primary);
-  border-color: var(--primary);
-}
-
-.prayer-bar-left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.prayer-icon {
-  font-size: 1.2rem;
-  line-height: 1;
-}
-
-.prayer-text {
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--primary);
-  transition: color 0.3s ease;
-}
-
-.prayer-arrow {
-  font-size: 0.95rem;
-  color: var(--accent);
-  transition: transform 0.3s ease, color 0.3s ease;
-}
-
-/* হোভার করলে টেক্সট ও তীরের কালার সাদা হবে */
-.prayer-time-bar:hover .prayer-text,
-.prayer-time-bar:hover .prayer-arrow {
-  color: #ffffff;
-}
-
-.prayer-time-bar:hover .prayer-arrow {
-  transform: translateX(4px);
-}
-
-/* ডার্ক মোড সাপোর্ট */
-[data-theme="dark"] .prayer-time-bar {
-  background: var(--card-bg);
-  border-color: var(--border-color);
-}
-
-[data-theme="dark"] .prayer-time-bar:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-}
-
-[data-theme="dark"] .prayer-time-bar:hover .prayer-text,
-[data-theme="dark"] .prayer-time-bar:hover .prayer-arrow {
-  color: #121514; /* ডার্ক মোডে ব্রাইট বাটন টেক্সট */
-}
-
-/* রেসপনসিভ এডজাস্টমেন্ট */
-@media (max-width: 820px) {
-  .hero-right-col {
-    width: 100%;
-    max-width: 100%;
+    padding: 20px;
   }
 }
