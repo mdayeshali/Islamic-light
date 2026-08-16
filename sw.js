@@ -1,4 +1,9 @@
-const CACHE_NAME = 'islamic-light-v2'; // ১. ভার্সন v2 করা হলো
+/* =======================================================
+   🌙 Islamic Light - Service Worker (sw.js)
+========================================================= */
+
+const CACHE_NAME = 'islamic-light-v2'; // ১. ছোট হাতের const নিশ্চিত করা হলো
+
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -7,7 +12,6 @@ const ASSETS_TO_CACHE = [
 
 // Install Event
 self.addEventListener('install', (event) => {
-  // নতুন সার্ভিস ওয়ার্কার যেন দ্রুত সক্রিয় হয়
   self.skipWaiting(); 
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -16,29 +20,35 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate Event (পুরানো ক্যাশ মুছে ফেলার জন্য)
+// Activate Event (পুরানো ক্যাশ মুছে ফেলা)
 self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cache) => {
-          // বর্তমান CACHE_NAME ছাড়া বাকি সব পুরানো ক্যাশ ডিলিট করে দেবে
           if (cache !== CACHE_NAME) {
             console.log('Deleting old cache:', cache);
             return caches.delete(cache);
           }
         })
       );
-    }).then(() => self.clients.claim()) // নতুন সার্ভিস ওয়ার্কার সাথে সাথে পেজে প্রভাব ফেলবে
+    }).then(() => self.clients.claim())
   );
 });
 
-// Fetch Event (Offline support)
+// Fetch Event (Network-First: অনলাইনে থাকলে লেটেস্ট ডাটা দেখাবে, অফলাইনে ক্যাশ থেকে লোড করবে)
 self.addEventListener('fetch', (event) => {
+  // শুধুমাত্র GET রিকোয়েস্ট ক্যাশ হ্যান্ডেল করবে
+  if (event.request.method !== 'GET') return;
+
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
-    })
+    fetch(event.request)
+      .then((networkResponse) => {
+        return networkResponse;
+      })
+      .catch(() => {
+        // ইন্টারনেট না থাকলে ক্যাশ করা ফাইল রিটার্ন করবে
+        return caches.match(event.request);
+      })
   );
 });
-      
