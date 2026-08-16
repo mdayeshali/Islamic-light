@@ -4,13 +4,22 @@
  Website: IslamicLight.in
 ========================================================= */
 
-let deferredPrompt;
+// PWA Install Prompt Variable (একবার ডিক্লেয়ার করা হয়েছে)
+let deferredPrompt = null;
 
-// ১. ব্রাউজার ইনস্টল প্রম্পট রেডি রাখা (Global Event)
+// ১. পেজ লোডের শুরুতেই ব্রাউজারের ইনস্টল ইভেন্ট ক্যাপচার করা
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
+  console.log('✅ PWA Install Prompt প্রস্তুত');
+
+  // ইনস্টল কন্টেইনার থাকলে দৃশ্যমান করা
+  const installContainer = document.getElementById('pwaInstallContainer');
+  if (installContainer && !window.matchMedia('(display-mode: standalone)').matches) {
+    installContainer.style.display = 'flex';
+  }
 });
+
 
 /* -------------------------------------------------------
    1) AUTO-LOAD HEADER & FOOTER
@@ -31,10 +40,10 @@ async function loadPartials() {
     document.body.insertAdjacentHTML("afterbegin", headerHTML);
     document.body.insertAdjacentHTML("beforeend", footerHTML);
 
-    // হেডার-ফুটার পেজে বসার পর সব ফাংশন চালু করা
+    // হেডার-ফুটার পেজে বসার পর সব প্রয়োজনীয় ফাংশন চালু করা
     initNavMenu();       
     initThemeToggle();   
-    initInstallBtn();    // <--- ইনস্টল বাটন সেটআপ
+    initInstallBtn();    // ইনস্টল বাটন ইনিশিয়ালাইজেশন
   } catch (err) {
     console.error("Header/Footer loading failed:", err);
   }
@@ -163,36 +172,16 @@ function copyArticleLink() {
 }
 
 
-/* =======================================================
-   🌙 ISLAMIC LIGHT - PWA APP INSTALL LOGIC
-   Author: Md Ayesh Ali | IslamicLight.in
-========================================================= */
-
-let deferredPrompt = null;
-
-// ১. পেজ লোডের শুরুতেই ব্রাউজারের ইনস্টল ইভেন্ট ক্যাপচার করা
-window.addEventListener('beforeinstallprompt', (e) => {
-  // ব্রাউজারের নিজস্ব ব্যানার বন্ধ করা
-  e.preventDefault();
-  // ইভেন্টটি সেভ রাখা
-  deferredPrompt = e;
-  console.log('✅ PWA Install Prompt প্রস্তুত');
-
-  // যদি বাটন লুকিয়ে থাকে তবে দৃশ্যমান করা
-  const installContainer = document.getElementById('pwaInstallContainer');
-  if (installContainer && !window.matchMedia('(display-mode: standalone)').matches) {
-    installContainer.style.display = 'flex';
-  }
-});
-
-// ২. বাটন ইনিশিয়ালাইজেশন ফাংশন (ফুটার লোড হওয়ার পর কল হবে)
+/* -------------------------------------------------------
+   7) PWA APP INSTALL LOGIC
+--------------------------------------------------------- */
 function initInstallBtn() {
   const installBtn = document.getElementById('pwaInstallBtn');
   const installContainer = document.getElementById('pwaInstallContainer');
 
   if (!installBtn) return;
 
-  // অলরেডি ইনস্টল করা অ্যাপ (Standalone Mode) থেকে দেখলে কন্টেইনার সম্পূর্ণ লুকিয়ে ফেলা
+  // অলরেডি ইনস্টল করা অ্যাপ (Standalone Mode) হলে কন্টেইনার সম্পূর্ণ হাইড রাখা
   const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
                        window.navigator.standalone === true || 
                        navigator.userAgent.includes("IslamicLightApp");
@@ -206,9 +195,7 @@ function initInstallBtn() {
   // বাটনে ক্লিক হ্যান্ডলার
   installBtn.addEventListener('click', async () => {
     if (deferredPrompt) {
-      // ইনস্টলেশন ডায়ালগ প্রদর্শন
       deferredPrompt.prompt();
-      
       const { outcome } = await deferredPrompt.userChoice;
       console.log(`User response: ${outcome}`);
 
@@ -216,17 +203,14 @@ function initInstallBtn() {
         if (installContainer) installContainer.style.display = 'none';
         else installBtn.style.display = 'none';
       }
-      
-      // প্রম্পট রিসেট
       deferredPrompt = null;
     } else {
-      // ব্রাউজার ইভেন্ট প্রস্তুত না থাকলে বা iOS হলে ম্যানুয়াল গাইডলাইন ডায়ালগ
       alert("📲 ইসলামিক লাইট অ্যাপটি ইনস্টল করতে:\n\n১. ব্রাউজারের ওপরের ডানপাশের ৩টি বিন্দু (Menu / 3-dots) অপশনে ক্লিক করুন।\n২. এরপর 'Install app' বা 'Add to Home screen' অপশনে চাপ দিন।\n\n(Safari ব্রাউজারে 'Share' আইকন থেকে 'Add to Home Screen' চাপুন)");
     }
   });
 }
 
-// ৩. অ্যাপ ইনস্টল সম্পন্ন হলে ইভেন্ট ও ট্র্যাকিং
+// অ্যাপ ইনস্টল সম্পন্ন হলে ইভেন্ট ও ট্র্যাকিং
 window.addEventListener('appinstalled', () => {
   const installContainer = document.getElementById('pwaInstallContainer');
   const btn = document.getElementById('pwaInstallBtn');
@@ -248,9 +232,3 @@ window.addEventListener('appinstalled', () => {
     });
   }
 });
-
-// ফুটার লোড হওয়ার পর বা DOM প্রস্তুত হলে কল করার জন্য
-document.addEventListener('DOMContentLoaded', () => {
-  initInstallBtn();
-});
- 
