@@ -147,11 +147,69 @@
    <div id="header"></div>
   
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1>📖 ইসলামকে জানুন, বুঝুন ও অনুসরণ করুন</h1>
-    <p>পবিত্র কুরআন, ইসলামিক আকিদাহ, দোয়া ও উপকারী ইসলামিক আর্টিকেল — সব এক জায়গায়।</p>
-  </section>
+<!-- HERO SECTION WITH ISLAMIC CALENDAR -->
+<section class="hero-wrapper">
+  <div class="hero-container">
+    
+    <!-- Hero Text Content -->
+    <div class="hero-content">
+      <h1>📖 ইসলামকে জানুন, বুঝুন ও অনুসরণ করুন</h1>
+      <p>পবিত্র কুরআন, ইসলামিক আকিদাহ, দোয়া ও উপকারী ইসলামিক আর্টিকেল — সব এক জায়গায়।</p>
+    </div>
+
+    <!-- Islamic Calendar Mini Card -->
+    <div class="islamic-date-card" id="openCalendarBtn" title="সম্পূর্ণ মাসের ক্যালেন্ডার দেখতে ক্লিক করুন">
+      <div class="card-header">
+        <span class="moon-icon">🌙</span>
+        <span class="card-title">আজকের ইসলামিক তারিখ</span>
+      </div>
+      <div class="hijri-highlight">
+        <div class="hijri-day" id="hijriDay">--</div>
+        <div class="hijri-details">
+          <span class="hijri-month" id="hijriMonth">লোড হচ্ছে...</span>
+          <span class="hijri-year" id="hijriYear">---- হিজরি</span>
+        </div>
+      </div>
+      <div class="sub-dates">
+        <div class="sub-date-item">
+          <span>📅 ইংরেজি:</span> <strong id="gregorianDate">-- -- ----</strong>
+        </div>
+        <div class="sub-date-item">
+          <span>🌾 বাংলা:</span> <strong id="bengaliDate">-- -- ----</strong>
+        </div>
+      </div>
+      <div class="card-hint">👆 সম্পূর্ণ ক্যালেন্ডার দেখতে ট্যাপ করুন</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FULL MONTH CALENDAR MODAL -->
+<div class="cal-modal-overlay" id="calModalOverlay">
+  <div class="cal-modal-box">
+    <!-- Modal Header -->
+    <div class="cal-modal-header">
+      <button class="cal-nav-btn" id="prevMonthBtn" title="পূর্ববর্তী মাস">‹</button>
+      <div class="cal-modal-title">
+        <h3 id="modalHijriMonth">--</h3>
+        <p id="modalSubTitle">--</p>
+      </div>
+      <button class="cal-nav-btn" id="nextMonthBtn" title="পরবর্তী মাস">›</button>
+      <button class="cal-close-btn" id="closeCalModalBtn">&times;</button>
+    </div>
+
+    <!-- Weekday Labels -->
+    <div class="cal-weekdays">
+      <span>রবি</span><span>সোম</span><span>মঙ্গল</span><span>বুধ</span><span>বৃহঃ</span><span>শুক্র</span><span>শনি</span>
+    </div>
+
+    <!-- Days Grid -->
+    <div class="cal-grid" id="calDaysGrid">
+      <!-- Generated via JS -->
+    </div>
+  </div>
+</div>
+   
 
 
    
