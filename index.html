@@ -6,35 +6,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
    
    
-<!-- Google tag (gtag.js) Google Analytics -->
+<!-- =========================================================
+     1. GOOGLE ANALYTICS (GA4)
+     কাজ: Website visitor, page view, engagement ইত্যাদি
+     পরিমাপ করার জন্য।
+     
+========================================================= -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-J5Y0QWR6H2"></script>
+
 <script>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
   gtag('js', new Date());
 
   gtag('config', 'G-J5Y0QWR6H2');
 </script>
 
-   
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5811972242681902"
-     crossorigin="anonymous"></script>
-   
-  <!-- Manifest Link -->
-<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#004d40">
 
-<!-- Service Worker Register Script -->
+<!-- =========================================================
+     2. GOOGLE ADSENSE
+     কাজ: Google AdSense-এর advertising system-এর
+     সঙ্গে Website সংযুক্ত করার জন্য।
+     
+========================================================= -->
+
+<script
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5811972242681902"
+  crossorigin="anonymous">
+</script>
+
+
+<!-- =========================================================
+     3. PWA MANIFEST
+     কাজ: Website-কে Progressive Web App (PWA) হিসেবে
+     ব্যবহার করতে সাহায্য করে।
+     
+     এটি AdSense, Analytics বা Halal Ad-এর code নয়।
+========================================================= -->
+
+<link rel="manifest" href="./manifest.json">
+
+<meta
+  name="theme-color"
+  content="#004d40"
+>
+
+
+<!-- =========================================================
+     4. SERVICE WORKER
+     কাজ: PWA functionality, caching এবং কিছু
+     offline feature পরিচালনা করার জন্য।
+     
+     ========================================================= -->
+
 <script>
   if ('serviceWorker' in navigator) {
+
     window.addEventListener('load', () => {
+
       navigator.serviceWorker.register('/sw.js')
-        .then(reg => console.log('Service Worker Registered!'))
-        .catch(err => console.log('Service Worker Error:', err));
+
+        .then(reg => {
+          console.log('Service Worker Registered!', reg);
+        })
+
+        .catch(err => {
+          console.log('Service Worker Error:', err);
+        });
+
     });
+
   }
 </script>
-   
 
 <!-- Title -->
 <title>Islamic Light | Quran, Hadith, Tafsir, Aqeedah, Salah, Fatwa & Dua in Bangla</title>
