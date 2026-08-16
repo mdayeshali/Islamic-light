@@ -409,7 +409,7 @@ img {
   bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9999;
+  z-index: 99999; /* সর্বোচ্চ স্তরে রাখা */
   
   display: flex;
   flex-direction: column;
@@ -417,15 +417,18 @@ img {
   gap: 8px;
   width: 90%;
   max-width: 420px;
-  pointer-events: none; /* পেজের ব্যাকগ্রাউন্ডে যেন ক্লিক করা যায় */
+  pointer-events: none; /* পেজের ব্যাকগ্রাউন্ড সুরক্ষিত রাখবে */
 }
 
 /* স্ক্রিনের নিচে ফিক্সড ইনস্টল বাটন */
 .floating-install-btn {
+  pointer-events: auto !important; /* 🔥 এটি মিসিং ছিল, যার কারণে ক্লিকের কাজ বন্ধ ছিল */
+  
   background-color: #e0f2fe; /* Light Ice Blue */
   color: #004d40; /* গাঢ় সবুজ রঙ */
   font-weight: bold;
   font-size: 14px;
+  font-family: var(--font-bn);
   
   padding: 10px 20px;
   border: 1.5px solid #004d40;
@@ -433,9 +436,15 @@ img {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   cursor: pointer;
   white-space: nowrap;
+  outline: none;
   
-  /* আপনার কাস্টম নড়াচড়ার অ্যানিমেশন */
+  /* নড়াচড়ার অ্যানিমেশন */
   animation: pulseShake 4s infinite ease-in-out;
+  transition: transform 0.2s ease, background-color 0.3s;
+}
+
+.floating-install-btn:active {
+  transform: scale(0.95);
 }
 
 /* মাঝে মাঝে নড়াচড়া করার কাস্টম অ্যানিমেশন */
@@ -454,17 +463,16 @@ img {
   }
 }
 
-/* মোবাইল ডিভাইসের জন্য স্পেসিং অ্যাডজাস্টমেন্ট */
+/* মোবাইল ডিভাইসের জন্য স্পেসিং */
 @media (max-width: 480px) {
   .floating-install-container {
     bottom: 10px;
     width: 95%;
   }
 
-
-
   .floating-install-btn {
     font-size: 13px;
     padding: 9px 18px;
   }
-}
+ }
+ 
