@@ -270,8 +270,11 @@ function getHijriData(date) {
   }
 }
 
-// বাংলা মাসের হিসাব
 
+
+/* -------------------------------------------------------
+   🌾 নির্ভুল বাংলা তারিখ ক্যালকুলেটর (পশ্চিমবঙ্গ পঞ্জিকা অনুসারে)
+--------------------------------------------------------- */
 function getBengaliDate(date) {
   const banglaMonths = [
     "বৈশাখ", "জ্যৈষ্ঠ", "আষাঢ়", "শ্রাবণ", "ভাদ্র", "আশ্বিন",
@@ -279,35 +282,42 @@ function getBengaliDate(date) {
   ];
   
   const d = date.getDate();
-  const m = date.getMonth(); // 0 = Jan, 7 = Aug
+  const m = date.getMonth(); // 0 = Jan ... 7 = Aug
   const y = date.getFullYear();
 
-  // প্রতি ইংরেজি মাসের শুরুর দিন অনুযায়ী বাংলা ক্যালেন্ডার ম্যাপিং
-  // Jan(14), Feb(13), Mar(15), Apr(14), May(15), Jun(15), Jul(16), Aug(16), Sep(16), Oct(16), Nov(15), Dec(15)
-  const startDay = [14, 13, 15, 14, 15, 15, 16, 16, 16, 16, 15, 15];
-  const banglaMonthLengths = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 30];
+  // প্রতি ইংরেজি মাসের কত তারিখে বাংলা মাস শুরু হয়:
+  // Jan(15), Feb(14), Mar(15), Apr(15), May(16), Jun(16), Jul(17), Aug(18), Sep(18), Oct(18), Nov(17), Dec(17)
+  const startDay = [15, 14, 15, 15, 16, 16, 17, 18, 18, 18, 17, 17];
+  
+  // বাংলা মাসগুলোর মোট দিনসংখ্যা
+  const monthDays = [31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29, 30];
 
-  // লিপ ইয়ার চেক (ফাল্গুন মাসের জন্য)
+  // অধিবর্ষ (Leap Year) চেক
   const isLeapYear = (y % 4 === 0 && y % 100 !== 0) || (y % 400 === 0);
-  if (isLeapYear) banglaMonthLengths[10] = 30;
+  if (isLeapYear) monthDays[10] = 30; // ফাল্গুন ৩০ দিনে
 
   let bDay, bMonthIndex;
-  let bYear = (m < 3 || (m === 3 && d < 14)) ? y - 594 : y - 593;
+  let bYear = (m < 3 || (m === 3 && d < 15)) ? y - 594 : y - 593;
 
   if (d >= startDay[m]) {
+    // বর্তমান ইংরেজি মাসে নতুন বাংলা মাস শুরু হয়ে গেছে
     bDay = d - startDay[m] + 1;
-    // ইংরেজি মাসের সাথে সরাসরি বাংলা মাসের মিল
-    const monthMapping = [8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8];
-    bMonthIndex = monthMapping[m];
+    // Jan(পৌষ=8), Feb(মাঘ=9), Mar(ফাল্গুন=10), Apr(বৈশাখ=0), May(জ্যৈষ্ঠ=1), Jun(আষাঢ়=2), Jul(শ্রাবণ=3), Aug(ভাদ্র=4), Sep(আশ্বিন=5), Oct(কার্তিক=6), Nov(অগ্রহায়ণ=7), Dec(পৌষ=8)
+    const currentMonthMap = [8, 9, 10, 0, 1, 2, 3, 4, 5, 6, 7, 8];
+    bMonthIndex = currentMonthMap[m];
   } else {
-    const prevMonthMapping = [7, 8, 9, 11, 0, 1, 2, 3, 4, 5, 6, 7];
-    bMonthIndex = prevMonthMapping[m];
-    const prevMonthDays = banglaMonthLengths[bMonthIndex];
+    // আগের বাংলা মাস এখনও চলছে
+    // Jan(ধনু/পৌষের আগে অগ্রহায়ণ=7), Feb(পৌষ=8), Mar(মাঘ=9), Apr(চৈত্র=11), May(বৈশাখ=0), Jun(জ্যৈষ্ঠ=1), Jul(আষাঢ়=2), Aug(শ্রাবণ=3), Sep(ভাদ্র=4), Oct(আশ্বিন=5), Nov(কার্তিক=6), Dec(অগ্রহায়ণ=7)
+    const prevMonthMap = [7, 8, 9, 11, 0, 1, 2, 3, 4, 5, 6, 7];
+    bMonthIndex = prevMonthMap[m];
+    
+    const prevMonthDays = monthDays[bMonthIndex];
     bDay = prevMonthDays - (startDay[m] - d - 1);
   }
 
   return `${toBnNum(bDay)} ${banglaMonths[bMonthIndex]}, ${toBnNum(bYear)}`;
 }
+
 
 
 let viewDate = new Date();
