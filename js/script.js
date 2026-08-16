@@ -163,41 +163,70 @@ function copyArticleLink() {
 }
 
 
-/* -------------------------------------------------------
-   7) PWA APP INSTALL LOGIC (Runs AFTER Footer Loads)
---------------------------------------------------------- */
+/* =======================================================
+   🌙 ISLAMIC LIGHT - PWA APP INSTALL LOGIC
+   Author: Md Ayesh Ali | IslamicLight.in
+========================================================= */
+
+let deferredPrompt = null;
+
+// ১. পেজ লোডের শুরুতেই ব্রাউজারের ইনস্টল ইভেন্ট ক্যাপচার করা
+window.addEventListener('beforeinstallprompt', (e) => {
+  // ব্রাউজারের নিজস্ব ব্যানার বন্ধ করা
+  e.preventDefault();
+  // ইভেন্টটি সেভ রাখা
+  deferredPrompt = e;
+  console.log('✅ PWA Install Prompt প্রস্তুত');
+
+  // যদি বাটন লুকিয়ে থাকে তবে দৃশ্যমান করা
+  const installContainer = document.getElementById('pwaInstallContainer');
+  if (installContainer && !window.matchMedia('(display-mode: standalone)').matches) {
+    installContainer.style.display = 'flex';
+  }
+});
+
+// ২. বাটন ইনিশিয়ালাইজেশন ফাংশন (ফুটার লোড হওয়ার পর কল হবে)
 function initInstallBtn() {
   const installBtn = document.getElementById('pwaInstallBtn');
-  const installContainer = document.getElementById('pwaInstallContainer'); // বাটন ও নোটিশের কন্টেইনার
+  const installContainer = document.getElementById('pwaInstallContainer');
 
   if (!installBtn) return;
 
-  // যদি অলরেডি ইনস্টল করা অ্যাপ থেকে দেখা হয়, বাটন ও নোটিশ কন্টেইনার সম্পূর্ণ লুকানো থাকবে
-  if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true || navigator.userAgent.includes("IslamicLightApp")) {
+  // অলরেডি ইনস্টল করা অ্যাপ (Standalone Mode) থেকে দেখলে কন্টেইনার সম্পূর্ণ লুকিয়ে ফেলা
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || 
+                       window.navigator.standalone === true || 
+                       navigator.userAgent.includes("IslamicLightApp");
+
+  if (isStandalone) {
     if (installContainer) installContainer.style.display = 'none';
     else installBtn.style.display = 'none';
     return;
   }
 
-  // বাটনে ক্লিক লজিক
+  // বাটনে ক্লিক হ্যান্ডলার
   installBtn.addEventListener('click', async () => {
     if (deferredPrompt) {
+      // ইনস্টলেশন ডায়ালগ প্রদর্শন
       deferredPrompt.prompt();
+      
       const { outcome } = await deferredPrompt.userChoice;
       console.log(`User response: ${outcome}`);
+
       if (outcome === 'accepted') {
         if (installContainer) installContainer.style.display = 'none';
         else installBtn.style.display = 'none';
       }
+      
+      // প্রম্পট রিসেট
       deferredPrompt = null;
     } else {
-      // ব্রাউজার ইভেন্ট না দিলে ইউজারকে ৩-ডট গাইডলাইন মেসেজ দেখাবে
-      alert("📲 ইসলামিক লাইট অ্যাপটি ইনস্টল করতে:\n\n১. ব্রাউজারের ওপরের ডানপাশের ৩টি বিন্দু (Menu / 3-dots) অপশনে ক্লিক করুন।\n২. এরপর 'Install app' বা 'Add to Home screen' অপশনে চাপ দিন।");
+      // ব্রাউজার ইভেন্ট প্রস্তুত না থাকলে বা iOS হলে ম্যানুয়াল গাইডলাইন ডায়ালগ
+      alert("📲 ইসলামিক লাইট অ্যাপটি ইনস্টল করতে:\n\n১. ব্রাউজারের ওপরের ডানপাশের ৩টি বিন্দু (Menu / 3-dots) অপশনে ক্লিক করুন।\n২. এরপর 'Install app' বা 'Add to Home screen' অপশনে চাপ দিন।\n\n(Safari ব্রাউজারে 'Share' আইকন থেকে 'Add to Home Screen' চাপুন)");
     }
   });
 }
 
-// ইনস্টল হয়ে গেলে বাটন ও নোটিশ লুকিয়ে ফেলা এবং Google Analytics-এ ডাটা পাঠানো
+// ৩. অ্যাপ ইনস্টল সম্পন্ন হলে ইভেন্ট ও ট্র্যাকিং
 window.addEventListener('appinstalled', () => {
   const installContainer = document.getElementById('pwaInstallContainer');
   const btn = document.getElementById('pwaInstallBtn');
@@ -208,6 +237,9 @@ window.addEventListener('appinstalled', () => {
     btn.style.display = 'none';
   }
 
+  deferredPrompt = null;
+  console.log('🎉 ইসলামিক লাইট অ্যাপ সফলভাবে ইনস্টল হয়েছে!');
+
   // Google Analytics (GA4) Custom Event
   if (typeof gtag === 'function') {
     gtag('event', 'pwa_installed', {
@@ -216,3 +248,9 @@ window.addEventListener('appinstalled', () => {
     });
   }
 });
+
+// ফুটার লোড হওয়ার পর বা DOM প্রস্তুত হলে কল করার জন্য
+document.addEventListener('DOMContentLoaded', () => {
+  initInstallBtn();
+});
+ 
