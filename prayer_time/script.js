@@ -140,8 +140,8 @@ function renderTimes(timings) {
   prayerTimesToday = timings;
 
   const prayerSchedule = [
-    { key: "Fajr", name: "ফজর", icon: "🌅" },
-    { key: "Sunrise", name: "সূর্যোদয় (সাহরি শেষ)", icon: "🌄" },
+    { key: "Fajr", name: "ফজর (সাহরি শেষ)", icon: "🌅" },
+    { key: "Sunrise", name: "সূর্যোদয়", icon: "🌄" },
     { key: "Dhuhr", name: "যোহর", icon: "☀️" },
     { key: "Asr", name: "আসর", icon: "🌇" },
     { key: "Sunset", name: "সূর্যাস্ত (ইফতার)", icon: "🌆" },
@@ -200,7 +200,7 @@ function startLivePrayerTracker() {
     const prayerOrder = ["Fajr", "Sunrise", "Dhuhr", "Asr", "Maghrib", "Isha"];
     const prayerNamesBn = {
       Fajr: "ফজর",
-      Sunrise: "নিষিদ্ধ সময় (সূর্যোদয়)",
+      Sunrise: "নিষিদ্ধ সময়",
       Dhuhr: "যোহর",
       Asr: "আসর",
       Maghrib: "মাগরিব",
