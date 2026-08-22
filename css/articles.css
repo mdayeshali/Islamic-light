@@ -718,4 +718,50 @@ blockquote::after {
     line-height: 1.8;
   }
    }
-   
+
+/* ---------- EXAMPLE BOX ---------- */
+.example-box {
+    background: var(--notice-bg);
+    border-left: 5px solid var(--notice-border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 30px 0;
+    color: var(--text-main);
+    box-shadow: 0 3px 10px var(--shadow);
+    line-height: 1.9;
+    transition: background-color 0.3s ease,
+                border-color 0.3s ease,
+                color 0.3s ease,
+                box-shadow 0.3s ease;
+}
+
+.example-box p {
+    margin: 0 0 15px;
+}
+
+.example-box p:last-child {
+    margin-bottom: 0;
+}
+
+.example-box strong {
+    color: var(--notice-strong);
+}
+
+.example-box em {
+    color: var(--text-highlight);
+}
+
+/* Hover Effect */
+.example-box:hover {
+    box-shadow: 0 5px 15px var(--shadow-hover);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .example-box {
+        padding: 16px;
+        margin: 25px 0;
+        border-left-width: 4px;
+        line-height: 1.85;
+    }
+}
