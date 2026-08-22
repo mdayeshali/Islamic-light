@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================
-       ২. আর্টিকেলের ভেতরের শেয়ার বাটন (লেখা সহ)
+       ২. আর্টিকেলের ভেতরের শেয়ার বাটন
     ========================== */
     document.querySelectorAll('.share-buttons').forEach(container => {
         container.innerHTML = `
@@ -48,43 +48,44 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================== */
     const container = document.getElementById('article-container');
 
-    if (container) {
-        container.innerHTML = `<p style="text-align:center; padding: 20px;">আর্টিকেল লোড হচ্ছে...</p>`;
+    // পাথ ঠিক রাখার নিরাপদ হেল্পার ফাংশন
+    const getCleanArticleUrl = (link) => {
+        if (!link) return '#';
+        if (link.startsWith('http://') || link.startsWith('https://')) return link;
+        
+        let path = link.startsWith('/') ? link.substring(1) : link;
+        return '/' + path; // যেমন: "article/name.html" -> "/article/name.html"
+    };
 
+    if (container) {
+        // লোডিং টেক্সট দিয়ে স্ট্যাটিক কনটেন্ট মুছে ফেলা বন্ধ রাখা হলো (বট যেন সরাসরি পড়তে পারে)
         fetch('/data/articles.json')
             .then(res => {
-                if (!res.ok) throw new Error("JSON ফাইল পাওয়া যায়নি!");
+                if (!res.ok) throw new Error("JSON ফাইল পাওয়া যায়নি!");
                 return res.json();
             })
             .then(data => {
-                if (!data || data.length === 0) {
-                    container.innerHTML = `<p style="text-align:center;">কোনো আর্টিকেল পাওয়া যায়নি।</p>`;
-                    return;
-                }
-
-                // ইউআরএল সঠিক করার ফাংশন
-                const getFullUrl = (path) => {
-                    if (path.startsWith('http')) return path;
-                    const cleanPath = path.startsWith('/') ? path : '/' + path;
-                    return window.location.origin + '/articles' + cleanPath;
-                };
+                if (!data || data.length === 0) return;
 
                 let layoutHTML = `<div class="desktop-layout-wrapper">`;
 
                 // --- ১. সর্বশেষ (প্রথম) পোস্ট - ফিচারড আর্টিকেল (বাম পাশ) ---
                 const featured = data[0];
-                const featuredUrl = getFullUrl(featured.link);
+                const featuredLink = getCleanArticleUrl(featured.link);
+                const featuredShareUrl = window.location.origin + featuredLink;
 
                 layoutHTML += `
                     <div class="featured-column">
                         <article class="article-box featured-box">
-                            <a href="${featured.link}">
+                            <a href="${featuredLink}">
                                 <img src="${featured.image || '/images/default.webp'}" 
                                      alt="${featured.title}" 
                                      class="article-image" loading="lazy">
                             </a>
                             
-                            <h2 class="article-heading">${featured.title}</h2>
+                            <h2 class="article-heading">
+                                <a href="${featuredLink}">${featured.title}</a>
+                            </h2>
 
                             <div class="article-meta">
                                 <span class="meta-date">
@@ -99,14 +100,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
                             <div class="article-footer">
                                 <div class="box-icons">
-                                    <span class="share-icon" data-url="${featuredUrl}" data-title="${featured.title}" title="শেয়ার করুন">
+                                    <span class="share-icon" data-url="${featuredShareUrl}" data-title="${featured.title}" title="শেয়ার করুন">
                                         <i class="fa-solid fa-share-nodes"></i>
                                     </span>
-                                    <span class="copy-icon" data-url="${featuredUrl}" title="লিংক কপি করুন">
+                                    <span class="copy-icon" data-url="${featuredShareUrl}" title="লিংক কপি করুন">
                                         <i class="fa-regular fa-copy"></i>
                                     </span>
                                 </div>
-                                <a href="${featured.link}" class="read-more-link">আরও পড়ুন</a>
+                                <a href="${featuredLink}" class="read-more-link">আরও পড়ুন</a>
                             </div>
                         </article>
                     </div>
@@ -117,18 +118,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 for (let i = 1; i < data.length; i++) {
                     const article = data[i];
-                    const articleUrl = getFullUrl(article.link);
+                    const articleLink = getCleanArticleUrl(article.link);
 
                     layoutHTML += `
                         <article class="article-box sidebar-card">
                             <div class="sidebar-thumb">
-                                <a href="${article.link}">
+                                <a href="${articleLink}">
                                     <img src="${article.image || '/images/default.webp'}" alt="${article.title}" loading="lazy">
                                 </a>
                             </div>
                             <div class="sidebar-info">
                                 <h3 class="article-heading sidebar-title">
-                                    <a href="${article.link}">${article.title}</a>
+                                    <a href="${articleLink}">${article.title}</a>
                                 </h3>
                                 <div class="article-meta sidebar-meta">
                                     <span class="meta-date"><i class="fa-regular fa-calendar-days"></i> ${article.date}</span>
@@ -141,11 +142,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 layoutHTML += `</div></div>`; // wrappers close
 
+                // সম্পূর্ণ ডেটা পাওয়া গেলে স্ট্যাটিক প্লেসহোল্ডার রিপ্লেস হবে
                 container.innerHTML = layoutHTML;
             })
             .catch(err => {
-                console.error(err);
-                container.innerHTML = `<p style="color:red; text-align:center;">আর্টিকেল লোড করতে সমস্যা হয়েছে।</p>`;
+                console.error("Articles loading error:", err);
             });
     }
 
@@ -179,27 +180,18 @@ if (suggestionsBox) {
         .then(res => res.json())
         .then(data => {
             let currentUrl = window.location.pathname;
-            let urlParts = currentUrl.split('/');
-            let folderName = urlParts.length > 2 ? urlParts[urlParts.length - 2] : "";
 
             let relatedData = data.filter(article => {
-                let isNotCurrent = !currentUrl.includes(article.link);
-                let isRelated = folderName && article.link.includes(folderName);
-                return isNotCurrent && isRelated;
+                let cleanLink = article.link.startsWith('/') ? article.link : '/' + article.link;
+                return !currentUrl.includes(cleanLink);
             });
-
-            if (relatedData.length === 0) {
-                relatedData = data.filter(article => !currentUrl.includes(article.link));
-            }
 
             let finalSelection = relatedData.sort(() => 0.5 - Math.random()).slice(0, 10);
 
             let html = `<h3>আরও পড়ুন</h3><ul class="more-read-list">`;
 
             finalSelection.forEach(article => {
-                let finalLink = article.link.startsWith('http') 
-                                ? article.link 
-                                : `/articles/${article.link}`;
+                let finalLink = article.link.startsWith('/') ? article.link : '/' + article.link;
 
                 html += `
                     <li>
