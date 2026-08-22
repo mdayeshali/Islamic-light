@@ -38,7 +38,7 @@
     <link rel="icon" type="image/webp" href="/images/logo.webp">
     <link rel="apple-touch-icon" href="/images/logo.webp">
 
-    <!-- CollectionPage Schema (গুগল সার্চ ইঞ্জিনের জন্য) -->
+    <!-- CollectionPage Schema -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -64,49 +64,98 @@
     <link rel="stylesheet" href="/css/articles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
-    </head>
-    
+</head>
+
 <body>
+    <!-- Header -->
+    <div id="header"></div>
 
-<!-- Header -->
-<div id="header"></div>
-
-<!-- Search Section -->
-<div class="search-section">
-    <div class="search-wrap">
-        <form action="" method="GET" class="search-form" onsubmit="return false;" role="search">
-            <div class="search-input-group">
-                <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
-                <input type="text" id="article-search" placeholder="পছন্দের আর্টিকেলটি খুঁজুন..." autocomplete="off" aria-label="আর্টিকেল খুঁজুন">
-                <button type="button" id="clear-search" class="clear-btn" style="display: none;" aria-label="অনুসন্ধান মুছে ফেলুন">
-                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-
-<!-- Article Feed Container -->
-<main class="article-feed">
-
-    <!-- JavaScript নিষ্ক্রিয় থাকলে এই মেসেজটি দেখাবে -->
-    <noscript>
-        <div style="text-align: center; padding: 20px; color: #c62828;">
-            আর্টিকেলগুলো দেখার জন্য অনুগ্রহ করে আপনার ব্রাউজারে JavaScript চালু করুন।
+    <!-- Search Section -->
+    <div class="search-section">
+        <div class="search-wrap">
+            <form action="" method="GET" class="search-form" onsubmit="return false;" role="search">
+                <div class="search-input-group">
+                    <i class="fa-solid fa-magnifying-glass search-icon" aria-hidden="true"></i>
+                    <input type="text" id="article-search" placeholder="পছন্দের আর্টিকেলটি খুঁজুন..." autocomplete="off" aria-label="আর্টিকেল খুঁজুন">
+                    <button type="button" id="clear-search" class="clear-btn" style="display: none;" aria-label="অনুসন্ধান মুছে ফেলুন">
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </form>
         </div>
-    </noscript>
+    </div>
 
-    <!-- Auto Articles Container -->
-    <div id="article-container"></div>
+    <!-- Article Feed Container -->
+    <main class="article-feed">
+        <div id="article-container">
+            <!-- AdSense ও Search Engine ক্রলারের জন্য ডিফল্ট সিও স্ট্রাকচার (JS লোড হলে সম্পূর্ণ ডেটা বসবে) -->
+            <div class="desktop-layout-wrapper">
+                <div class="featured-column">
+                    <article class="article-box featured-box">
+                        <a href="article/treaty-of-hudaybiyyah-history-and-lessons.html">
+                            <img src="/images/treaty-of-hudaybiyyah-history-and-lessons.webp" alt="হুদাইবিয়ার সন্ধি" class="article-image" loading="lazy">
+                        </a>
+                        <h2 class="article-heading">হুদাইবিয়ার সন্ধি: অপমানের আড়ালে 'মহাবিজয়' ও আধুনিক জীবনের শিক্ষা</h2>
+                        <div class="article-meta">
+                            <span class="meta-date"><i class="fa-regular fa-calendar-days"></i> ৩০ জুলাই, ২০২৬</span>
+                            <span class="meta-author"><i class="fa-solid fa-user"></i> মোহাম্মদ আয়েশ আলি</span>
+                        </div>
+                        <p class="article-summary">হুদাইবিয়ার সন্ধির ঐতিহাসিক পটভূমি, বাহ্যিক অপমানের আড়ালে আল্লাহর 'স্পষ্ট বিজয়' ঘোষণা এবং রাসুলুল্লাহ ﷺ-এর অতুলনীয় দূরদর্শী দৃষ্টিভঙ্গি ও আধুনিক জীবনের শিক্ষা জানুন।</p>
+                        <div class="article-footer">
+                            <a href="article/treaty-of-hudaybiyyah-history-and-lessons.html" class="read-more-link">আরও পড়ুন</a>
+                        </div>
+                    </article>
+                </div>
 
-</main>
+                <div class="sidebar-column">
+                    <article class="article-box sidebar-card">
+                        <div class="sidebar-thumb">
+                            <a href="article/dangers-of-lying-and-falsehood-in-islam.html">
+                                <img src="/images/dangers-of-lying-and-falsehood-in-islam.webp" alt="মিথ্যা কথা বলার ভয়াবহ পরিণতি" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="sidebar-info">
+                            <h3 class="article-heading sidebar-title">
+                                <a href="article/dangers-of-lying-and-falsehood-in-islam.html">মিথ্যা কথা বলার ভয়াবহ পরিণতি: ইসলাম ও হাদিসের কঠোর হুঁশিয়ারি</a>
+                            </h3>
+                            <div class="article-meta sidebar-meta">
+                                <span class="meta-date"><i class="fa-regular fa-calendar-days"></i> ২৮ জুলাই, ২০২৬</span>
+                            </div>
+                        </div>
+                    </article>
 
-<!-- Footer -->
-<div id="footer"></div>
+                    <article class="article-box sidebar-card">
+                        <div class="sidebar-thumb">
+                            <a href="article/dangers-of-unpaid-debt-and-islamic-guidelines.html">
+                                <img src="/images/dangers-of-unpaid-debt-and-islamic-guidelines.webp" alt="ঋণ পরিশোধ না করার ভয়াবহ পরিণতি" loading="lazy">
+                            </a>
+                        </div>
+                        <div class="sidebar-info">
+                            <h3 class="article-heading sidebar-title">
+                                <a href="article/dangers-of-unpaid-debt-and-islamic-guidelines.html">ঋণ পরিশোধ না করার ভয়াবহ পরিণতি: ইসলাম ও হাদিসের বিধান</a>
+                            </h3>
+                            <div class="article-meta sidebar-meta">
+                                <span class="meta-date"><i class="fa-regular fa-calendar-days"></i> ২৫ জুলাই, ২০২৬</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </main>
 
-<!-- Scripts -->
-<script src="/js/articles.js" defer></script>
-<script src="/js/script.js" defer></script>
+    <!-- Footer: ব্যাকআপ লিংকসহ -->
+    <footer id="footer">
+        <div class="footer-links" style="text-align: center; padding: 20px 0; font-size: 14px;">
+            <a href="/about.html" style="color: inherit; text-decoration: none; margin: 0 8px;">আমাদের সম্পর্কে</a> | 
+            <a href="/contact.html" style="color: inherit; text-decoration: none; margin: 0 8px;">যোগাযোগ</a> | 
+            <a href="/privacy-policy.html" style="color: inherit; text-decoration: none; margin: 0 8px;">গোপনীয়তা নীতি</a> | 
+            <a href="/terms.html" style="color: inherit; text-decoration: none; margin: 0 8px;">Terms & Conditions</a>
+        </div>
+    </footer>
 
+    <!-- Scripts -->
+    <script src="/js/articles.js" defer></script>
+    <script src="/js/script.js" defer></script>
 </body>
 </html>
