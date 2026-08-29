@@ -414,6 +414,7 @@ body {
 .namaj-content ol {
     line-height: 1.9;
     color: var(--namaj-text);
+   padding: 20px;
 }
 
 .namaj-content li {
