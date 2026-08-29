@@ -1,0 +1,667 @@
+/* =========================================================
+   ISLAMIC LIGHT
+   NAMAJ SECTION STYLES
+   File: css/namaj.css
+   ========================================================= */
+
+
+/* =========================================================
+   1. THEME VARIABLES (LIGHT & DARK MODES)
+   ========================================================= */
+
+:root {
+    --namaj-primary: #004d40;
+    --namaj-primary-light: #00695c;
+    --namaj-secondary: #e8f5e9;
+    --namaj-accent: #2e7d32;
+
+    --namaj-text: #263238;
+    --namaj-muted: #607d8b;
+
+    --namaj-bg: #f7faf8;
+    --namaj-card-bg: #ffffff;
+    --namaj-border: #dce7e2;
+
+    --namaj-hero-bg: linear-gradient(135deg, #004d40, #00695c);
+    --namaj-box-bg: #f8fbfa;
+    --namaj-arabic-bg: #fafdfb;
+
+    --namaj-important-bg: #fff8e1;
+    --namaj-important-border: #ffb300;
+    --namaj-important-text: #6d4c00;
+
+    --namaj-shadow: 0 4px 15px rgba(0, 77, 64, 0.08);
+    --namaj-shadow-hover: 0 8px 22px rgba(0, 77, 64, 0.12);
+
+    --namaj-radius: 14px;
+    --namaj-transition: 0.25s ease;
+}
+
+/* System Dark Mode Preference */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --namaj-primary: #26a69a;
+        --namaj-primary-light: #80cbc4;
+        --namaj-secondary: #132724;
+        --namaj-accent: #81c784;
+
+        --namaj-text: #eceff1;
+        --namaj-muted: #90a4ae;
+
+        --namaj-bg: #12181b;
+        --namaj-card-bg: #1a2226;
+        --namaj-border: #263238;
+
+        --namaj-hero-bg: linear-gradient(135deg, #091f1c, #003630);
+        --namaj-box-bg: #141c20;
+        --namaj-arabic-bg: #151e22;
+
+        --namaj-important-bg: #2a2312;
+        --namaj-important-border: #ffd54f;
+        --namaj-important-text: #ffe082;
+
+        --namaj-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+        --namaj-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.45);
+    }
+}
+
+/* Class-based Dark Mode */
+body.dark-mode,
+[data-theme="dark"] {
+    --namaj-primary: #26a69a;
+    --namaj-primary-light: #80cbc4;
+    --namaj-secondary: #132724;
+    --namaj-accent: #81c784;
+
+    --namaj-text: #eceff1;
+    --namaj-muted: #90a4ae;
+
+    --namaj-bg: #12181b;
+    --namaj-card-bg: #1a2226;
+    --namaj-border: #263238;
+
+    --namaj-hero-bg: linear-gradient(135deg, #091f1c, #003630);
+    --namaj-box-bg: #141c20;
+    --namaj-arabic-bg: #151e22;
+
+    --namaj-important-bg: #2a2312;
+    --namaj-important-border: #ffd54f;
+    --namaj-important-text: #ffe082;
+
+    --namaj-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
+    --namaj-shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.45);
+}
+
+
+/* =========================================================
+   2. OVERFLOW FIX & MAIN CONTAINER
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--namaj-bg);
+    color: var(--namaj-text);
+    overflow-x: hidden;
+    max-width: 100%;
+}
+
+.namaj-container {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 25px 0 50px;
+    overflow-x: clip; /* Horizontal scrollbar overflow preventer */
+}
+
+
+/* =========================================================
+   4. HERO SECTION
+   ========================================================= */
+
+.namaj-hero {
+    background: var(--namaj-hero-bg);
+    color: #ffffff;
+    border-radius: var(--namaj-radius);
+    padding: 45px 30px;
+    text-align: center;
+    margin-bottom: 35px;
+    box-shadow: var(--namaj-shadow);
+}
+
+.namaj-hero h1 {
+    margin: 0 0 12px;
+    font-size: clamp(26px, 5vw, 42px);
+    line-height: 1.3;
+}
+
+.namaj-hero p {
+    max-width: 750px;
+    margin: 0 auto 25px;
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.namaj-hero-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+
+/* =========================================================
+   5. BUTTONS
+   ========================================================= */
+
+.namaj-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform var(--namaj-transition), background-color var(--namaj-transition), color var(--namaj-transition);
+}
+
+.namaj-btn-primary {
+    background: #ffffff;
+    color: #004d40;
+}
+
+.namaj-btn-primary:hover {
+    transform: translateY(-2px);
+    background: #f0fdf9;
+}
+
+.namaj-btn-outline {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: #ffffff;
+}
+
+.namaj-btn-outline:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   6. SECTION TITLE
+   ========================================================= */
+
+.namaj-section {
+    margin-bottom: 40px;
+}
+
+.namaj-section-title {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+.namaj-section-title h2 {
+    margin: 0 0 8px;
+    color: var(--namaj-primary-dark);
+    font-size: clamp(23px, 4vw, 30px);
+}
+
+.namaj-section-title p {
+    margin: 0;
+    color: var(--namaj-muted);
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   7. CARDS GRID
+   ========================================================= */
+
+.namaj-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.namaj-card {
+    background: var(--namaj-card-bg);
+    border: 1px solid var(--namaj-border);
+    border-radius: var(--namaj-radius);
+    padding: 24px 20px;
+    box-shadow: var(--namaj-shadow);
+    transition: transform var(--namaj-transition), box-shadow var(--namaj-transition), border-color var(--namaj-transition), background-color var(--namaj-transition);
+}
+
+.namaj-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--namaj-primary);
+    box-shadow: var(--namaj-shadow-hover);
+}
+
+.namaj-card-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    border-radius: 50%;
+    background: var(--namaj-secondary);
+    color: var(--namaj-primary);
+    font-size: 24px;
+}
+
+.namaj-card h3 {
+    margin: 0 0 9px;
+    color: var(--namaj-text);
+    font-size: 20px;
+}
+
+.namaj-card p {
+    margin: 0 0 15px;
+    color: var(--namaj-muted);
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.namaj-card-link {
+    display: inline-block;
+    color: var(--namaj-primary);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.namaj-card-link:hover {
+    text-decoration: underline;
+}
+
+
+/* =========================================================
+   8. FIVE DAILY PRAYERS
+   ========================================================= */
+
+.namaj-prayer-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.namaj-prayer-card {
+    display: block;
+    background: var(--namaj-card-bg);
+    border: 1px solid var(--namaj-border);
+    border-radius: var(--namaj-radius);
+    padding: 22px 15px;
+    text-align: center;
+    color: var(--namaj-text);
+    text-decoration: none;
+    box-shadow: var(--namaj-shadow);
+    transition: transform var(--namaj-transition), color var(--namaj-transition), border-color var(--namaj-transition), background-color var(--namaj-transition);
+}
+
+.namaj-prayer-card:hover {
+    color: var(--namaj-primary);
+    border-color: var(--namaj-primary);
+    transform: translateY(-3px);
+}
+
+.namaj-prayer-card h3 {
+    margin: 0 0 7px;
+    color: var(--namaj-primary-dark);
+}
+
+.namaj-prayer-card p {
+    margin: 0;
+    color: var(--namaj-muted);
+    font-size: 14px;
+}
+
+
+/* =========================================================
+   9. FEATURED BOX
+   ========================================================= */
+
+.namaj-featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    align-items: center;
+    background: var(--namaj-secondary);
+    border: 1px solid var(--namaj-border);
+    border-radius: var(--namaj-radius);
+    padding: 30px;
+}
+
+.namaj-featured h2 {
+    margin-top: 0;
+    color: var(--namaj-primary-dark);
+}
+
+.namaj-featured p {
+    line-height: 1.8;
+    color: var(--namaj-text);
+}
+
+.namaj-featured-list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--namaj-text);
+}
+
+.namaj-featured-list li {
+    margin-bottom: 9px;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   10. ALERT / IMPORTANT BOX
+   ========================================================= */
+
+.namaj-important {
+    background: var(--namaj-important-bg);
+    border-left: 4px solid var(--namaj-important-border);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 25px 0;
+    transition: background-color var(--namaj-transition), border-color var(--namaj-transition);
+}
+
+.namaj-important h3 {
+    margin-top: 0;
+    color: var(--namaj-important-text);
+}
+
+.namaj-important p {
+    margin-bottom: 0;
+    line-height: 1.8;
+    color: var(--namaj-text);
+}
+
+
+/* =========================================================
+   11. ARTICLE CONTENT
+   ========================================================= */
+
+.namaj-content {
+    background: var(--namaj-card-bg);
+    border: 1px solid var(--namaj-border);
+    border-radius: var(--namaj-radius);
+    padding: 30px;
+    box-shadow: var(--namaj-shadow);
+    transition: background-color var(--namaj-transition), border-color var(--namaj-transition);
+}
+
+.namaj-content h2 {
+    color: var(--namaj-primary-dark);
+    margin-top: 30px;
+}
+
+.namaj-content h2:first-child {
+    margin-top: 0;
+}
+
+.namaj-content h3 {
+    color: var(--namaj-primary);
+}
+
+.namaj-content p,
+.namaj-content ul,
+.namaj-content ol {
+    line-height: 1.9;
+    color: var(--namaj-text);
+}
+
+.namaj-content li {
+    margin-bottom: 7px;
+}
+
+
+/* =========================================================
+   12. ARABIC TEXT & TRANSLATION
+   ========================================================= */
+
+.namaj-arabic {
+    direction: rtl;
+    text-align: right;
+    font-family: "Noto Naskh Arabic", "Amiri", serif;
+    font-size: 28px;
+    line-height: 2.1;
+    background: var(--namaj-arabic-bg);
+    color: var(--namaj-text);
+    border: 1px solid var(--namaj-border);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 18px 0;
+    overflow-x: auto;
+}
+
+.namaj-pronunciation {
+    background: var(--namaj-box-bg);
+    border-left: 4px solid var(--namaj-primary);
+    padding: 16px 18px;
+    margin: 15px 0;
+    border-radius: 7px;
+    line-height: 1.9;
+    color: var(--namaj-text);
+}
+
+.namaj-translation {
+    background: var(--namaj-box-bg);
+    padding: 16px 18px;
+    border-radius: 8px;
+    line-height: 1.9;
+    color: var(--namaj-text);
+    border: 1px solid var(--namaj-border);
+}
+
+
+/* =========================================================
+   13. STEP-BY-STEP
+   ========================================================= */
+
+.namaj-steps {
+    counter-reset: namaj-step;
+    display: grid;
+    gap: 16px;
+}
+
+.namaj-step {
+    position: relative;
+    padding: 20px 20px 20px 68px;
+    background: var(--namaj-card-bg);
+    border: 1px solid var(--namaj-border);
+    border-radius: 12px;
+    box-shadow: var(--namaj-shadow);
+    transition: background-color var(--namaj-transition), border-color var(--namaj-transition);
+}
+
+.namaj-step::before {
+    counter-increment: namaj-step;
+    content: counter(namaj-step);
+    position: absolute;
+    left: 18px;
+    top: 18px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--namaj-primary);
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: 700;
+}
+
+body.dark-mode .namaj-step::before,
+[data-theme="dark"] .namaj-step::before {
+    color: #12181b;
+}
+
+.namaj-step h3 {
+    margin: 0 0 8px;
+    color: var(--namaj-primary-dark);
+}
+
+.namaj-step p {
+    margin: 0;
+    line-height: 1.8;
+    color: var(--namaj-text);
+}
+
+
+/* =========================================================
+   14. TABLE & SCROLL HANDLING
+   ========================================================= */
+
+.namaj-table-wrapper {
+    overflow-x: auto;
+    margin: 20px 0;
+    border: 1px solid var(--namaj-border);
+    border-radius: 8px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.namaj-table {
+    width: 100%;
+    min-width: 500px;
+    border-collapse: collapse;
+    background: var(--namaj-card-bg);
+}
+
+.namaj-table th,
+.namaj-table td {
+    padding: 13px 15px;
+    border: 1px solid var(--namaj-border);
+    text-align: left;
+    color: var(--namaj-text);
+}
+
+.namaj-table th {
+    background: var(--namaj-secondary);
+    color: var(--namaj-primary-dark);
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   15. PAGE NAVIGATION
+   ========================================================= */
+
+.namaj-page-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 35px;
+}
+
+.namaj-page-nav a {
+    flex: 1;
+    padding: 14px 18px;
+    border-radius: 9px;
+    background: var(--namaj-secondary);
+    color: var(--namaj-primary-dark);
+    border: 1px solid var(--namaj-border);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color var(--namaj-transition), color var(--namaj-transition);
+}
+
+.namaj-page-nav a:hover {
+    background: var(--namaj-primary);
+    color: #ffffff;
+}
+
+.namaj-page-nav a:last-child {
+    text-align: right;
+}
+
+
+/* =========================================================
+   16. RESPONSIVE BREAKPOINTS
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .namaj-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .namaj-prayer-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .namaj-featured {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .namaj-container {
+        width: min(100% - 24px, 1200px);
+        padding-top: 18px;
+    }
+
+    .namaj-hero {
+        padding: 32px 18px;
+    }
+
+    .namaj-hero p {
+        font-size: 15px;
+    }
+
+    .namaj-hero-buttons {
+        flex-direction: column;
+    }
+
+    .namaj-btn {
+        width: 100%;
+    }
+
+    .namaj-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .namaj-prayer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .namaj-card {
+        padding: 20px 17px;
+    }
+
+    .namaj-featured {
+        padding: 22px 18px;
+    }
+
+    .namaj-content {
+        padding: 20px 16px;
+    }
+
+    .namaj-arabic {
+        font-size: 23px;
+        padding: 15px;
+    }
+
+    .namaj-step {
+        padding: 18px 15px 18px 60px;
+    }
+
+    .namaj-page-nav {
+        flex-direction: column;
+    }
+
+    .namaj-page-nav a:last-child {
+        text-align: left;
+    }
+}
+
+@media (max-width: 380px) {
+    .namaj-prayer-grid {
+        grid-template-columns: 1fr;
+    }
+   }
+   
