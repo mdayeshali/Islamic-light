@@ -568,6 +568,7 @@ body.dark-mode,
 .namaj-content ol {
     color: var(--namaj-text);
     line-height: 1.9;
+   padding:20px;
 }
 
 .namaj-content li {
