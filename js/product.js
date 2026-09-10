@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   } catch (err) {
     console.error(err);
+    document.getElementById("loading").innerText = "ডেটা লোড করতে সমস্যা হয়েছে!";
   }
 });
 
@@ -39,18 +40,21 @@ function renderDetails(p) {
   const badge = document.getElementById("pBadge");
   if (p.badge) {
     badge.innerText = p.badge;
+    badge.style.display = "inline-block";
   } else {
     badge.style.display = "none";
   }
 
   // স্পেসিফিকেশন রেন্ডার
   const specsGrid = document.getElementById("pSpecs");
-  specsGrid.innerHTML = Object.entries(p.specs).map(([key, val]) => `
-    <div class="spec-item">
-      <div class="spec-key">${key}</div>
-      <div class="spec-val">${val}</div>
-    </div>
-  `).join("");
+  if (p.specs) {
+    specsGrid.innerHTML = Object.entries(p.specs).map(([key, val]) => `
+      <div class="spec-item">
+        <div class="spec-key">${key}</div>
+        <div class="spec-val">${val}</div>
+      </div>
+    `).join("");
+  }
 
   // ইমেজ স্লাইডার সেটআপ
   const slider = document.getElementById("imageSlider");
@@ -72,4 +76,40 @@ function renderDetails(p) {
     const msg = encodeURIComponent(`আসসালামু আলাইকুম,\nআমি islamiclight.in থেকে এই বইটি নিতে চাই:\n\n📖 ${p.title}\n💰 মূল্য: ₹${p.price}\n\nদয়া করে পেমেন্টের UPI ডিটেইলস ও ডেলিভারির নিয়মটি জানাবেন।`);
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
   };
+
+  // --- শেয়ার বাটন লজিক ---
+  const shareBtn = document.getElementById("shareBtn");
+  const copyToast = document.getElementById("copyToast");
+
+  if (shareBtn) {
+    shareBtn.onclick = async () => {
+      const shareData = {
+        title: `${p.title} | Islamic Light`,
+        text: `${p.title} - বইটি সংগ্রহ করতে লিংকটি দেখুন:`,
+        url: window.location.href
+      };
+
+      // মোবাইলে থাকলে নেটিভ শেয়ার শিট ওপেন হবে
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          // ইউজার ক্যান্সেল করলে কোনো সমস্যা নেই
+        }
+      } else {
+        // কম্পিউটার বা আনসাপোর্টেড ব্রাউজারে লিংক কপি হবে
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          if (copyToast) {
+            copyToast.style.display = "inline-flex";
+            setTimeout(() => {
+              copyToast.style.display = "none";
+            }, 2500);
+          }
+        } catch (err) {
+          alert("লিংক কপি করা যায়নি, অনুগ্রহ করে ব্রাউজার অ্যাড্রেস বার থেকে কপি করুন।");
+        }
+      }
+    };
+  }
 }
