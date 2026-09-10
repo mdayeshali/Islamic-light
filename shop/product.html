@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>বইয়ের বিবরণ | Islamic Light</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/shop.css">
+  <link rel="stylesheet" href="/css/product.css">
+</head>
+<body>
+  <div id="header"></div>
+
+  <div class="container product-page-container">
+    <a href="/shop/shop.html" class="back-link">
+      <i class="fa-solid fa-arrow-left"></i> সকল বইয়ে ফিরে যান
+    </a>
+
+    <div class="product-layout" id="productLayout" style="display: none;">
+      <!-- বাঁয়ে/উপরে: ইমেজ স্লাইডার বক্স -->
+      <div class="gallery-wrapper">
+        <div class="slider" id="imageSlider"></div>
+        <div class="slider-indicator" id="sliderDots"></div>
+        <p class="swipe-hint"><i class="fa-solid fa-hand-pointer"></i> ছবিগুলো ডানে-বামে সোয়াইপ করুন</p>
+      </div>
+
+      <!-- ডানে/নিচে: বিবরণ ও অর্ডার সেকশন -->
+      <div class="product-info">
+        <span class="badge" id="pBadge"></span>
+        <h1 id="pTitle"></h1>
+        <div class="author" id="pAuthor"></div>
+
+        <div class="price-box" style="margin: 16px 0;">
+          <span class="old-price" id="pOldPrice"></span>
+          <span class="current-price" id="pPrice" style="font-size: 1.8rem;"></span>
+        </div>
+
+        <button id="pOrderBtn" class="btn-order btn-large">
+          <i class="fa-brands fa-whatsapp"></i> সরাসরি হোয়াটসঅ্যাপে অর্ডার করুন
+        </button>
+
+        <div class="section-divider"></div>
+
+        <h3>বইয়ের বিবরণ</h3>
+        <p class="full-desc" id="pDesc"></p>
+
+        <h3>বইয়ের বৈশিষ্ট্য</h3>
+        <div class="specs-grid" id="pSpecs"></div>
+      </div>
+    </div>
+
+    <div id="loading" class="no-results">লোড হচ্ছে...</div>
+  </div>
+
+  <div id="footer"></div>
+
+  <script src="/js/script.js"></script>
+  <script src="/js/product.js"></script>
+</body>
+</html>
