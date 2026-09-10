@@ -31,28 +31,42 @@
       </div>
 
       <!-- ডানে/নিচে: বিবরণ ও অর্ডার সেকশন -->
-      <div class="product-info">
-        <span class="badge" id="pBadge"></span>
-        <h1 id="pTitle"></h1>
-        <div class="author" id="pAuthor"></div>
+      
+<div class="product-info">
+  <div class="product-header-row">
+    <span class="badge" id="pBadge"></span>
+    <!-- শেয়ার বাটন -->
+    <button id="shareBtn" class="btn-share" aria-label="শেয়ার করুন" title="শেয়ার করুন">
+      <i class="fa-solid fa-share-nodes"></i> শেয়ার
+    </button>
+  </div>
 
-        <div class="price-box" style="margin: 16px 0;">
-          <span class="old-price" id="pOldPrice"></span>
-          <span class="current-price" id="pPrice" style="font-size: 1.8rem;"></span>
-        </div>
+  <h1 id="pTitle"></h1>
+  <div class="author" id="pAuthor"></div>
 
-        <button id="pOrderBtn" class="btn-order btn-large">
-          <i class="fa-brands fa-whatsapp"></i> সরাসরি হোয়াটসঅ্যাপে অর্ডার করুন
-        </button>
+  <!-- কপি নোটিফিকেশন টোস্ট -->
+  <div id="copyToast" class="copy-toast" style="display: none;">
+    <i class="fa-solid fa-check"></i> লিংক কপি করা হয়েছে!
+  </div>
 
-        <div class="section-divider"></div>
+  <div class="price-box" style="margin: 16px 0;">
+    <span class="old-price" id="pOldPrice"></span>
+    <span class="current-price" id="pPrice" style="font-size: 1.8rem;"></span>
+  </div>
 
-        <h3>বইয়ের বিবরণ</h3>
-        <p class="full-desc" id="pDesc"></p>
+  <button id="pOrderBtn" class="btn-order btn-large">
+    <i class="fa-brands fa-whatsapp"></i> সরাসরি হোয়াটসঅ্যাপে অর্ডার করুন
+  </button>
 
-        <h3>বইয়ের বৈশিষ্ট্য</h3>
-        <div class="specs-grid" id="pSpecs"></div>
-      </div>
+  <div class="section-divider"></div>
+
+  <h3>বইয়ের বিবরণ</h3>
+  <p class="full-desc" id="pDesc"></p>
+
+  <h3>বইয়ের বৈশিষ্ট্য</h3>
+  <div class="specs-grid" id="pSpecs"></div>
+    </div>
+      
     </div>
 
     <div id="loading" class="no-results">লোড হচ্ছে...</div>
