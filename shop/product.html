@@ -33,13 +33,8 @@
       <!-- ডানে/নিচে: বিবরণ ও অর্ডার সেকশন -->
       
 <div class="product-info">
-  <div class="product-header-row">
-    <span class="badge" id="pBadge"></span>
-    <!-- শেয়ার বাটন -->
-    <button id="shareBtn" class="btn-share" aria-label="শেয়ার করুন" title="শেয়ার করুন">
-      <i class="fa-solid fa-share-nodes"></i> শেয়ার
-    </button>
-  </div>
+  <!-- ব্যাজ যদি থাকে -->
+  <span class="badge" id="pBadge"></span>
 
   <h1 id="pTitle"></h1>
   <div class="author" id="pAuthor"></div>
@@ -49,9 +44,17 @@
     <i class="fa-solid fa-check"></i> লিংক কপি করা হয়েছে!
   </div>
 
-  <div class="price-box" style="margin: 16px 0;">
-    <span class="old-price" id="pOldPrice"></span>
-    <span class="current-price" id="pPrice" style="font-size: 1.8rem;"></span>
+  <!-- দাম এবং শেয়ার বাটন পাশাপাশি আনার রো (Row) -->
+  <div class="price-share-row">
+    <div class="price-box">
+      <span class="old-price" id="pOldPrice"></span>
+      <span class="current-price" id="pPrice"></span>
+    </div>
+
+    <!-- চিহ্নিত জায়গায় শেয়ার বাটন -->
+    <button id="shareBtn" class="btn-share" aria-label="শেয়ার করুন" title="শেয়ার করুন">
+      <i class="fa-solid fa-share-nodes"></i> শেয়ার
+    </button>
   </div>
 
   <button id="pOrderBtn" class="btn-order btn-large">
@@ -65,7 +68,8 @@
 
   <h3>বইয়ের বৈশিষ্ট্য</h3>
   <div class="specs-grid" id="pSpecs"></div>
-    </div>
+</div>
+      
       
     </div>
 
