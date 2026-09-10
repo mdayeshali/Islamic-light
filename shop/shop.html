@@ -1,34 +1,42 @@
 <!DOCTYPE html>
 <html lang="bn">
-<head> 
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>বই সম্ভার | Islamic Light</title>
+  <meta name="theme-color" content="#004d40">
 
-<meta name="theme-color" content="#004d40">
-
-  
-  <!-- Google Fonts -->
+  <!-- Google Fonts & Font Awesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
- 
-<link rel="stylesheet" href="/css/style.css">
-
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/css/shop.css">
 </head>
 <body>
-<div id="header"></div>
+  <div id="header"></div>
 
+  <!-- Hero Section -->
+  <section class="shop-hero">
+    <div class="hero-content">
+      <span class="hero-pill">📖 বিশুদ্ধ ইলমের সন্ধানে</span>
+      <h1>ইসলামিক বই সম্ভার</h1>
+      <p>নির্ভরযোগ্য প্রকাশনীর বিশুদ্ধ আকীদা ও সিরাতের সেরা গ্রন্থগুলো সরাসরি সংগ্রহ করুন আপনার ঠিকানায়।</p>
+    </div>
+  </section>
+
+  <!-- Sticky Search Bar -->
+  <div class="sticky-search-wrapper">
+    <div class="search-container">
+      <i class="fa-solid fa-magnifying-glass search-icon"></i>
+      <input type="text" id="searchInput" placeholder="বইয়ের নাম বা লেখকের নাম দিয়ে খুঁজুন..." autocomplete="off">
+      <button id="clearSearch" class="clear-btn" style="display: none;">&times;</button>
+    </div>
+  </div>
 
   <div class="container">
-    <hdr>
-      <h1>বই সম্ভার</h1>
-      <p>নির্বাচিত নির্ভরযোগ্য ইসলামিক বই সরাসরি কুরিয়ারে সংগ্রহ করুন</p>
-    </header>
-
     <!-- Policy Banner -->
     <div class="policy-banner">
       <div class="policy-item">⚡ 100% সুরক্ষিত UPI পেমেন্ট</div>
@@ -36,63 +44,21 @@
       <div class="policy-item">🔍 বুকিংয়ের পরই ট্র্যাকিং আইডি প্রদান</div>
     </div>
 
-    <!-- Product Grid -->
-    <div class="grid">
-
-      <!-- Product Card 1 -->
-      <div class="product-card">
-        <div class="image-wrapper">
-          <span class="badge">বেস্টসেলার</span>
-          <img src="../images/shop/riyadhus-salihin.jpg" alt="রিয়াযুস স্বা-লিহীন">
-        </div>
-        <div class="content">
-          <h2 class="title">রিয়াযুস স্বা-লিহীন (১ম ও ২য় খণ্ড)</h2>
-          <div class="author">ইমাম আন-নববী (রহ.)</div>
-          <p class="desc">দৈনন্দিন জীবনের প্রয়োজনীয় বিশুদ্ধ হাদিসের সেরা সংকলন। উন্নত বাঁধাই ও ঝকঝকে ছাপা।</p>
-          <div class="footer">
-            <div class="price-box">
-              <span class="old-price">₹৫৫০</span>
-              <span class="current-price">₹৪৫০</span>
-            </div>
-            <button class="btn-order" data-name="রিয়াযুস স্বা-লিহীন (১ম ও ২য় খণ্ড)" data-price="450">
-              <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
-              অর্ডার করুন
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product Card 2 -->
-      <div class="product-card">
-        <div class="image-wrapper">
-          <span class="badge">সিরাত</span>
-          <img src="../images/shop/raheeq-makhtum.jpg" alt="আর-রাহীকুল মাখতূম">
-        </div>
-        <div class="content">
-          <h2 class="title">আর-রাহীকুল মাখতূম</h2>
-          <div class="author">আল্লামা সফিউর রহমান মুবারকপুরী</div>
-          <p class="desc">রাসূলুল্লাহ (সা.)-এর জীবনীর ওপর প্রথম পুরস্কারপ্রাপ্ত নির্ভরযোগ্য সিরাত গ্রন্থ।</p>
-          <div class="ftr">
-            <div class="price-box">
-              <span class="old-price">₹৩৮০</span>
-              <span class="current-price">₹৩২০</span>
-            </div>
-            <button class="btn-order" data-name="আর-রাহীকুল মাখতূম" data-price="320">
-              <svg viewBox="0 0 24 24"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.007c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.043c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.1.824z"/></svg>
-              অর্ডার করুন
-            </button>
-          </div>
-        </div>
-      </div>
-
+    <!-- Product Grid (Loaded via JavaScript) -->
+    <div class="grid" id="productGrid">
+      <!-- Skeleton Loaders বা বইয়ের কার্ড স্ক্রিপ্ট দিয়ে লোড হবে -->
+    </div>
+    
+    <div id="noResults" class="no-results" style="display: none;">
+      <i class="fa-solid fa-book-open"></i>
+      <p>দুঃখিত, আপনার খোঁজা বইটি খুঁজে পাওয়া যায়নি!</p>
     </div>
   </div>
-<div id="footer"></div>
 
-  <!-- External JavaScript -->
+  <div id="footer"></div>
+
+  <script src="/js/script.js"></script>
   <script src="/js/shop.js"></script>
-<script src="/js/script.js"></script>
 </body>
-</html>
+    </html>
 
-  
