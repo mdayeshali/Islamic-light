@@ -129,3 +129,56 @@
   font-size: 0.95rem;
   font-weight: 600;
 }
+
+/* Product Header Row & Share Button */
+.product-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.btn-share {
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: var(--shadow);
+  transition: all 0.2s ease;
+}
+
+.btn-share:hover {
+  background: var(--border);
+  color: var(--primary);
+}
+
+.btn-share i {
+  color: var(--primary);
+}
+
+/* Copy Toast Notification */
+.copy-toast {
+  background: #047857;
+  color: #ffffff;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+  }
+  
