@@ -1,5 +1,5 @@
 :root {
-  --primary: #004d40;
+  --primary: #047857;
   --primary-hover: #065f46;
   --bg: #f8fafc;
   --surface: #ffffff;
@@ -13,9 +13,7 @@
   --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
 }
 
-/* ম্যানুয়াল ডার্ক মোড এবং সিস্টেম ডার্ক মোড হ্যান্ডেল */
-[data-theme="dark"] {
-   --primary: #047857;
+body.dark-mode, [data-theme="dark"] {
   --bg: #0b0f19;
   --surface: #111827;
   --text: #f1f5f9;
@@ -33,9 +31,8 @@
   margin: 0;
   padding: 0;
   font-family: 'Hind Siliguri', sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
-
 
 body {
   background-color: var(--bg);
@@ -48,58 +45,100 @@ body {
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 20px;
-  position: relative;
 }
 
-/* Header & Theme Switcher */
-hdr {
+/* Hero Section */
+.shop-hero {
+  background: linear-gradient(135deg, rgba(4, 120, 87, 0.1) 0%, rgba(2, 44, 34, 0.05) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 20px 40px;
   text-align: center;
-  padding: 50px 0 24px;
-  position: relative;
 }
 
-hdr h1 {
-  font-size: 2.2rem;
+.hero-pill {
+  display: inline-block;
+  background: var(--badge-bg);
+  color: var(--badge-text);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 30px;
+  margin-bottom: 12px;
+}
+
+.shop-hero h1 {
+  font-size: 2.5rem;
   color: var(--primary);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-hdr p {
+.shop-hero p {
+  max-width: 600px;
+  margin: 0 auto;
   color: var(--text-muted);
   font-size: 1.05rem;
 }
 
-/* ডার্ক মোড টগল বাটন */
-.theme-toggle-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  color: var(--text);
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+/* Sticky Search Bar (আপনার হেডারের উচ্চতা অনুযায়ী top ভ্যালু দিতে পারেন) */
+.sticky-search-wrapper {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 60px; /* আপনার হেডারের উচ্চতা 60px হলে এটি ঠিক তার নিচেই স্টিকি থাকবে */
+  z-index: 90;
+  background: var(--bg);
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.search-container {
+  max-width: 650px;
+  margin: 0 auto;
+  position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
+}
+
+.search-icon {
+  position: absolute;
+  left: 16px;
+  color: var(--text-muted);
+  font-size: 1rem;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 42px 12px 44px;
+  font-size: 1rem;
+  border-radius: 30px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
   box-shadow: var(--shadow);
 }
 
-.theme-toggle-btn svg {
-  width: 20px;
-  height: 20px;
-  fill: currentColor;
+.search-container input:focus {
+  border-color: var(--primary);
 }
 
-/* Trust / Policy Banner */
+.clear-btn {
+  position: absolute;
+  right: 14px;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+/* Trust Banner */
 .policy-banner {
   display: flex;
   justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  margin: 20px 0 36px;
+  margin: 24px 0 32px;
   padding: 12px 20px;
   background: var(--surface);
   border: 1px solid var(--border);
@@ -108,20 +147,13 @@ hdr p {
   color: var(--text-muted);
 }
 
-.policy-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Grid Layout */
+/* Product Grid */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 24px;
 }
 
-/* Card */
 .product-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -130,6 +162,7 @@ hdr p {
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow);
+  cursor: pointer;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -173,7 +206,7 @@ hdr p {
 }
 
 .title {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 6px;
   line-height: 1.4;
@@ -182,7 +215,7 @@ hdr p {
 .author {
   font-size: 0.85rem;
   color: var(--text-muted);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .desc {
@@ -192,12 +225,12 @@ hdr p {
   flex-grow: 1;
 }
 
-.ftr {
+.card-footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid var(--border);
-  padding-top: 16px;
+  padding-top: 14px;
 }
 
 .price-box {
@@ -221,23 +254,28 @@ hdr p {
   background: var(--primary);
   color: #ffffff;
   border: none;
-  padding: 10px 16px;
+  padding: 8px 14px;
   border-radius: 8px;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: background 0.2s;
 }
 
 .btn-order:hover {
   background: var(--primary-hover);
 }
 
-.btn-order svg {
-  width: 18px;
-  height: 18px;
-  fill: currentColor;
+.no-results {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
 }
+
+.no-results i {
+  font-size: 3rem;
+  margin-bottom: 12px;
+  opacity: 0.5;
+    }
