@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "+918617316109"; // আপনার নম্বর দিন
+const WHATSAPP_NUMBER = "918617316109"; // WhatsApp API-এর জন্য '+' ছাড়া ফরম্যাট রাখা নিরাপদ
 
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
@@ -56,18 +56,64 @@ function renderDetails(p) {
     `).join("");
   }
 
-  // ইমেজ স্লাইডার সেটআপ
+  // --- ইমেজ স্লাইডার ও কন্ট্রোল সেটআপ (কম্পিউটার ও মোবাইল উভয় ডিভাইসের জন্য) ---
   const slider = document.getElementById("imageSlider");
   const dotsContainer = document.getElementById("sliderDots");
+  const prevBtn = document.getElementById("prevSlideBtn");
+  const nextBtn = document.getElementById("nextSlideBtn");
 
-  slider.innerHTML = p.images.map(img => `<img src="${img}" alt="${p.title}">`).join("");
-  dotsContainer.innerHTML = p.images.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}"></span>`).join("");
+  slider.innerHTML = p.images.map(img => `<img src="${img}" alt="${p.title}" draggable="false">`).join("");
+  dotsContainer.innerHTML = p.images.map((_, i) => `<span class="dot ${i === 0 ? 'active' : ''}" data-index="${i}"></span>`).join("");
 
-  // সোয়াইপ করলে ডট পরিবর্তন হওয়া
+  const dots = dotsContainer.querySelectorAll(".dot");
+
+  // ডটে ক্লিক করলে নির্দিষ্ট ছবিতে যাওয়া
+  dots.forEach(dot => {
+    dot.addEventListener("click", () => {
+      const idx = parseInt(dot.getAttribute("data-index"));
+      slider.scrollTo({
+        left: slider.clientWidth * idx,
+        behavior: "smooth"
+      });
+    });
+  });
+
+  // তীর (Next / Prev) বাটনে ক্লিক করলে ছবি পরিবর্তন হওয়া
+  if (prevBtn && nextBtn) {
+    prevBtn.onclick = () => {
+      slider.scrollBy({ left: -slider.clientWidth, behavior: "smooth" });
+    };
+    nextBtn.onclick = () => {
+      slider.scrollBy({ left: slider.clientWidth, behavior: "smooth" });
+    };
+  }
+
+  // ছবি পরিবর্তন হলে স্বয়ংক্রিয়ভাবে সক্রিয় ডট আপডেট হওয়া
   slider.addEventListener("scroll", () => {
     const index = Math.round(slider.scrollLeft / slider.clientWidth);
-    const dots = dotsContainer.querySelectorAll(".dot");
     dots.forEach((d, i) => d.classList.toggle("active", i === index));
+  });
+
+  // কম্পিউটারে মাউস দিয়ে টেনে স্লাইড (Mouse Drag to Swipe) করার ফিচার
+  let isDown = false;
+  let startX;
+  let scrollLeftPos;
+
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeftPos = slider.scrollLeft;
+  });
+
+  slider.addEventListener("mouseleave", () => { isDown = false; });
+  slider.addEventListener("mouseup", () => { isDown = false; });
+
+  slider.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 1.5;
+    slider.scrollLeft = scrollLeftPos - walk;
   });
 
   // অর্ডার বাটন
@@ -77,9 +123,7 @@ function renderDetails(p) {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
   };
 
-
-  
-            // --- ফটোসহ নিরাপদ শেয়ার বাটন লজিক ---
+  // --- ফটোসহ নিরাপদ শেয়ার বাটন লজিক ---
   const shareBtn = document.getElementById("shareBtn");
   const copyToast = document.getElementById("copyToast");
 
@@ -99,18 +143,14 @@ function renderDetails(p) {
         // ১. ছবি ফেচ করে ফাইল অ্যাটাচ করার চেষ্টা
         if (p.images && p.images.length > 0) {
           try {
-            // রিলেটিভ পাথকে ব্রাউজার অনুযায়ী সম্পূর্ণ (Absolute) URL এ রূপান্তর
             const absoluteImgUrl = new URL(p.images[0], window.location.href).href;
-            
             const imgResponse = await fetch(absoluteImgUrl);
             const blob = await imgResponse.blob();
-            
-            // ফাইলের নাম ও এক্সটেনশন নির্ধারণ
+
             const fileType = blob.type || "image/webp";
             const ext = fileType.includes("png") ? "png" : fileType.includes("jpeg") || fileType.includes("jpg") ? "jpg" : "webp";
             const file = new File([blob], `book-cover.${ext}`, { type: fileType });
 
-            // ডিভাইসটি যদি ফটো শেয়ার করতে সমর্থ হয়
             if (navigator.canShare && navigator.canShare({ files: [file] })) {
               sharePayload.files = [file];
             }
@@ -119,15 +159,13 @@ function renderDetails(p) {
           }
         }
 
-        // ছবিসহ অথবা শুধু লিংক দিয়ে শেয়ার ডায়ালগ ওপেন
+        // ছবিসহ অথবা লিংক দিয়ে শেয়ার ডায়ালগ ওপেন
         try {
-          // ফাইল যুক্ত থাকলে কিছু ব্রাউজারে 'url' ফিল্ড এরর দেয়, তাই শুধু টেক্সটের ভেতরে লিংক রাখা নিরাপদ
           if (!sharePayload.files) {
             sharePayload.url = shareUrl;
           }
           await navigator.share(sharePayload);
         } catch (err) {
-          // ব্যবহারকারী নিজে উইন্ডো কেটে দিলে কোনো এরর যাতে না দেখায়
           if (err.name !== "AbortError") {
             console.error("শেয়ারিং ব্যর্থ:", err);
           }
@@ -148,4 +186,6 @@ function renderDetails(p) {
       }
     };
   }
+          
 }
+      
