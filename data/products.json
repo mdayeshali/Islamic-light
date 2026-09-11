@@ -4,7 +4,7 @@
   "title": "আল্লাহর বন্ধু ও শয়তানের বন্ধু",
   "author": "ইমাম ইবনু তাইমিয়্যা (রহ.)",
   "price": 370,
-  "oldPrice": 450,
+  "oldPrice": 400,
   "badge": "আকীদা",
   "shortDesc": "রহমানের ওলী এবং শয়তানের বন্ধুদের চেনার মানদণ্ড নিয়ে শাইখুল ইসলাম ইবনু তাইমিয়ার কালজয়ী গ্রন্থ।",
   "description": "কে প্রকৃত আল্লাহর ওলী আর কে শয়তানের অনুসারী? কারামত ও ভেলকিবাজির পার্থক্য কী? তাসাউফ ও মারেফতের নামে বিভ্রান্তি দূর করে কুরআন ও সুন্নাহর আলোকে ওলী বা আউলিয়ার প্রকৃত রূপ তুলে ধরেছেন শাইখুল ইসলাম ইমাম ইবনু তাইমিয়্যা (রহ.)। অনুবাদ করেছেন সিফাত-ই-মুহাম্মাদ এবং ভাষা সম্পাদনা করেছেন জাকারিয়া মাসুদ।",
@@ -16,10 +16,10 @@
     "কভার": "হার্ডকভার"
   },
   "images": [
-    "../images/shop/allahor-bondhu-1.jpg",
-    "../images/shop/allahor-bondhu-2.jpg",
-    "../images/shop/allahor-bondhu-3.jpg",
-    "../images/shop/allahor-bondhu-4.jpg"
+    "../images/shop/allahor-bondhu-1.webp",
+    "../images/shop/allahor-bondhu-2.webp",
+    "../images/shop/allahor-bondhu-3.webp",
+    "../images/shop/allahor-bondhu-4.webp"
   ]
   }
   
