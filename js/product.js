@@ -77,29 +77,55 @@ function renderDetails(p) {
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
   };
 
-  // --- শেয়ার বাটন লজিক ---
+
+  
+      // --- ফটোসহ শেয়ার বাটন লজিক ---
   const shareBtn = document.getElementById("shareBtn");
   const copyToast = document.getElementById("copyToast");
 
   if (shareBtn) {
     shareBtn.onclick = async () => {
-      const shareData = {
-        title: `${p.title} | Islamic Light`,
-        text: `${p.title} - বইটি সংগ্রহ করতে লিংকটি দেখুন:`,
-        url: window.location.href
-      };
+      const shareUrl = window.location.href;
+      const shareTitle = `${p.title} | Islamic Light`;
+      const shareText = `${p.title} - বইটি সংগ্রহ করতে লিংকটি দেখুন:\n${shareUrl}`;
 
-      // মোবাইলে থাকলে নেটিভ শেয়ার শিট ওপেন হবে
+      // মোবাইলে নেটিভ শেয়ার সাপোর্ট থাকলে
       if (navigator.share) {
         try {
-          await navigator.share(shareData);
+          // ১. প্রোডাক্টের প্রথম ছবিটি ফেচ করে ব্লব ও ফাইলে কনভার্ট করা
+          const imgResponse = await fetch(p.images[0]);
+          const blob = await imgResponse.blob();
+          const file = new File([blob], "book-cover.jpg", { type: blob.type });
+
+          const shareDataWithFile = {
+            title: shareTitle,
+            text: shareText,
+            files: [file] // সরাসরি ইমেজ ফাইল পাঠানো হচ্ছে
+          };
+
+          // ব্রাউজার যদি ফাইল শেয়ারিং সাপোর্ট করে
+          if (navigator.canShare && navigator.canShare(shareDataWithFile)) {
+            await navigator.share(shareDataWithFile);
+            return;
+          }
+        } catch (fileErr) {
+          console.log("ফাইল শেয়ারিং সমর্থিত নয়, সাধারণ লিংকে রিভার্ট করা হচ্ছে:", fileErr);
+        }
+
+        // ফাইল শেয়ার ব্যর্থ হলে ব্যাকআপ হিসেবে সাধারণ লিংক শেয়ার হবে
+        try {
+          await navigator.share({
+            title: shareTitle,
+            text: shareText,
+            url: shareUrl
+          });
         } catch (err) {
-          // ইউজার ক্যান্সেল করলে কোনো সমস্যা নেই
+          // ইউজার ক্যান্সেল করলে সমস্যা নেই
         }
       } else {
-        // কম্পিউটার বা আনসাপোর্টেড ব্রাউজারে লিংক কপি হবে
+        // কম্পিউটার বা সাধারণ ব্রাউজারে লিংক কপি হবে
         try {
-          await navigator.clipboard.writeText(window.location.href);
+          await navigator.clipboard.writeText(shareUrl);
           if (copyToast) {
             copyToast.style.display = "inline-flex";
             setTimeout(() => {
@@ -107,9 +133,10 @@ function renderDetails(p) {
             }, 2500);
           }
         } catch (err) {
-          alert("লিংক কপি করা যায়নি, অনুগ্রহ করে ব্রাউজার অ্যাড্রেস বার থেকে কপি করুন।");
+          alert("লিংক কপি করা যায়নি, ব্রাউজার অ্যাড্রেস বার থেকে কপি করুন।");
         }
       }
     };
   }
 }
+
