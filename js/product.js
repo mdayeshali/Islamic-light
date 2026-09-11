@@ -79,7 +79,7 @@ function renderDetails(p) {
 
 
   
-      // --- ফটোসহ শেয়ার বাটন লজিক ---
+            // --- ফটোসহ নিরাপদ শেয়ার বাটন লজিক ---
   const shareBtn = document.getElementById("shareBtn");
   const copyToast = document.getElementById("copyToast");
 
@@ -91,39 +91,49 @@ function renderDetails(p) {
 
       // মোবাইলে নেটিভ শেয়ার সাপোর্ট থাকলে
       if (navigator.share) {
-        try {
-          // ১. প্রোডাক্টের প্রথম ছবিটি ফেচ করে ব্লব ও ফাইলে কনভার্ট করা
-          const imgResponse = await fetch(p.images[0]);
-          const blob = await imgResponse.blob();
-          const file = new File([blob], "book-cover.jpg", { type: blob.type });
+        let sharePayload = {
+          title: shareTitle,
+          text: shareText
+        };
 
-          const shareDataWithFile = {
-            title: shareTitle,
-            text: shareText,
-            files: [file] // সরাসরি ইমেজ ফাইল পাঠানো হচ্ছে
-          };
+        // ১. ছবি ফেচ করে ফাইল অ্যাটাচ করার চেষ্টা
+        if (p.images && p.images.length > 0) {
+          try {
+            // রিলেটিভ পাথকে ব্রাউজার অনুযায়ী সম্পূর্ণ (Absolute) URL এ রূপান্তর
+            const absoluteImgUrl = new URL(p.images[0], window.location.href).href;
+            
+            const imgResponse = await fetch(absoluteImgUrl);
+            const blob = await imgResponse.blob();
+            
+            // ফাইলের নাম ও এক্সটেনশন নির্ধারণ
+            const fileType = blob.type || "image/webp";
+            const ext = fileType.includes("png") ? "png" : fileType.includes("jpeg") || fileType.includes("jpg") ? "jpg" : "webp";
+            const file = new File([blob], `book-cover.${ext}`, { type: fileType });
 
-          // ব্রাউজার যদি ফাইল শেয়ারিং সাপোর্ট করে
-          if (navigator.canShare && navigator.canShare(shareDataWithFile)) {
-            await navigator.share(shareDataWithFile);
-            return;
+            // ডিভাইসটি যদি ফটো শেয়ার করতে সমর্থ হয়
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+              sharePayload.files = [file];
+            }
+          } catch (fileErr) {
+            console.log("ছবি প্রসেস করা সম্ভব হয়নি, টেক্সট শেয়ার চালু থাকবে:", fileErr);
           }
-        } catch (fileErr) {
-          console.log("ফাইল শেয়ারিং সমর্থিত নয়, সাধারণ লিংকে রিভার্ট করা হচ্ছে:", fileErr);
         }
 
-        // ফাইল শেয়ার ব্যর্থ হলে ব্যাকআপ হিসেবে সাধারণ লিংক শেয়ার হবে
+        // ছবিসহ অথবা শুধু লিংক দিয়ে শেয়ার ডায়ালগ ওপেন
         try {
-          await navigator.share({
-            title: shareTitle,
-            text: shareText,
-            url: shareUrl
-          });
+          // ফাইল যুক্ত থাকলে কিছু ব্রাউজারে 'url' ফিল্ড এরর দেয়, তাই শুধু টেক্সটের ভেতরে লিংক রাখা নিরাপদ
+          if (!sharePayload.files) {
+            sharePayload.url = shareUrl;
+          }
+          await navigator.share(sharePayload);
         } catch (err) {
-          // ইউজার ক্যান্সেল করলে সমস্যা নেই
+          // ব্যবহারকারী নিজে উইন্ডো কেটে দিলে কোনো এরর যাতে না দেখায়
+          if (err.name !== "AbortError") {
+            console.error("শেয়ারিং ব্যর্থ:", err);
+          }
         }
       } else {
-        // কম্পিউটার বা সাধারণ ব্রাউজারে লিংক কপি হবে
+        // কম্পিউটার বা আনসাপোর্টেড ব্রাউজারে লিংক কপি হওয়া
         try {
           await navigator.clipboard.writeText(shareUrl);
           if (copyToast) {
@@ -133,10 +143,9 @@ function renderDetails(p) {
             }, 2500);
           }
         } catch (err) {
-          alert("লিংক কপি করা যায়নি, ব্রাউজার অ্যাড্রেস বার থেকে কপি করুন।");
+          alert("লিংকটি কপি করা সম্ভব হয়নি, দয়া করে ব্রাউজারের অ্যাড্রেস বার থেকে কপি করুন।");
         }
       }
     };
   }
 }
-
