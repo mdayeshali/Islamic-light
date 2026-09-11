@@ -692,7 +692,7 @@ body.dark-mode .shop-promo-card,
   flex: 1;
   max-width: 580px;
 }
-
+/*
 .promo-pill {
   display: inline-block;
   background: #ecfdf5;
@@ -708,7 +708,7 @@ body.dark-mode .promo-pill,
 [data-theme="dark"] .promo-pill {
   background: #064e3b;
   color: #a7f3d0;
-}
+} */
 
 .shop-promo-content h2 {
   font-size: 2.1rem;
