@@ -1,5 +1,5 @@
 :root {
-  --primary: #047857;
+  --primary: #004d40;
   --primary-hover: #065f46;
   --bg: #f8fafc;
   --surface: #ffffff;
@@ -14,6 +14,7 @@
 }
 
 body.dark-mode, [data-theme="dark"] {
+  --primary: #047857;
   --bg: #0b0f19;
   --surface: #111827;
   --text: #f1f5f9;
