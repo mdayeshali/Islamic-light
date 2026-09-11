@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "91XXXXXXXXXX"; // আপনার নম্বর দিন
+const WHATSAPP_NUMBER = "+918617316109"; // আপনার নম্বর দিন
 
 document.addEventListener("DOMContentLoaded", async () => {
   const params = new URLSearchParams(window.location.search);
