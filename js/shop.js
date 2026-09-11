@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "+918617316109"; // আপনার নম্বর দিন
+const WHATSAPP_NUMBER = "918617316109"; // আপনার নম্বর দিন
 let allProducts = [];
 
 document.addEventListener("DOMContentLoaded", () => {
