@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কিবলা কম্পাস - সঠিক কিবলার দিক</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="../css/qibla.css">
+</head>
+<body>
+
+  <main class="qibla-card">
+    <header class="qibla-header">
+      <div class="badge">কম্পাস সেন্সর</div>
+      <h1>কিবলা দিক নির্ণয়</h1>
+      <p>আপনার মোবাইলটি একটি সমতল স্থানে সোজা রাখুন</p>
+    </header>
+
+    <!-- Compass Visual Container -->
+    <div class="compass-wrapper">
+      <!-- Fixed Target Indicator at the Top -->
+      <div class="target-marker"></div>
+
+      <!-- Rotating Dial -->
+      <div class="compass-dial" id="compassDial">
+        <div class="dial-inner">
+          <span class="cardinal north">N</span>
+          <span class="cardinal east">E</span>
+          <span class="cardinal south">S</span>
+          <span class="cardinal west">W</span>
+          <div class="crosshair-v"></div>
+          <div class="crosshair-h"></div>
+          
+          <!-- Qibla Indicator Marker on Dial -->
+          <div class="qibla-needle" id="qiblaNeedle">
+            <div class="needle-tip">
+              <span class="kaaba-icon">🕋</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status & Angles Info -->
+    <div class="metrics-grid">
+      <div class="metric-box">
+        <span class="label">কিবলা কোণ</span>
+        <strong id="qiblaAngleText">--°</strong>
+      </div>
+      <div class="metric-box">
+        <span class="label">বর্তমান দিক</span>
+        <strong id="currentHeadingText">--°</strong>
+      </div>
+    </div>
+
+    <!-- Dynamic Status Message -->
+    <div class="status-box" id="statusMessage">
+      কম্পাস চালু করতে নিচের বাটনে চাপ দিন
+    </div>
+
+    <!-- Trigger Button -->
+    <button type="button" class="btn-primary" id="enableSensorBtn">
+      কম্পাস সক্রিয় করুন
+    </button>
+  </main>
+
+  <!-- JS Link -->
+  <script src="../js/qibla.js" defer></script>
+</body>
+</html>
