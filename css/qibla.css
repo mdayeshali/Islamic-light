@@ -1,79 +1,57 @@
+/* কাস্টম ভেরিয়েবল (শুধুমাত্র কিবলা পেজের অভ্যন্তরীণ উপাদানের জন্য) */
 :root {
-  /* Common Palette */
-  --primary: #2e7d32;
-  --primary-light: #43a047;
-  --accent: #d4af37;
-  --danger: #ef4444;
+  --qibla-primary: #004d40;          /* আপনার মূল থিম কালার */
+  --qibla-primary-light: #00695c;
+  --qibla-primary-bg: #e0f2f1;
+  --qibla-accent: #d4af37;
+  --qibla-danger: #ef4444;
 
-  /* Light Theme Variables */
-  --primary-bg: #e8f5e9;
-  --text-main: #1f2937;
-  --text-muted: #6b7280;
-  --card-bg: #ffffff;
-  --body-bg: #f3f4f6;
-  --border-color: rgba(0, 0, 0, 0.08);
-  --card-border: rgba(0, 0, 0, 0.05);
-  --dial-bg: radial-gradient(circle, #ffffff 60%, #f9fafb 100%);
-  --dial-border: #e5e7eb;
-  --crosshair: #e5e7eb;
-  --metric-bg: #f9fafb;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  /* লাইট মোড ভেরিয়েবল */
+  --q-card-bg: #ffffff;
+  --q-text-main: #1f2937;
+  --q-text-muted: #6b7280;
+  --q-border: rgba(0, 0, 0, 0.08);
+  --q-dial-bg: radial-gradient(circle, #ffffff 60%, #f9fafb 100%);
+  --q-dial-border: #e5e7eb;
+  --q-crosshair: #e5e7eb;
+  --q-metric-bg: #f9fafb;
+  --q-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-/* Automatic Dark Mode (Device Settings) & Manual Class Support */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary: #4caf50;
-    --primary-light: #66bb6a;
-    --primary-bg: rgba(76, 175, 80, 0.15);
-    --text-main: #f9fafb;
-    --text-muted: #9ca3af;
-    --card-bg: #1f2937;
-    --body-bg: #111827;
-    --border-color: rgba(255, 255, 255, 0.1);
-    --card-border: rgba(255, 255, 255, 0.08);
-    --dial-bg: radial-gradient(circle, #1f2937 60%, #111827 100%);
-    --dial-border: #374151;
-    --crosshair: #374151;
-    --metric-bg: #111827;
-    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  }
+/* আপনার ওয়েবসাইটের ডার্ক মোড ক্লাসগুলো (html অথবা body-তে যেটিই থাকুক কাজ করবে) */
+html.dark, html.dark-mode, html.dark-theme,
+body.dark, body.dark-mode, body.dark-theme,
+[data-theme="dark"] {
+  --qibla-primary: #26a69a;
+  --qibla-primary-light: #4db6ac;
+  --qibla-primary-bg: rgba(38, 166, 154, 0.15);
+
+  /* ডার্ক মোড কিবলা উপাদান */
+  --q-card-bg: #1f2937;
+  --q-text-main: #f9fafb;
+  --q-text-muted: #9ca3af;
+  --q-border: rgba(255, 255, 255, 0.1);
+  --q-dial-bg: radial-gradient(circle, #1f2937 60%, #111827 100%);
+  --q-dial-border: #374151;
+  --q-crosshair: #374151;
+  --q-metric-bg: #111827;
+  --q-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-/* Force Dark Mode via Body Class (যদি ওয়েবসাইটে থিম টগল বাটন থাকে) */
-body.dark, body.dark-mode, body.dark-theme {
-  --primary: #4caf50;
-  --primary-light: #66bb6a;
-  --primary-bg: rgba(76, 175, 80, 0.15);
-  --text-main: #f9fafb;
-  --text-muted: #9ca3af;
-  --card-bg: #1f2937;
-  --body-bg: #111827;
-  --border-color: rgba(255, 255, 255, 0.1);
-  --card-border: rgba(255, 255, 255, 0.08);
-  --dial-bg: radial-gradient(circle, #1f2937 60%, #111827 100%);
-  --dial-border: #374151;
-  --crosshair: #374151;
-  --metric-bg: #111827;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+/* 
+  হেডার ও ফুটারে যেন আপনার পছন্দের #004d40 রঙ সব সময় অটুট থাকে
+*/
+#header, #footer {
+  background-color: #004d40 !important;
+  color: #ffffff;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+/* বডির ফন্ট ঠিক রাখা, তবে গ্লোবাল সিএসএস নষ্ট না করা */
 body {
   font-family: 'Hind Siliguri', sans-serif;
-  background-color: var(--body-bg);
-  color: var(--text-main);
-  margin: 0;
-  padding: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Wrapper to isolate flex layout from global header/footer */
+/* কিবলা কন্টেইনার */
 .qibla-page-container {
   min-height: calc(100vh - 160px);
   display: flex;
@@ -82,25 +60,27 @@ body {
   padding: 30px 16px;
 }
 
+/* মূল কার্ড */
 .qibla-card {
   width: 100%;
   max-width: 400px;
-  background: var(--card-bg);
+  background: var(--q-card-bg);
+  color: var(--q-text-main);
   border-radius: 24px;
-  box-shadow: var(--shadow);
+  box-shadow: var(--q-shadow);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 1px solid var(--card-border);
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border: 1px solid var(--q-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
 .qibla-header .badge {
   display: inline-block;
-  background: var(--primary-bg);
-  color: var(--primary);
+  background: var(--qibla-primary-bg);
+  color: var(--qibla-primary);
   font-size: 13px;
   font-weight: 600;
   padding: 4px 14px;
@@ -111,17 +91,17 @@ body {
 .qibla-header h1 {
   font-size: 24px;
   font-weight: 700;
-  color: var(--text-main);
+  color: var(--q-text-main);
   margin-bottom: 6px;
 }
 
 .qibla-header p {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--q-text-muted);
   margin-bottom: 24px;
 }
 
-/* Compass Dial Visuals */
+/* কম্পাস ডায়াল */
 .compass-wrapper {
   position: relative;
   width: 270px;
@@ -138,7 +118,7 @@ body {
   height: 0;
   border-left: 9px solid transparent;
   border-right: 9px solid transparent;
-  border-top: 14px solid var(--accent);
+  border-top: 14px solid var(--qibla-accent);
   z-index: 10;
   filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
 }
@@ -147,8 +127,8 @@ body {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: var(--dial-bg);
-  border: 8px solid var(--dial-border);
+  background: var(--q-dial-bg);
+  border: 8px solid var(--q-dial-border);
   box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
   position: relative;
   transition: transform 0.1s cubic-bezier(0.1, 0.8, 0.2, 1);
@@ -167,7 +147,7 @@ body {
   bottom: 15%;
   left: 50%;
   width: 1px;
-  background: var(--crosshair);
+  background: var(--q-crosshair);
   transform: translateX(-50%);
 }
 
@@ -177,7 +157,7 @@ body {
   right: 15%;
   top: 50%;
   height: 1px;
-  background: var(--crosshair);
+  background: var(--q-crosshair);
   transform: translateY(-50%);
 }
 
@@ -192,31 +172,20 @@ body {
   top: 12px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--danger);
+  color: var(--qibla-danger);
 }
 
-.cardinal.east {
-  right: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-}
-
-.cardinal.south {
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: var(--text-muted);
-}
-
+.cardinal.east,
+.cardinal.south,
 .cardinal.west {
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
+  color: var(--q-text-muted);
 }
 
-/* Qibla Needle Marker */
+.cardinal.east { right: 14px; top: 50%; transform: translateY(-50%); }
+.cardinal.south { bottom: 12px; left: 50%; transform: translateX(-50%); }
+.cardinal.west { left: 14px; top: 50%; transform: translateY(-50%); }
+
+/* কাবার পয়েন্টার */
 .qibla-needle {
   position: absolute;
   top: 0;
@@ -241,7 +210,7 @@ body {
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
-/* Metrics Section */
+/* ডিগ্রি এবং রিডিং গ্রিড */
 .metrics-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -251,8 +220,8 @@ body {
 }
 
 .metric-box {
-  background: var(--metric-bg);
-  border: 1px solid var(--border-color);
+  background: var(--q-metric-bg);
+  border: 1px solid var(--q-border);
   padding: 12px;
   border-radius: 14px;
   display: flex;
@@ -263,26 +232,27 @@ body {
 
 .metric-box .label {
   font-size: 13px;
-  color: var(--text-muted);
+  color: var(--q-text-muted);
 }
 
 .metric-box strong {
   font-size: 18px;
-  color: var(--primary);
+  color: var(--qibla-primary);
   font-weight: 700;
 }
 
 .status-box {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--q-text-muted);
   min-height: 22px;
   margin-bottom: 20px;
   transition: color 0.2s ease;
 }
 
+/* অ্যাকশন বাটন */
 .btn-primary {
   width: 100%;
-  background: var(--primary);
+  background: var(--qibla-primary);
   color: #ffffff;
   border: none;
   font-family: inherit;
@@ -295,7 +265,7 @@ body {
 }
 
 .btn-primary:hover {
-  background: var(--primary-light);
+  background: var(--qibla-primary-light);
 }
 
 .btn-primary:active {
