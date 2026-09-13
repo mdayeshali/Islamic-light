@@ -1,13 +1,61 @@
 :root {
-  --primary: #1b5e20;
-  --primary-light: #2e7d32;
-  --primary-bg: #e8f5e9;
+  /* Common Palette */
+  --primary: #2e7d32;
+  --primary-light: #43a047;
   --accent: #d4af37;
-  --dark: #1f2937;
-  --gray: #6b7280;
+  --danger: #ef4444;
+
+  /* Light Theme Variables */
+  --primary-bg: #e8f5e9;
+  --text-main: #1f2937;
+  --text-muted: #6b7280;
   --card-bg: #ffffff;
   --body-bg: #f3f4f6;
-  --danger: #dc2626;
+  --border-color: rgba(0, 0, 0, 0.08);
+  --card-border: rgba(0, 0, 0, 0.05);
+  --dial-bg: radial-gradient(circle, #ffffff 60%, #f9fafb 100%);
+  --dial-border: #e5e7eb;
+  --crosshair: #e5e7eb;
+  --metric-bg: #f9fafb;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Automatic Dark Mode (Device Settings) & Manual Class Support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #4caf50;
+    --primary-light: #66bb6a;
+    --primary-bg: rgba(76, 175, 80, 0.15);
+    --text-main: #f9fafb;
+    --text-muted: #9ca3af;
+    --card-bg: #1f2937;
+    --body-bg: #111827;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --dial-bg: radial-gradient(circle, #1f2937 60%, #111827 100%);
+    --dial-border: #374151;
+    --crosshair: #374151;
+    --metric-bg: #111827;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* Force Dark Mode via Body Class (যদি ওয়েবসাইটে থিম টগল বাটন থাকে) */
+body.dark, body.dark-mode, body.dark-theme {
+  --primary: #4caf50;
+  --primary-light: #66bb6a;
+  --primary-bg: rgba(76, 175, 80, 0.15);
+  --text-main: #f9fafb;
+  --text-muted: #9ca3af;
+  --card-bg: #1f2937;
+  --body-bg: #111827;
+  --border-color: rgba(255, 255, 255, 0.1);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --dial-bg: radial-gradient(circle, #1f2937 60%, #111827 100%);
+  --dial-border: #374151;
+  --crosshair: #374151;
+  --metric-bg: #111827;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -19,53 +67,61 @@
 body {
   font-family: 'Hind Siliguri', sans-serif;
   background-color: var(--body-bg);
-  color: var(--dark);
-  min-height: 100vh;
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Wrapper to isolate flex layout from global header/footer */
+.qibla-page-container {
+  min-height: calc(100vh - 160px);
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px 16px;
+  padding: 30px 16px;
 }
 
 .qibla-card {
   width: 100%;
   max-width: 400px;
   background: var(--card-bg);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--card-border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .qibla-header .badge {
   display: inline-block;
   background: var(--primary-bg);
-  color: var(--primary-light);
+  color: var(--primary);
   font-size: 13px;
   font-weight: 600;
-  padding: 4px 12px;
+  padding: 4px 14px;
   border-radius: 20px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .qibla-header h1 {
   font-size: 24px;
   font-weight: 700;
-  color: var(--dark);
-  margin-bottom: 4px;
+  color: var(--text-main);
+  margin-bottom: 6px;
 }
 
 .qibla-header p {
   font-size: 14px;
-  color: var(--gray);
+  color: var(--text-muted);
   margin-bottom: 24px;
 }
 
-/* Compass Dial Design */
+/* Compass Dial Visuals */
 .compass-wrapper {
   position: relative;
   width: 270px;
@@ -84,15 +140,16 @@ body {
   border-right: 9px solid transparent;
   border-top: 14px solid var(--accent);
   z-index: 10;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
 }
 
 .compass-dial {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 60%, #f9fafb 100%);
-  border: 8px solid #e5e7eb;
-  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.07), 0 8px 20px rgba(0, 0, 0, 0.05);
+  background: var(--dial-bg);
+  border: 8px solid var(--dial-border);
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.15), 0 8px 20px rgba(0, 0, 0, 0.1);
   position: relative;
   transition: transform 0.1s cubic-bezier(0.1, 0.8, 0.2, 1);
   will-change: transform;
@@ -110,7 +167,7 @@ body {
   bottom: 15%;
   left: 50%;
   width: 1px;
-  background: #e5e7eb;
+  background: var(--crosshair);
   transform: translateX(-50%);
 }
 
@@ -120,7 +177,7 @@ body {
   right: 15%;
   top: 50%;
   height: 1px;
-  background: #e5e7eb;
+  background: var(--crosshair);
   transform: translateY(-50%);
 }
 
@@ -142,21 +199,21 @@ body {
   right: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .cardinal.south {
   bottom: 12px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .cardinal.west {
   left: 14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 /* Qibla Needle Marker */
@@ -180,8 +237,8 @@ body {
 }
 
 .kaaba-icon {
-  font-size: 20px;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  font-size: 22px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.4));
 }
 
 /* Metrics Section */
@@ -194,18 +251,19 @@ body {
 }
 
 .metric-box {
-  background: #f9fafb;
-  border: 1px solid #f3f4f6;
+  background: var(--metric-bg);
+  border: 1px solid var(--border-color);
   padding: 12px;
-  border-radius: 12px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   gap: 4px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .metric-box .label {
   font-size: 13px;
-  color: var(--gray);
+  color: var(--text-muted);
 }
 
 .metric-box strong {
@@ -216,9 +274,10 @@ body {
 
 .status-box {
   font-size: 14px;
-  color: var(--gray);
+  color: var(--text-muted);
   min-height: 22px;
   margin-bottom: 20px;
+  transition: color 0.2s ease;
 }
 
 .btn-primary {
@@ -230,7 +289,7 @@ body {
   font-size: 16px;
   font-weight: 600;
   padding: 14px 20px;
-  border-radius: 12px;
+  border-radius: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease, transform 0.1s ease;
 }
