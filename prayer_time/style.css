@@ -420,3 +420,78 @@ body {
   }
 }
 
+/* কিবলা বাটন স্টাইল */
+.btn-qibla {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  color: #004d40;
+  border: 1.5px solid #004d40;
+  text-decoration: none;
+  font-family: 'Hind Siliguri', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin: 16px 0 12px 0;
+  box-shadow: 0 4px 12px rgba(0, 77, 64, 0.08);
+  transition: all 0.25s ease;
+}
+
+.btn-qibla .qibla-btn-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-qibla .qibla-btn-content i {
+  font-size: 20px;
+  color: #004d40;
+}
+
+/* হোভার ইফেক্ট */
+.btn-qibla:hover {
+  background-color: #004d40;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 77, 64, 0.18);
+}
+
+.btn-qibla:hover .qibla-btn-content i {
+  color: #ffffff;
+}
+
+/* ডার্ক মোড সাপোর্ট */
+body.dark .btn-qibla,
+body.dark-mode .btn-qibla,
+html.dark .btn-qibla,
+[data-theme="dark"] .btn-qibla {
+  background-color: #1f2937;
+  color: #26a69a;
+  border-color: #26a69a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .btn-qibla .qibla-btn-content i,
+body.dark-mode .btn-qibla .qibla-btn-content i,
+html.dark .btn-qibla .qibla-btn-content i,
+[data-theme="dark"] .btn-qibla .qibla-btn-content i {
+  color: #26a69a;
+}
+
+body.dark .btn-qibla:hover,
+body.dark-mode .btn-qibla:hover,
+html.dark .btn-qibla:hover,
+[data-theme="dark"] .btn-qibla:hover {
+  background-color: #26a69a;
+  color: #ffffff;
+}
+
+body.dark .btn-qibla:hover .qibla-btn-content i,
+body.dark-mode .btn-qibla:hover .qibla-btn-content i,
+html.dark .btn-qibla:hover .qibla-btn-content i,
+[data-theme="dark"] .btn-qibla:hover .qibla-btn-content i {
+  color: #ffffff;
+}
+
