@@ -1,0 +1,249 @@
+/* ====================================================
+   যাকাত বিস্তারিত গাইড পেজের স্টাইলসমূহ (zaqat.html)
+   ==================================================== */
+.zakat-guide-card {
+  width: 100%;
+  max-width: 650px;
+  background: var(--z-card-bg);
+  color: var(--z-text-main);
+  border-radius: 24px;
+  box-shadow: var(--z-shadow);
+  padding: 32px 24px;
+  border: 1px solid var(--z-border);
+  transition: all 0.3s ease;
+}
+
+/* শীর্ষের ক্যালকুলেটর ব্যানার বাটন */
+.guide-calculator-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--zakat-primary-bg);
+  border: 1.5px solid var(--zakat-primary);
+  border-radius: 16px;
+  padding: 14px 18px;
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: all 0.25s ease;
+}
+
+.guide-calculator-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 77, 64, 0.15);
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.banner-icon {
+  width: 44px;
+  height: 44px;
+  background: var(--zakat-primary);
+  color: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.banner-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.banner-text strong {
+  font-size: 15px;
+  color: var(--z-text-main);
+}
+
+.banner-text span {
+  font-size: 13px;
+  color: var(--zakat-primary);
+  font-weight: 500;
+}
+
+.banner-arrow {
+  color: var(--zakat-primary);
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.guide-calculator-banner:hover .banner-arrow {
+  transform: translateX(4px);
+}
+
+/* গাইড সেকশনসমূহ */
+.guide-section {
+  margin-bottom: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--z-border);
+}
+
+.guide-section:last-of-type {
+  border-bottom: none;
+}
+
+.guide-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--zakat-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.guide-section p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--z-text-main);
+  margin-bottom: 10px;
+}
+
+/* কুরআন উদ্ধৃতি বক্স */
+.quran-quote {
+  background: var(--z-section-bg);
+  border-left: 4px solid var(--zakat-accent);
+  padding: 12px 16px;
+  border-radius: 4px 12px 12px 4px;
+  margin-top: 12px;
+}
+
+.quran-quote p {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--z-text-main);
+  margin-bottom: 4px;
+}
+
+.quran-quote small {
+  font-size: 12.5px;
+  color: var(--z-text-muted);
+}
+
+/* লিস্ট ডিজাইন */
+.guide-list, .guide-numbered-list {
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+.guide-list li, .guide-numbered-list li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--z-text-main);
+  margin-bottom: 8px;
+}
+
+.guide-list li strong {
+  color: var(--z-text-main);
+}
+
+/* চেকমার্ক ও ক্রস আইকন লিস্ট */
+.guide-list.checkmark, .guide-list.crossmark {
+  list-style: none;
+  padding-left: 0;
+}
+
+.guide-list.checkmark li, .guide-list.crossmark li {
+  position: relative;
+  padding-left: 26px;
+}
+
+.guide-list.checkmark li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-weight: bold;
+}
+
+.guide-list.crossmark li::before {
+  content: "✖";
+  position: absolute;
+  left: 0;
+  color: var(--zakat-danger);
+  font-weight: bold;
+}
+
+/* নেসাব কম্পেয়ার গ্রিড */
+.nisab-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+
+.nisab-box {
+  background: var(--z-section-bg);
+  border: 1px solid var(--z-border);
+  padding: 14px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.nisab-box.silver {
+  border-color: var(--zakat-primary);
+  background: var(--zakat-primary-bg);
+}
+
+.nisab-type {
+  font-size: 13px;
+  color: var(--z-text-muted);
+  margin-bottom: 4px;
+}
+
+.nisab-box strong {
+  font-size: 18px;
+  color: var(--zakat-primary);
+}
+
+.nisab-box small {
+  font-size: 12px;
+  color: var(--z-text-muted);
+  margin-top: 4px;
+}
+
+.info-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: var(--z-section-bg);
+  border: 1px solid var(--z-border);
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--z-text-muted);
+}
+
+.info-note i {
+  color: var(--zakat-primary);
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+/* বটম অ্যাকশন বাটন */
+.bottom-action-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.bottom-action-wrapper p {
+  font-size: 14px;
+  color: var(--z-text-muted);
+  margin-bottom: 12px;
+}
+
+.btn-block {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
