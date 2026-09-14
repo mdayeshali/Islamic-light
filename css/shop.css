@@ -280,3 +280,35 @@ body {
   margin-bottom: 12px;
   opacity: 0.5;
     }
+/* --- কার্ডের প্রাইস বক্স ও ফ্রি ডেলিভারি ব্যাজ --- */
+.price-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+.free-delivery-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #047857;
+  background: #ecfdf5;
+  padding: 3px 8px;
+  border-radius: 6px;
+  margin-top: 4px;
+  line-height: 1.2;
+}
+
+.free-delivery-badge i {
+  font-size: 0.75rem;
+}
+
+/* ডার্ক মোড সাপোর্ট */
+body.dark-mode .free-delivery-badge,
+[data-theme="dark"] .free-delivery-badge {
+  background: rgba(4, 120, 87, 0.25);
+  color: #6ee7b7;
+}
