@@ -123,7 +123,7 @@ function renderDetails(p) {
       // ছবির সম্পূর্ণ লিংক তৈরি
       const absoluteImgUrl = new URL(p.images[0], window.location.origin).href;
       const productPageUrl = window.location.href;
-
+      const deliveryText = p.freeDelivery ? "✅ ফ্রি ডেলিভারি" : "📦 ডেলিভারি চার্জ প্রযোজ্য";
       const msg = encodeURIComponent(
 `আসসালামু আলাইকুম,
 আমি islamiclight.in থেকে এই বইটি নিতে চাই:
