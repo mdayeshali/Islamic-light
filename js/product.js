@@ -116,12 +116,31 @@ function renderDetails(p) {
     slider.scrollLeft = scrollLeftPos - walk;
   });
 
-  // অর্ডার বাটন
+  // অর্ডার বাটন (ছবির লিংক ও প্রিভিউ সহ)
   const orderBtn = document.getElementById("pOrderBtn");
-  orderBtn.onclick = () => {
-    const msg = encodeURIComponent(`আসসালামু আলাইকুম,\nআমি islamiclight.in থেকে এই বইটি নিতে চাই:\n\n📖 ${p.title}\n💰 মূল্য: ₹${p.price}\n\nদয়া করে পেমেন্টের UPI ডিটেইলস ও ডেলিভারির নিয়মটি জানাবেন।`);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
-  };
+  if (orderBtn) {
+    orderBtn.onclick = () => {
+      // ছবির সম্পূর্ণ লিংক তৈরি
+      const absoluteImgUrl = new URL(p.images[0], window.location.origin).href;
+      const productPageUrl = window.location.href;
+
+      const msg = encodeURIComponent(
+`আসসালামু আলাইকুম,
+আমি islamiclight.in থেকে এই বইটি নিতে চাই:
+
+📖 ${p.title}
+💰 মূল্য: ₹${p.price}
+
+🖼️ বইয়ের ছবি: ${absoluteImgUrl}
+🔗 বিস্তারিত: ${productPageUrl}
+
+দয়া করে পেমেন্টের UPI ডিটেইলস ও ডেলিভারির নিয়মটি জানাবেন।`
+      );
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
+    };
+  }
+  
 
   // --- ফটোসহ নিরাপদ শেয়ার বাটন লজিক ---
   const shareBtn = document.getElementById("shareBtn");
