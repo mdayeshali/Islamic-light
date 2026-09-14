@@ -27,6 +27,13 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 function renderDetails(p) {
   document.title = `${p.title} | Islamic Light`;
+
+  // ক্যানোনিকাল ট্যাগ আপডেট (SEO-এর জন্য)
+  const canonical = document.querySelector("link[rel='canonical']");
+  if (canonical) {
+    canonical.href = window.location.href;
+  }
+
   document.getElementById("loading").style.display = "none";
   document.getElementById("productLayout").style.display = "grid";
 
@@ -37,17 +44,31 @@ function renderDetails(p) {
   document.getElementById("pOldPrice").innerText = `₹${p.oldPrice}`;
   document.getElementById("pDesc").innerText = p.description;
 
+  // ক্যাটাগরি ব্যাজ
   const badge = document.getElementById("pBadge");
-  if (p.badge) {
-    badge.innerText = p.badge;
-    badge.style.display = "inline-block";
-  } else {
-    badge.style.display = "none";
+  if (badge) {
+    if (p.badge) {
+      badge.innerText = p.badge;
+      badge.style.display = "inline-block";
+    } else {
+      badge.style.display = "none";
+    }
+  }
+
+  // ফ্রি ডেলিভারি ব্যাজ হ্যান্ডেলিং
+  const deliveryBadge = document.getElementById("pDeliveryBadge");
+  if (deliveryBadge) {
+    if (p.freeDelivery) {
+      deliveryBadge.innerHTML = `<i class="fa-solid fa-truck-fast"></i> ফ্রি ডেলিভারি`;
+      deliveryBadge.style.display = "inline-flex";
+    } else {
+      deliveryBadge.style.display = "none";
+    }
   }
 
   // স্পেসিফিকেশন রেন্ডার
   const specsGrid = document.getElementById("pSpecs");
-  if (p.specs) {
+  if (specsGrid && p.specs) {
     specsGrid.innerHTML = Object.entries(p.specs).map(([key, val]) => `
       <div class="spec-item">
         <div class="spec-key">${key}</div>
@@ -116,23 +137,23 @@ function renderDetails(p) {
     slider.scrollLeft = scrollLeftPos - walk;
   });
 
-  // অর্ডার বাটন (ছবির লিংক ও প্রিভিউ সহ)
+  // অর্ডার বাটন (ছবির লিংক, ডেলিভারি স্ট্যাটাস ও প্রিভিউ সহ)
   const orderBtn = document.getElementById("pOrderBtn");
   if (orderBtn) {
     orderBtn.onclick = () => {
-      // ছবির সম্পূর্ণ লিংক তৈরি
       const absoluteImgUrl = new URL(p.images[0], window.location.origin).href;
       const productPageUrl = window.location.href;
       const deliveryText = p.freeDelivery ? "✅ ফ্রি ডেলিভারি" : "📦 ডেলিভারি চার্জ প্রযোজ্য";
+
       const msg = encodeURIComponent(
 `আসসালামু আলাইকুম,
 আমি islamiclight.in থেকে এই বইটি নিতে চাই:
 
 📖 ${p.title}
-💰 মূল্য: ₹${p.price}
+💰 মূল্য: ₹${p.price} (${deliveryText})
 
 🖼️ বইয়ের ছবি: ${absoluteImgUrl}
-🔗 বিস্তারিত: ${productPageUrl}
+🔗 বিস্তারিত লিংক: ${productPageUrl}
 
 দয়া করে পেমেন্টের UPI ডিটেইলস ও ডেলিভারির নিয়মটি জানাবেন।`
       );
@@ -140,7 +161,6 @@ function renderDetails(p) {
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
     };
   }
-  
 
   // --- ফটোসহ নিরাপদ শেয়ার বাটন লজিক ---
   const shareBtn = document.getElementById("shareBtn");
@@ -159,7 +179,7 @@ function renderDetails(p) {
           text: shareText
         };
 
-        // ১. ছবি ফেচ করে ফাইল অ্যাটাচ করার চেষ্টা
+        // ছবি ফেচ করে ফাইল অ্যাটাচ করার চেষ্টা
         if (p.images && p.images.length > 0) {
           try {
             const absoluteImgUrl = new URL(p.images[0], window.location.href).href;
@@ -178,7 +198,7 @@ function renderDetails(p) {
           }
         }
 
-        // ছবিসহ অথবা লিংক দিয়ে শেয়ার ডায়ালগ ওপেন
+        // ডায়ালগ ওপেন
         try {
           if (!sharePayload.files) {
             sharePayload.url = shareUrl;
@@ -205,6 +225,4 @@ function renderDetails(p) {
       }
     };
   }
-          
 }
-      
