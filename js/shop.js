@@ -74,12 +74,30 @@ function renderProducts(products) {
   });
 }
 
-// কার্ডের ক্লিক ইভেন্ট বন্ধ রেখে কেবল হোয়াটসঅ্যাপ লিঙ্ক খোলার জন্য
-function handleOrderClick(event, title, price) {
+// কার্ডের ক্লিক ইভেন্ট বন্ধ রেখে ছবির প্রিভিউ লিংকসহ হোয়াটসঅ্যাপ খোলার ফাংশন
+function handleOrderClick(event, title, price, imgSrc, id) {
   event.stopPropagation();
-  const msg = encodeURIComponent(`আসসালামু আলাইকুম,\nআমি islamiclight.in থেকে এই বইটি নিতে চাই:\n\n📖 ${title}\n💰 মূল্য: ₹${price}\n\nদয়া করে পেমেন্টের UPI ডিটেইলস ও নিয়ম জানান।`);
+
+  // ছবির সম্পূর্ণ (Absolute) লিংক তৈরি
+  const absoluteImgUrl = imgSrc ? new URL(imgSrc, window.location.origin).href : "";
+  const productUrl = id ? `${window.location.origin}/shop/product.html?id=${id}` : window.location.href;
+
+  const msg = encodeURIComponent(
+`আসসালামু আলাইকুম,
+আমি islamiclight.in থেকে এই বইটি নিতে চাই:
+
+📖 ${title}
+💰 মূল্য: ₹${price}
+
+🖼️ বইয়ের ছবি: ${absoluteImgUrl}
+🔗 বিস্তারিত লিংক: ${productUrl}
+
+দয়া করে পেমেন্টের UPI ডিটেইলস ও নিয়ম জানান।`
+  );
+
   window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
 }
+
 
 function filterProducts(query) {
   const filtered = allProducts.filter((p) => 
