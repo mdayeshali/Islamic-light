@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>জাকাত ক্যালকুলেটর - Islamic Light</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Global Website CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Zakat Specific CSS -->
+  <link rel="stylesheet" href="../css/zakat.css">
+</head>
+<body>
+
+  <!-- Dynamic Header Container -->
+  <div id="header"></div>
+
+  <div class="zakat-page-container">
+    <main class="zakat-card">
+      <header class="zakat-header">
+        <div class="badge"><i class="fa-solid fa-calculator"></i> হিসাব করুন</div>
+        <h1>সহজ জাকাত ক্যালকুলেটর</h1>
+        <p>আপনার জাকাতযোগ্য সম্পদ ও ঋণ ইনপুট দিয়ে স্বয়ংক্রিয় হিসাব জানুন</p>
+      </header>
+
+      <!-- নেসাব সেটিংস সেকশন -->
+      <section class="section-box">
+        <div class="section-title">
+          <i class="fa-solid fa-coins"></i>
+          <span>নেসাব নির্ধারণের মানদণ্ড</span>
+        </div>
+        <p class="section-hint">অধিকাংশ আলেমের মতে গরীবদের কল্যাণে রূপার নেসাব (৫২.৫ তোলা / প্রায় ৬১২ গ্রাম) ধরা উত্তম।</p>
+        
+        <div class="input-group">
+          <label for="silverPrice">বর্তমানে ১ গ্রাম রূপার বাজারমূল্য (টাকা)</label>
+          <div class="input-field">
+            <span class="currency-symbol">৳</span>
+            <input type="number" id="silverPrice" value="২১০" min="0" placeholder="যেমন: ২১০">
+          </div>
+        </div>
+
+        <div class="nisab-info-box">
+          <span>বর্তমান নেসাব পরিমাণ (৬১২ গ্রাম রূপা):</span>
+          <strong id="nisabThresholdText">৳ ১,২৮,৫২০</strong>
+        </div>
+      </section>
+
+      <!-- জাকাতযোগ্য সম্পদ সেকশন -->
+      <section class="section-box">
+        <div class="section-title">
+          <i class="fa-solid fa-wallet"></i>
+          <span>জাকাতযোগ্য সম্পদসমূহ</span>
+        </div>
+
+        <div class="input-group">
+          <label for="cashInHand">হাতে থাকা নগদ টাকা ও ব্যাংকে জমানো টাকা</label>
+          <div class="input-field">
+            <span class="currency-symbol">৳</span>
+            <input type="number" id="cashInHand" class="calc-input" min="0" placeholder="0">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="goldValue">সোনা ও রূপার বর্তমান মোট বিক্রয়মূল্য</label>
+          <div class="input-field">
+            <span class="currency-symbol">৳</span>
+            <input type="number" id="goldValue" class="calc-input" min="0" placeholder="0">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="businessStock">ব্যবসায়িক পণ্যের বর্তমান ক্রয়মূল্য (স্টক)</label>
+          <div class="input-field">
+            <span class="currency-symbol">৳</span>
+            <input type="number" id="businessStock" class="calc-input" min="0" placeholder="0">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="receivableMoney">অন্য কাউকে দেওয়া ঋণ যা ফেরত পাওয়ার নিশ্চিত আশা আছে</label>
+          <div class="input-field">
+            <span class="currency-symbol">৳</span>
+            <input type="number" id="receivableMoney" class="calc-input" min="0" placeholder="0">
+          </div>
+        </div>
+      </section>
+
+      <!-- বাদযোগ্য ঋণ ও দায় সেকশন -->
+      <section class="section-box">
+        <div class="section-title text-danger">
+          <i class="fa-solid fa-hand-holding-dollar"></i>
+          <span>বাদযোগ্য ঋণ ও বকেয়া খরচ</span>
+        </div>
+
+        <div class="input-group">
+          <label for="debtsToPay">তাৎক্ষণিক পরিশোধযোগ্য ঋণ বা দেনা</label>
+          <div class="input-field">
+            <span class="currency-symbol">৳</span>
+            <input type="number" id="debtsToPay" class="calc-input" min="0" placeholder="0">
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="unpaidBills">বকেয়া দোকান বা বাড়িভাড়া, বিল বা কর্মচারীর বেতন</label>
+          <div class="input-field">
+            <span class="currency-symbol">৳</span>
+            <input type="number" id="unpaidBills" class="calc-input" min="0" placeholder="0">
+          </div>
+        </div>
+      </section>
+
+      <!-- বাটন সমূহ -->
+      <div class="btn-group">
+        <button type="button" class="btn-primary" id="calculateBtn">
+          <i class="fa-solid fa-calculator"></i> জাকাত হিসাব করুন
+        </button>
+        <button type="button" class="btn-secondary" id="resetBtn">
+          <i class="fa-solid fa-rotate-right"></i> রিসেট
+        </button>
+      </div>
+
+      <!-- ফলাফল কার্ড -->
+      <div class="result-card" id="resultCard" style="display: none;">
+        <div class="result-status" id="resultStatus"></div>
+        
+        <div class="result-summary">
+          <div class="summary-row">
+            <span>মোট জাকাতযোগ্য সম্পদ:</span>
+            <strong id="totalAssetsText">৳ ০</strong>
+          </div>
+          <div class="summary-row">
+            <span>মোট বাদযোগ্য দেনা:</span>
+            <strong id="totalDebtsText">৳ ০</strong>
+          </div>
+          <div class="summary-row highlight">
+            <span>নীট সম্পদ:</span>
+            <strong id="netWorthText">৳ ০</strong>
+          </div>
+        </div>
+
+        <div class="zakat-final-box" id="zakatFinalBox">
+          <span>আপনার প্রদেয় জাকাতের পরিমাণ (২.৫%):</span>
+          <h2 id="finalZakatAmount">৳ ০</h2>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Dynamic Footer Container -->
+  <div id="footer"></div>
+
+  <!-- JS Links -->
+  <script src="../js/script.js"></script>
+  <script src="../js/zakat.js" defer></script>
+</body>
+</html>
+              
