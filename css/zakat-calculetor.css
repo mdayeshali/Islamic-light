@@ -1,0 +1,314 @@
+:root {
+  --zakat-primary: #004d40;
+  --zakat-primary-light: #00695c;
+  --zakat-primary-bg: #e0f2f1;
+  --zakat-accent: #d4af37;
+  --zakat-danger: #ef4444;
+
+  /* লাইট থিম */
+  --z-card-bg: #ffffff;
+  --z-section-bg: #f9fafb;
+  --z-text-main: #1f2937;
+  --z-text-muted: #6b7280;
+  --z-border: rgba(0, 0, 0, 0.08);
+  --z-input-bg: #ffffff;
+  --z-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ডার্ক মোড সাপোর্ট */
+html.dark, html.dark-mode, html.dark-theme,
+body.dark, body.dark-mode, body.dark-theme,
+[data-theme="dark"] {
+  --zakat-primary: #26a69a;
+  --zakat-primary-light: #4db6ac;
+  --zakat-primary-bg: rgba(38, 166, 154, 0.15);
+
+  --z-card-bg: #1f2937;
+  --z-section-bg: #111827;
+  --z-text-main: #f9fafb;
+  --z-text-muted: #9ca3af;
+  --z-border: rgba(255, 255, 255, 0.1);
+  --z-input-bg: #1f2937;
+  --z-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+#header, #footer {
+  background-color: #004d40 !important;
+  color: #ffffff;
+}
+
+body {
+  font-family: 'Hind Siliguri', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.zakat-page-container {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 16px;
+}
+
+.zakat-card {
+  width: 100%;
+  max-width: 500px;
+  background: var(--z-card-bg);
+  color: var(--z-text-main);
+  border-radius: 24px;
+  box-shadow: var(--z-shadow);
+  padding: 28px 22px;
+  border: 1px solid var(--z-border);
+  transition: all 0.3s ease;
+}
+
+.zakat-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.zakat-header .badge {
+  display: inline-block;
+  background: var(--zakat-primary-bg);
+  color: var(--zakat-primary);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+}
+
+.zakat-header h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.zakat-header p {
+  font-size: 14px;
+  color: var(--z-text-muted);
+}
+
+/* সেকশন কার্ড */
+.section-box {
+  background: var(--z-section-bg);
+  border: 1px solid var(--z-border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 18px;
+  transition: background-color 0.3s ease;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--zakat-primary);
+  margin-bottom: 6px;
+}
+
+.section-title.text-danger {
+  color: var(--zakat-danger);
+}
+
+.section-hint {
+  font-size: 12.5px;
+  color: var(--z-text-muted);
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+/* ইনপুট ফিল্ড */
+.input-group {
+  margin-bottom: 12px;
+}
+
+.input-group:last-child {
+  margin-bottom: 0;
+}
+
+.input-group label {
+  display: block;
+  font-size: 13.5px;
+  color: var(--z-text-main);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  background: var(--z-input-bg);
+  border: 1.5px solid var(--z-border);
+  border-radius: 10px;
+  padding: 0 12px;
+  transition: border-color 0.2s ease;
+}
+
+.input-field:focus-within {
+  border-color: var(--zakat-primary);
+}
+
+.currency-symbol {
+  font-weight: 600;
+  color: var(--z-text-muted);
+  font-size: 16px;
+  padding-right: 8px;
+}
+
+.input-field input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  padding: 10px 0;
+  font-family: inherit;
+  font-size: 15px;
+  color: var(--z-text-main);
+  outline: none;
+}
+
+.nisab-info-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--zakat-primary-bg);
+  border-radius: 10px;
+  font-size: 13.5px;
+  color: var(--zakat-primary);
+}
+
+.nisab-info-box strong {
+  font-size: 15px;
+}
+
+/* বাটন সমূহ */
+.btn-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.btn-primary {
+  flex: 2;
+  background: var(--zakat-primary);
+  color: #ffffff;
+  border: none;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background: var(--zakat-primary-light);
+}
+
+.btn-secondary {
+  flex: 1;
+  background: transparent;
+  color: var(--z-text-muted);
+  border: 1.5px solid var(--z-border);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: var(--z-section-bg);
+  color: var(--z-text-main);
+}
+
+/* ফলাফল কার্ড */
+.result-card {
+  margin-top: 24px;
+  padding: 20px;
+  background: var(--z-section-bg);
+  border: 1.5px solid var(--zakat-primary);
+  border-radius: 18px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.result-status {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.result-status.eligible {
+  background: var(--zakat-primary-bg);
+  color: var(--zakat-primary);
+}
+
+.result-status.not-eligible {
+  background: rgba(239, 68, 68, 0.12);
+  color: var(--zakat-danger);
+}
+
+.result-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px dashed var(--z-border);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  color: var(--z-text-muted);
+}
+
+.summary-row strong {
+  color: var(--z-text-main);
+}
+
+.summary-row.highlight strong {
+  color: var(--zakat-primary);
+  font-size: 16px;
+}
+
+.zakat-final-box {
+  text-align: center;
+}
+
+.zakat-final-box span {
+  font-size: 14px;
+  color: var(--z-text-muted);
+}
+
+.zakat-final-box h2 {
+  font-size: 28px;
+  color: var(--zakat-primary);
+  font-weight: 700;
+  margin-top: 4px;
+    }
