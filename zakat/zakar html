@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>যাকাতের বিস্তারিত বিধান ও নির্দেশিকা - Islamic Light</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Global Website CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Zakat Specific CSS -->
+  <link rel="stylesheet" href="../css/zakat.css">
+</head>
+<body>
+
+  <!-- Dynamic Header Container -->
+  <div id="header"></div>
+
+  <div class="zakat-page-container">
+    <main class="zakat-guide-card">
+      
+      <!-- হেডার সেকশন -->
+      <header class="zakat-header">
+        <div class="badge"><i class="fa-solid fa-book-quran"></i> ইসলামের ৩য় স্তম্ভ</div>
+        <h1>যাকাতের বিস্তারিত বিধান ও গাইডলাইন</h1>
+        <p>যাকাত কার ওপর ফরজ, নেসাবের সঠিক পরিমাপ এবং বন্টনের সঠিক খাতসমূহ</p>
+      </header>
+
+      <!-- জাকাত ক্যালকুলেটরের হাইলাইট বাটন (শীর্ষে) -->
+      <a href="zakat-calculetor.html" class="guide-calculator-banner">
+        <div class="banner-left">
+          <div class="banner-icon">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+          <div class="banner-text">
+            <strong>নিজের যাকাত হিসাব করতে চান?</strong>
+            <span>সহজ যাকাত ক্যালকুলেটর ব্যবহার করুন</span>
+          </div>
+        </div>
+        <i class="fa-solid fa-arrow-right banner-arrow"></i>
+      </a>
+
+      <!-- ১. যাকাত কী ও এর গুরুত্ব -->
+      <section class="guide-section">
+        <h2 class="guide-title"><i class="fa-solid fa-hand-holding-heart"></i> যাকাত কী ও এর গুরুত্ব</h2>
+        <p>
+          'যাকাত' (الزكاة) একটি আরবি শব্দ, যার অর্থ পবিত্রতা, বৃদ্ধি ও বরকত। পারিভাষিক অর্থে—আল্লাহ নির্ধারিত নেসাব পরিমাণ সম্পদের মালিক কর্তৃক নির্দিষ্ট পরিমাণ সম্পদ (২.৫%) কুরআন নির্ধারিত ৮টি খাতের হকদারদের হাতে নিঃশর্তভাবে মালিক বানিয়ে দেওয়াকে যাকাত বলে।
+        </p>
+        <div class="quran-quote">
+          <p>“তোমরা নামায কায়েম কর এবং যাকাত প্রদান কর...”</p>
+          <small>— সূরা আল-বাকারা: ৪৩</small>
+        </div>
+      </section>
+
+      <!-- ২. যাকাত ফরজ হওয়ার শর্তসমূহ -->
+      <section class="guide-section">
+        <h2 class="guide-title"><i class="fa-solid fa-list-check"></i> যাকাত ফরজ হওয়ার মূল শর্ত</h2>
+        <ul class="guide-list">
+          <li><strong>মুসলিম হওয়া:</strong> অমুসলিমের ওপর যাকাত ফরজ নয়।</li>
+          <li><strong>স্বাধীন ও প্রাপ্তবয়স্ক হওয়া:</strong> সুস্থ মস্তিষ্কসম্পন্ন বালেগ হওয়া।</li>
+          <li><strong>নেসাবের মালিক হওয়া:</strong> নিত্যপ্রয়োজনীয় খরচ ও ঋণ বাদে অতিরিক্ত নেসাব পরিমাণ সম্পদ থাকা।</li>
+          <li><strong>এক বছর পূর্ণ হওয়া (হাওলানুল হাওল):</strong> নেসাব পরিমাণ সম্পদ ব্যক্তির কাছে পূর্ণ এক চন্দ্রবছর বলবৎ থাকা।</li>
+          <li><strong>সম্পদের বর্ধনশীলতা:</strong> সম্পদটি বাস্তবে বা সম্ভাবনায় বর্ধনশীল (যেমন নগদ অর্থ, সোনা-রুপা, বা ব্যবসার পণ্য) হওয়া।</li>
+        </ul>
+      </section>
+
+      <!-- ৩. নেসাবের পরিমাপ -->
+      <section class="guide-section">
+        <h2 class="guide-title"><i class="fa-solid fa-scale-balanced"></i> নেসাব ও তার আধুনিক পরিমাপ</h2>
+        <p>নেসাব হলো শরিয়ত নির্ধারিত সর্বনিম্ন সম্পদের সীমা, যা থাকলে যাকাত দিতে হয়:</p>
+        
+        <div class="nisab-compare-grid">
+          <div class="nisab-box">
+            <span class="nisab-type">স্বর্ণের নেসাব</span>
+            <strong>৭.৫ তোলা</strong>
+            <small>প্রায় ৮৭.৪৮ গ্রাম খাঁটি সোনা</small>
+          </div>
+          <div class="nisab-box silver">
+            <span class="nisab-type">রৌপ্যের নেসাব (সর্বজনীন)</span>
+            <strong>৫২.৫ তোলা</strong>
+            <small>প্রায় ৬১২.৩৬ গ্রাম খাঁটি রূপা</small>
+          </div>
+        </div>
+
+        <div class="info-note">
+          <i class="fa-solid fa-circle-info"></i>
+          <span>কারো কাছে যদি শুধু নগদ টাকা, ব্যবসার মালপত্র থাকে অথবা সোনা ও রূপা উভয়ই কিছু পরিমাণে থাকে, তবে অধিকাংশ ফকিহদের মতে গরীবদের সর্বাধিক কল্যাণে <strong>রূপার নেসাবকেই</strong> মানদণ্ড ধরা উত্তম।</span>
+        </div>
+      </section>
+
+      <!-- ৪. যেসব সম্পদে যাকাত দিতে হয় -->
+      <section class="guide-section">
+        <h2 class="guide-title"><i class="fa-solid fa-coins"></i> যেসব সম্পদে যাকাত আসে</h2>
+        <ul class="guide-list checkmark">
+          <li>হাতে থাকা নগদ টাকা, প্রাইজবন্ড ও ব্যাংকে রক্ষিত যেকোনো ব্যালেন্স।</li>
+          <li>সোনা-রুপার অলংকার বা বার (ব্যবহারের হোক কিংবা জমানো)।</li>
+          <li>ব্যবসার উদ্দেশ্যে ক্রয়কৃত যাবতীয় পণ্য বা স্টকের বর্তমান বাজারমূল্য।</li>
+          <li>শেয়ারবাজার বা ব্যবসায়িক শেয়ারে বিনিয়োগকৃত অর্থ।</li>
+          <li>কাউকে দেওয়া ফেরতযোগ্য ঋণ, যা পাওয়ার পূর্ণ সম্ভাবনা রয়েছে।</li>
+        </ul>
+      </section>
+
+      <!-- ৫. যেসব সম্পদে যাকাত নেই -->
+      <section class="guide-section">
+        <h2 class="guide-title text-danger"><i class="fa-solid fa-ban"></i> যেসব সম্পদে যাকাত দিতে হয় না</h2>
+        <ul class="guide-list crossmark">
+          <li>বসবাসের বাড়ি বা জমি (যা বিক্রির উদ্দেশ্যে নয়)।</li>
+          <li>ব্যবহার্য গাড়ি, ব্যক্তিগত কাপড়-চোপড় ও গৃহস্থালির আসবাবপত্র।</li>
+          <li>পেশাগত কাজে ব্যবহৃত যন্ত্রপাতি, সরঞ্জাম ও ফ্যাক্টরির মেশিন।</li>
+          <li>সোনা ও রূপা ছাড়া অন্যান্য রত্নপাথর (হীরা, মুক্তা ইত্যাদি—যদি তা বিক্রির নিয়তে না থাকে)।</li>
+        </ul>
+      </section>
+
+      <!-- ৬. যাকাত বন্টনের ৮টি খাত -->
+      <section class="guide-section">
+        <h2 class="guide-title"><i class="fa-solid fa-users"></i> যাকাত পাওয়ার উপযুক্ত খাতসমূহ</h2>
+        <p>পবিত্র কুরআনের সূরা আত-তাওবার ৬০ নম্বর আয়াতে যাকাতের ৮টি সুনির্দিষ্ট খাত ঘোষণা করা হয়েছে:</p>
+        <ol class="guide-numbered-list">
+          <li><strong>ফকির:</strong> যার সামান্য সম্পদ আছে কিন্তু নেসাব পরিমাণ নেই।</li>
+          <li><strong>মিসকিন:</strong> যার কোনো সহায়-সম্বল বা সম্পদ নেই।</li>
+          <li><strong>যাকাতকর্মী:</strong> সরকার বা কর্তৃপক্ষ নিয়োজিত যাকাত সংগ্রাহক।</li>
+          <li><strong>মন জয় করার উদ্দেশ্যে:</strong> নওমুসলিম বা ইসলামের প্রতি আকৃষ্ট করতে।</li>
+          <li><strong>দাসমুক্তি:</strong> বন্দি বা কৃতদাস মুক্ত করার কাজে।</li>
+          <li><strong>ঋণগ্রস্ত ব্যক্তি:</strong> যিনি ঋণ পরিশোধে অক্ষম।</li>
+          <li><strong>ফি-সাবিলিল্লাহ:</strong> আল্লাহর রাস্তায় দ্বীনের প্রচার ও জিহাদরতদের জন্য।</li>
+          <li><strong>মুসাফির:</strong> সফরে বিপদে পড়া নিঃস্ব পর্যটক (যদিও নিজ দেশে ধনী হোন)।</li>
+        </ol>
+      </section>
+
+      <!-- নিচের অ্যাকশন বাটন -->
+      <div class="bottom-action-wrapper">
+        <p>আপনার হিসাব নিখুঁতভাবে করতে এখনই ক্যালকুলেটরে চলে যান:</p>
+        <a href="zakat-calculetor.html" class="btn-primary btn-block">
+          <i class="fa-solid fa-calculator"></i> যাকাত ক্যালকুলেটরে যান
+        </a>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Dynamic Footer Container -->
+  <div id="footer"></div>
+
+  <!-- JS Links -->
+  <script src="../js/script.js"></script>
+</body>
+</html>
