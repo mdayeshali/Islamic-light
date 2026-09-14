@@ -284,4 +284,31 @@ body.dark-mode .slider-btn,
     transform: translateY(0);
   }
   }
-  
+  /* --- প্রোডাক্ট ভিউ পেজের ডেলিভারি ব্যাজ --- */
+#pDeliveryBadge {
+  display: none; /* ডিফল্টভাবে লুকানো থাকবে, JS দিয়ে সত্য হলে প্রদর্শিত হবে */
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #047857;
+  background: #ecfdf5;
+  border: 1px solid rgba(4, 120, 87, 0.2);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-top: 8px;
+  width: fit-content;
+}
+
+#pDeliveryBadge i {
+  font-size: 0.9rem;
+}
+
+/* ডার্ক মোড সাপোর্ট */
+body.dark-mode #pDeliveryBadge,
+[data-theme="dark"] #pDeliveryBadge {
+  background: rgba(4, 120, 87, 0.2);
+  border-color: rgba(52, 211, 153, 0.25);
+  color: #a7f3d0;
+}
+
