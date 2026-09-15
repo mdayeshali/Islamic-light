@@ -137,12 +137,11 @@ function renderDetails(p) {
     slider.scrollLeft = scrollLeftPos - walk;
   });
 
-  // অর্ডার বাটন (ছবির লিংক, ডেলিভারি স্ট্যাটাস ও প্রিভিউ সহ)
+  // অর্ডার বাটন (ছবি প্রিভিউ ফোকাসড)
   const orderBtn = document.getElementById("pOrderBtn");
   if (orderBtn) {
     orderBtn.onclick = () => {
       const absoluteImgUrl = new URL(p.images[0], window.location.origin).href;
-      const productPageUrl = window.location.href;
       const deliveryText = p.freeDelivery ? "✅ ফ্রি ডেলিভারি" : "📦 ডেলিভারি চার্জ প্রযোজ্য";
 
       const msg = encodeURIComponent(
@@ -152,15 +151,16 @@ function renderDetails(p) {
 📖 ${p.title}
 💰 মূল্য: ₹${p.price} (${deliveryText})
 
-🖼️ বইয়ের ছবি: ${absoluteImgUrl}
-🔗 বিস্তারিত লিংক: ${productPageUrl}
+দয়া করে পেমেন্টের UPI ডিটেইলস ও ডেলিভারির নিয়মটি জানাবেন।
 
-দয়া করে পেমেন্টের UPI ডিটেইলস ও ডেলিভারির নিয়মটি জানাবেন।`
+🖼️ বইয়ের ছবি:
+${absoluteImgUrl}`
       );
 
       window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, "_blank");
     };
   }
+  
 
   // --- ফটোসহ নিরাপদ শেয়ার বাটন লজিক ---
   const shareBtn = document.getElementById("shareBtn");
