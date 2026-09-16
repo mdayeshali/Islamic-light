@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const homeBtn = document.getElementById('homeBtn');
   const totalCoinsDisplay = document.getElementById('totalCoinsDisplay');
   const levelListContainer = document.getElementById('levelListContainer');
+  const soundToggleBtn = document.getElementById('soundToggleBtn');
+  const soundIcon = document.getElementById('soundIcon');
 
   // DOM Elements - Quiz Play
   const questionStepText = document.getElementById('questionStepText');
@@ -35,18 +37,98 @@ document.addEventListener('DOMContentLoaded', () => {
   // Local Storage Data Load
   let totalCoins = parseInt(localStorage.getItem('islamic_game_coins')) || 0;
   let unlockedLevels = JSON.parse(localStorage.getItem('islamic_unlocked_levels')) || [1];
+  let isSoundEnabled = localStorage.getItem('islamic_game_sound') !== 'false'; // ডিফল্ট অন
 
-  // বাংলা সংখ্যায় রূপান্তর
+  // ================== Web Audio API সাউন্ড সিস্টেম ==================
+  let audioCtx = null;
+
+  function getAudioContext() {
+    if (!audioCtx) {
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (AudioContextClass) {
+        audioCtx = new AudioContextClass();
+      }
+    }
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    return audioCtx;
+  }
+
+  function playTone(freq, type, duration, delay = 0, gainLevel = 0.12) {
+    if (!isSoundEnabled) return;
+    const ctx = getAudioContext();
+    if (!ctx) return;
+
+    setTimeout(() => {
+      try {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+
+        // সফট ফেড-আউট (মসৃণ শব্দের জন্য)
+        gain.gain.setValueAtTime(gainLevel, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {
+        console.error(e);
+      }
+    }, delay);
+  }
+
+  // বিভিন্ন ইভেন্টের অডিও ইফেক্ট
+  const Sounds = {
+    click: () => playTone(800, 'sine', 0.05, 0, 0.04),
+    correct: () => {
+      playTone(523.25, 'sine', 0.25, 0, 0.15);   // C5
+      playTone(659.25, 'sine', 0.35, 120, 0.15); // E5
+      playTone(783.99, 'sine', 0.45, 240, 0.15); // G5
+    },
+    wrong: () => {
+      playTone(220, 'triangle', 0.2, 0, 0.12);
+      playTone(185, 'triangle', 0.3, 150, 0.1);
+    },
+    win: () => {
+      const notes = [523.25, 659.25, 783.99, 1046.50];
+      notes.forEach((f, idx) => playTone(f, 'sine', 0.3, idx * 130, 0.12));
+    }
+  };
+
+  // সাউন্ড বাটন আপডেট
+  function updateSoundButtonUI() {
+    if (isSoundEnabled) {
+      soundIcon.className = 'fa-solid fa-volume-high';
+      soundToggleBtn.setAttribute('title', 'শব্দ বন্ধ করুন');
+    } else {
+      soundIcon.className = 'fa-solid fa-volume-xmark';
+      soundToggleBtn.setAttribute('title', 'শব্দ চালু করুন');
+    }
+  }
+
+  soundToggleBtn.addEventListener('click', () => {
+    isSoundEnabled = !isSoundEnabled;
+    localStorage.setItem('islamic_game_sound', isSoundEnabled);
+    updateSoundButtonUI();
+    if (isSoundEnabled) Sounds.click();
+  });
+
+  // ================== গেম লজিক ==================
+
   function toBengaliNum(num) {
     return Number(num).toLocaleString('bn-BD');
   }
 
-  // কয়েন ডিসপ্লে আপডেট
   function updateCoinDisplay() {
     totalCoinsDisplay.innerText = toBengaliNum(totalCoins);
   }
 
-  // স্ক্রিন পরিবর্তনের কমন ফাংশন
   function switchView(viewName) {
     levelSelectView.style.display = 'none';
     quizPlayView.style.display = 'none';
@@ -65,7 +147,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ১. JSON থেকে ডেটা লোড
   async function loadQuizData() {
     try {
       const res = await fetch('../data/quiz-game.json');
@@ -78,14 +159,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // ২. লেভেল তালিকা রেন্ডার করা
   function renderLevelList() {
     levelListContainer.innerHTML = '';
 
     gameLevels.forEach((lvl, idx) => {
       const isUnlocked = unlockedLevels.includes(lvl.level) || totalCoins >= lvl.requiredCoins;
 
-      // যদি শর্ত পূরণ হয় তবে অটো আনলক লিস্টে যুক্ত করা
       if (isUnlocked && !unlockedLevels.includes(lvl.level)) {
         unlockedLevels.push(lvl.level);
         localStorage.setItem('islamic_unlocked_levels', JSON.stringify(unlockedLevels));
@@ -110,14 +189,16 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
 
       if (isUnlocked) {
-        card.addEventListener('click', () => startLevel(idx));
+        card.addEventListener('click', () => {
+          Sounds.click();
+          startLevel(idx);
+        });
       }
 
       levelListContainer.appendChild(card);
     });
   }
 
-  // ৩. একটি নির্দিষ্ট লেভেল শুরু করা
   function startLevel(lvlIndex) {
     currentLevelIndex = lvlIndex;
     currentQuestionIndex = 0;
@@ -128,25 +209,20 @@ document.addEventListener('DOMContentLoaded', () => {
     loadQuestion();
   }
 
-  // ৪. প্রশ্ন ও অপশন লোড করা
   function loadQuestion() {
     const currentQuestions = gameLevels[currentLevelIndex].questions;
     const qData = currentQuestions[currentQuestionIndex];
 
-    // হেডার ও প্রগ্রেস বার
     questionStepText.innerText = `প্রশ্ন ${toBengaliNum(currentQuestionIndex + 1)} / ${toBengaliNum(currentQuestions.length)}`;
     const progressPercent = ((currentQuestionIndex + 1) / currentQuestions.length) * 100;
     progressBar.style.width = `${progressPercent}%`;
 
-    // প্রশ্ন টেক্সট
     questionText.innerText = qData.question;
 
-    // অপশন বাটন ও রেফারেন্স বক্স রিসেট
     optionsContainer.innerHTML = '';
     explanationBox.style.display = 'none';
     nextQuestionBtn.style.display = 'none';
 
-    // অপশন তৈরি
     qData.options.forEach((optText, optIndex) => {
       const btn = document.createElement('button');
       btn.type = 'button';
@@ -161,52 +237,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ৫. ব্যবহারকারীর উত্তর যাচাই করা
   function handleAnswerSelect(selectedIndex, clickedBtn) {
     const currentQuestions = gameLevels[currentLevelIndex].questions;
     const qData = currentQuestions[currentQuestionIndex];
     const allOptionBtns = optionsContainer.querySelectorAll('.option-btn');
 
-    // সব অপশন লক করে দেওয়া
     allOptionBtns.forEach(b => b.disabled = true);
 
     if (selectedIndex === qData.answerIndex) {
       // সঠিক উত্তর
+      Sounds.correct();
       clickedBtn.classList.add('correct');
       clickedBtn.querySelector('i').className = 'fa-solid fa-circle-check';
 
-      // ৫ কয়েন যোগ
       totalCoins += 5;
       earnedCoinsThisLevel += 5;
       localStorage.setItem('islamic_game_coins', totalCoins);
       updateCoinDisplay();
       correctCountThisLevel++;
 
-      if (navigator.vibrate) navigator.vibrate(50); // হালকা ভাইব্রেশন
+      if (navigator.vibrate) navigator.vibrate(50);
     } else {
       // ভুল উত্তর
+      Sounds.wrong();
       clickedBtn.classList.add('wrong');
       clickedBtn.querySelector('i').className = 'fa-solid fa-circle-xmark';
 
-      // সঠিক অপশনটি হাইলাইট করা
       allOptionBtns[qData.answerIndex].classList.add('correct');
       allOptionBtns[qData.answerIndex].querySelector('i').className = 'fa-solid fa-circle-check';
 
       if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
     }
 
-    // রেফারেন্স ও ব্যাখ্যা প্রদর্শন
     if (qData.explanation) {
       explanationText.innerText = qData.explanation;
       explanationBox.style.display = 'block';
     }
 
-    // পরবর্তী প্রশ্নের বাটন দেখানো
     nextQuestionBtn.style.display = 'flex';
   }
 
-  // ৬. পরবর্তী প্রশ্ন বা লেভেল শেষ করা
   nextQuestionBtn.addEventListener('click', () => {
+    Sounds.click();
     const currentQuestions = gameLevels[currentLevelIndex].questions;
     currentQuestionIndex++;
 
@@ -217,7 +289,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ৭. ফলাফল স্ক্রিন দেখানো
   function showLevelResults() {
     switchView('quizResult');
 
@@ -225,14 +296,13 @@ document.addEventListener('DOMContentLoaded', () => {
     correctScoreText.innerText = `${toBengaliNum(correctCountThisLevel)} / ${toBengaliNum(totalQuestions)}`;
     earnedCoinsText.innerText = `+${toBengaliNum(earnedCoinsThisLevel)}`;
 
-    // অন্তত ৩টি সঠিক হলে সফল হিসেবে গণ্য
     const isPassed = correctCountThisLevel >= 3;
 
     if (isPassed) {
+      Sounds.win();
       resultTitle.innerText = 'মাশাআল্লাহ! অসাধারণ!';
       resultSubtitle.innerText = 'আপনি সফলভাবে এই ধাপটি সম্পন্ন করেছেন।';
 
-      // পরবর্তী লেভেল আনলক করা (যদি থাকে)
       const nextLvlNum = gameLevels[currentLevelIndex].level + 1;
       const hasNextLevel = gameLevels.some(l => l.level === nextLvlNum);
 
@@ -243,24 +313,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
       nextLevelBtn.style.display = hasNextLevel ? 'flex' : 'none';
     } else {
+      Sounds.wrong();
       resultTitle.innerText = 'আবার চেষ্টা করুন!';
       resultSubtitle.innerText = 'পরবর্তী ধাপ আনলক করতে কমপক্ষে ৩টি সঠিক উত্তর প্রয়োজন।';
       nextLevelBtn.style.display = 'none';
     }
   }
 
-  // ইভেন্ট লিসেনারস (নেভিগেশন)
-  homeBtn.addEventListener('click', () => switchView('levelSelect'));
-  backToLevelsBtn.addEventListener('click', () => switchView('levelSelect'));
-  retryLevelBtn.addEventListener('click', () => startLevel(currentLevelIndex));
+  // ইভেন্ট লিসেনারস
+  homeBtn.addEventListener('click', () => {
+    Sounds.click();
+    switchView('levelSelect');
+  });
+
+  backToLevelsBtn.addEventListener('click', () => {
+    Sounds.click();
+    switchView('levelSelect');
+  });
+
+  retryLevelBtn.addEventListener('click', () => {
+    Sounds.click();
+    startLevel(currentLevelIndex);
+  });
 
   nextLevelBtn.addEventListener('click', () => {
+    Sounds.click();
     if (currentLevelIndex + 1 < gameLevels.length) {
       startLevel(currentLevelIndex + 1);
     }
   });
 
   // ইনিশিয়ালাইজেশন
+  updateSoundButtonUI();
   updateCoinDisplay();
   loadQuizData();
 });
+      
