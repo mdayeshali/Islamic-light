@@ -2,145 +2,169 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ইসলামিক কুইজ গেম - Islamic Light</title>
-
-  <!-- Google Fonts -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ইসলামিক জ্ঞান অন্বেষণ - ইসলামিক কুইজ গেম</title>
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Global Website CSS -->
+  <!-- Base & Game Stylesheets -->
   <link rel="stylesheet" href="../css/style.css">
-
-  <!-- Quiz Game Specific CSS -->
   <link rel="stylesheet" href="../css/game.css">
 </head>
-<body>
+<body class="game-body theme-oasis">
 
-  <!-- Dynamic Header Container -->
+  <!-- Header Container (Global) -->
   <div id="header"></div>
 
-  <div class="game-page-container">
-    <main class="game-card">
+  <div class="game-master-wrapper">
+    <!-- Game Container (App Canvas) -->
+    <div class="game-viewport" id="gameViewport">
+      
+      <!-- Top Dynamic HUD (Heads-up Display) -->
+      <header class="game-hud">
+        <div class="hud-left">
+          <button type="button" class="hud-btn" id="homeBtn" title="লেভেল নির্বাচন" style="display: none;">
+            <i class="fa-solid fa-arrow-left-long"></i>
+          </button>
+          <div class="world-indicator" id="worldBadge">
+            <i class="fa-solid fa-seedling"></i>
+            <span>অধ্যায় ১: মরূদ্যান</span>
+          </div>
+        </div>
 
-            <!-- গেম টপ বার: ব্যাক বাটন, সাউন্ড বাটন ও কয়েন -->
-      <div class="game-top-bar">
-        <button type="button" class="icon-btn" id="homeBtn" title="হোমে যান" style="display: none;">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-
-        <div style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
-          <!-- সাউন্ড মিউট/আনমিউট বাটন -->
-          <button type="button" class="icon-btn" id="soundToggleBtn" title="শব্দ চালু/বন্ধ করুন">
+        <div class="hud-right">
+          <!-- Sound Control -->
+          <button type="button" class="hud-btn" id="soundToggleBtn" title="সাউন্ড অন/অফ">
             <i class="fa-solid fa-volume-high" id="soundIcon"></i>
           </button>
-
-          <div class="coin-badge">
-            <i class="fa-solid fa-coins gold-coin"></i>
+          <!-- Coin Vault -->
+          <div class="coin-vault">
+            <i class="fa-solid fa-coins coin-icon"></i>
             <span id="totalCoinsDisplay">০</span>
           </div>
         </div>
-      </div>
-      
+      </header>
 
-      <!-- ১. লেভেল সিলেকশন ভিউ (প্রথমে এটি দেখাবে) -->
-      <section id="levelSelectView" class="view-screen active">
-        <header class="game-header">
-          <div class="badge"><i class="fa-solid fa-trophy"></i> দ্বীনি জ্ঞান অর্জন</div>
-          <h1>ইসলামিক কুইজ গেম</h1>
-          <p>সহজ প্রশ্নের উত্তর দিন, কয়েন জিতুন এবং নতুন লেভেল আনলক করুন!</p>
-        </header>
+      <!-- VIEW 1: CHAPTER & LEVEL SELECTION SCREEN -->
+      <section class="game-view" id="levelSelectView">
+        <div class="level-select-header">
+          <h2>ইসলামিক চ্যালেঞ্জ</h2>
+          <p>আপনার জ্ঞান বৃদ্ধি করুন এবং প্রতিটি অধ্যায় জয় করুন</p>
+        </div>
 
-        <div class="level-list" id="levelListContainer">
-          <!-- JS থেকে লেভেল কার্ডগুলো লোড হবে -->
-          <div class="loading-text">লেভেল লোড হচ্ছে...</div>
+        <!-- World Tabs (Desktop/Mobile Nav) -->
+        <div class="world-tabs">
+          <button type="button" class="tab-btn active" data-world="1">
+            <i class="fa-solid fa-leaf"></i> পর্ব ১ (১-৫)
+          </button>
+          <button type="button" class="tab-btn" data-world="2">
+            <i class="fa-solid fa-moon"></i> পর্ব ২ (৬-১০)
+          </button>
+        </div>
+
+        <!-- Level Cards Grid -->
+        <div class="levels-scroll-area" id="levelListContainer">
+          <!-- Dynamic injection from JS -->
         </div>
       </section>
 
-      <!-- ২. কুইজ খেলার ভিউ -->
-      <section id="quizPlayView" class="view-screen" style="display: none;">
-        <!-- প্রগ্রেস বার ও প্রশ্ন ট্র্যাকার -->
-        <div class="quiz-status-header">
-          <span class="step-counter" id="questionStepText">প্রশ্ন ১ / ৫</span>
-          <div class="progress-track">
-            <div class="progress-fill" id="progressBar"></div>
+      <!-- VIEW 2: QUIZ PLAY SCREEN (THE GAMEPLAY) -->
+      <section class="game-view" id="quizPlayView" style="display: none;">
+        <!-- Progress Bar & Step Tracker -->
+        <div class="quiz-tracker-bar">
+          <div class="tracker-info">
+            <span id="questionStepText">প্রশ্ন ১ / ৫</span>
+            <span id="streakIndicator"><i class="fa-solid fa-fire-flame-curved"></i> ধারাবাহিক সঠিক</span>
+          </div>
+          <div class="tracker-track">
+            <div class="tracker-fill" id="progressBar"></div>
           </div>
         </div>
 
-        <!-- প্রশ্ন বক্স -->
-        <div class="question-container">
-          <h2 class="question-title" id="questionText">প্রশ্ন লোড হচ্ছে...</h2>
-        </div>
-
-        <!-- অপশন বাটন গ্রুপ -->
-        <div class="options-container" id="optionsContainer">
-          <!-- JS থেকে ৩টি অপশন তৈরি হবে -->
-        </div>
-
-        <!-- শিক্ষণীয় রেফারেন্স ও ব্যাখ্যা কার্ড (উত্তর দেওয়ার পর আসবে) -->
-        <div class="explanation-box" id="explanationBox" style="display: none;">
-          <div class="explanation-header">
-            <i class="fa-solid fa-book-open-reader"></i>
-            <span>জেনে রাখুন:</span>
+        <!-- Question Card Box -->
+        <div class="question-stage">
+          <div class="question-bubble">
+            <span class="q-badge" id="categoryBadge">প্রশ্ন</span>
+            <h3 id="questionText">লোড হচ্ছে...</h3>
           </div>
-          <p id="explanationText">--</p>
-        </div>
 
-        <!-- পরবর্তী প্রশ্নের বাটন -->
-        <button type="button" class="btn-primary" id="nextQuestionBtn" style="display: none;">
-          পরবর্তী প্রশ্ন <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </section>
-
-      <!-- ৩. লেভেল সমাপ্তি / ফলাফল ভিউ -->
-      <section id="quizResultView" class="view-screen" style="display: none;">
-        <div class="result-celebration">
-          <div class="result-icon-wrap" id="resultIconWrap">
-            <i class="fa-solid fa-award"></i>
+          <!-- Answer Options Container -->
+          <div class="options-canvas" id="optionsContainer">
+            <!-- Dynamic Options -->
           </div>
-          <h2 id="resultTitle">অভিনন্দন!</h2>
-          <p id="resultSubtitle">আপনি এই লেভেলটি সফলভাবে সম্পন্ন করেছেন।</p>
-        </div>
 
-        <!-- রেজাল্ট স্কোরবোর্ড -->
-        <div class="result-stats-card">
-          <div class="stat-item">
-            <span class="label">সঠিক উত্তর</span>
-            <strong id="correctScoreText">০ / ৫</strong>
-          </div>
-          <div class="stat-item">
-            <span class="label">অর্জিত কয়েন</span>
-            <strong class="text-gold" id="earnedCoinsText">+০</strong>
+          <!-- Insight/Explanation Reveal -->
+          <div class="knowledge-reveal" id="explanationBox" style="display: none;">
+            <div class="reveal-head">
+              <i class="fa-solid fa-circle-info"></i>
+              <span>রেফারেন্স ও জ্ঞান:</span>
+            </div>
+            <p id="explanationText"></p>
           </div>
         </div>
 
-        <!-- রেজাল্ট অ্যাকশন বাটনসমূহ -->
-        <div class="result-actions">
-          <button type="button" class="btn-primary" id="nextLevelBtn">
-            পরবর্তী ধাপ খেলুন <i class="fa-solid fa-forward"></i>
-          </button>
-          <button type="button" class="btn-secondary" id="retryLevelBtn">
-            <i class="fa-solid fa-rotate-right"></i> আবার চেষ্টা করুন
-          </button>
-          <button type="button" class="btn-secondary" id="backToLevelsBtn">
-            <i class="fa-solid fa-layer-group"></i> সব লেভেল
+        <!-- Play Controls / Action Footer -->
+        <div class="quiz-footer-action">
+          <button type="button" class="action-btn next-btn" id="nextQuestionBtn" style="display: none;">
+            <span>পরবর্তী প্রশ্ন</span>
+            <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
       </section>
 
-    </main>
+      <!-- VIEW 3: LEVEL SUCCESS / FAILURE RESULTS -->
+      <section class="game-view" id="quizResultView" style="display: none;">
+        <div class="result-celebration-card">
+          <div class="trophy-sphere" id="resultIconBox">
+            <i class="fa-solid fa-trophy" id="resultTrophyIcon"></i>
+          </div>
+          
+          <h2 id="resultTitle">মাশাআল্লাহ!</h2>
+          <p id="resultSubtitle">আপনি এই স্তরটি সফলভাবে সম্পন্ন করেছেন</p>
+
+          <div class="score-analytics">
+            <div class="score-pill">
+              <span>সঠিক উত্তর</span>
+              <strong id="correctScoreText">০ / ৫</strong>
+            </div>
+            <div class="score-pill highlight">
+              <span>অর্জিত কয়েন</span>
+              <strong id="earnedCoinsText">+০</strong>
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button type="button" class="action-btn next-btn" id="nextLevelBtn">
+              <span>পরবর্তী লেভেল</span>
+              <i class="fa-solid fa-forward"></i>
+            </button>
+            <button type="button" class="action-btn retry-btn" id="retryLevelBtn">
+              <i class="fa-solid fa-rotate-right"></i>
+              <span>পুনরায় খেলুন</span>
+            </button>
+            <button type="button" class="action-btn ghost-btn" id="backToLevelsBtn">
+              <i class="fa-solid fa-list-ul"></i>
+              <span>লেভেল তালিকায় ফিরুন</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
   </div>
 
-  <!-- Dynamic Footer Container -->
+  <!-- Footer Container (Global) -->
   <div id="footer"></div>
 
-  <!-- Global & Game Scripts -->
+  <!-- Audio Context Synthesizer & Scripts -->
   <script src="../js/script.js"></script>
   <script src="../js/game.js" defer></script>
 </body>
-          </html>
-          
+            </html>
+            
