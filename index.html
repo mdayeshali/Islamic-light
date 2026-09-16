@@ -142,7 +142,6 @@
 <link rel="stylesheet" href="style.css">
 
 </head>
-
 <body>
   <div id="header"></div>
 
@@ -216,47 +215,46 @@
     </div>
   </div>
 
-   <!-- প্রতিদিনের আয়াত ও হাদিস কার্ড -->
-<div class="daily-card-container">
-  <div class="daily-card" id="dailyCard">
-    <div class="daily-card-top">
-      <span class="daily-badge" id="itemTypeBadge">
-        <i class="fa-solid fa-book-open"></i> আজকের আয়াত
-      </span>
-      <span class="daily-date" id="currentDateText">--</span>
-    </div>
+  <!-- প্রতিদিনের আয়াত ও হাদিস কার্ড -->
+  <div class="daily-card-container">
+    <div class="daily-card" id="dailyCard">
+      <div class="daily-card-top">
+        <span class="daily-badge" id="itemTypeBadge">
+          <i class="fa-solid fa-book-open"></i> আজকের আয়াত
+        </span>
+        <span class="daily-date" id="currentDateText">--</span>
+      </div>
 
-    <!-- আরবি টেক্সট -->
-    <p class="arabic-text" id="arabicText">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+      <!-- আরবি টেক্সট -->
+      <p class="arabic-text" id="arabicText">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
 
-    <!-- বাংলা অনুবাদ -->
-    <blockquote class="bengali-translation" id="bengaliText">
-      "লোড হচ্ছে..."
-    </blockquote>
+      <!-- বাংলা অনুবাদ -->
+      <blockquote class="bengali-translation" id="bengaliText">
+        "লোড হচ্ছে..."
+      </blockquote>
 
-    <!-- রেফারেন্স বা সূত্র -->
-    <div class="daily-reference" id="referenceText">--</div>
+      <!-- রেফারেন্স বা সূত্র -->
+      <div class="daily-reference" id="referenceText">--</div>
 
-    <!-- অ্যাকশন বাটনসমূহ (Copy & Share) -->
-    <div class="daily-actions">
-      <button type="button" class="daily-btn" id="copyBtn" title="কপি করুন">
-        <i class="fa-regular fa-copy"></i>
-        <span id="copyBtnText">কপি</span>
-      </button>
+      <!-- অ্যাকশন বাটনসমূহ (Copy & Share) -->
+      <div class="daily-actions">
+        <button type="button" class="daily-btn" id="copyBtn" title="কপি করুন">
+          <i class="fa-regular fa-copy"></i>
+          <span id="copyBtnText">কপি</span>
+        </button>
 
-      <button type="button" class="daily-btn whatsapp" id="whatsappBtn" title="হোয়াটসঅ্যাপে শেয়ার">
-        <i class="fa-brands fa-whatsapp"></i>
-        <span>WhatsApp</span>
-      </button>
+        <button type="button" class="daily-btn whatsapp" id="whatsappBtn" title="হোয়াটসঅ্যাপে শেয়ার">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>WhatsApp</span>
+        </button>
 
-      <button type="button" class="daily-btn share" id="nativeShareBtn" title="শেয়ার করুন">
-        <i class="fa-solid fa-share-nodes"></i>
-        <span>শেয়ার</span>
-      </button>
+        <button type="button" class="daily-btn share" id="nativeShareBtn" title="শেয়ার করুন">
+          <i class="fa-solid fa-share-nodes"></i>
+          <span>শেয়ার</span>
+        </button>
+      </div>
     </div>
   </div>
-   </div>
-   
 
   <!-- MAIN WRAPPER FOR ALL CONTENT -->
   <main class="site-main">
@@ -302,6 +300,20 @@
       </div>
     </section>
 
+    <!-- নতুন: ইসলামিক কুইজ গেম ব্যানার -->
+    <section class="feature-section" data-aos="fade-up">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fa-solid fa-gamepad"></i>
+        </div>
+        <div class="feature-content">
+          <h3>ইসলামিক কুইজ গেম</h3>
+          <p>দৈনন্দিন দোয়া ও নামাজ শিক্ষার সহজ প্রশ্নের উত্তর দিন, কয়েন জিতুন এবং নতুন ধাপ আনলক করুন!</p>
+          <a href="quiz/game.html" class="button button-accent">খেলুন ও শিখুন <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
     <!-- ২টি আর্টিকেল ও প্রশ্ন-উত্তর কার্ড (পাশাপাশি গ্রিড) -->
     <section class="cards-grid dual-grid">
       <div class="card" data-aos="fade-up">
@@ -314,6 +326,20 @@
         <h2><a href="islamic-qa.html">ইসলামিক প্রশ্ন-উত্তর</a></h2>
         <p>হাদীস ও কুরআনের আলোকে সমসাময়িক জিজ্ঞাসার সঠিক জবাব খুঁজুন।</p>
         <a href="islamic-qa.html" class="button">Search Q&A</a>
+      </div>
+    </section>
+
+    <!-- নতুন: যাকাত গাইড ও ক্যালকুলেটর ব্যানার -->
+    <section class="feature-section" data-aos="fade-up">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <i class="fa-solid fa-calculator"></i>
+        </div>
+        <div class="feature-content">
+          <h3>যাকাতের বিধান ও সহজ ক্যালকুলেটর</h3>
+          <p>যাকাত কার ওপর ফরজ, রূপার নেসাবের হিসাব জানুন এবং নিজস্ব সম্পদের সঠিক যাকাত নিমিষেই হিসাব করুন।</p>
+          <a href="zakat/zaqat.html" class="button button-accent">বিস্তারিত ও হিসাব <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
       </div>
     </section>
 
@@ -331,41 +357,38 @@
       </div>
     </section>
 
-     <!-- ================= Shop Promo Section ================= -->
-<section class="home-shop-promo">
-  <div class="shop-promo-card">
-    <div class="shop-promo-content">
-   
-      <h2>বিশুদ্ধ ইসলামিক বই সম্ভার</h2>
-      <p>
-        সহিহ আকীদা, তাফসির, হাদিস ও সিরাতের নির্ভরযোগ্য নির্বাচিত গ্রন্থগুলো সংগ্রহ করুন ঘরে বসেই। দেশজুড়ে ক্যাশলেস ও নিরাপদ ডেলিভারি ব্যবস্থা।
-      </p>
+    <!-- Shop Promo Section -->
+    <section class="home-shop-promo">
+      <div class="shop-promo-card">
+        <div class="shop-promo-content">
+          <h2>বিশুদ্ধ ইসলামিক বই সম্ভার</h2>
+          <p>
+            সহিহ আকীদা, তাফসির, হাদিস ও সিরাতের নির্ভরযোগ্য নির্বাচিত গ্রন্থগুলো সংগ্রহ করুন ঘরে বসেই। দেশজুড়ে ক্যাশলেস ও নিরাপদ ডেলিভারি ব্যবস্থা।
+          </p>
 
-      <ul class="promo-features">
-        <li><i class="fa-solid fa-circle-check"></i> নির্ভরযোগ্য প্রকাশনীর মূল বই</li>
-        <li><i class="fa-solid fa-truck-fast"></i> স্পিড পোস্টে সারা ভারতে ডেলিভারি</li>
-        <li><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে সহজ প্রি-পেইড অর্ডার</li>
-      </ul>
+          <ul class="promo-features">
+            <li><i class="fa-solid fa-circle-check"></i> নির্ভরযোগ্য প্রকাশনীর মূল বই</li>
+            <li><i class="fa-solid fa-truck-fast"></i> স্পিড পোস্টে সারা ভারতে ডেলিভারি</li>
+            <li><i class="fa-brands fa-whatsapp"></i> হোয়াটসঅ্যাপে সহজ প্রি-পেইড অর্ডার</li>
+          </ul>
 
-      <a href="/shop/shop.html" class="btn-shop-explore">
-        <span>বই সম্ভার দেখুন</span>
-        <i class="fa-solid fa-arrow-right"></i>
-      </a>
-    </div>
+          <a href="/shop/shop.html" class="btn-shop-explore">
+            <span>বই সম্ভার দেখুন</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
 
-    <div class="shop-promo-visual">
-      <div class="visual-stack">
-        <!-- আপনার শপের যেকোনো একটি বইয়ের কভারের লিংক দিতে পারেন -->
-        <img src="/images/shop/quran-promo.webp" alt="ইসলামিক বই" class="stack-img main" onerror="this.src='/images/logo.webp'">
-        <div class="visual-badge">
-          <i class="fa-solid fa-shield-halved"></i>
-          <span>১০০% নিরাপদ ডেলিভারি</span>
+        <div class="shop-promo-visual">
+          <div class="visual-stack">
+            <img src="/images/shop/quran-promo.webp" alt="ইসলামিক বই" class="stack-img main" onerror="this.src='/images/logo.webp'">
+            <div class="visual-badge">
+              <i class="fa-solid fa-shield-halved"></i>
+              <span>১০০% নিরাপদ ডেলিভারি</span>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-     
+    </section>
 
     <!-- কুরআন আয়াত বক্স -->
     <section class="quran-verse" data-aos="fade-up">
@@ -381,8 +404,10 @@
   <div id="footer"></div>
 
   <!-- Scripts -->
-   <script src="js/daily-inspiration.js" defer></script>
+  <script src="js/daily-inspiration.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-</body>
+           </body>
+   
+
 </html>
