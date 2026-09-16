@@ -3,168 +3,172 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ইসলামিক জ্ঞান অন্বেষণ - ইসলামিক কুইজ গেম</title>
+  <title>ইলম কোয়েস্ট - ইসলামিক কুইজ গেম</title>
   
-  <!-- Fonts -->
+  <!-- Fonts: DIN Rounded / Nunito / Hind Siliguri vibes -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Outfit:wght@600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
   
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-  <!-- Base & Game Stylesheets -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/game.css">
 </head>
-<body class="game-body theme-oasis">
+<body class="duo-body">
 
-  <!-- Header Container (Global) -->
   <div id="header"></div>
 
-  <div class="game-master-wrapper">
-    <!-- Game Container (App Canvas) -->
-    <div class="game-viewport" id="gameViewport">
+  <div class="duo-screen-container">
+    <div class="duo-app-wrapper">
       
-      <!-- Top Dynamic HUD (Heads-up Display) -->
-      <header class="game-hud">
-        <div class="hud-left">
-          <button type="button" class="hud-btn" id="homeBtn" title="লেভেল নির্বাচন" style="display: none;">
-            <i class="fa-solid fa-arrow-left-long"></i>
-          </button>
-          <div class="world-indicator" id="worldBadge">
-            <i class="fa-solid fa-seedling"></i>
-            <span>অধ্যায় ১: মরূদ্যান</span>
-          </div>
-        </div>
+      <!-- Duolingo Top Header HUD -->
+      <header class="duo-hud">
+        <button type="button" class="duo-icon-btn" id="exitQuizBtn" style="display: none;" title="বেরিয়ে যান">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
 
-        <div class="hud-right">
-          <!-- Sound Control -->
-          <button type="button" class="hud-btn" id="soundToggleBtn" title="সাউন্ড অন/অফ">
-            <i class="fa-solid fa-volume-high" id="soundIcon"></i>
-          </button>
-          <!-- Coin Vault -->
-          <div class="coin-vault">
-            <i class="fa-solid fa-coins coin-icon"></i>
+        <div class="duo-stats-group" id="mainStatsGroup">
+          <!-- Streak -->
+          <div class="stat-pill streak-pill">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            <span id="streakCount">৩</span>
+          </div>
+          <!-- Gems / Coins -->
+          <div class="stat-pill gem-pill">
+            <i class="fa-solid fa-gem"></i>
             <span id="totalCoinsDisplay">০</span>
           </div>
+          <!-- Hearts / Lives -->
+          <div class="stat-pill heart-pill">
+            <i class="fa-solid fa-heart"></i>
+            <span id="heartsDisplay">৫</span>
+          </div>
         </div>
+
+        <button type="button" class="duo-icon-btn" id="soundToggleBtn" title="সাউন্ড চালু/বন্ধ">
+          <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+        </button>
       </header>
 
-      <!-- VIEW 1: CHAPTER & LEVEL SELECTION SCREEN -->
-      <section class="game-view" id="levelSelectView">
-        <div class="level-select-header">
-          <h2>ইসলামিক চ্যালেঞ্জ</h2>
-          <p>আপনার জ্ঞান বৃদ্ধি করুন এবং প্রতিটি অধ্যায় জয় করুন</p>
-        </div>
-
-        <!-- World Tabs (Desktop/Mobile Nav) -->
-        <div class="world-tabs">
-          <button type="button" class="tab-btn active" data-world="1">
-            <i class="fa-solid fa-leaf"></i> পর্ব ১ (১-৫)
-          </button>
-          <button type="button" class="tab-btn" data-world="2">
-            <i class="fa-solid fa-moon"></i> পর্ব ২ (৬-১০)
-          </button>
-        </div>
-
-        <!-- Level Cards Grid -->
-        <div class="levels-scroll-area" id="levelListContainer">
-          <!-- Dynamic injection from JS -->
-        </div>
-      </section>
-
-      <!-- VIEW 2: QUIZ PLAY SCREEN (THE GAMEPLAY) -->
-      <section class="game-view" id="quizPlayView" style="display: none;">
-        <!-- Progress Bar & Step Tracker -->
-        <div class="quiz-tracker-bar">
-          <div class="tracker-info">
-            <span id="questionStepText">প্রশ্ন ১ / ৫</span>
-            <span id="streakIndicator"><i class="fa-solid fa-fire-flame-curved"></i> ধারাবাহিক সঠিক</span>
+      <!-- VIEW 1: DUOLINGO S-SHAPED ROADMAP PATH -->
+      <main class="duo-view" id="pathwayView">
+        
+        <!-- Unit Banner: World 1 -->
+        <div class="unit-banner unit-1">
+          <div class="unit-text">
+            <span class="unit-tag">অধ্যায় ১</span>
+            <h3>ঈমান ও প্রাথমিক আমল</h3>
           </div>
-          <div class="tracker-track">
-            <div class="tracker-fill" id="progressBar"></div>
+          <div class="unit-trophy">
+            <i class="fa-solid fa-book-open"></i>
           </div>
         </div>
 
-        <!-- Question Card Box -->
-        <div class="question-stage">
-          <div class="question-bubble">
-            <span class="q-badge" id="categoryBadge">প্রশ্ন</span>
-            <h3 id="questionText">লোড হচ্ছে...</h3>
-          </div>
+        <!-- S-Curved Path Roadmap for Levels 1 to 5 -->
+        <div class="duo-path" id="worldOnePath">
+          <!-- JS will inject nodes here -->
+        </div>
 
-          <!-- Answer Options Container -->
-          <div class="options-canvas" id="optionsContainer">
-            <!-- Dynamic Options -->
+        <!-- Unit Banner: World 2 (লেভেল ৬ থেকে কালার প্যালেট চেইঞ্জ) -->
+        <div class="unit-banner unit-2">
+          <div class="unit-text">
+            <span class="unit-tag">অধ্যায় ২</span>
+            <h3>সাহাবিদের আদর্শ ও ইতিহাস</h3>
           </div>
+          <div class="unit-trophy">
+            <i class="fa-solid fa-mosque"></i>
+          </div>
+        </div>
 
-          <!-- Insight/Explanation Reveal -->
-          <div class="knowledge-reveal" id="explanationBox" style="display: none;">
-            <div class="reveal-head">
-              <i class="fa-solid fa-circle-info"></i>
-              <span>রেফারেন্স ও জ্ঞান:</span>
+        <!-- Roadmap for Levels 6 to 10 -->
+        <div class="duo-path" id="worldTwoPath">
+          <!-- JS will inject nodes here -->
+        </div>
+
+      </main>
+
+      <!-- VIEW 2: QUIZ PLAY SCREEN (DUOLINGO CARD PLAY) -->
+      <main class="duo-view" id="quizPlayView" style="display: none;">
+        
+        <!-- Duolingo Top Progress Bar -->
+        <div class="quiz-top-progress">
+          <div class="duo-progress-track">
+            <div class="duo-progress-fill" id="progressBar"></div>
+          </div>
+        </div>
+
+        <!-- Quiz Interaction Area -->
+        <div class="quiz-content-area">
+          <div class="mascot-speech-bubble">
+            <div class="speech-bubble">
+              <h2 id="questionText">সঠিক উত্তর নির্বাচন করুন:</h2>
             </div>
-            <p id="explanationText"></p>
+          </div>
+
+          <div class="duo-options-list" id="optionsContainer">
+            <!-- 3D Pressable Option Buttons -->
           </div>
         </div>
 
-        <!-- Play Controls / Action Footer -->
-        <div class="quiz-footer-action">
-          <button type="button" class="action-btn next-btn" id="nextQuestionBtn" style="display: none;">
-            <span>পরবর্তী প্রশ্ন</span>
-            <i class="fa-solid fa-arrow-right"></i>
-          </button>
-        </div>
-      </section>
+        <!-- Duolingo Bottom Feedback Sheet -->
+        <footer class="duo-bottom-sheet" id="bottomSheet">
+          <div class="sheet-content">
+            <div class="sheet-status-info">
+              <div class="sheet-icon" id="sheetIcon">
+                <i class="fa-solid fa-check"></i>
+              </div>
+              <div class="sheet-text">
+                <strong id="sheetTitle">অসাধারণ!</strong>
+                <p id="sheetExplanation"></p>
+              </div>
+            </div>
+            <button type="button" class="duo-action-btn" id="nextQuestionBtn">
+              চালিয়ে যান
+            </button>
+          </div>
+        </footer>
+      </main>
 
-      <!-- VIEW 3: LEVEL SUCCESS / FAILURE RESULTS -->
-      <section class="game-view" id="quizResultView" style="display: none;">
-        <div class="result-celebration-card">
-          <div class="trophy-sphere" id="resultIconBox">
-            <i class="fa-solid fa-trophy" id="resultTrophyIcon"></i>
+      <!-- VIEW 3: LEVEL COMPLETE CELEBRATION -->
+      <main class="duo-view" id="quizResultView" style="display: none;">
+        <div class="duo-result-card">
+          <div class="celebration-badge">
+            <i class="fa-solid fa-trophy"></i>
           </div>
           
-          <h2 id="resultTitle">মাশাআল্লাহ!</h2>
-          <p id="resultSubtitle">আপনি এই স্তরটি সফলভাবে সম্পন্ন করেছেন</p>
+          <h2 id="resultTitle">পাঠ সম্পন্ন!</h2>
+          <p id="resultSubtitle">মাশাআল্লাহ! আপনি দারুণ করেছেন।</p>
 
-          <div class="score-analytics">
-            <div class="score-pill">
-              <span>সঠিক উত্তর</span>
-              <strong id="correctScoreText">০ / ৫</strong>
+          <div class="duo-rewards-grid">
+            <div class="reward-card">
+              <span class="reward-label">সঠিক উত্তর</span>
+              <strong id="correctScoreText">৫ / ৫</strong>
             </div>
-            <div class="score-pill highlight">
-              <span>অর্জিত কয়েন</span>
-              <strong id="earnedCoinsText">+০</strong>
+            <div class="reward-card highlight">
+              <span class="reward-label">অর্জিত জেমস</span>
+              <strong id="earnedCoinsText">+২৫</strong>
             </div>
           </div>
 
-          <div class="result-actions">
-            <button type="button" class="action-btn next-btn" id="nextLevelBtn">
-              <span>পরবর্তী লেভেল</span>
-              <i class="fa-solid fa-forward"></i>
+          <div class="result-btn-stack">
+            <button type="button" class="duo-action-btn primary" id="continuePathBtn">
+              পথচলা অব্যাহত রাখুন
             </button>
-            <button type="button" class="action-btn retry-btn" id="retryLevelBtn">
-              <i class="fa-solid fa-rotate-right"></i>
-              <span>পুনরায় খেলুন</span>
-            </button>
-            <button type="button" class="action-btn ghost-btn" id="backToLevelsBtn">
-              <i class="fa-solid fa-list-ul"></i>
-              <span>লেভেল তালিকায় ফিরুন</span>
+            <button type="button" class="duo-action-btn secondary" id="retryLevelBtn">
+              আবার অনুশীলন করুন
             </button>
           </div>
         </div>
-      </section>
+      </main>
 
     </div>
   </div>
 
-  <!-- Footer Container (Global) -->
   <div id="footer"></div>
 
-  <!-- Audio Context Synthesizer & Scripts -->
   <script src="../js/script.js"></script>
   <script src="../js/game.js" defer></script>
 </body>
-            </html>
-            
+</html>
