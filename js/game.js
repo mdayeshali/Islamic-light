@@ -34,15 +34,15 @@ document.addEventListener('DOMContentLoaded', () => {
   let correctCountThisLevel = 0;
   let earnedCoinsThisLevel = 0;
 
-  // Local Storage Data Load
+  // Local Storage Data
   let totalCoins = parseInt(localStorage.getItem('islamic_game_coins')) || 0;
   let unlockedLevels = JSON.parse(localStorage.getItem('islamic_unlocked_levels')) || [1];
-  let isSoundEnabled = localStorage.getItem('islamic_game_sound') !== 'false'; // ডিফল্ট অন
+  let isSoundEnabled = localStorage.getItem('islamic_game_sound') !== 'false';
 
-  // ================== Web Audio API সাউন্ড সিস্টেম ==================
+  // ================== বুলেটপ্রুফ Web Audio ইঞ্জিন ==================
   let audioCtx = null;
 
-  function getAudioContext() {
+  function initAudio() {
     if (!audioCtx) {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
       if (AudioContextClass) {
@@ -52,56 +52,65 @@ document.addEventListener('DOMContentLoaded', () => {
     if (audioCtx && audioCtx.state === 'suspended') {
       audioCtx.resume();
     }
-    return audioCtx;
   }
 
-  function playTone(freq, type, duration, delay = 0, gainLevel = 0.12) {
+  // প্রথম ইউজার ইন্টারঅ্যাকশনেই ব্রাউজারের অডিও লক খুলে দেওয়া
+  const unlockAudio = () => {
+    initAudio();
+    document.removeEventListener('touchstart', unlockAudio);
+    document.removeEventListener('click', unlockAudio);
+  };
+  document.addEventListener('touchstart', unlockAudio, { passive: true });
+  document.addEventListener('click', unlockAudio);
+
+  // একক সাউন্ড প্লেয়ার ফাংশন
+  function playBeep(freq, duration, type = 'sine', gainVal = 0.15) {
     if (!isSoundEnabled) return;
-    const ctx = getAudioContext();
-    if (!ctx) return;
+    initAudio();
+    if (!audioCtx) return;
 
-    setTimeout(() => {
-      try {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
+    try {
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
 
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+      osc.type = type;
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
 
-        // সফট ফেড-আউট (মসৃণ শব্দের জন্য)
-        gain.gain.setValueAtTime(gainLevel, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+      gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
+      gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + duration);
 
-        osc.connect(gain);
-        gain.connect(ctx.destination);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
 
-        osc.start();
-        osc.stop(ctx.currentTime + duration);
-      } catch (e) {
-        console.error(e);
-      }
-    }, delay);
+      osc.start();
+      osc.stop(audioCtx.currentTime + duration);
+    } catch (err) {
+      console.warn('Audio Error:', err);
+    }
   }
 
-  // বিভিন্ন ইভেন্টের অডিও ইফেক্ট
+  // বিভিন্ন সুরের সাউন্ড
   const Sounds = {
-    click: () => playTone(800, 'sine', 0.05, 0, 0.04),
+    click: () => {
+      playBeep(600, 0.05, 'sine', 0.08);
+    },
     correct: () => {
-      playTone(523.25, 'sine', 0.25, 0, 0.15);   // C5
-      playTone(659.25, 'sine', 0.35, 120, 0.15); // E5
-      playTone(783.99, 'sine', 0.45, 240, 0.15); // G5
+      playBeep(523.25, 0.12, 'sine', 0.2); // C5
+      setTimeout(() => playBeep(659.25, 0.12, 'sine', 0.2), 100); // E5
+      setTimeout(() => playBeep(783.99, 0.25, 'sine', 0.2), 200); // G5
     },
     wrong: () => {
-      playTone(220, 'triangle', 0.2, 0, 0.12);
-      playTone(185, 'triangle', 0.3, 150, 0.1);
+      playBeep(250, 0.15, 'square', 0.1);
+      setTimeout(() => playBeep(180, 0.25, 'square', 0.1), 120);
     },
     win: () => {
-      const notes = [523.25, 659.25, 783.99, 1046.50];
-      notes.forEach((f, idx) => playTone(f, 'sine', 0.3, idx * 130, 0.12));
+      [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+        setTimeout(() => playBeep(freq, 0.2, 'sine', 0.2), i * 120);
+      });
     }
   };
 
-  // সাউন্ড বাটন আপডেট
+  // সাউন্ড টগল বাটন হ্যান্ডলার
   function updateSoundButtonUI() {
     if (isSoundEnabled) {
       soundIcon.className = 'fa-solid fa-volume-high';
@@ -112,14 +121,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  soundToggleBtn.addEventListener('click', () => {
+  soundToggleBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    initAudio();
     isSoundEnabled = !isSoundEnabled;
     localStorage.setItem('islamic_game_sound', isSoundEnabled);
     updateSoundButtonUI();
     if (isSoundEnabled) Sounds.click();
   });
 
-  // ================== গেম লজিক ==================
+  // ================== গেম কন্ট্রোল ==================
 
   function toBengaliNum(num) {
     return Number(num).toLocaleString('bn-BD');
@@ -245,7 +256,6 @@ document.addEventListener('DOMContentLoaded', () => {
     allOptionBtns.forEach(b => b.disabled = true);
 
     if (selectedIndex === qData.answerIndex) {
-      // সঠিক উত্তর
       Sounds.correct();
       clickedBtn.classList.add('correct');
       clickedBtn.querySelector('i').className = 'fa-solid fa-circle-check';
@@ -258,7 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (navigator.vibrate) navigator.vibrate(50);
     } else {
-      // ভুল উত্তর
       Sounds.wrong();
       clickedBtn.classList.add('wrong');
       clickedBtn.querySelector('i').className = 'fa-solid fa-circle-xmark';
@@ -343,9 +352,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // ইনিশিয়ালাইজেশন
   updateSoundButtonUI();
   updateCoinDisplay();
   loadQuizData();
 });
-      
+        
