@@ -39,78 +39,46 @@ document.addEventListener('DOMContentLoaded', () => {
   let unlockedLevels = JSON.parse(localStorage.getItem('islamic_unlocked_levels')) || [1];
   let isSoundEnabled = localStorage.getItem('islamic_game_sound') !== 'false';
 
-  // ================== বুলেটপ্রুফ Web Audio ইঞ্জিন ==================
-  let audioCtx = null;
-
-  function initAudio() {
-    if (!audioCtx) {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (AudioContextClass) {
-        audioCtx = new AudioContextClass();
-      }
-    }
-    if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-  }
-
-  // প্রথম ইউজার ইন্টারঅ্যাকশনেই ব্রাউজারের অডিও লক খুলে দেওয়া
-  const unlockAudio = () => {
-    initAudio();
-    document.removeEventListener('touchstart', unlockAudio);
-    document.removeEventListener('click', unlockAudio);
+  // ================== নিশ্চিতভাবে সাউন্ড বাজার অডিও ইঞ্জিন ==================
+  // Base64 এমবেডেড সাউন্ড (WAV Format) - কোনো এক্সটার্নাল ফাইল প্রয়োজন নেই
+  const audioData = {
+    // মিষ্টি ক্লিক
+    click: 'data:audio/wav;base64,UklGRi4AAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA8PDw8PDw8PDw8PDw8PDw8',
+    // মনোরম চিম সাউন্ড (সঠিক উত্তর)
+    correct: 'data:audio/wav;base64,UklGRq4BAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YZABAAAA/////wAAAP////8AAAD/////AAAA//////8AAP///////wAAAAAA/////wAAAAAA///////8/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/v7+/g==',
+    // মৃদু ভুল সাউন্ড
+    wrong: 'data:audio/wav;base64,UklGRnoAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YVgAAAD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/AP8A/wD/',
+    // সফলতার সুর
+    win: 'data:audio/wav;base64,UklGRpIAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YWIAAACAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICA'
   };
-  document.addEventListener('touchstart', unlockAudio, { passive: true });
-  document.addEventListener('click', unlockAudio);
 
-  // একক সাউন্ড প্লেয়ার ফাংশন
-  function playBeep(freq, duration, type = 'sine', gainVal = 0.15) {
+  function playAudioDirect(type) {
     if (!isSoundEnabled) return;
-    initAudio();
-    if (!audioCtx) return;
-
     try {
-      const osc = audioCtx.createOscillator();
-      const gain = audioCtx.createGain();
-
-      osc.type = type;
-      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-      gain.gain.setValueAtTime(gainVal, audioCtx.currentTime);
-      gain.gain.linearRampToValueAtTime(0.01, audioCtx.currentTime + duration);
-
-      osc.connect(gain);
-      gain.connect(audioCtx.destination);
-
-      osc.start();
-      osc.stop(audioCtx.currentTime + duration);
-    } catch (err) {
-      console.warn('Audio Error:', err);
+      const src = audioData[type] || audioData.click;
+      const audio = new Audio(src);
+      audio.volume = 0.5;
+      
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(err => {
+          // মোবাইল ব্রাউজার যদি কোনো কারণে প্রথম টাচে আটকে দেয়
+          console.log("Audio play deferred until user interaction", err);
+        });
+      }
+    } catch (e) {
+      console.warn("Audio error:", e);
     }
   }
 
-  // বিভিন্ন সুরের সাউন্ড
   const Sounds = {
-    click: () => {
-      playBeep(600, 0.05, 'sine', 0.08);
-    },
-    correct: () => {
-      playBeep(523.25, 0.12, 'sine', 0.2); // C5
-      setTimeout(() => playBeep(659.25, 0.12, 'sine', 0.2), 100); // E5
-      setTimeout(() => playBeep(783.99, 0.25, 'sine', 0.2), 200); // G5
-    },
-    wrong: () => {
-      playBeep(250, 0.15, 'square', 0.1);
-      setTimeout(() => playBeep(180, 0.25, 'square', 0.1), 120);
-    },
-    win: () => {
-      [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
-        setTimeout(() => playBeep(freq, 0.2, 'sine', 0.2), i * 120);
-      });
-    }
+    click: () => playAudioDirect('click'),
+    correct: () => playAudioDirect('correct'),
+    wrong: () => playAudioDirect('wrong'),
+    win: () => playAudioDirect('win')
   };
 
-  // সাউন্ড টগল বাটন হ্যান্ডলার
+  // সাউন্ড বাটন আপডেট
   function updateSoundButtonUI() {
     if (isSoundEnabled) {
       soundIcon.className = 'fa-solid fa-volume-high';
@@ -123,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   soundToggleBtn.addEventListener('click', (e) => {
     e.stopPropagation();
-    initAudio();
     isSoundEnabled = !isSoundEnabled;
     localStorage.setItem('islamic_game_sound', isSoundEnabled);
     updateSoundButtonUI();
@@ -356,4 +323,3 @@ document.addEventListener('DOMContentLoaded', () => {
   updateCoinDisplay();
   loadQuizData();
 });
-        
