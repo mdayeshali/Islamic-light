@@ -27,16 +27,25 @@
   <div class="game-page-container">
     <main class="game-card">
 
-      <!-- গেম টপ বার: মোট অর্জিত কয়েন -->
+            <!-- গেম টপ বার: ব্যাক বাটন, সাউন্ড বাটন ও কয়েন -->
       <div class="game-top-bar">
         <button type="button" class="icon-btn" id="homeBtn" title="হোমে যান" style="display: none;">
           <i class="fa-solid fa-arrow-left"></i>
         </button>
-        <div class="coin-badge">
-          <i class="fa-solid fa-coins gold-coin"></i>
-          <span id="totalCoinsDisplay">০</span>
+
+        <div style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
+          <!-- সাউন্ড মিউট/আনমিউট বাটন -->
+          <button type="button" class="icon-btn" id="soundToggleBtn" title="শব্দ চালু/বন্ধ করুন">
+            <i class="fa-solid fa-volume-high" id="soundIcon"></i>
+          </button>
+
+          <div class="coin-badge">
+            <i class="fa-solid fa-coins gold-coin"></i>
+            <span id="totalCoinsDisplay">০</span>
+          </div>
         </div>
       </div>
+      
 
       <!-- ১. লেভেল সিলেকশন ভিউ (প্রথমে এটি দেখাবে) -->
       <section id="levelSelectView" class="view-screen active">
