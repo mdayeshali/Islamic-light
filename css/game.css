@@ -1,446 +1,526 @@
+/* ===================================================
+   VARIABLES & DUAL THEMES (CHAPTER 1 & CHAPTER 2)
+   =================================================== */
 :root {
-  --game-primary: #004d40;
-  --game-primary-light: #00695c;
-  --game-primary-bg: #e0f2f1;
-  --game-accent: #d4af37;
-  --game-correct: #10b981;
-  --game-wrong: #ef4444;
-
-  /* লাইট থিম ভেরিয়েবল */
-  --g-card-bg: #ffffff;
-  --g-section-bg: #f9fafb;
-  --g-text-main: #1f2937;
-  --g-text-muted: #6b7280;
-  --g-border: rgba(0, 0, 0, 0.08);
-  --g-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-  --g-option-bg: #ffffff;
-  --g-option-hover: #f0fdf4;
+  /* Default: World 1 - Emerald Oasis (লেভেল ১ - ৫) */
+  --theme-bg-gradient: linear-gradient(135deg, #0b2e1b 0%, #051c0f 100%);
+  --theme-card-bg: rgba(255, 255, 255, 0.05);
+  --theme-border: rgba(255, 255, 255, 0.12);
+  --theme-accent: #10b981;
+  --theme-accent-glow: rgba(16, 185, 129, 0.4);
+  --theme-gold: #f59e0b;
+  --text-pure: #ffffff;
+  --text-muted: #94a3b8;
+  --glass-surface: rgba(18, 38, 28, 0.75);
+  --option-bg: rgba(255, 255, 255, 0.06);
+  --option-hover: rgba(16, 185, 129, 0.15);
+  --option-border: rgba(255, 255, 255, 0.1);
 }
 
-/* ডার্ক মোড সাপোর্ট */
-html.dark, html.dark-mode, html.dark-theme,
-body.dark, body.dark-mode, body.dark-theme,
-[data-theme="dark"] {
-  --game-primary: #26a69a;
-  --game-primary-light: #4db6ac;
-  --game-primary-bg: rgba(38, 166, 154, 0.15);
-
-  --g-card-bg: #1f2937;
-  --g-section-bg: #111827;
-  --g-text-main: #f9fafb;
-  --g-text-muted: #9ca3af;
-  --g-border: rgba(255, 255, 255, 0.1);
-  --g-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-  --g-option-bg: #1f2937;
-  --g-option-hover: rgba(38, 166, 154, 0.12);
+/* World 2: Midnight Sapphire & Cosmic Gold (লেভেল ৬ - ১০) */
+body.theme-midnight {
+  --theme-bg-gradient: linear-gradient(135deg, #090e24 0%, #030612 100%);
+  --theme-card-bg: rgba(30, 41, 59, 0.5);
+  --theme-border: rgba(99, 102, 241, 0.25);
+  --theme-accent: #6366f1;
+  --theme-accent-glow: rgba(99, 102, 241, 0.5);
+  --theme-gold: #eab308;
+  --text-pure: #f8fafc;
+  --text-muted: #cbd5e1;
+  --glass-surface: rgba(15, 23, 42, 0.85);
+  --option-bg: rgba(30, 41, 59, 0.7);
+  --option-hover: rgba(99, 102, 241, 0.25);
+  --option-border: rgba(99, 102, 241, 0.25);
 }
 
-/* গ্লোবাল হেডার ও ফুটার প্রোটেকশন */
-#header, #footer {
-  background-color: #004d40 !important;
-  color: #ffffff;
-}
-
-body {
-  font-family: 'Hind Siliguri', sans-serif;
+/* ===================================================
+   MASTER LAYOUT (DESKTOP & APP SHELL)
+   =================================================== */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.game-page-container {
-  min-height: calc(100vh - 160px);
+body.game-body {
+  font-family: 'Hind Siliguri', sans-serif;
+  background: var(--theme-bg-gradient);
+  color: var(--text-pure);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+}
+
+.game-master-wrapper {
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
 }
 
-.game-card {
+/* Desktop App Canvas Simulator */
+.game-viewport {
   width: 100%;
-  max-width: 480px;
-  background: var(--g-card-bg);
-  color: var(--g-text-main);
-  border-radius: 24px;
-  box-shadow: var(--g-shadow);
-  padding: 24px 20px;
-  border: 1px solid var(--g-border);
+  max-width: 680px; /* ডেস্কটপে পারফেক্ট রিডেবিলিটি ও অ্যাপ ফিল */
+  background: var(--glass-surface);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--theme-border);
+  border-radius: 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 30px var(--theme-accent-glow);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 0.5s ease;
 }
 
-/* গেম টপ বার ও কয়েন ব্যাজ */
-.game-top-bar {
+/* ===================================================
+   HEADS-UP DISPLAY (HUD)
+   =================================================== */
+.game-hud {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 18px;
-  min-height: 40px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--theme-border);
+  background: rgba(0, 0, 0, 0.2);
 }
 
-.icon-btn {
-  background: var(--g-section-bg);
-  border: 1px solid var(--g-border);
-  color: var(--g-text-main);
-  width: 38px;
-  height: 38px;
+.hud-left, .hud-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hud-btn {
+  width: 40px;
+  height: 40px;
   border-radius: 12px;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-card-bg);
+  color: var(--text-pure);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: 16px;
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.icon-btn:hover {
-  background: var(--game-primary-bg);
-  color: var(--game-primary);
+.hud-btn:hover {
+  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.coin-badge {
-  margin-left: auto;
-  background: var(--game-primary-bg);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+.world-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--theme-gold);
+  background: rgba(245, 158, 11, 0.12);
   padding: 6px 14px;
   border-radius: 20px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.coin-vault {
   display: flex;
   align-items: center;
   gap: 8px;
+  background: rgba(245, 158, 11, 0.15);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(245, 158, 11, 0.3);
   font-weight: 700;
-  font-size: 16px;
-  color: var(--game-primary);
+  color: var(--theme-gold);
+  font-family: 'Outfit', 'Hind Siliguri', sans-serif;
+  font-size: 15px;
 }
 
-.gold-coin {
-  color: var(--game-accent);
-  filter: drop-shadow(0 1px 3px rgba(212, 175, 55, 0.4));
+.coin-icon {
+  animation: pulseGold 2s infinite ease-in-out;
 }
 
-/* ভিউ স্ক্রিন ট্রানজিশন */
-.view-screen {
-  animation: fadeIn 0.3s ease;
+@keyframes pulseGold {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 6px var(--theme-gold)); }
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+/* ===================================================
+   VIEW 1: CHAPTERS & LEVEL SELECTION
+   =================================================== */
+.game-view {
+  padding: 24px 20px;
+  animation: fadeInView 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes fadeInView {
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* হেডার সেকশন */
-.game-header {
+.level-select-header {
   text-align: center;
   margin-bottom: 20px;
 }
 
-.game-header .badge {
-  display: inline-block;
-  background: var(--game-primary-bg);
-  color: var(--game-primary);
-  font-size: 13px;
-  font-weight: 600;
-  padding: 4px 14px;
-  border-radius: 20px;
-  margin-bottom: 8px;
-}
-
-.game-header h1 {
+.level-select-header h2 {
   font-size: 24px;
   font-weight: 700;
-  margin-bottom: 6px;
 }
 
-.game-header p {
+.level-select-header p {
+  color: var(--text-muted);
   font-size: 14px;
-  color: var(--g-text-muted);
+  margin-top: 4px;
 }
 
-/* লেভেল সিলেকশন কার্ডস */
-.level-list {
+.world-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 6px;
+  border-radius: 16px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-btn.active {
+  background: var(--theme-accent);
+  color: #fff;
+  box-shadow: 0 4px 15px var(--theme-accent-glow);
+}
+
+.levels-scroll-area {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  max-height: 480px;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
-.level-item-card {
-  background: var(--g-section-bg);
-  border: 1.5px solid var(--g-border);
-  border-radius: 16px;
-  padding: 16px;
+/* Custom Scrollbar for Desktop */
+.levels-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+.levels-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--theme-border);
+  border-radius: 10px;
+}
+
+.level-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
-  transition: all 0.25s ease;
 }
 
-.level-item-card.unlocked:hover {
-  border-color: var(--game-primary);
+.level-card.unlocked:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 77, 64, 0.1);
+  border-color: var(--theme-accent);
+  box-shadow: 0 6px 20px -5px var(--theme-accent-glow);
 }
 
-.level-item-card.locked {
-  opacity: 0.6;
+.level-card.locked {
+  opacity: 0.5;
   cursor: not-allowed;
-  filter: grayscale(0.5);
+  filter: grayscale(0.8);
 }
 
-.level-card-left {
+.lvl-card-left {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.level-icon-box {
+.lvl-icon-circle {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
-  background: var(--game-primary-bg);
-  color: var(--game-primary);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
+  color: var(--theme-accent);
 }
 
-.level-info strong {
+body.theme-midnight .lvl-icon-circle {
+  color: #818cf8;
+}
+
+.lvl-details strong {
   display: block;
-  font-size: 15.5px;
-  margin-bottom: 3px;
-}
-
-.level-info span {
-  font-size: 12.5px;
-  color: var(--g-text-muted);
-}
-
-.level-status-icon {
-  font-size: 18px;
-  color: var(--g-text-muted);
-}
-
-.level-item-card.unlocked .level-status-icon {
-  color: var(--game-primary);
-}
-
-/* কুইজ প্লেয়িং স্ক্রিন: প্রগ্রেস বার */
-.quiz-status-header {
-  margin-bottom: 18px;
-}
-
-.step-counter {
-  font-size: 13.5px;
+  font-size: 16px;
   font-weight: 600;
-  color: var(--game-primary);
-  display: block;
-  margin-bottom: 6px;
 }
 
-.progress-track {
+.lvl-details span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.lvl-status-arrow {
+  color: var(--text-muted);
+  font-size: 18px;
+}
+
+/* ===================================================
+   VIEW 2: QUIZ PLAY & STAGE
+   =================================================== */
+.quiz-tracker-bar {
+  margin-bottom: 24px;
+}
+
+.tracker-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+#streakIndicator {
+  color: var(--theme-gold);
+}
+
+.tracker-track {
   width: 100%;
   height: 8px;
-  background: var(--g-section-bg);
-  border: 1px solid var(--g-border);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 10px;
   overflow: hidden;
 }
 
-.progress-fill {
-  height: 100%;
+.tracker-fill {
   width: 20%;
-  background: var(--game-primary);
+  height: 100%;
+  background: var(--theme-accent);
   border-radius: 10px;
-  transition: width 0.3s ease;
+  box-shadow: 0 0 10px var(--theme-accent);
+  transition: width 0.4s ease;
 }
 
-/* প্রশ্ন বক্স */
-.question-container {
-  min-height: 70px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.question-title {
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.5;
-  color: var(--g-text-main);
-}
-
-/* অপশন বাটন সমূহ */
-.options-container {
+.question-stage {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 18px;
+}
+
+.question-bubble {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--theme-border);
+  border-radius: 20px;
+  padding: 22px 20px;
+  position: relative;
+}
+
+.q-badge {
+  position: absolute;
+  top: -11px;
+  left: 18px;
+  background: var(--theme-accent);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.question-bubble h3 {
+  font-size: 19px;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.options-canvas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .option-btn {
-  background: var(--g-option-bg);
-  border: 1.5px solid var(--g-border);
-  color: var(--g-text-main);
-  padding: 14px 16px;
-  border-radius: 14px;
+  width: 100%;
+  padding: 16px 20px;
+  background: var(--option-bg);
+  border: 1.5px solid var(--option-border);
+  border-radius: 16px;
+  color: var(--text-pure);
   font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 16px;
   text-align: left;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.4, 1);
 }
 
 .option-btn:hover:not(:disabled) {
-  background: var(--g-option-hover);
-  border-color: var(--game-primary);
+  background: var(--option-hover);
+  border-color: var(--theme-accent);
   transform: translateX(4px);
 }
 
-/* সঠিক ও ভুল অ্যানিমেশন স্টেট */
 .option-btn.correct {
-  background: rgba(16, 185, 129, 0.12) !important;
-  border-color: var(--game-correct) !important;
-  color: var(--game-correct) !important;
+  background: rgba(16, 185, 129, 0.25) !important;
+  border-color: #10b981 !important;
+  color: #34d399 !important;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
 }
 
 .option-btn.wrong {
-  background: rgba(239, 68, 68, 0.12) !important;
-  border-color: var(--game-wrong) !important;
-  color: var(--game-wrong) !important;
+  background: rgba(239, 68, 68, 0.25) !important;
+  border-color: #ef4444 !important;
+  color: #f87171 !important;
+  animation: shake 0.35s ease;
 }
 
-/* শিক্ষণীয় রেফারেন্স কার্ড */
-.explanation-box {
-  background: var(--g-section-bg);
-  border-left: 4px solid var(--game-accent);
-  padding: 12px 16px;
-  border-radius: 4px 12px 12px 4px;
-  margin-bottom: 18px;
-  animation: fadeIn 0.3s ease;
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
 }
 
-.explanation-header {
+.knowledge-reveal {
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 4px solid var(--theme-gold);
+  border-radius: 0 16px 16px 0;
+  padding: 14px 18px;
+  animation: fadeInView 0.3s ease;
+}
+
+.reveal-head {
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 13.5px;
+  font-size: 13px;
   font-weight: 700;
-  color: var(--game-accent);
+  color: var(--theme-gold);
   margin-bottom: 4px;
 }
 
-.explanation-box p {
-  font-size: 13.5px;
+.knowledge-reveal p {
+  font-size: 14px;
+  color: var(--text-muted);
   line-height: 1.5;
-  color: var(--g-text-main);
-  margin: 0;
 }
 
-/* প্রাইমারি ও সেকেন্ডারি বাটন */
-.btn-primary {
+.quiz-footer-action {
+  margin-top: 20px;
+}
+
+.action-btn {
   width: 100%;
-  background: var(--game-primary);
-  color: #ffffff;
+  padding: 15px;
+  border-radius: 16px;
   border: none;
   font-family: inherit;
   font-size: 16px;
-  font-weight: 600;
-  padding: 14px;
-  border-radius: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-  background: var(--game-primary-light);
-}
-
-.btn-secondary {
-  width: 100%;
-  background: var(--g-section-bg);
-  color: var(--g-text-main);
-  border: 1.5px solid var(--g-border);
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  padding: 12px;
-  border-radius: 14px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-}
-
-.btn-secondary:hover {
-  border-color: var(--game-primary);
-}
-
-/* ফলাফল স্ক্রিন স্টাইল */
-.result-celebration {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.result-icon-wrap {
-  width: 70px;
-  height: 70px;
-  background: var(--game-primary-bg);
-  color: var(--game-accent);
-  font-size: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 12px auto;
-  border: 2px dashed var(--game-accent);
-}
-
-.result-celebration h2 {
-  font-size: 22px;
   font-weight: 700;
-  margin-bottom: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.2s ease;
 }
 
-.result-celebration p {
-  font-size: 14px;
-  color: var(--g-text-muted);
+.next-btn {
+  background: var(--theme-accent);
+  color: #fff;
+  box-shadow: 0 8px 20px var(--theme-accent-glow);
 }
 
-.result-stats-card {
+.next-btn:hover {
+  filter: brightness(1.1);
+  transform: translateY(-2px);
+}
+
+/* ===================================================
+   VIEW 3: RESULTS SCREEN
+   =================================================== */
+.result-celebration-card {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.trophy-sphere {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, transparent 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  color: var(--theme-gold);
+  border: 2px solid rgba(245, 158, 11, 0.4);
+}
+
+.score-analytics {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  background: var(--g-section-bg);
-  border: 1px solid var(--g-border);
+  margin: 24px 0;
+}
+
+.score-pill {
+  background: var(--theme-card-bg);
+  border: 1px solid var(--theme-border);
+  padding: 14px;
   border-radius: 16px;
-  padding: 16px;
-  margin-bottom: 22px;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
-.stat-item .label {
+.score-pill span {
   font-size: 13px;
-  color: var(--g-text-muted);
-  display: block;
-  margin-bottom: 4px;
+  color: var(--text-muted);
 }
 
-.stat-item strong {
+.score-pill strong {
   font-size: 20px;
-  font-weight: 700;
+  font-family: 'Outfit', 'Hind Siliguri', sans-serif;
+  color: var(--text-pure);
 }
 
-.text-gold {
-  color: var(--game-accent);
+.score-pill.highlight strong {
+  color: var(--theme-gold);
 }
 
 .result-actions {
@@ -449,9 +529,36 @@ body {
   gap: 10px;
 }
 
-.loading-text {
-  text-align: center;
-  font-size: 14px;
-  color: var(--g-text-muted);
-  padding: 20px 0;
+.retry-btn {
+  background: var(--theme-card-bg);
+  color: var(--text-pure);
+  border: 1px solid var(--theme-border);
 }
+
+.ghost-btn {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* ===================================================
+   DESKTOP RESPONSIVE ENHANCEMENT (Large Screens)
+   =================================================== */
+@media (min-width: 992px) {
+  .game-master-wrapper {
+    padding: 40px 20px;
+  }
+  
+  .game-viewport {
+    max-width: 760px; /* ডেস্কটপে আরও আরামদায়ক আকার */
+  }
+
+  .options-canvas {
+    display: grid;
+    grid-template-columns: 1fr; /* সুনির্দিষ্ট আরামদায়ক ক্লিকেবল এলাকা */
+  }
+
+  .question-bubble h3 {
+    font-size: 21px;
+  }
+  }
+  
