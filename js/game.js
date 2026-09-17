@@ -177,6 +177,12 @@ document.addEventListener('DOMContentLoaded', () => {
       quizResultView.style.display = 'block';
       exitQuizBtn.style.display = 'flex';
     }
+
+    // ভিউ পরিবর্তনের সাথে সাথে স্ক্রল উপরে পাঠানো
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   function startLevel(lvlIdx) {
@@ -187,6 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switchView('quiz');
     renderQuestion();
+
+    // লেভেল শুরু হওয়ার সময় অটোমেটিক টপে স্ক্রোল নিশ্চিত করা
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 
   function renderQuestion() {
@@ -305,4 +317,4 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHUD();
   loadLevels();
 });
-      
+        
