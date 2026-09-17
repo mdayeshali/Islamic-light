@@ -527,4 +527,23 @@ body.duo-body {
   flex-direction: column;
   gap: 12px;
      }
-   
+   /* অধ্যায় ৩ - সোনালী/কমলা থিম */
+.unit-banner.unit-3 {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  color: #fff;
+}
+.unit-3-node .duo-node-btn.active {
+  background: #f59e0b;
+  border-color: #d97706;
+}
+
+/* অধ্যায় ৪ - রয়্যাল পার্পল থিম */
+.unit-banner.unit-4 {
+  background: linear-gradient(135deg, #7c3aed, #5b21b6);
+  color: #fff;
+}
+.unit-4-node .duo-node-btn.active {
+  background: #8b5cf6;
+  border-color: #7c3aed;
+}
+
