@@ -137,6 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const nodeWrapper = document.createElement('div');
       nodeWrapper.className = `duo-node-wrapper ${curvePattern[idx % curvePattern.length]} ${isWorldTwo ? 'unit-2-node' : ''}`;
+      // লেভেল আইডির ট্যাগ রাখা স্ক্রোলের সুবিধার্থে
+      nodeWrapper.id = `level-node-${lvl.level}`;
 
       nodeWrapper.innerHTML = `
         <div class="node-title-popup">${lvl.title}</div>
@@ -157,6 +159,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // নির্দিষ্ট লেভেলে স্মুথ স্ক্রোল করানোর ফাংশন
+  function scrollToLevel(levelNum) {
+    setTimeout(() => {
+      const targetNode = document.getElementById(`level-node-${levelNum}`);
+      if (targetNode) {
+        targetNode.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }, 150);
+  }
+
   // ==========================================
   // GAMEPLAY ENGINE
   // ==========================================
@@ -173,16 +188,20 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (view === 'quiz') {
       quizPlayView.style.display = 'block';
       exitQuizBtn.style.display = 'flex';
+      // কুইজ স্ক্রিনে ঢুকলে টপে স্ক্রোল করবে
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     } else if (view === 'result') {
       quizResultView.style.display = 'block';
       exitQuizBtn.style.display = 'flex';
+      // রেজাল্ট পেজে টপে স্ক্রোল করবে
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
     }
-
-    // ভিউ পরিবর্তনের সাথে সাথে স্ক্রল উপরে পাঠানো
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   }
 
   function startLevel(lvlIdx) {
@@ -193,12 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     switchView('quiz');
     renderQuestion();
-
-    // লেভেল শুরু হওয়ার সময় অটোমেটিক টপে স্ক্রোল নিশ্চিত করা
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
   }
 
   function renderQuestion() {
@@ -301,7 +314,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   continuePathBtn.addEventListener('click', () => {
     DuoAudio.click();
+    const completedLevel = gameLevels[currentLevelIndex].level;
+    const isPassed = correctCountThisLevel >= 3;
+    // পাস করলে পরবর্তী লেভেলে স্ক্রোল করবে, না হলে বর্তমান লেভেলেই থাকবে
+    const targetLevelToScroll = (isPassed && completedLevel < gameLevels.length) ? completedLevel + 1 : completedLevel;
+
     switchView('path');
+    scrollToLevel(targetLevelToScroll);
   });
 
   retryLevelBtn.addEventListener('click', () => {
@@ -311,10 +330,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   exitQuizBtn.addEventListener('click', () => {
     DuoAudio.click();
+    const currentLvlNum = gameLevels[currentLevelIndex].level;
     switchView('path');
+    scrollToLevel(currentLvlNum);
   });
 
   updateHUD();
   loadLevels();
 });
-        
+                          
