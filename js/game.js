@@ -13,9 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const heartsDisplay = document.getElementById('heartsDisplay');
   const streakCount = document.getElementById('streakCount');
 
-  // Roadmaps
+  // Roadmaps (৪টি অধ্যায়ের কন্টেইনার)
   const worldOnePath = document.getElementById('worldOnePath');
   const worldTwoPath = document.getElementById('worldTwoPath');
+  const worldThreePath = document.getElementById('worldThreePath');
+  const worldFourPath = document.getElementById('worldFourPath');
 
   // Gameplay DOM
   const progressBar = document.getElementById('progressBar');
@@ -83,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const DuoAudio = {
     click: () => playTone(600, 'sine', 0.05, 0.08),
     correct: () => {
-      // Duolingo style cheerful chime
       playTone(523.25, 'triangle', 0.12, 0.18);
       setTimeout(() => playTone(783.99, 'triangle', 0.25, 0.2), 100);
     },
@@ -127,23 +128,41 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderRoadmap() {
-    worldOnePath.innerHTML = '';
-    worldTwoPath.innerHTML = '';
+    if (worldOnePath) worldOnePath.innerHTML = '';
+    if (worldTwoPath) worldTwoPath.innerHTML = '';
+    if (worldThreePath) worldThreePath.innerHTML = '';
+    if (worldFourPath) worldFourPath.innerHTML = '';
 
     gameLevels.forEach((lvl, idx) => {
       const isUnlocked = unlockedLevels.includes(lvl.level);
-      const isWorldTwo = lvl.level > 5;
-      const targetContainer = isWorldTwo ? worldTwoPath : worldOnePath;
+
+      // অধ্যায়ভিত্তিক কন্টেইনার ও ক্লাস নির্ধারণ (প্রতি ৫ লেভেলে একটি অধ্যায়)
+      let targetContainer = worldOnePath;
+      let unitClass = '';
+
+      if (lvl.level > 15) {
+        targetContainer = worldFourPath || worldTwoPath;
+        unitClass = 'unit-4-node';
+      } else if (lvl.level > 10) {
+        targetContainer = worldThreePath || worldTwoPath;
+        unitClass = 'unit-3-node';
+      } else if (lvl.level > 5) {
+        targetContainer = worldTwoPath;
+        unitClass = 'unit-2-node';
+      }
 
       const nodeWrapper = document.createElement('div');
-      nodeWrapper.className = `duo-node-wrapper ${curvePattern[idx % curvePattern.length]} ${isWorldTwo ? 'unit-2-node' : ''}`;
-      // লেভেল আইডির ট্যাগ রাখা স্ক্রোলের সুবিধার্থে
+      nodeWrapper.className = `duo-node-wrapper ${curvePattern[idx % curvePattern.length]} ${unitClass}`;
       nodeWrapper.id = `level-node-${lvl.level}`;
+
+      // প্রতি অধ্যায়ের শেষ লেভেলে (৫, ১০, ১৫, ২০) মুকুট (Crown) আইকন
+      const isMilestone = (lvl.level % 5 === 0);
+      const iconClass = isUnlocked ? (isMilestone ? 'fa-crown' : 'fa-star') : 'fa-lock';
 
       nodeWrapper.innerHTML = `
         <div class="node-title-popup">${lvl.title}</div>
         <button type="button" class="duo-node-btn ${isUnlocked ? 'active' : 'locked'}">
-          <i class="fa-solid ${isUnlocked ? (lvl.level === 10 ? 'fa-crown' : 'fa-star') : 'fa-lock'}"></i>
+          <i class="fa-solid ${iconClass}"></i>
         </button>
       `;
 
@@ -155,11 +174,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
 
-      targetContainer.appendChild(nodeWrapper);
+      if (targetContainer) {
+        targetContainer.appendChild(nodeWrapper);
+      }
     });
   }
 
-  // নির্দিষ্ট লেভেলে স্মুথ স্ক্রোল করানোর ফাংশন
+  // নির্দিষ্ট লেভেলে স্মুথ স্ক্রোল
   function scrollToLevel(levelNum) {
     setTimeout(() => {
       const targetNode = document.getElementById(`level-node-${levelNum}`);
@@ -188,7 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (view === 'quiz') {
       quizPlayView.style.display = 'block';
       exitQuizBtn.style.display = 'flex';
-      // কুইজ স্ক্রিনে ঢুকলে টপে স্ক্রোল করবে
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -196,7 +216,6 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (view === 'result') {
       quizResultView.style.display = 'block';
       exitQuizBtn.style.display = 'flex';
-      // রেজাল্ট পেজে টপে স্ক্রোল করবে
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -221,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
     progressBar.style.width = `${((currentQuestionIndex) / questions.length) * 100}%`;
     questionText.innerText = currentQ.question;
     optionsContainer.innerHTML = '';
-    bottomSheet.className = 'duo-bottom-sheet'; // hide sheet
+    bottomSheet.className = 'duo-bottom-sheet';
 
     currentQ.options.forEach((optText, optIdx) => {
       const btn = document.createElement('button');
@@ -249,7 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
       correctCountThisLevel++;
       localStorage.setItem('islamic_duo_coins', totalCoins);
 
-      // Show Correct Bottom Sheet
       bottomSheet.className = 'duo-bottom-sheet correct-sheet';
       sheetIcon.innerHTML = '<i class="fa-solid fa-check"></i>';
       sheetTitle.innerText = 'অসাধারণ!';
@@ -262,11 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hearts > 1) {
         hearts--;
       } else {
-        hearts = 5; // রিসেট
+        hearts = 5;
       }
       localStorage.setItem('islamic_duo_hearts', hearts);
 
-      // Show Wrong Bottom Sheet
       bottomSheet.className = 'duo-bottom-sheet wrong-sheet';
       sheetIcon.innerHTML = '<i class="fa-solid fa-xmark"></i>';
       sheetTitle.innerText = 'সঠিক উত্তরটি লক্ষ্য করুন:';
@@ -316,7 +333,6 @@ document.addEventListener('DOMContentLoaded', () => {
     DuoAudio.click();
     const completedLevel = gameLevels[currentLevelIndex].level;
     const isPassed = correctCountThisLevel >= 3;
-    // পাস করলে পরবর্তী লেভেলে স্ক্রোল করবে, না হলে বর্তমান লেভেলেই থাকবে
     const targetLevelToScroll = (isPassed && completedLevel < gameLevels.length) ? completedLevel + 1 : completedLevel;
 
     switchView('path');
@@ -338,4 +354,4 @@ document.addEventListener('DOMContentLoaded', () => {
   updateHUD();
   loadLevels();
 });
-                          
+      
