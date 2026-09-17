@@ -6,6 +6,10 @@
   --duo-green-dark: #46a302;
   --duo-blue: #1cb0f6;
   --duo-blue-dark: #1899d6;
+  --duo-amber: #f59e0b;
+  --duo-amber-dark: #d97706;
+  --duo-purple: #8b5cf6;
+  --duo-purple-dark: #7c3aed;
   --duo-yellow: #ffc800;
   --duo-yellow-dark: #e5a400;
   --duo-red: #ff4b4b;
@@ -38,7 +42,7 @@ body.duo-body {
   padding: 0 16px 40px 16px;
 }
 
-/* App Wrapper: মোবাইলে ফ্ল্যাট অ্যাপ, কম্পিউটারে সুন্দর কার্ড ফ্রেম */
+/* App Wrapper */
 .duo-app-wrapper {
   width: 100%;
   max-width: 580px;
@@ -120,14 +124,28 @@ body.duo-body {
   border-bottom: 5px solid rgba(0, 0, 0, 0.15);
 }
 
+/* অধ্যায় ১: সবুজ */
 .unit-banner.unit-1 {
   background: var(--duo-green);
   border-bottom-color: var(--duo-green-dark);
 }
 
+/* অধ্যায় ২: নীল */
 .unit-banner.unit-2 {
   background: var(--duo-blue);
   border-bottom-color: var(--duo-blue-dark);
+}
+
+/* অধ্যায় ৩: অ্যাম্বার/সোনালী */
+.unit-banner.unit-3 {
+  background: linear-gradient(135deg, var(--duo-amber), #b45309);
+  border-bottom-color: var(--duo-amber-dark);
+}
+
+/* অধ্যায় ৪: পার্পল */
+.unit-banner.unit-4 {
+  background: linear-gradient(135deg, var(--duo-purple), #5b21b6);
+  border-bottom-color: var(--duo-purple-dark);
 }
 
 .unit-text .unit-tag {
@@ -158,7 +176,6 @@ body.duo-body {
   margin-bottom: 40px;
 }
 
-/* Duolingo 3D Circular Level Node */
 .duo-node-wrapper {
   position: relative;
   display: flex;
@@ -166,7 +183,7 @@ body.duo-body {
   align-items: center;
 }
 
-/* আঁকাবাঁকা রাস্তার মতো অবস্থানের অফসেট */
+/* আঁকাবাঁকা অবস্থান অফসেট */
 .duo-node-wrapper.pos-center { transform: translateX(0); }
 .duo-node-wrapper.pos-left { transform: translateX(-48px); }
 .duo-node-wrapper.pos-right { transform: translateX(48px); }
@@ -194,10 +211,20 @@ body.duo-body {
   border-bottom-width: 4px;
 }
 
-/* অধ্যায় ২ এর নোড কালার */
-.unit-2-node .duo-node-btn {
+/* অধ্যায়ভিত্তিক অ্যাক্টিভ বাটন কালার */
+.unit-2-node .duo-node-btn.active {
   background: var(--duo-blue);
   border-bottom-color: var(--duo-blue-dark);
+}
+
+.unit-3-node .duo-node-btn.active {
+  background: var(--duo-amber);
+  border-bottom-color: var(--duo-amber-dark);
+}
+
+.unit-4-node .duo-node-btn.active {
+  background: var(--duo-purple);
+  border-bottom-color: var(--duo-purple-dark);
 }
 
 /* লক করা নোড */
@@ -232,7 +259,7 @@ body.duo-body {
 }
 
 /* ===================================================
-   QUIZ PLAY SCREEN (BRIGHT & DUOLINGO STYLE)
+   QUIZ PLAY SCREEN
    =================================================== */
 .quiz-top-progress {
   padding: 10px 10px 20px 10px;
@@ -252,6 +279,11 @@ body.duo-body {
   background: var(--duo-green);
   border-radius: 20px;
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* প্রশ্ন ও অপশন এলাকা (নিচে পর্যাপ্ত খালি জায়গা রাখা হয়েছে) */
+.quiz-content-area {
+  padding-bottom: 230px;
 }
 
 .speech-bubble {
@@ -327,19 +359,24 @@ body.duo-body {
 }
 
 /* ===================================================
-   DUOLINGO BOTTOM FEEDBACK SHEET
+   DUOLINGO BOTTOM FEEDBACK SHEET (MOBILE FIXED)
    =================================================== */
 .duo-bottom-sheet {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
+  right: 0;
   width: 100%;
-  padding: 20px 24px;
+  max-width: 580px;
+  margin: 0 auto;
   background: #ffffff;
   border-top: 2px solid var(--duo-gray-border);
   display: none;
   animation: slideUpSheet 0.25s cubic-bezier(0, 0, 0.2, 1);
   z-index: 100;
+  box-sizing: border-box;
+  /* মোবাইল নেভিগেশন বারের চেয়ে উঁচুতে রাখার প্যাডিং */
+  padding: 16px 20px calc(24px + env(safe-area-inset-bottom, 16px)) 20px;
 }
 
 @keyframes slideUpSheet {
@@ -362,7 +399,8 @@ body.duo-body {
 .sheet-content {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  width: 100%;
 }
 
 .sheet-status-info {
@@ -402,17 +440,18 @@ body.duo-body {
   line-height: 1.4;
 }
 
-/* Action Buttons (3D Primary & Secondary) */
+/* Action Buttons */
 .duo-action-btn {
   width: 100%;
-  padding: 14px;
+  padding: 15px;
   border-radius: 16px;
   border: none;
   font-family: var(--font-main);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
   cursor: pointer;
   transition: all 0.1s ease;
+  margin-bottom: 4px;
 }
 
 .correct-sheet .duo-action-btn {
@@ -526,24 +565,5 @@ body.duo-body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-     }
-   /* অধ্যায় ৩ - সোনালী/কমলা থিম */
-.unit-banner.unit-3 {
-  background: linear-gradient(135deg, #d97706, #b45309);
-  color: #fff;
-}
-.unit-3-node .duo-node-btn.active {
-  background: #f59e0b;
-  border-color: #d97706;
-}
-
-/* অধ্যায় ৪ - রয়্যাল পার্পল থিম */
-.unit-banner.unit-4 {
-  background: linear-gradient(135deg, #7c3aed, #5b21b6);
-  color: #fff;
-}
-.unit-4-node .duo-node-btn.active {
-  background: #8b5cf6;
-  border-color: #7c3aed;
-}
-
+   }
+   
