@@ -1,21 +1,85 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
+  <!-- Basic Charset & Viewport Settings -->
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>ইলম কোয়েস্ট - ইসলামিক কুইজ গেম</title>
-  
-  <!-- Fonts: DIN Rounded / Nunito / Hind Siliguri vibes -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <!-- Primary SEO Meta Tags -->
+  <title>ইলম কোয়েস্ট - ইসলামিক কুইজ গেম | মেধা যাচাই ও দ্বীনি শিক্ষা</title>
+  <meta name="title" content="ইলম কোয়েস্ট - ইসলামিক কুইজ গেম | মেধা যাচাই ও দ্বীনি শিক্ষা">
+  <meta name="description" content="লেভেলভিত্তিক আধুনিক ইসলামিক কুইজ গেম ইলম কোয়েস্ট। কুরআন, হাদিস, সাহাবিদের জীবনী এবং দ্বীনি জ্ঞানের বিভিন্ন ধাপ পেরিয়ে জেমস ও আকর্ষণীয় রিওয়ার্ড অর্জন করুন।">
+  <meta name="keywords" content="ইসলামিক কুইজ, ইসলামিক গেম, ইলম কোয়েস্ট, ইসলামিক প্রশ্নোত্তর, দ্বীনি কুইজ গেম, লেভেলভিত্তিক কুইজ, Islamic Quiz Bangla, Islamic Game, দ্বীনি শিক্ষা">
+  <meta name="author" content="Islamic Light">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://islamiclight.in/quiz/game.html">
+
+  <!-- Open Graph / Facebook / WhatsApp Preview -->
+  <meta property="og:type" content="game">
+  <meta property="og:site_name" content="Islamic Light">
+  <meta property="og:url" content="https://islamiclight.in/quiz/game.html">
+  <meta property="og:title" content="ইলম কোয়েস্ট - ইসলামিক কুইজ গেম | আনন্দময় দ্বীনি শিক্ষা">
+  <meta property="og:description" content="কুরআন ও হাদিসের শিক্ষণীয় কুইজে অংশ নিন, লেভেল সম্পন্ন করুন এবং ইসলামিক জ্ঞান বৃদ্ধি করুন সম্পূর্ণ ফ্রি।">
+  <meta property="og:image" content="https://islamiclight.in/images/game-preview-banner.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="ইলম কোয়েস্ট ইসলামিক গেম ব্যানার">
+  <meta property="og:locale" content="bn_BD">
+
+  <!-- Twitter Card Data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://islamiclight.in/quiz/game.html">
+  <meta name="twitter:title" content="ইলম কোয়েস্ট - ইসলামিক কুইজ গেম">
+  <meta name="twitter:description" content="লেভেলভিত্তিক ইসলামিক কুইজ খেলে নিজের মেধা যাচাই করুন এবং দ্বীনি ইলম অর্জন করুন।">
+  <meta name="twitter:image" content="https://islamiclight.in/images/game-preview-banner.jpg">
+
+  <!-- Mobile & Progressive Web App (PWA) Meta Tags -->
+  <meta name="theme-color" content="#004d40">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ইলম কোয়েস্ট">
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+
+  <!-- Google Fonts: Noto Sans Bengali & Noto Serif Bengali -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500;600;700&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/game.css">
+
+  <!-- Schema.org Structured Data (Google Rich Results) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "ইলম কোয়েস্ট - ইসলামিক কুইজ গেম",
+    "url": "https://islamiclight.in/quiz/game.html",
+    "description": "একটি আধুনিক ও শিক্ষণীয় লেভেলভিত্তিক ইসলামিক কুইজ গেম।",
+    "genre": ["Educational", "Quiz", "Trivia", "Islamic"],
+    "inLanguage": "bn",
+    "applicationCategory": "Game",
+    "operatingSystem": "All modern web browsers",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "INR"
+    }
+  }
+  </script>
 </head>
+  
 <body class="duo-body">
 
   <div id="header"></div>
