@@ -24,43 +24,76 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // রূপার নেসাব পরিমাণ = ৫২.৫ তোলা = প্রায় ৬১২.৩৬ গ্রাম
   const SILVER_NISAB_GRAMS = 612.36;
+  const DEFAULT_SILVER_PRICE = 210; // ইনপুট ফাঁকা থাকলে ডিফল্ট দর
 
-  // সংখ্যাকে বাংলা কারেন্সিতে রূপান্তর ফাংশন
+  // ১. বাংলা সংখ্যা ও কমা ফরম্যাটার (১,০০,০০০ / ৪৫,০০,০০০)
   function formatBengaliCurrency(number) {
-    return '৳ ' + Math.round(number).toLocaleString('bn-BD');
+    if (isNaN(number) || number === null) return '৳ ০';
+    
+    const rounded = Math.round(number);
+    let str = rounded.toString();
+
+    // ভারতীয়/বাংলাদেশী কমা ফরম্যাট (শেষের ৩টি, তারপর প্রতি ২টি পর পর কমা)
+    let lastThree = str.substring(str.length - 3);
+    let otherNumbers = str.substring(0, str.length - 3);
+    if (otherNumbers !== '') {
+      lastThree = ',' + lastThree;
+    }
+    let formattedEnglish = otherNumbers.replace(/\B(?=(\d{2})+(?!\d))/g, ",") + lastThree;
+
+    // ইংরেজি সংখ্যা থেকে বাংলা সংখ্যায় রূপান্তর
+    const banglaDigits = {
+      '0': '০', '1': '১', '2': '২', '3': '৩', '4': '৪',
+      '5': '৫', '6': '৬', '7': '৭', '8': '৮', '9': '৯',
+      ',': ','
+    };
+
+    let formattedBengali = formattedEnglish.replace(/[0-9,]/g, char => banglaDigits[char] || char);
+    return '৳ ' + formattedBengali;
   }
 
-  // ইনপুট থেকে নিরাপদ সংখ্যা নেওয়া
+  // ২. ইনপুট থেকে নিরাপদ সংখ্যা নেওয়ার হেল্পার (ফাঁকা থাকলে ০ রিটার্ন করবে)
   function getNum(elem) {
+    if (!elem) return 0;
     const val = parseFloat(elem.value);
     return isNaN(val) || val < 0 ? 0 : val;
   }
 
-  // নেসাবের মোট মূল্য আপডেট করা
+  // ৩. নেসাবের মোট মূল্য আপডেট করা (ফাঁকা থাকলে ডিফল্ট ২১০ টাকা নিবে)
   function updateNisabThreshold() {
-    const perGramPrice = getNum(silverPriceInput);
+    let perGramPrice = getNum(silverPriceInput);
+    if (perGramPrice === 0) {
+      perGramPrice = DEFAULT_SILVER_PRICE;
+    }
+
     const nisabTotal = perGramPrice * SILVER_NISAB_GRAMS;
-    nisabThresholdText.innerText = formatBengaliCurrency(nisabTotal);
+    if (nisabThresholdText) {
+      nisabThresholdText.innerText = formatBengaliCurrency(nisabTotal);
+    }
     return nisabTotal;
   }
 
-  silverPriceInput.addEventListener('input', updateNisabThreshold);
+  if (silverPriceInput) {
+    silverPriceInput.addEventListener('input', updateNisabThreshold);
+  }
 
-  // জাকাত হিসাব ফাংশন
+  // ৪. জাকাত হিসাব ফাংশন
   function calculateZakat() {
     const nisabAmount = updateNisabThreshold();
 
+    // যেকোনো ঘরে মান থাকলে যোগ হবে, বাকিগুলো ০ থাকবে
     const totalAssets = getNum(cashInHand) + getNum(goldValue) + getNum(businessStock) + getNum(receivableMoney);
     const totalDebts = getNum(debtsToPay) + getNum(unpaidBills);
     const netZakatable = totalAssets - totalDebts;
 
-    // বিবরণ প্রদর্শন
+    // বিবরণ প্রদর্শন (কমা সহ)
     totalAssetsText.innerText = formatBengaliCurrency(totalAssets);
     totalDebtsText.innerText = formatBengaliCurrency(totalDebts);
     netWorthText.innerText = formatBengaliCurrency(netZakatable > 0 ? netZakatable : 0);
 
     resultCard.style.display = 'block';
 
+    // নেসাব পরিমাণ পৌঁছালে ২.৫% জাকাত হিসেব হবে
     if (netZakatable >= nisabAmount && nisabAmount > 0) {
       const zakatAmount = netZakatable * 0.025; // ২.৫% জাকাত
       resultStatus.className = 'result-status eligible';
@@ -79,11 +112,12 @@ document.addEventListener('DOMContentLoaded', () => {
     resultCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
 
-  // রিসেট ফাংশন
+  // ৫. রিসেট ফাংশন
   function resetAll() {
     const inputs = document.querySelectorAll('.calc-input');
     inputs.forEach(input => input.value = '');
     resultCard.style.display = 'none';
+    updateNisabThreshold();
   }
 
   calculateBtn.addEventListener('click', calculateZakat);
@@ -92,4 +126,3 @@ document.addEventListener('DOMContentLoaded', () => {
   // পেজ লোডের সময় নেসাব ইনিশিয়ালাইজ করা
   updateNisabThreshold();
 });
-    
