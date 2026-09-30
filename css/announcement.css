@@ -1,1 +1,154 @@
-sd
+/* =========================================
+   Islamic Light - Announcement Bar
+   ========================================= */
+
+.announcement-bar {
+    width: 100%;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+
+    background: #004d40;
+    color: #ffffff;
+
+    overflow: hidden;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+    box-sizing: border-box;
+}
+
+
+/* -----------------------------------------
+   Announcement Icon
+   ----------------------------------------- */
+
+.announcement-icon {
+    flex: 0 0 auto;
+
+    width: 48px;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.15);
+
+    font-size: 18px;
+
+    z-index: 2;
+}
+
+
+/* -----------------------------------------
+   Scrolling Area
+   ----------------------------------------- */
+
+.announcement-wrapper {
+    flex: 1;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    white-space: nowrap;
+}
+
+
+/* -----------------------------------------
+   Scrolling Text
+   ----------------------------------------- */
+
+.announcement-track {
+    display: inline-flex;
+    align-items: center;
+
+    width: max-content;
+
+    padding-left: 100%;
+
+    animation: announcement-scroll 18s linear infinite;
+}
+
+
+/* -----------------------------------------
+   Announcement Link
+   ----------------------------------------- */
+
+.announcement-item {
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    line-height: 42px;
+
+    padding-right: 80px;
+
+    transition: opacity 0.2s ease;
+}
+
+.announcement-item:hover {
+    opacity: 0.8;
+}
+
+
+/* -----------------------------------------
+   Right → Left Animation
+   ----------------------------------------- */
+
+@keyframes announcement-scroll {
+
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+
+}
+
+
+/* -----------------------------------------
+   Pause on Hover
+   ----------------------------------------- */
+
+.announcement-bar:hover .announcement-track {
+    animation-play-state: paused;
+}
+
+
+/* -----------------------------------------
+   Mobile
+   ----------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .announcement-bar {
+        height: 40px;
+    }
+
+    .announcement-icon {
+        width: 42px;
+        font-size: 16px;
+    }
+
+    .announcement-item {
+        font-size: 13px;
+        line-height: 40px;
+        padding-right: 60px;
+    }
+
+    .announcement-track {
+        animation-duration: 15s;
+    }
+
+}
