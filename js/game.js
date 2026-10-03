@@ -44,14 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
   let correctCountThisLevel = 0;
   let earnedCoinsThisLevel = 0;
 
-  // Persistent Duolingo State
+  // Persistent State
   let totalCoins = parseInt(localStorage.getItem('islamic_duo_coins')) || 0;
   let hearts = parseInt(localStorage.getItem('islamic_duo_hearts')) || 5;
   let unlockedLevels = JSON.parse(localStorage.getItem('islamic_duo_unlocked')) || [1];
   let isSoundEnabled = localStorage.getItem('islamic_duo_sound') !== 'false';
 
   // ==========================================
-  // PURE SYNTHESIZER AUDIO (DUOLINGO TONES)
+  // PURE SYNTHESIZER AUDIO ( TONES)
   // ==========================================
   let audioCtx = null;
   function initAudio() {
