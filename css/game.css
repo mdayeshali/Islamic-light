@@ -1,5 +1,5 @@
 /* ===================================================
-   DUOLINGO BRIGHT PALETTE & VARIABLES
+    BRIGHT PALETTE & VARIABLES
    =================================================== */
 :root {
   --duo-green: #58cc02;
@@ -359,7 +359,7 @@ body.duo-body {
 }
 
 /* ===================================================
-   DUOLINGO BOTTOM FEEDBACK SHEET (MOBILE FIXED)
+    BOTTOM FEEDBACK SHEET (MOBILE FIXED)
    =================================================== */
 .duo-bottom-sheet {
   position: fixed;
