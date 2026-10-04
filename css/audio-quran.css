@@ -6,7 +6,29 @@
   --card-bg: #ffffff;
   --text-main: #2d3748;
   --text-muted: #718096;
+  --border-color: #e2e8f0;
   --border-radius: 12px;
+  --item-active-bg: #edfcf5;
+  --badge-bg: #e6fffa;
+  --notice-bg: #f0fdf4;
+  --notice-border: #bbf7d0;
+  --header-offset: 75px; /* ফিক্সড হেডারের উচ্চতা অনুযায়ী অফসেট */
+}
+
+/* ডার্ক মুড ভেরিয়েবল */
+body.dark-mode, [data-theme="dark"] {
+  --primary-color: #10b981;
+  --primary-hover: #059669;
+  --accent-color: #fbbf24;
+  --bg-color: #0f172a;
+  --card-bg: #1e293b;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-color: #334155;
+  --item-active-bg: #132e27;
+  --badge-bg: #064e3b;
+  --notice-bg: #142921;
+  --notice-border: #065f46;
 }
 
 * {
@@ -15,56 +37,76 @@
   padding: 0;
 }
 
+/* ফুটারকে ফুল-উইডথ (১০০%) করার জন্য বডিতে কোনো প্যাডিং থাকবে না */
 body {
   font-family: 'Hind Siliguri', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-main);
   line-height: 1.6;
-  padding: 16px;
+  padding: 0;
+  margin: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* মূল কন্টেইনার - হেডারে ঢাকা রোধে মার্জিন-টপ দেওয়া হয়েছে */
 .quran-container {
   max-width: 800px;
   margin: 0 auto;
+  padding: var(--header-offset) 16px 20px 16px;
 }
 
 .player-header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .player-header h1 {
   color: var(--primary-color);
-  font-size: 1.8rem;
+  font-size: 1.85rem;
+  font-weight: 700;
 }
 
 .player-header p {
   color: var(--text-muted);
   font-size: 0.95rem;
+  margin-top: 4px;
 }
 
-/* প্লেয়ার কার্ড */
+/* স্টিকি প্লেয়ার কার্ড */
 .main-player-card {
   background: var(--card-bg);
   border-radius: var(--border-radius);
   padding: 24px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
   position: sticky;
-  top: 10px;
-  z-index: 100;
-  border: 1px solid #e2e8f0;
+  top: calc(var(--header-offset) + 5px);
+  z-index: 90;
+  border: 1px solid var(--border-color);
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .now-playing-info {
   text-align: center;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
 }
 
 .arabic-title {
   font-family: 'Amiri', serif;
-  font-size: 2rem;
+  font-size: 2.1rem;
   color: var(--primary-color);
   display: block;
+  line-height: 1.2;
+}
+
+.now-playing-info h2 {
+  font-size: 1.35rem;
+  color: var(--text-main);
+  margin-top: 4px;
+}
+
+.verse-count {
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .timeline-container {
@@ -105,14 +147,19 @@ body {
 
 .main-play {
   background: var(--primary-color);
-  color: white;
-  width: 52px;
-  height: 52px;
+  color: #ffffff;
+  width: 54px;
+  height: 54px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.4rem;
+  box-shadow: 0 4px 12px rgba(11, 115, 85, 0.3);
+}
+
+.main-play:hover {
+  background: var(--primary-hover);
 }
 
 .utility-row {
@@ -123,17 +170,27 @@ body {
   align-items: center;
 }
 
+.reciter-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
 .reciter-wrapper select {
   padding: 8px 12px;
   border-radius: 8px;
-  border: 1px solid #cbd5e0;
-  background: white;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-main);
   font-family: inherit;
+  outline: none;
 }
 
 .download-action-btn {
   background-color: #2b6cb0;
-  color: white;
+  color: #ffffff;
   border: none;
   padding: 8px 16px;
   border-radius: 8px;
@@ -154,7 +211,7 @@ body {
   margin-top: 8px;
 }
 
-/* সূরা তালিকা ও সার্চ */
+/* সূরা তালিকা ও সার্চ বক্স */
 .surah-list-wrapper {
   margin-top: 25px;
 }
@@ -163,10 +220,17 @@ body {
   width: 100%;
   padding: 12px 16px;
   border-radius: var(--border-radius);
-  border: 1px solid #cbd5e0;
+  border: 1px solid var(--border-color);
+  background: var(--card-bg);
+  color: var(--text-main);
   margin-bottom: 16px;
   font-family: inherit;
   outline: none;
+  transition: border-color 0.2s;
+}
+
+#search-input:focus {
+  border-color: var(--primary-color);
 }
 
 .surah-grid {
@@ -176,24 +240,24 @@ body {
 }
 
 .surah-item {
-  background: white;
+  background: var(--card-bg);
   padding: 12px 16px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--border-color);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s ease;
 }
 
 .surah-item:hover, .surah-item.active {
   border-color: var(--primary-color);
-  background-color: #edfcf5;
+  background-color: var(--item-active-bg);
 }
 
 .surah-item .number-badge {
-  background: #e6fffa;
+  background: var(--badge-bg);
   color: var(--primary-color);
   font-weight: bold;
   padding: 4px 8px;
@@ -204,23 +268,24 @@ body {
 
 .surah-item .arabic-text {
   font-family: 'Amiri', serif;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--text-muted);
 }
-/* অডিও ডিসক্লেইমার বক্স */
+
+/* অডিও ডিসক্লেইমার কার্ড */
 .audio-notice-card {
   max-width: 800px;
-  margin: 30px auto 15px auto;
-  padding: 12px 18px;
-  background-color: #f0fdf4;
-  border: 1px solid #bbf7d0;
-  border-left: 4px solid var(--primary-color, #0b7355);
+  margin: 30px auto 20px auto;
+  padding: 14px 18px;
+  background-color: var(--notice-bg);
+  border: 1px solid var(--notice-border);
+  border-left: 4px solid var(--primary-color);
   border-radius: 8px;
-  color: #374151;
+  color: var(--text-main);
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
 .audio-notice-card strong {
-  color: var(--primary-color, #0b7355);
-    }
+  color: var(--primary-color);
+  }
