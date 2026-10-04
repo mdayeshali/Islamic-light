@@ -207,3 +207,20 @@ body {
   font-size: 1.2rem;
   color: var(--text-muted);
 }
+/* অডিও ডিসক্লেইমার বক্স */
+.audio-notice-card {
+  max-width: 800px;
+  margin: 30px auto 15px auto;
+  padding: 12px 18px;
+  background-color: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-left: 4px solid var(--primary-color, #0b7355);
+  border-radius: 8px;
+  color: #374151;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.audio-notice-card strong {
+  color: var(--primary-color, #0b7355);
+    }
