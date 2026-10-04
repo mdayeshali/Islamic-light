@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>অডিও কুরআন মাজীদ | Islamic Light</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- গুগল ফন্টস -->
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Amiri:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div class="quran-container">
+    <header class="player-header">
+      <h1>পবিত্র কুরআন মাজীদ অডিও</h1>
+      <p>সুললিত কণ্ঠে পূর্ণাঙ্গ ১১৪টি সূরার অডিও তেলাওয়াত ও ডাউনলোড</p>
+    </header>
+
+    <!-- স্টিকি প্লেয়ার কার্ড -->
+    <div class="main-player-card">
+      <div class="now-playing-info">
+        <span class="arabic-title" id="now-arabic">الفاتحة</span>
+        <h2 id="now-bengali">সূরা আল-ফাতিহা</h2>
+        <span class="verse-count" id="now-details">আয়াত: ৭ | মক্কী</span>
+      </div>
+
+      <audio id="audio-element" preload="none"></audio>
+
+      <!-- কাস্টম প্রগ্রেস বার -->
+      <div class="timeline-container">
+        <span id="current-time">00:00</span>
+        <input type="range" id="seek-bar" value="0" min="0" step="1">
+        <span id="duration-time">00:00</span>
+      </div>
+
+      <!-- প্লেয়ার কন্ট্রোল বাটন -->
+      <div class="control-actions">
+        <button id="prev-btn" class="ctrl-btn" title="পূর্ববর্তী সূরা">⏮</button>
+        <button id="play-btn" class="ctrl-btn main-play" title="প্লে/পজ">▶</button>
+        <button id="next-btn" class="ctrl-btn" title="পরবর্তী সূরা">⏭</button>
+      </div>
+
+      <!-- ক্বারী ড্রপডাউন ও ডাউনলোড সেকশন -->
+      <div class="utility-row">
+        <div class="reciter-wrapper">
+          <label for="reciter-select">ক্বারী:</label>
+          <select id="reciter-select">
+            <option value="https://server8.mp3quran.net/afs/">মিশারী রাশিদ আল-আফাসী</option>
+            <option value="https://server11.mp3quran.net/sds/">আব্দুর রহমান আস-সুদাইস</option>
+            <option value="https://server10.mp3quran.net/minsh/">মুহাম্মদ সিদ্দিক আল-মিনশাবী</option>
+            <option value="https://server6.mp3quran.net/ghamdi/">সাদ আল-গামিদীয়</option>
+          </select>
+        </div>
+
+        <button id="download-btn" class="download-action-btn">
+          <span>📥 MP3 ডাউনলোড</span>
+        </button>
+      </div>
+      <div id="download-progress" class="download-status-bar"></div>
+    </div>
+
+    <!-- সার্চ ও সূরা তালিকা -->
+    <div class="surah-list-wrapper">
+      <input type="text" id="search-input" placeholder="সূরা খুঁজুন (যেমন: ফাতিহা বা 1)...">
+      <div class="surah-grid" id="surah-list"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+audio
