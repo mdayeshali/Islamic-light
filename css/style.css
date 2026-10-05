@@ -18,7 +18,7 @@
 /* 🌙 Dark Mode */
 
 [data-theme="dark"] {
- --primary: #004d40;
+  --primary: #004d40;
   --bg: #0f0f0f;
   --text: #f1f1f1;
   --card-bg: #1c1c1c;
@@ -58,11 +58,6 @@ a {
   color: var(--primary);
   transition: 0.3s;
 }
-/*
-a:hover {
-  color: var(--accent);
-}
-*/
 
 img {
   max-width: 100%;
@@ -104,36 +99,117 @@ img {
   font-weight: 700;
   color: white;
   text-decoration: none;
+  white-space: nowrap;
 }
 
-/* আগের .brand .moon এর পরিবর্তে নতুন লোগোর জন্য সিএসএস */
 .brand .brand-logo {
   width: 35px;
   height: 35px;
   object-fit: contain;
-  border-radius: 50%; /* লোগোটি গোল শেপে সুন্দর দেখানোর জন্য */
+  border-radius: 50%;
 }
 
 
+/* --- Desktop Nav & Dropdown Style --- */
 
 .desktop-nav {
   display: flex;
+  align-items: center;
   gap: 15px;
 }
 
-.desktop-nav a {
+/* লেখাগুলো যেন কোনো অবস্থাতেই দুই লাইনে ভেঙে না যায় */
+.desktop-nav a,
+.nav-dropdown-btn {
+  white-space: nowrap;
   color: white;
-  font-weight: 300;
-  padding: 6px 2px;
+  font-weight: 400;
+  font-size: 0.95rem;
+  padding: 6px 4px;
   border-radius: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+  transition: 0.3s;
 }
 
 .desktop-nav a:hover,
-.desktop-nav a.active {
-  background: rgba(255,255,255,0.1);
+.desktop-nav a.active,
+.nav-dropdown-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
   color: #ffeb3b;
 }
 
+/* আরও দেখুন ড্রপডাউন কন্টেইনার */
+.nav-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.nav-dropdown-btn i {
+  font-size: 0.75rem;
+  transition: transform 0.25s ease;
+}
+
+.nav-dropdown.active .nav-dropdown-btn i {
+  transform: rotate(180deg);
+}
+
+/* ড্রপডাউন মেনু প্যানেল */
+.nav-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 180px;
+  background-color: var(--primary);
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  padding: 6px 0;
+  z-index: 10000;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* মাউস সরাতে ড্রপডাউন যেন বিচ্ছিন্ন না হয়ে বন্ধ হয় */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.nav-dropdown-menu a {
+  display: block;
+  padding: 8px 16px;
+  color: white;
+  font-size: 0.9rem;
+  border-radius: 0;
+  text-align: left;
+}
+
+.nav-dropdown-menu a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffeb3b;
+}
+
+/* মাউস হোভার অথবা জাভাস্ক্রিপ্ট ক্লিকে ওপেন থাকবে */
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.active .nav-dropdown-menu {
+  display: block;
+}
+
+[data-theme="dark"] .nav-dropdown-menu {
+  background: #00332a;
+}
+
+
+/* Controls */
 
 .nav-controls {
   display: flex;
@@ -156,55 +232,49 @@ img {
   color: #ffeb3b;
 }
 
+.menu-toggle {
+  display: none;
+}
+
 
 /* ------------------------------
-   📱 Mobile Nav (Updated for Dropdown Behavior)
+   📱 Mobile Nav
 ------------------------------ */
 
 .mobile-nav {
-  /* ড্রপডাউন স্টাইল */
   position: fixed;
-  top: 55px; /* Header-এর উচ্চতার পরে শুরু হবে */
-  right: 15px; /* ডান দিক থেকে দূরত্ব */
-  
-  width: 250px; /* ড্রপডাউনের নির্দিষ্ট প্রস্থ */
-  max-height: 0; /* ডিফল্টভাবে লুকানো */
-  overflow-y:auto; /* ভেতরের উপাদান লুকানোর জন্য */
-  overflow-x:hidden;
-
-
-  
+  top: 55px;
+  right: 15px;
+  width: 250px;
+  max-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
   background: var(--primary);
   box-shadow: 0 4px 15px var(--shadow);
   border-radius: 8px;
-  
   display: flex;
   flex-direction: column;
-  text-align: left; /* আইটেম বাম দিকে সরানো হলো */
-  z-index: 1000; /* overlay (999)-এর উপরে থাকবে */
-  
-  /* অ্যানিমেশন ট্রানজিশন যোগ করা হয়েছে */
+  text-align: left;
+  z-index: 1000;
   transition: max-height 0.4s ease-out, opacity 0.4s ease, transform 0.4s ease;
-  transform: translateY(-10px); /* উপরে থেকে সামান্য নিচে স্লাইড হবে */
+  transform: translateY(-10px);
   opacity: 0;
 }
 
-/* মেনু খোলার ক্লাস (JS এ এই ক্লাসটি যোগ হবে) */
 .mobile-nav.open {
-  max-height: 500px; /* কনটেন্ট অনুযায়ী একটি যথেষ্ট উচ্চতা দিন */
+  max-height: 500px;
   opacity: 1;
   transform: translateY(0);
 }
 
 .mobile-nav a {
   color: white;
-  padding: 12px 15px; /* প্যাডিং বাড়ানো হলো */
+  padding: 12px 15px;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   font-weight: 600;
   text-align: center;
 }
 
-/* শেষ আইটেমের নিচে বর্ডার সরান */
 .mobile-nav a:last-child {
   border-bottom: none;
 }
@@ -222,14 +292,13 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 999; /* mobile-nav (1000)-এর নিচে থাকবে */
-  background: rgba(0, 0, 0, 0.4); /* হালকা কালো শেড */
-  display: none; /* প্রাথমিক অবস্থায় লুকানো থাকবে */
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
-/* যখন ওভারলে দৃশ্যমান হবে (JS এই ক্লাসটি যোগ করবে) */
 #overlay.visible {
   display: block;
 }
@@ -284,7 +353,6 @@ img {
    🌙 Footer (Islamic Light)
 ======================================== */
 
-
 .site-footer {
   margin-top: 60px;
   background: var(--primary);
@@ -294,11 +362,9 @@ img {
   box-shadow: 0 -3px 10px rgba(0,0,0,0.25);
 }
 
-
 .footer-brand {
   margin-bottom: 20px;
 }
-
 
 .footer-logo {
   width: 45px;
@@ -314,12 +380,10 @@ img {
   font-weight: bold;
 }
 
-
 .footer-links {
   margin-top: 10px;
   margin-bottom: 20px;
 }
-
 
 .footer-links a {
   color: #ffeb3b;
@@ -330,36 +394,25 @@ img {
   transition: 0.3s;
 }
 
-
 .footer-links a:hover {
   color: white;
   text-decoration: underline;
 }
-
 
 .footer-copy {
   font-size: 0.85rem;
   opacity: 0.85;
 }
 
-
-/* Dark Mode Footer */
-
 [data-theme="dark"] .site-footer {
-  background: var(--primary-dark);
+  background: #00332a;
 }
-
-
-
-/* Arabic Font Size Fix for Mobile */
 
 @media (max-width: 600px) {
   .dua .arabic {
     font-size: 1.3rem;
   }
 }
-
-
 
 
 /* ------------------------------
@@ -381,50 +434,49 @@ img {
 ------------------------------ */
 
 @media (max-width: 900px) {
-  .desktop-nav { display: none; }
-  .menu-toggle { display: block; }
+  .desktop-nav { 
+    display: none; 
+  }
+  .menu-toggle { 
+    display: block; 
+  }
   .hero h1 { font-size: 1.8rem; }
   .hero p { font-size: 1rem; }
   .container { padding: 0 15px; }
   
-  /* Mobile Nav-কে ছোট স্ক্রিনে ডান দিকে আরও ভেতরে আনা হলো */
   .mobile-nav {
-      right: 10px;
-      width: 220px; 
+    right: 10px;
+    width: 220px; 
   }
 }
+
 
 /* ==========================================
    Screen Bottom Fixed PWA Install Container
 ========================================== */
 
-/* পুরো কন্টেইনার স্ক্রিনের নিচে ফিক্সড থাকবে */
 .floating-install-container {
   position: fixed;
   bottom: 15px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 99999; /* সর্বোচ্চ স্তরে রাখা */
-  
+  z-index: 99999;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
   width: 90%;
   max-width: 420px;
-  pointer-events: none; /* পেজের ব্যাকগ্রাউন্ড সুরক্ষিত রাখবে */
+  pointer-events: none;
 }
 
-/* স্ক্রিনের নিচে ফিক্সড ইনস্টল বাটন */
 .floating-install-btn {
-  pointer-events: auto !important; /* 🔥 এটি মিসিং ছিল, যার কারণে ক্লিকের কাজ বন্ধ ছিল */
-  
-  background-color: #e0f2fe; /* Light Ice Blue */
-  color: #004d40; /* গাঢ় সবুজ রঙ */
+  pointer-events: auto !important;
+  background-color: #e0f2fe;
+  color: #004d40;
   font-weight: bold;
   font-size: 14px;
   font-family: var(--font-bn);
-  
   padding: 10px 20px;
   border: 1.5px solid #004d40;
   border-radius: 30px;
@@ -432,8 +484,6 @@ img {
   cursor: pointer;
   white-space: nowrap;
   outline: none;
-  
-  /* নড়াচড়ার অ্যানিমেশন */
   animation: pulseShake 4s infinite ease-in-out;
   transition: transform 0.2s ease, background-color 0.3s;
 }
@@ -442,7 +492,6 @@ img {
   transform: scale(0.95);
 }
 
-/* মাঝে মাঝে নড়াচড়া করার কাস্টম অ্যানিমেশন */
 @keyframes pulseShake {
   0%, 80%, 100% {
     transform: scale(1);
@@ -458,7 +507,6 @@ img {
   }
 }
 
-/* মোবাইল ডিভাইসের জন্য স্পেসিং */
 @media (max-width: 480px) {
   .floating-install-container {
     bottom: 10px;
@@ -469,5 +517,4 @@ img {
     font-size: 13px;
     padding: 9px 18px;
   }
- }
- 
+}
