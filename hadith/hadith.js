@@ -687,13 +687,19 @@ return item;
 
 
 /* =========================
-   SHARE TEXT
+   SHARE & COPY TEXT
 ========================= */
 
 function createShareText(
 hadith,
 id
 ){
+
+const bookName=
+state.book?.name||"";
+
+const chapterTitle=
+state.chapter?.title||"";
 
 const narrator=
 hadith.narrator||"";
@@ -718,6 +724,27 @@ hadith.note||
 
 
 let text="";
+
+/* বইয়ের নাম, হাদিস নং ও অধ্যায় */
+if(bookName){
+
+text+=
+`${bookName} (হাদিস নং: ${id})\n`;
+
+if(chapterTitle){
+text+=
+`অধ্যায়: ${chapterTitle}\n`;
+}
+
+text+=
+"------------------------\n\n";
+
+}else{
+
+text+=
+`হাদিস নং: ${id}\n\n`;
+
+}
 
 
 if(narrator){
@@ -769,8 +796,7 @@ note+
 
 
 /*
-শুধু Islamic Light-এর
-সরাসরি হাদিসের URL
+Islamic Light সরাসরি হাদিসের URL
 */
 
 text+=
@@ -1676,8 +1702,4 @@ behavior:"smooth"
 renderBooks();
 
 openFromURL();
-
-
-
-
-
+   
