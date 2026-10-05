@@ -118,6 +118,16 @@ return String(value)
 
 
 /* =========================
+   BANGLA TO ENGLISH DIGITS
+========================= */
+
+function banglaToEnglishDigits(str=""){
+  const banglaDigits = {'০':'0', '১':'1', '২':'2', '৩':'3', '৪':'4', '৫':'5', '৬':'6', '৭':'7', '৮':'8', '৯':'9'};
+  return String(str).replace(/[০-৯]/g, match => banglaDigits[match]);
+}
+
+
+/* =========================
    FETCH JSON WITH TIMEOUT
 ========================= */
 
@@ -832,7 +842,7 @@ const processedHadiths = items.map((item, index) => {
   return {
     raw: hadith,
     id: rawId,
-    numericId: parseInt(rawId, 10) || 0
+    numericId: parseInt(banglaToEnglishDigits(rawId), 10) || 0
   };
 });
 
@@ -1157,10 +1167,10 @@ throw new Error(
 
 async function searchHadith(){
 
-const value=
+const rawValue=
 searchInput.value.trim();
 
-if(!value){
+if(!rawValue){
 
 searchInput.focus();
 
@@ -1179,6 +1189,9 @@ return;
 
 }
 
+/* বাংলা সংখ্যাকে ইংরেজিতে রূপান্তর */
+const value=
+banglaToEnglishDigits(rawValue);
 
 const id=
 parseInt(value,10);
@@ -1318,6 +1331,8 @@ bookKey;
 state.book=
 book;
 
+const normalizedHadithId=
+banglaToEnglishDigits(hadithId);
 
 /*
 Meta চেষ্টা
@@ -1340,7 +1355,7 @@ true
 try{
 
 const url=
-`${API}${book.path}/hadith/${hadithId}.json`;
+`${API}${book.path}/hadith/${normalizedHadithId}.json`;
 
 const data=
 await getJSON(url);
@@ -1362,7 +1377,7 @@ throw new Error(
 const realId=
 hadith.hadith_id||
 hadith.id||
-hadithId;
+normalizedHadithId;
 
 const chapterNumber=
 hadith.chapter?.chapter_number;
@@ -1462,13 +1477,15 @@ createFallbackChapters(book);
 
 }
 
+const normalizedChapterNumber=
+banglaToEnglishDigits(chapterNumber);
 
 const chapter=
-state.meta[String(chapterNumber)];
+state.meta[String(normalizedChapterNumber)];
 
 const title=
 chapter?.title||
-`অধ্যায় ${chapterNumber}`;
+`অধ্যায় ${normalizedChapterNumber}`;
 
 const range=
 chapter?.hadis_range||
@@ -1477,7 +1494,7 @@ chapter?.hadis_range||
 
 await loadHadiths(
 bookKey,
-chapterNumber,
+normalizedChapterNumber,
 title,
 range,
 false
@@ -1702,4 +1719,3 @@ behavior:"smooth"
 renderBooks();
 
 openFromURL();
-   
