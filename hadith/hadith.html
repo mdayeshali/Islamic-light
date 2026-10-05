@@ -1,1 +1,91 @@
-gjj
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>বাংলা হাদিস | Islamic Light</title>
+<meta name="description" content="Islamic Light-এ সহিহ বুখারী, সহিহ মুসলিম, তিরমিযী, নাসায়ী, আবু দাউদ ও ইবনে মাজাহ-এর বাংলা হাদিস পড়ুন।">
+<meta name="theme-color" content="#004d40">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="hadith.css">
+</head>
+
+<body>
+
+<header class="hadith-header">
+<div class="header-icon">📖</div>
+<h1>বাংলা হাদিস</h1>
+<p>কুরআন ও সুন্নাহর জ্ঞান সহজভাবে পড়ুন</p>
+</header>
+
+<main class="hadith-container">
+
+<div class="top-bar">
+<button id="backBtn" class="back-btn" type="button" hidden>← ফিরে যান</button>
+<div id="breadcrumb" class="breadcrumb">হাদিস গ্রন্থ</div>
+</div>
+
+<section class="search-box">
+<div class="search-input-wrap">
+<span>🔍</span>
+<input id="searchInput" type="search" placeholder="হাদিস নম্বর দিয়ে খুঁজুন">
+<button id="searchBtn" type="button">খুঁজুন</button>
+</div>
+</section>
+
+<div id="status" class="status"></div>
+
+<section id="booksView">
+<div class="section-heading">
+<h2>হাদিস গ্রন্থসমূহ</h2>
+<p>একটি গ্রন্থ নির্বাচন করুন</p>
+</div>
+
+<div id="booksGrid" class="books-grid"></div>
+</section>
+
+<section id="chaptersView" hidden>
+<div class="section-heading">
+<h2 id="bookTitle">অধ্যায়সমূহ</h2>
+<p>একটি অধ্যায় নির্বাচন করুন</p>
+</div>
+
+<div id="chaptersGrid" class="chapters-grid"></div>
+</section>
+
+<section id="hadithsView" hidden>
+<div class="section-heading">
+<h2 id="chapterTitle">হাদিসসমূহ</h2>
+<p id="chapterRange"></p>
+</div>
+
+<div id="hadithList" class="hadith-list"></div>
+</section>
+
+<div id="emptyState" class="empty-state" hidden>
+<div>📚</div>
+<h3>কোনো তথ্য পাওয়া যায়নি</h3>
+<p>দয়া করে আবার চেষ্টা করুন।</p>
+</div>
+
+<button id="scrollTopBtn" class="scroll-top" type="button" title="উপরে যান">↑</button>
+
+<div class="hadith-note">
+<strong>Islamic Light</strong>
+<p>হাদিসের তথ্যসূত্র: Hadith Bangla API</p>
+<p>
+<a href="https://github.com/md-rifatkhan/hadithbangla"
+target="_blank"
+rel="noopener noreferrer">
+Source Repository
+</a>
+</p>
+</div>
+
+</main>
+
+<script src="hadith.js"></script>
+</body>
+</html>
