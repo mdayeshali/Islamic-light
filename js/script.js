@@ -43,6 +43,7 @@ async function loadPartials() {
     initNavMenu();       
     initThemeToggle();   
     initInstallBtn();    // ইনস্টল বাটন ইনিশিয়ালাইজেশন
+    initNavDropdown();   // Desktop Nav Dropdown ("আরও দেখুন") ইনিশিয়ালাইজেশন
   } catch (err) {
     console.error("Header/Footer loading failed:", err);
   }
@@ -84,6 +85,30 @@ function initNavMenu() {
   
   mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', closeMenu);
+  });
+}
+
+
+/* -------------------------------------------------------
+   2.1) DESKTOP NAV DROPDOWN ("আরও দেখুন")
+--------------------------------------------------------- */
+function initNavDropdown() {
+  const dropdown = document.getElementById("navDropdown");
+  const dropdownBtn = document.getElementById("navDropdownBtn");
+
+  if (!dropdown || !dropdownBtn) return;
+
+  // Hmeh hian a inhawngin a inkhar ang
+  dropdownBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdown.classList.toggle("active");
+  });
+
+  // Pawn lam hmun danga hmeh hian dropdown a inkhar nghal ang
+  document.addEventListener("click", (e) => {
+    if (!dropdown.contains(e.target)) {
+      dropdown.classList.remove("active");
+    }
   });
 }
 
@@ -438,4 +463,4 @@ function setupModalEvents() {
 document.addEventListener('DOMContentLoaded', () => {
   initIslamicCalendar();
 });
-       
+   
