@@ -4,14 +4,65 @@
 --primary-light:#e7f4f1;
 --accent:#c8a951;
 --background:#f5f8f7;
+--surface:#ffffff;
 --white:#fff;
 --text:#263238;
 --muted:#607d7b;
 --border:#dce8e5;
+--arabic-bg:#fafcfb;
+--arabic-text:#1d2927;
+--note-bg:#faf8ef;
+--note-text:#5d563d;
 --danger:#a33d3d;
 --danger-bg:#fff4f4;
 --shadow:0 8px 30px rgba(0,77,64,.08);
 --radius:18px
+}
+
+/* =========================
+   DARK MODE COLORS
+========================= */
+body.dark-mode,
+[data-theme="dark"]{
+--primary:#26a69a;
+--primary-dark:#1a746b;
+--primary-light:#132d29;
+--accent:#dfc068;
+--background:#121817;
+--surface:#1c2523;
+--white:#ffffff;
+--text:#e0e8e6;
+--muted:#8fa7a4;
+--border:#283835;
+--arabic-bg:#16201e;
+--arabic-text:#f0f5f4;
+--note-bg:#262319;
+--note-text:#e2d9b8;
+--danger:#e57373;
+--danger-bg:#2b1818;
+--shadow:0 8px 30px rgba(0,0,0,.45)
+}
+
+@media(prefers-color-scheme: dark){
+  body:not(.light-mode):not([data-theme="light"]){
+    --primary:#26a69a;
+    --primary-dark:#1a746b;
+    --primary-light:#132d29;
+    --accent:#dfc068;
+    --background:#121817;
+    --surface:#1c2523;
+    --white:#ffffff;
+    --text:#e0e8e6;
+    --muted:#8fa7a4;
+    --border:#283835;
+    --arabic-bg:#16201e;
+    --arabic-text:#f0f5f4;
+    --note-bg:#262319;
+    --note-text:#e2d9b8;
+    --danger:#e57373;
+    --danger-bg:#2b1818;
+    --shadow:0 8px 30px rgba(0,0,0,.45)
+  }
 }
 
 *{margin:0;padding:0;box-sizing:border-box}
@@ -23,13 +74,14 @@ font-family:"Noto Sans Bengali",sans-serif;
 background:var(--background);
 color:var(--text);
 line-height:1.8;
-min-height:100vh
+min-height:100vh;
+transition:background .3s ease, color .3s ease
 }
 
 button,input{font-family:inherit}
 
 .hadith-header{
-background:linear-gradient(135deg,#00352d,#004d40);
+background:linear-gradient(135deg,#002822,#003d33);
 color:#fff;
 text-align:center;
 padding:45px 20px 75px;
@@ -101,14 +153,15 @@ margin-bottom:15px
 }
 
 .back-btn{
-border:0;
-background:#fff;
+border:1px solid var(--border);
+background:var(--surface);
 color:var(--primary);
 padding:10px 16px;
 border-radius:12px;
 box-shadow:var(--shadow);
 cursor:pointer;
-font-size:14px
+font-size:14px;
+transition:background .2s, border-color .2s
 }
 
 .breadcrumb{
@@ -118,9 +171,10 @@ font-weight:600
 }
 
 .search-box{
-background:#fff;
+background:var(--surface);
 padding:15px;
 border-radius:var(--radius);
+border:1px solid var(--border);
 box-shadow:var(--shadow);
 margin-bottom:25px
 }
@@ -133,11 +187,12 @@ height:52px;
 border:1px solid var(--border);
 border-radius:13px;
 padding-left:14px;
-background:#fbfdfc
+background:var(--background)
 }
 
 .search-input-wrap span{
-font-size:18px
+font-size:18px;
+color:var(--muted)
 }
 
 .search-input-wrap input{
@@ -161,7 +216,8 @@ margin-right:5px;
 border-radius:10px;
 cursor:pointer;
 font-size:14px;
-font-weight:600
+font-weight:600;
+transition:background .2s
 }
 
 .search-input-wrap button:hover{
@@ -191,7 +247,7 @@ gap:15px
 }
 
 .book-card{
-background:#fff;
+background:var(--surface);
 border:1px solid var(--border);
 border-radius:var(--radius);
 padding:22px;
@@ -217,7 +273,8 @@ background:var(--primary)
 
 .book-card:hover{
 transform:translateY(-3px);
-box-shadow:0 12px 35px rgba(0,77,64,.13)
+border-color:var(--primary);
+box-shadow:0 12px 35px rgba(0,0,0,.25)
 }
 
 .book-icon{
@@ -260,7 +317,7 @@ gap:12px
 }
 
 .chapter-card{
-background:#fff;
+background:var(--surface);
 border:1px solid var(--border);
 border-radius:15px;
 padding:17px;
@@ -314,7 +371,7 @@ gap:18px
 }
 
 .hadith-card{
-background:#fff;
+background:var(--surface);
 border:1px solid var(--border);
 border-radius:var(--radius);
 box-shadow:var(--shadow);
@@ -364,26 +421,28 @@ font-family:serif;
 font-size:23px;
 line-height:2.1;
 margin-bottom:20px;
-color:#1d2927;
+color:var(--arabic-text);
 padding:15px;
-background:#fafcfb;
+background:var(--arabic-bg);
+border:1px solid var(--border);
 border-radius:12px
 }
 
 .bangla-text{
 font-size:17px;
 line-height:2.15;
-white-space:pre-line
+white-space:pre-line;
+color:var(--text)
 }
 
 .note{
 margin-top:18px;
 padding:12px 15px;
-background:#faf8ef;
+background:var(--note-bg);
 border-right:4px solid var(--accent);
 border-radius:10px;
 font-size:13px;
-color:#5d563d
+color:var(--note-text)
 }
 
 .hadith-actions{
@@ -396,12 +455,13 @@ border-top:1px solid var(--border)
 
 .action-btn{
 border:1px solid var(--border);
-background:#fff;
+background:var(--surface);
 color:var(--primary);
 padding:8px 13px;
 border-radius:9px;
 font-size:12px;
-cursor:pointer
+cursor:pointer;
+transition:.2s
 }
 
 .action-btn:hover{
@@ -419,7 +479,7 @@ color:var(--muted)
 width:38px;
 height:38px;
 margin:15px auto;
-border:4px solid #dcebe7;
+border:4px solid var(--border);
 border-top-color:var(--primary);
 border-radius:50%;
 animation:spin .8s linear infinite
@@ -431,7 +491,7 @@ to{transform:rotate(360deg)}
 
 .error{
 background:var(--danger-bg);
-border:1px solid #ffd0d0;
+border:1px solid var(--danger);
 color:var(--danger);
 padding:18px;
 border-radius:14px;
@@ -441,7 +501,8 @@ font-size:14px
 
 .empty-state{
 text-align:center;
-background:#fff;
+background:var(--surface);
+border:1px solid var(--border);
 padding:45px 20px;
 border-radius:var(--radius);
 box-shadow:var(--shadow)
@@ -474,7 +535,7 @@ background:var(--primary);
 color:#fff;
 font-size:20px;
 cursor:pointer;
-box-shadow:0 5px 20px rgba(0,0,0,.15);
+box-shadow:0 5px 20px rgba(0,0,0,.3);
 display:none;
 z-index:20
 }
@@ -553,4 +614,4 @@ flex-wrap:wrap
 .action-btn{
 flex:1
 }
-  }
+}
