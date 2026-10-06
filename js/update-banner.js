@@ -124,7 +124,7 @@
         updateDots();
     }
 
-    /* =====================================
+        /* =====================================
        CHANGE UPDATE WITH ANIMATION
        ===================================== */
     function changeUpdate(index) {
@@ -134,15 +134,18 @@
         isAnimating = true;
         if (card) card.classList.add("is-changing");
 
+        // ৪৫০ মিলিসেকেন্ড পর নতুন তথ্য বসবে ও খুলবে
         setTimeout(function () {
             showUpdate(index);
             if (card) card.classList.remove("is-changing");
 
+            // নতুন স্লাইড পুরোপুরি খুলে অ্যানিমেশন শেষ হতে আরও ৪৫০ মিলিসেকেন্ড অপেক্ষা করবে
             setTimeout(function () {
                 isAnimating = false;
-            }, 250);
-        }, 250);
+            }, 450);
+        }, 450);
     }
+   
 
     /* =====================================
        SLIDE CONTROLS
