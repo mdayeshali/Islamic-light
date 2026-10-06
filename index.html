@@ -140,6 +140,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="css/update-banner.css">
 <link rel="stylesheet" href="css/announcement.css">
 
 </head>
@@ -196,7 +197,8 @@
     </div>
   </section>
    
-<div id="updateBannerContainer"></div>
+ <div id="heroUpdateBox"></div>
+   
    
   <!-- FULL MONTH CALENDAR MODAL -->
   <div class="cal-modal-overlay" id="calModalOverlay">
@@ -424,40 +426,11 @@
 
   <div id="footer"></div>
    
-<script>
-fetch("/includes/update-banner.html")
-    .then(response => response.text())
-    .then(html => {
 
-        document.getElementById(
-            "updateBannerContainer"
-        ).innerHTML = html;
-
-        const css =
-            document.createElement("link");
-      css.rel = "stylesheet";
-
-        css.href =
-            "/css/update-banner.css";
-
-        document.head.appendChild(css);
-        const script =
-            document.createElement("script");
-
-        script.src =
-            "/js/update-banner.js";
-        document.body.appendChild(script);
-    })
-    .catch(error => {
-      console.error(
-            "Update Banner Load Error:",
-            error
-        );
-    });
-   </script>
 
   <!-- Scripts -->
-   <script src="js/announcement.js"></script>
+  <script src="/js/update-banner.js"></script> 
+  <script src="js/announcement.js"></script>
   <script src="js/daily-inspiration.js" defer></script>
   <script src="js/script.js" defer></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
