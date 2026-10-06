@@ -9,15 +9,16 @@
       "buttonText": "হাদিস পড়ুন",
       "link": "/hadith/hadith.html"
     },
-    {
-      "icon": "fa-solid fa-quran",
-      "badge": "কুরআন মাজীদ",
-      "date": "১ অক্টোবর ২০২৬",
-      "title": "বাংলা তাফসীর ও অডিও তিলাওয়াত",
-      "description": "প্রতিটি সূরার সহজ সরল বাংলা অনুবাদ ও অডিও যুক্ত করা হয়েছে।",
-      "buttonText": "কুরআন শুনুন",
-      "link": "/quran/audio-quran.html"
-    },
+  {
+  "icon": "fa-solid fa-headphones",
+  "badge": "অডিও কুরআন",
+  "date": "১ অক্টোবর ২০২৬",
+  "title": "মধুর অডিও তিলাওয়াত",
+  "description": "বিশ্ববিখ্যাত চারজন ক্বারীর কণ্ঠে পবিত্র কুরআনের সম্পূর্ণ অডিও তিলাওয়াত শুনুন।",
+  "buttonText": "তিলাওয়াত শুনুন",
+  "link": "/quran/audio-quran.html"
+  },
+    
     {
       "icon": "fa-solid fa-book",
       "badge": "বই সম্ভার",
