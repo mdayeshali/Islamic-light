@@ -4,13 +4,9 @@
    ========================================= */
 
 .update-section {
-
     width: 100%;
-
     padding: 18px 12px 10px;
-
     position: relative;
-
     z-index: 2;
 }
 
@@ -20,86 +16,52 @@
    ========================================= */
 
 .update-card {
-
     width: 100%;
     max-width: 900px;
-
-    min-height: 190px;
-
+    min-height: 195px;
     margin: auto;
-
     display: flex;
-
     align-items: center;
-
     gap: 20px;
-
     padding: 23px 55px 23px 23px;
-
     position: relative;
-
     overflow: hidden;
-
     border-radius: 20px;
+    background: linear-gradient(135deg, #ffffff, #f4faf8);
+    border: 1px solid rgba(0, 77, 64, 0.10);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.13);
+}
 
-    background:
-        linear-gradient(
-            135deg,
-            #ffffff,
-            #f4faf8
-        );
-
-    border: 1px solid rgba(0,77,64,0.10);
-
-    box-shadow:
-        0 12px 35px rgba(0,0,0,0.13);
-
-    transition:
-        opacity 0.25s ease,
-        transform 0.25s ease;
+[data-theme="dark"] .update-card {
+    background: linear-gradient(135deg, #182320, #131c19);
+    border-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
 }
 
 
 /* Decorative Glow */
 
 .update-card::before {
-
     content: "";
-
     position: absolute;
-
     width: 190px;
     height: 190px;
-
     right: -90px;
     top: -90px;
-
     border-radius: 50%;
-
-    background:
-        rgba(0,121,107,0.08);
-
+    background: rgba(0, 121, 107, 0.08);
     pointer-events: none;
 }
 
-
 .update-card::after {
-
     content: "";
-
     position: absolute;
-
     width: 100px;
     height: 100px;
-
     left: -50px;
     bottom: -50px;
-
     border-radius: 50%;
-
-    background:
-        rgba(0,77,64,0.06);
-
+    background: rgba(0, 77, 64, 0.06);
     pointer-events: none;
 }
 
@@ -109,36 +71,20 @@
    ========================================= */
 
 .update-icon {
-
     width: 68px;
     height: 68px;
-
     flex-shrink: 0;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     border-radius: 18px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #004d40,
-            #00796b
-        );
-
+    background: linear-gradient(135deg, #004d40, #00796b);
     color: #ffffff;
-
     font-size: 29px;
-
-    box-shadow:
-        0 8px 20px rgba(0,77,64,0.25);
-
+    box-shadow: 0 8px 20px rgba(0, 77, 64, 0.25);
     position: relative;
-
     z-index: 1;
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.35s ease;
 }
 
 
@@ -147,14 +93,14 @@
    ========================================= */
 
 .update-content {
-
     flex: 1;
-
     min-width: 0;
-
     position: relative;
-
     z-index: 1;
+    transform-origin: left center;
+    transition: clip-path 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+                transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+                opacity 0.35s ease;
 }
 
 
@@ -163,59 +109,40 @@
    ========================================= */
 
 .update-top {
-
     display: flex;
-
     align-items: center;
-
     gap: 10px;
-
     margin-bottom: 7px;
 }
 
-
 .update-badge {
-
     display: inline-flex;
-
     align-items: center;
-
     gap: 6px;
-
     padding: 5px 10px;
-
     border-radius: 30px;
-
     background: #e6f4f1;
-
     color: #00695c;
-
     font-size: 11px;
-
     font-weight: 800;
 }
 
-
 .update-dot {
-
     width: 6px;
     height: 6px;
-
     flex-shrink: 0;
-
     border-radius: 50%;
-
     background: #00a88f;
-
     animation: updatePulse 1.8s infinite;
 }
 
-
 .update-date {
-
     color: #777;
-
     font-size: 11px;
+}
+
+[data-theme="dark"] .update-date {
+    color: #a0a0a0;
 }
 
 
@@ -224,16 +151,20 @@
    ========================================= */
 
 .update-title {
-
     margin: 0 0 7px;
-
     color: #173b35;
-
     font-size: 20px;
-
     line-height: 1.45;
-
     font-weight: 800;
+    min-height: 58px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .update-title {
+    color: #4db6ac;
 }
 
 
@@ -242,16 +173,20 @@
    ========================================= */
 
 .update-description {
-
     margin: 0;
-
     max-width: 650px;
-
     color: #555;
-
     font-size: 14px;
-
     line-height: 1.75;
+    min-height: 48px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+[data-theme="dark"] .update-description {
+    color: #c5c5c5;
 }
 
 
@@ -260,30 +195,21 @@
    ========================================= */
 
 .update-bottom {
-
     margin-top: 15px;
-
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
-
     gap: 15px;
 }
 
-
-/* =========================================
-   NUMBER
-   ========================================= */
-
 .update-progress {
-
     color: #777;
-
     font-size: 11px;
-
     font-weight: 600;
+}
+
+[data-theme="dark"] .update-progress {
+    color: #888;
 }
 
 
@@ -292,63 +218,32 @@
    ========================================= */
 
 .update-button {
-
     display: inline-flex;
-
     align-items: center;
-
     justify-content: center;
-
     gap: 8px;
-
     padding: 9px 15px;
-
     border-radius: 9px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #004d40,
-            #00796b
-        );
-
-    color: #ffffff;
-
+    background: linear-gradient(135deg, #004d40, #00796b);
+    color: #ffffff !important;
     text-decoration: none;
-
     font-size: 13px;
-
     font-weight: 700;
-
-    box-shadow:
-        0 6px 15px rgba(0,77,64,0.20);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+    box-shadow: 0 6px 15px rgba(0, 77, 64, 0.20);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-
 
 .update-button:hover {
-
     transform: translateY(-2px);
-
-    box-shadow:
-        0 9px 20px rgba(0,77,64,0.28);
+    box-shadow: 0 9px 20px rgba(0, 77, 64, 0.28);
 }
-
 
 .update-button .arrow {
-
-    transition:
-        transform 0.25s ease;
+    transition: transform 0.25s ease;
 }
 
-
 .update-button:hover .arrow {
-
-    transform:
-        translateX(4px);
+    transform: translateX(4px);
 }
 
 
@@ -357,62 +252,40 @@
    ========================================= */
 
 .update-navigation {
-
     position: absolute;
-
     right: 12px;
     top: 50%;
-
-    transform:
-        translateY(-50%);
-
+    transform: translateY(-50%);
     display: flex;
-
     flex-direction: column;
-
     gap: 6px;
-
     z-index: 5;
 }
 
-
 .update-nav {
-
     width: 29px;
     height: 29px;
-
     display: flex;
-
     align-items: center;
     justify-content: center;
-
     border: none;
-
     border-radius: 50%;
-
     background: #e8f1ef;
-
     color: #004d40;
-
     font-size: 20px;
-
     line-height: 1;
-
     cursor: pointer;
-
-    transition:
-        background 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
+[data-theme="dark"] .update-nav {
+    background: rgba(255, 255, 255, 0.08);
+    color: #e0f2fe;
+}
 
 .update-nav:hover {
-
     background: #004d40;
-
     color: #ffffff;
-
     transform: scale(1.08);
 }
 
@@ -422,58 +295,56 @@
    ========================================= */
 
 .update-dots {
-
     display: flex;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 6px;
-
     margin-top: 9px;
 }
 
-
 .update-dot-item {
-
     width: 6px;
     height: 6px;
-
     padding: 0;
-
     border: none;
-
     border-radius: 20px;
-
     background: #c5d4d1;
-
     cursor: pointer;
-
-    transition:
-        width 0.25s ease,
-        background 0.25s ease;
+    transition: width 0.25s ease, background 0.25s ease;
 }
 
-
 .update-dot-item.active {
-
     width: 20px;
-
     background: #004d40;
 }
 
 
 /* =========================================
-   SLIDE ANIMATION
+   SLIDE ANIMATION (কাপড় গোছানো ও পর্দা খোলা ইফেক্ট)
    ========================================= */
 
-.update-card.is-changing {
-
+/* স্লাইড শেষ হয়ে গুটিয়ে যাওয়া অবস্থা */
+.update-card.is-changing .update-content {
     opacity: 0;
+    clip-path: inset(0 100% 0 0 round 0);
+    transform: scaleX(0.92) translateX(-18px);
+}
 
-    transform:
-        translateY(6px);
+.update-card.is-changing .update-icon {
+    opacity: 0.3;
+    transform: scale(0.85);
+}
+
+/* নতুন স্লাইড স্বাভাবিকভাবে খুলে যাওয়ার অবস্থা */
+.update-card:not(.is-changing) .update-content {
+    opacity: 1;
+    clip-path: inset(0 0 0 0 round 0);
+    transform: scaleX(1) translateX(0);
+}
+
+.update-card:not(.is-changing) .update-icon {
+    opacity: 1;
+    transform: scale(1);
 }
 
 
@@ -482,26 +353,14 @@
    ========================================= */
 
 @keyframes updatePulse {
-
     0% {
-
-        box-shadow:
-            0 0 0 0
-            rgba(0,168,143,0.45);
+        box-shadow: 0 0 0 0 rgba(0, 168, 143, 0.45);
     }
-
     70% {
-
-        box-shadow:
-            0 0 0 7px
-            rgba(0,168,143,0);
+        box-shadow: 0 0 0 7px rgba(0, 168, 143, 0);
     }
-
     100% {
-
-        box-shadow:
-            0 0 0 0
-            rgba(0,168,143,0);
+        box-shadow: 0 0 0 0 rgba(0, 168, 143, 0);
     }
 }
 
@@ -511,32 +370,27 @@
    ========================================= */
 
 @media (max-width: 700px) {
-
     .update-card {
-
         gap: 15px;
-
         padding: 20px 48px 20px 19px;
+        min-height: 205px;
     }
 
     .update-icon {
-
         width: 58px;
         height: 58px;
-
         border-radius: 15px;
-
         font-size: 25px;
     }
 
     .update-title {
-
         font-size: 18px;
+        min-height: 52px;
     }
 
     .update-description {
-
         font-size: 13px;
+        min-height: 44px;
     }
 }
 
@@ -546,73 +400,47 @@
    ========================================= */
 
 @media (max-width: 520px) {
-
     .update-section {
-
-        padding:
-            12px
-            10px
-            8px;
+        padding: 12px 10px 8px;
     }
 
-
     .update-card {
-
         display: block;
-
-        min-height: 0;
-
+        min-height: 255px; /* মোবাইলে সকল উপাদান ফিক্সড রেখে লাফালাফি বন্ধ করবে */
         padding: 19px 47px 19px 19px;
-
         border-radius: 17px;
     }
 
-
     .update-icon {
-
         width: 50px;
         height: 50px;
-
         margin-bottom: 12px;
-
         border-radius: 14px;
-
         font-size: 22px;
     }
 
-
     .update-title {
-
         font-size: 17px;
-
         line-height: 1.5;
+        min-height: 50px;
     }
-
 
     .update-description {
-
         font-size: 13px;
-
-        line-height: 1.7;
+        line-height: 1.65;
+        min-height: 44px;
     }
 
-
     .update-bottom {
-
         margin-top: 13px;
     }
 
-
     .update-button {
-
         padding: 9px 13px;
-
         font-size: 12px;
     }
 
-
     .update-navigation {
-
         right: 10px;
     }
 }
@@ -623,19 +451,18 @@
    ========================================= */
 
 @media (max-width: 360px) {
-
     .update-card {
-
         padding-left: 16px;
+        min-height: 265px;
     }
 
     .update-title {
-
         font-size: 16px;
+        min-height: 48px;
     }
 
     .update-description {
-
         font-size: 12px;
+        min-height: 40px;
     }
 }
