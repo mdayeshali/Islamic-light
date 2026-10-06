@@ -4,451 +4,227 @@
    ========================================= */
 
 (function () {
-
     "use strict";
 
-
     /* =====================================
-       SETTINGS
+       SETTINGS & PATHS
        ===================================== */
-
+    const BANNER_HTML_URL = "/includes/update-banner.html";
     const JSON_URL = "/data/update.json";
-
     const AUTO_SLIDE_TIME = 6000;
-
 
     /* =====================================
        VARIABLES
        ===================================== */
-
     let updates = [];
-
     let currentIndex = 0;
-
     let slideTimer = null;
-
     let isAnimating = false;
 
+    // Elements (DOM লোড হওয়ার পর সিলেক্ট হবে)
+    let card, icon, badge, date, title, description, button, buttonText, number, dots, prevButton, nextButton;
 
     /* =====================================
-       ELEMENTS
+       STEP 1: LOAD HTML & INITIALIZE
        ===================================== */
-
-    const card =
-        document.getElementById("updateCard");
-
-    const icon =
-        document.getElementById("updateIcon");
-
-    const badge =
-        document.getElementById("updateBadge");
-
-    const date =
-        document.getElementById("updateDate");
-
-    const title =
-        document.getElementById("updateTitle");
-
-    const description =
-        document.getElementById("updateDescription");
-
-    const button =
-        document.getElementById("updateButton");
-
-    const buttonText =
-        document.getElementById("updateButtonText");
-
-    const number =
-        document.getElementById("updateNumber");
-
-    const dots =
-        document.getElementById("updateDots");
-
-    const prevButton =
-        document.getElementById("updatePrev");
-
-    const nextButton =
-        document.getElementById("updateNext");
-
-
-    /* =====================================
-       LOAD JSON
-       ===================================== */
-
-    async function loadUpdates() {
+    async function initBanner() {
+        const container = document.getElementById("heroUpdateBox");
+        if (!container) return;
 
         try {
+            // ১. আগে update-banner.html ফেচ করে কন্টেইনারে ঢোকানো
+            const htmlRes = await fetch(BANNER_HTML_URL);
+            if (!htmlRes.ok) throw new Error("Banner HTML could not be loaded.");
+            container.innerHTML = await htmlRes.text();
 
-            const response =
-                await fetch(JSON_URL);
+            // ২. HTML পেজে বসার পর এলিমেন্টগুলো সিলেক্ট করা
+            card = document.getElementById("updateCard");
+            icon = document.getElementById("updateIcon");
+            badge = document.getElementById("updateBadge");
+            date = document.getElementById("updateDate");
+            title = document.getElementById("updateTitle");
+            description = document.getElementById("updateDescription");
+            button = document.getElementById("updateButton");
+            buttonText = document.getElementById("updateButtonText");
+            number = document.getElementById("updateNumber");
+            dots = document.getElementById("updateDots");
+            prevButton = document.getElementById("updatePrev");
+            nextButton = document.getElementById("updateNext");
 
-            if (!response.ok) {
-
-                throw new Error(
-                    "Update JSON could not be loaded."
-                );
+            // ৩. ইভেন্ট লিসেনার সেট করা
+            if (prevButton) prevButton.addEventListener("click", previousUpdate);
+            if (nextButton) nextButton.addEventListener("click", nextUpdate);
+            if (card) {
+                card.addEventListener("mouseenter", stopAutoSlide);
+                card.addEventListener("mouseleave", startAutoSlide);
             }
 
-
-            const data =
-                await response.json();
-
-
-            if (
-                !data.updates ||
-                !Array.isArray(data.updates) ||
-                data.updates.length === 0
-            ) {
-
-                throw new Error(
-                    "No updates found."
-                );
-            }
-
-
-            updates = data.updates;
-
-
-            createDots();
-
-
-            showUpdate(0);
-
-
-            startAutoSlide();
-
+            // ৪. JSON থেকে ডাটা লোড করা
+            loadUpdates();
 
         } catch (error) {
-
-            console.error(
-                "Update Banner Error:",
-                error
-            );
-
+            console.error("Update Banner Init Error:", error);
             hideBanner();
-
         }
-
     }
 
+    /* =====================================
+       STEP 2: LOAD JSON DATA
+       ===================================== */
+    async function loadUpdates() {
+        try {
+            const response = await fetch(JSON_URL);
+            if (!response.ok) throw new Error("Update JSON could not be loaded.");
+
+            const data = await response.json();
+            
+            // data বা data.updates দুটো ফরম্যাটই হ্যান্ডেল করার জন্য:
+            updates = Array.isArray(data) ? data : (data.updates || []);
+
+            if (updates.length === 0) {
+                throw new Error("No updates found.");
+            }
+
+            createDots();
+            showUpdate(0);
+            startAutoSlide();
+
+        } catch (error) {
+            console.error("Update JSON Error:", error);
+            hideBanner();
+        }
+    }
 
     /* =====================================
        SHOW UPDATE
        ===================================== */
-
     function showUpdate(index) {
-
         if (!updates.length) return;
 
+        currentIndex = (index + updates.length) % updates.length;
+        const item = updates[currentIndex];
 
-        currentIndex =
-            (index + updates.length)
-            % updates.length;
+        // আইকন হ্যান্ডলিং (টেক্সট অথবা FontAwesome আইকন দুটোই সাপোর্ট করবে)
+        if (icon) {
+            if (item.icon && item.icon.includes("fa-")) {
+                icon.innerHTML = `<i class="${item.icon}"></i>`;
+            } else {
+                icon.innerHTML = item.icon || "✦";
+            }
+        }
 
-
-        const item =
-            updates[currentIndex];
-
-
-        icon.textContent =
-            item.icon || "✦";
-
-
-        badge.textContent =
-            item.badge || "নতুন আপডেট";
-
-
-        date.textContent =
-            item.date || "";
-
-
-        title.textContent =
-            item.title || "";
-
-
-        description.textContent =
-            item.description || "";
-
-
-        buttonText.textContent =
-            item.buttonText || "দেখুন";
-
-
-        button.href =
-            item.link || "#";
-
-
-        number.textContent =
-            `${currentIndex + 1} / ${updates.length}`;
-
+        if (badge) badge.textContent = item.badge || "নতুন আপডেট";
+        if (date) date.textContent = item.date || "";
+        if (title) title.textContent = item.title || "";
+        if (description) description.textContent = item.description || "";
+        if (buttonText) buttonText.textContent = item.buttonText || "দেখুন";
+        if (button) button.href = item.link || "#";
+        if (number) number.textContent = `${currentIndex + 1} / ${updates.length}`;
 
         updateDots();
-
     }
 
-
     /* =====================================
-       CHANGE UPDATE
+       CHANGE UPDATE WITH ANIMATION
        ===================================== */
-
     function changeUpdate(index) {
-
         if (isAnimating) return;
-
         if (updates.length <= 1) return;
 
-
         isAnimating = true;
-
-
-        card.classList.add(
-            "is-changing"
-        );
-
+        if (card) card.classList.add("is-changing");
 
         setTimeout(function () {
-
             showUpdate(index);
-
-
-            card.classList.remove(
-                "is-changing"
-            );
-
+            if (card) card.classList.remove("is-changing");
 
             setTimeout(function () {
-
                 isAnimating = false;
-
             }, 250);
-
-
         }, 250);
-
     }
 
-
     /* =====================================
-       NEXT
+       SLIDE CONTROLS
        ===================================== */
-
     function nextUpdate() {
-
-        changeUpdate(
-            currentIndex + 1
-        );
-
+        changeUpdate(currentIndex + 1);
         restartAutoSlide();
-
     }
-
-
-    /* =====================================
-       PREVIOUS
-       ===================================== */
 
     function previousUpdate() {
-
-        changeUpdate(
-            currentIndex - 1
-        );
-
+        changeUpdate(currentIndex - 1);
         restartAutoSlide();
-
     }
 
-
     /* =====================================
-       DOTS
+       DOTS CREATION & UPDATE
        ===================================== */
-
     function createDots() {
-
+        if (!dots) return;
         dots.innerHTML = "";
 
+        updates.forEach(function (_, index) {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.className = "update-dot-item";
+            dot.setAttribute("aria-label", `Update ${index + 1}`);
 
-        updates.forEach(
-            function (_, index) {
+            dot.addEventListener("click", function () {
+                changeUpdate(index);
+                restartAutoSlide();
+            });
 
-                const dot =
-                    document.createElement("button");
-
-
-                dot.type = "button";
-
-
-                dot.className =
-                    "update-dot-item";
-
-
-                dot.setAttribute(
-                    "aria-label",
-                    `Update ${index + 1}`
-                );
-
-
-                dot.addEventListener(
-                    "click",
-                    function () {
-
-                        changeUpdate(index);
-
-                        restartAutoSlide();
-
-                    }
-                );
-
-
-                dots.appendChild(dot);
-
-            }
-        );
-
+            dots.appendChild(dot);
+        });
     }
-
-
-    /* =====================================
-       ACTIVE DOT
-       ===================================== */
 
     function updateDots() {
-
-        const allDots =
-            dots.querySelectorAll(
-                ".update-dot-item"
-            );
-
-
-        allDots.forEach(
-            function (dot, index) {
-
-                dot.classList.toggle(
-                    "active",
-                    index === currentIndex
-                );
-
-            }
-        );
-
+        if (!dots) return;
+        const allDots = dots.querySelectorAll(".update-dot-item");
+        allDots.forEach(function (dot, index) {
+            dot.classList.toggle("active", index === currentIndex);
+        });
     }
-
 
     /* =====================================
        AUTO SLIDE
        ===================================== */
-
     function startAutoSlide() {
-
         stopAutoSlide();
-
-
         if (updates.length <= 1) return;
 
-
-        slideTimer =
-            setInterval(
-                function () {
-
-                    changeUpdate(
-                        currentIndex + 1
-                    );
-
-                },
-                AUTO_SLIDE_TIME
-            );
-
+        slideTimer = setInterval(function () {
+            changeUpdate(currentIndex + 1);
+        }, AUTO_SLIDE_TIME);
     }
-
-
-    /* =====================================
-       STOP AUTO SLIDE
-       ===================================== */
 
     function stopAutoSlide() {
-
         if (slideTimer) {
-
-            clearInterval(
-                slideTimer
-            );
-
+            clearInterval(slideTimer);
             slideTimer = null;
-
         }
-
     }
-
-
-    /* =====================================
-       RESTART
-       ===================================== */
 
     function restartAutoSlide() {
-
         startAutoSlide();
-
     }
 
-
     /* =====================================
-       HIDE BANNER
+       HIDE BANNER IF EMPTY OR ERROR
        ===================================== */
-
     function hideBanner() {
-
-        const section =
-            document.getElementById(
-                "updateSection"
-            );
-
-
-        if (section) {
-
-            section.style.display =
-                "none";
-
-        }
-
+        const section = document.getElementById("updateSection");
+        if (section) section.style.display = "none";
     }
 
-
     /* =====================================
-       BUTTON EVENTS
+       START AFTER DOM READY
        ===================================== */
-
-    prevButton.addEventListener(
-        "click",
-        previousUpdate
-    );
-
-
-    nextButton.addEventListener(
-        "click",
-        nextUpdate
-    );
-
-
-    /* =====================================
-       PAUSE ON HOVER
-       ===================================== */
-
-    card.addEventListener(
-        "mouseenter",
-        stopAutoSlide
-    );
-
-
-    card.addEventListener(
-        "mouseleave",
-        startAutoSlide
-    );
-
-
-    /* =====================================
-       START
-       ===================================== */
-
-    loadUpdates();
-
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", initBanner);
+    } else {
+        initBanner();
+    }
 
 })();
