@@ -125,7 +125,8 @@
     }
 
         /* =====================================
-       CHANGE UPDATE WITH ANIMATION
+       C    /* =====================================
+       CHANGE UPDATE WITH 3D ANIMATION
        ===================================== */
     function changeUpdate(index) {
         if (isAnimating) return;
@@ -134,17 +135,18 @@
         isAnimating = true;
         if (card) card.classList.add("is-changing");
 
-        // ৪৫০ মিলিসেকেন্ড পর নতুন তথ্য বসবে ও খুলবে
+        // ৫৫০ms পর পুরনো স্লাইড গুটিয়ে শেষ হবে এবং নতুন স্লাইড ওপর থেকে নামবে
         setTimeout(function () {
             showUpdate(index);
             if (card) card.classList.remove("is-changing");
 
-            // নতুন স্লাইড পুরোপুরি খুলে অ্যানিমেশন শেষ হতে আরও ৪৫০ মিলিসেকেন্ড অপেক্ষা করবে
+            // নতুন স্লাইড সম্পূর্ণ খুলে স্বাভাবিক হতে আরও ৫৫০ms সময় নেবে
             setTimeout(function () {
                 isAnimating = false;
-            }, 1200);
-        }, 1200);
+            }, 550);
+        }, 550);
     }
+
    
 
     /* =====================================
