@@ -18,6 +18,16 @@
   "buttonText": "তিলাওয়াত শুনুন",
   "link": "/quran/audio-quran.html"
   },
+    {
+  "icon": "fa-solid fa-gamepad",
+  "badge": "কুইজ গেম",
+  "date": "৬ অক্টোবর ২০২৬",
+  "title": "ইসলামিক কুইজ গেম",
+  "description": "প্রতিদিন সহজ ইসলামিক প্রশ্নের উত্তর দিয়ে আপনার জ্ঞান পরীক্ষা করুন ও নতুন কিছু জানুন।",
+  "buttonText": "খেলুন ও শিখুন",
+  "link": "/quiz/game.html"
+    },
+    
     
     {
       "icon": "fa-solid fa-book",
