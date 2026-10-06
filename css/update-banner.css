@@ -49,11 +49,14 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1),
-              opacity 0.6s ease,
-              filter 0.6s ease;
   user-select: none;
   cursor: pointer;
+
+  /* 🐢 স্লো-মোশন ট্রানজিশন (০.৮৫ সেকেন্ডে সিনেমাটিক গ্লাইড) */
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.85s ease,
+              filter 0.85s ease,
+              box-shadow 0.85s ease;
 }
 
 @media (min-width: 660px) {
@@ -70,37 +73,40 @@
 }
 
 /* =========================================
-   ৩D পজিশন ক্লাসসমূহ
+   ৩D পজিশন ও সাইজ স্কেলিং (ছোট থেকে বড় ও বড় থেকে ছোট)
    ========================================= */
 
-/* মাঝখানের প্রধান সক্রিয় কার্ড */
+/* মাঝখানের প্রধান সক্রিয় কার্ড (পূর্ণ আকার ও স্পষ্ট ফোকাস) */
 .c-card.active {
-  transform: translateX(0) translateZ(0) rotateY(0deg);
+  transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
   opacity: 1;
   z-index: 10;
   pointer-events: auto;
   filter: none;
+  box-shadow: 0 15px 35px rgba(0, 77, 64, 0.16);
 }
 
-/* বাঁ দিকের কার্ড (পেছনে কৌণিকভাবে থাকবে) */
+/* বাঁ দিকের কার্ড (ছোট হয়ে পেছনে বাঁকা থাকবে) */
 .c-card.prev-card {
-  transform: translateX(-48%) translateZ(-160px) rotateY(35deg);
-  opacity: 0.5;
+  transform: translateX(-52%) translateZ(-180px) rotateY(36deg) scale(0.82);
+  opacity: 0.45;
   z-index: 5;
-  filter: brightness(0.9);
+  filter: brightness(0.88);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
-/* ডান দিকের কার্ড (পেছনে কৌণিকভাবে থাকবে) */
+/* ডান দিকের কার্ড (ছোট হয়ে পেছনে বাঁকা থাকবে) */
 .c-card.next-card {
-  transform: translateX(48%) translateZ(-160px) rotateY(-35deg);
-  opacity: 0.5;
+  transform: translateX(52%) translateZ(-180px) rotateY(-36deg) scale(0.82);
+  opacity: 0.45;
   z-index: 5;
-  filter: brightness(0.9);
+  filter: brightness(0.88);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
 
-/* অন্য স্লাইডগুলো পেছনে লুকানো থাকবে */
+/* অন্য স্লাইডগুলো আরও সংকুচিত হয়ে পেছনে লুকানো থাকবে */
 .c-card.hidden {
-  transform: translateZ(-350px);
+  transform: translateZ(-350px) scale(0.65);
   opacity: 0;
   z-index: 1;
   pointer-events: none;
@@ -263,7 +269,7 @@
 }
 
 /* =========================================
-   মোবাইল রেসপনসিভ
+   মোবাইল রেসপনসিভ (স্কেলিং ও লেআউট)
    ========================================= */
 
 @media (max-width: 500px) {
@@ -280,11 +286,11 @@
   }
 
   .c-card.prev-card {
-    transform: translateX(-40%) translateZ(-140px) rotateY(30deg);
+    transform: translateX(-42%) translateZ(-150px) rotateY(30deg) scale(0.84);
   }
 
   .c-card.next-card {
-    transform: translateX(40%) translateZ(-140px) rotateY(-30deg);
+    transform: translateX(42%) translateZ(-150px) rotateY(-30deg) scale(0.84);
   }
 
   .c-icon {
@@ -302,4 +308,4 @@
   .c-desc {
     font-size: 12.5px;
   }
-        }
+     }
