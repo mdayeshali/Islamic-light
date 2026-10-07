@@ -1,0 +1,1782 @@
+/* =========================================================
+   ISLAMIC CITY
+   city-g.css
+   Islamic Light
+========================================================= */
+
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+:root {
+
+    --primary: #004d40;
+    --primary-light: #00796b;
+    --primary-dark: #003c32;
+
+    --green: #2e7d32;
+    --light-green: #e8f5e9;
+
+    --sky: #dff3ff;
+    --grass: #b9d99a;
+    --grass-dark: #8fbd70;
+
+    --road: #8c8c8c;
+    --road-dark: #707070;
+
+    --white: #ffffff;
+    --black: #222222;
+    --gray: #666666;
+    --light-gray: #eeeeee;
+
+    --shadow:
+        0 5px 18px rgba(0, 0, 0, 0.10);
+
+    --radius: 16px;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family:
+        "Noto Sans Bengali",
+        "Segoe UI",
+        sans-serif;
+
+    background: #f4f8f6;
+
+    color: var(--black);
+
+    overflow-x: hidden;
+
+}
+
+
+/* =========================================================
+   GAME HEADER
+========================================================= */
+
+.city-header {
+
+    width: 100%;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-dark),
+            var(--primary)
+        );
+
+    color: var(--white);
+
+    padding:
+        13px
+        15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.15);
+
+}
+
+
+.city-header-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+}
+
+
+.city-header h1 {
+
+    font-size: 21px;
+
+    line-height: 1.3;
+
+}
+
+
+.city-header p {
+
+    font-size: 12px;
+
+    opacity: 0.85;
+
+    margin-top: 2px;
+
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.back-button {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.12);
+
+    color: var(--white);
+
+    text-decoration: none;
+
+    font-size: 24px;
+
+    transition: 0.2s ease;
+
+}
+
+
+.back-button:hover {
+
+    background:
+        rgba(255, 255, 255, 0.22);
+
+}
+
+
+/* =========================================================
+   HELP BUTTON
+========================================================= */
+
+.help-button {
+
+    width: 36px;
+
+    height: 36px;
+
+    border: 1px solid
+        rgba(255, 255, 255, 0.35);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    color: var(--white);
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+}
+
+
+/* =========================================================
+   PLAYER SECTION
+========================================================= */
+
+.player-section {
+
+    padding:
+        15px;
+
+    background:
+        #ffffff;
+
+}
+
+
+.player-card {
+
+    max-width: 900px;
+
+    margin: auto;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid #e1ebe7;
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    padding:
+        12px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+}
+
+
+/* =========================================================
+   PLAYER AVATAR
+========================================================= */
+
+.player-avatar {
+
+    width: 50px;
+
+    height: 50px;
+
+    flex-shrink: 0;
+
+    background:
+        var(--light-green);
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+}
+
+
+.player-info {
+
+    min-width: 85px;
+
+}
+
+
+.player-info h2 {
+
+    font-size: 15px;
+
+    color:
+        var(--primary);
+
+}
+
+
+.player-info p {
+
+    font-size: 12px;
+
+    color:
+        var(--gray);
+
+    margin-top: 2px;
+
+}
+
+
+/* =========================================================
+   PLAYER XP
+========================================================= */
+
+.player-xp {
+
+    flex: 1;
+
+}
+
+
+.xp-text {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 11px;
+
+    color:
+        var(--gray);
+
+    margin-bottom: 4px;
+
+}
+
+
+.xp-text strong {
+
+    color:
+        var(--primary);
+
+}
+
+
+.xp-bar {
+
+    width: 100%;
+
+    height: 8px;
+
+    background:
+        #e5e5e5;
+
+    border-radius:
+        20px;
+
+    overflow: hidden;
+
+}
+
+
+.xp-progress {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #43a047,
+            #8bc34a
+        );
+
+    border-radius:
+        20px;
+
+    transition:
+        width 0.4s ease;
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.city-main {
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin:
+        auto;
+
+    padding:
+        18px
+        15px
+        45px;
+
+}
+
+
+/* =========================================================
+   CITY INTRO
+========================================================= */
+
+.city-intro {
+
+    text-align:
+        center;
+
+    margin-bottom:
+        18px;
+
+}
+
+
+.city-intro h2 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        21px;
+
+    margin-bottom:
+        5px;
+
+}
+
+
+.city-intro p {
+
+    color:
+        var(--gray);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   CITY MAP
+========================================================= */
+
+.city-map {
+
+    position:
+        relative;
+
+    width:
+        100%;
+
+    min-height:
+        590px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        22px;
+
+    background:
+        var(--grass);
+
+    box-shadow:
+        0 7px 25px
+        rgba(0, 0, 0, 0.15);
+
+    border:
+        4px solid
+        #ffffff;
+
+}
+
+
+/* =========================================================
+   SKY
+========================================================= */
+
+.city-sky {
+
+    position:
+        absolute;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 155px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #8fd3f4,
+            var(--sky)
+        );
+
+}
+
+
+.sun {
+
+    position:
+        absolute;
+
+    right:
+        28px;
+
+    top:
+        20px;
+
+    font-size:
+        38px;
+
+}
+
+
+.cloud {
+
+    position:
+        absolute;
+
+    font-size:
+        30px;
+
+    opacity:
+        0.85;
+
+}
+
+
+.cloud-one {
+
+    left:
+        12%;
+
+    top:
+        35px;
+
+}
+
+
+.cloud-two {
+
+    left:
+        48%;
+
+    top:
+        75px;
+
+}
+
+
+/* =========================================================
+   BUILDINGS AREA
+========================================================= */
+
+.city-buildings {
+
+    position:
+        absolute;
+
+    top:
+        135px;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    min-height:
+        360px;
+
+    padding:
+        20px;
+
+    display:
+        grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    align-items:
+        center;
+
+    justify-items:
+        center;
+
+    gap:
+        25px 18px;
+
+    z-index:
+        5;
+
+}
+
+
+/* =========================================================
+   BUILDING
+========================================================= */
+
+.city-building {
+
+    width:
+        145px;
+
+    min-height:
+        145px;
+
+    border:
+        0;
+
+    border-radius:
+        18px;
+
+    background:
+        var(--white);
+
+    box-shadow:
+        0 7px 15px
+        rgba(0, 0, 0, 0.15);
+
+    cursor:
+        pointer;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        12px;
+
+    position:
+        relative;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.city-building:hover {
+
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 12px 22px
+        rgba(0, 0, 0, 0.20);
+
+}
+
+
+.city-building:active {
+
+    transform:
+        scale(0.96);
+
+}
+
+
+.building-icon {
+
+    font-size:
+        50px;
+
+    line-height:
+        1;
+
+    margin-bottom:
+        9px;
+
+}
+
+
+.building-name {
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+    color:
+        var(--primary);
+
+}
+
+
+.building-status {
+
+    font-size:
+        10px;
+
+    color:
+        var(--gray);
+
+    margin-top:
+        4px;
+
+}
+
+
+/* =========================================================
+   BUILDING TYPES
+========================================================= */
+
+.mosque-building {
+
+    border-bottom:
+        5px solid
+        #2e7d32;
+
+}
+
+
+.quran-building {
+
+    border-bottom:
+        5px solid
+        #1565c0;
+
+}
+
+
+.library-building {
+
+    border-bottom:
+        5px solid
+        #6a1b9a;
+
+}
+
+
+.hajj-building {
+
+    border-bottom:
+        5px solid
+        #795548;
+
+}
+
+
+.home-building {
+
+    border-bottom:
+        5px solid
+        #ef6c00;
+
+}
+
+
+/* =========================================================
+   ROAD
+========================================================= */
+
+.city-road {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        0;
+
+    height:
+        105px;
+
+    background:
+        var(--road);
+
+    z-index:
+        2;
+
+}
+
+
+.road-line {
+
+    position:
+        absolute;
+
+    top:
+        50%;
+
+    left:
+        0;
+
+    width:
+        100%;
+
+    height:
+        5px;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #f8e38b 0,
+            #f8e38b 45px,
+            transparent 45px,
+            transparent 75px
+        );
+
+}
+
+
+/* =========================================================
+   TREES
+========================================================= */
+
+.city-trees {
+
+    position:
+        absolute;
+
+    left:
+        0;
+
+    right:
+        0;
+
+    bottom:
+        18px;
+
+    height:
+        85px;
+
+    z-index:
+        4;
+
+    display:
+        flex;
+
+    align-items:
+        flex-end;
+
+    justify-content:
+        space-around;
+
+    pointer-events:
+        none;
+
+}
+
+
+.city-trees span {
+
+    font-size:
+        35px;
+
+    filter:
+        drop-shadow(
+            0 3px 2px
+            rgba(0, 0, 0, 0.15)
+        );
+
+}
+
+
+/* =========================================================
+   MISSION SECTION
+========================================================= */
+
+.mission-section {
+
+    margin-top:
+        25px;
+
+    background:
+        var(--white);
+
+    border:
+        1px solid
+        #e2ebe7;
+
+    border-radius:
+        var(--radius);
+
+    box-shadow:
+        var(--shadow);
+
+    padding:
+        18px;
+
+}
+
+
+.mission-header {
+
+    display:
+        flex;
+
+    justify-content:
+        space-between;
+
+    align-items:
+        center;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+.mission-header h2 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        19px;
+
+}
+
+
+.mission-count {
+
+    background:
+        var(--light-green);
+
+    color:
+        var(--primary);
+
+    padding:
+        5px
+        10px;
+
+    border-radius:
+        20px;
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================================
+   MISSION CARD
+========================================================= */
+
+.mission-list {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        10px;
+
+}
+
+
+.mission-card {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    gap:
+        11px;
+
+    padding:
+        12px;
+
+    border:
+        1px solid
+        #e5e5e5;
+
+    border-radius:
+        12px;
+
+    background:
+        #fbfcfc;
+
+    transition:
+        0.2s ease;
+
+}
+
+
+.mission-card:hover {
+
+    background:
+        #f2f8f5;
+
+}
+
+
+.mission-icon {
+
+    width:
+        42px;
+
+    height:
+        42px;
+
+    flex-shrink:
+        0;
+
+    border-radius:
+        12px;
+
+    background:
+        var(--light-green);
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    font-size:
+        23px;
+
+}
+
+
+.mission-info {
+
+    flex:
+        1;
+
+}
+
+
+.mission-info h3 {
+
+    font-size:
+        14px;
+
+    color:
+        var(--primary);
+
+    margin-bottom:
+        3px;
+
+}
+
+
+.mission-info p {
+
+    font-size:
+        11px;
+
+    color:
+        var(--gray);
+
+    line-height:
+        1.5;
+
+}
+
+
+.mission-xp {
+
+    font-size:
+        11px;
+
+    font-weight:
+        700;
+
+    color:
+        #2e7d32;
+
+    white-space:
+        nowrap;
+
+}
+
+
+/* =========================================================
+   CITY INFORMATION
+========================================================= */
+
+.city-info-section {
+
+    margin-top:
+        25px;
+
+    padding:
+        20px;
+
+    border-radius:
+        var(--radius);
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid
+        #e1ebe7;
+
+}
+
+
+.city-info-section h2 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        18px;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.city-info-section p {
+
+    color:
+        var(--gray);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+}
+
+
+/* =========================================================
+   CITY MODAL
+========================================================= */
+
+.city-modal,
+.help-modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        1000;
+
+    display:
+        none;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    padding:
+        18px;
+
+}
+
+
+.city-modal.active,
+.help-modal.active {
+
+    display:
+        flex;
+
+}
+
+
+.modal-overlay,
+.help-overlay {
+
+    position:
+        absolute;
+
+    inset:
+        0;
+
+    background:
+        rgba(0, 0, 0, 0.60);
+
+}
+
+
+.modal-box,
+.help-box {
+
+    position:
+        relative;
+
+    z-index:
+        2;
+
+    width:
+        100%;
+
+    max-width:
+        390px;
+
+    background:
+        var(--white);
+
+    border-radius:
+        20px;
+
+    padding:
+        25px
+        20px;
+
+    text-align:
+        center;
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.25);
+
+    animation:
+        modalIn 0.2s ease;
+
+}
+
+
+@keyframes modalIn {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            scale(0.92);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   MODAL CLOSE
+========================================================= */
+
+.modal-close,
+.help-close {
+
+    position:
+        absolute;
+
+    top:
+        10px;
+
+    right:
+        12px;
+
+    width:
+        32px;
+
+    height:
+        32px;
+
+    border:
+        0;
+
+    border-radius:
+        50%;
+
+    background:
+        #eeeeee;
+
+    color:
+        #444;
+
+    font-size:
+        22px;
+
+    cursor:
+        pointer;
+
+}
+
+
+.modal-icon {
+
+    font-size:
+        60px;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.modal-box h2 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        21px;
+
+    margin-bottom:
+        8px;
+
+}
+
+
+.modal-box p {
+
+    color:
+        var(--gray);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.7;
+
+    margin-bottom:
+        18px;
+
+}
+
+
+/* =========================================================
+   MODAL ACTION
+========================================================= */
+
+.modal-action,
+.help-action {
+
+    width:
+        100%;
+
+    border:
+        0;
+
+    border-radius:
+        10px;
+
+    padding:
+        12px;
+
+    background:
+        var(--primary);
+
+    color:
+        var(--white);
+
+    font-family:
+        inherit;
+
+    font-size:
+        14px;
+
+    cursor:
+        pointer;
+
+}
+
+
+.modal-action:hover,
+.help-action:hover {
+
+    background:
+        var(--primary-light);
+
+}
+
+
+/* =========================================================
+   HELP MODAL
+========================================================= */
+
+.help-box {
+
+    text-align:
+        left;
+
+}
+
+
+.help-box h2 {
+
+    color:
+        var(--primary);
+
+    font-size:
+        20px;
+
+    margin-bottom:
+        12px;
+
+}
+
+
+.help-box p {
+
+    color:
+        var(--gray);
+
+    font-size:
+        13px;
+
+    line-height:
+        1.8;
+
+    margin-bottom:
+        10px;
+
+}
+
+
+.help-action {
+
+    margin-top:
+        8px;
+
+    text-align:
+        center;
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 600px) {
+
+    .city-header {
+
+        padding:
+            15px
+            25px;
+
+    }
+
+
+    .city-main {
+
+        padding:
+            25px
+            20px
+            50px;
+
+    }
+
+
+    .city-map {
+
+        min-height:
+            650px;
+
+    }
+
+
+    .city-buildings {
+
+        top:
+            155px;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap:
+            35px;
+
+    }
+
+
+    .city-building {
+
+        width:
+            160px;
+
+        min-height:
+            155px;
+
+    }
+
+
+    .building-icon {
+
+        font-size:
+            55px;
+
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 900px) {
+
+    .city-header {
+
+        padding:
+            15px
+            40px;
+
+    }
+
+
+    .city-header h1 {
+
+        font-size:
+            23px;
+
+    }
+
+
+    .city-main {
+
+        padding:
+            30px
+            25px
+            60px;
+
+    }
+
+
+    .city-map {
+
+        min-height:
+            700px;
+
+    }
+
+
+    .city-buildings {
+
+        top:
+            165px;
+
+        grid-template-columns:
+            repeat(5, 1fr);
+
+        gap:
+            20px;
+
+        padding:
+            30px;
+
+    }
+
+
+    .city-building {
+
+        width:
+            165px;
+
+        min-height:
+            165px;
+
+    }
+
+
+    .city-road {
+
+        height:
+            125px;
+
+    }
+
+
+    .city-trees {
+
+        bottom:
+            30px;
+
+    }
+
+
+    .city-trees span {
+
+        font-size:
+            42px;
+
+    }
+
+
+    .mission-list {
+
+        display:
+            grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .player-card {
+
+        gap:
+            8px;
+
+        padding:
+            9px;
+
+    }
+
+
+    .player-avatar {
+
+        width:
+            43px;
+
+        height:
+            43px;
+
+        font-size:
+            24px;
+
+    }
+
+
+    .player-info {
+
+        min-width:
+            65px;
+
+    }
+
+
+    .player-info h2 {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .city-map {
+
+        min-height:
+            550px;
+
+    }
+
+
+    .city-buildings {
+
+        top:
+            125px;
+
+        padding:
+            15px;
+
+        gap:
+            20px
+            10px;
+
+    }
+
+
+    .city-building {
+
+        width:
+            125px;
+
+        min-height:
+            130px;
+
+        border-radius:
+            15px;
+
+    }
+
+
+    .building-icon {
+
+        font-size:
+            42px;
+
+    }
+
+
+    .building-name {
+
+        font-size:
+            13px;
+
+    }
+
+
+    .building-status {
+
+        font-size:
+            9px;
+
+    }
+
+
+    .city-road {
+
+        height:
+            85px;
+
+    }
+
+
+    .city-trees span {
+
+        font-size:
+            28px;
+
+    }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+
+        scroll-behavior:
+            auto !important;
+
+        transition:
+            none !important;
+
+        animation:
+            none !important;
+
+    }
+
+  }
