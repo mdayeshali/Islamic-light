@@ -1,176 +1,103 @@
-/* =========================================================
-   ISLAMIC CITY
-   city-g.js
-   Islamic Light
-========================================================= */
-
 "use strict";
 
-const DATA_URL = "data/city-g.json";
-const STORAGE_KEY = "islamicCityProgress";
+const DATA_URL="data/city-g.json";
+const STORAGE_KEY="islamicCityProgress";
 
-const state = {
-    buildings: [],
-    missions: [],
-    xp: 0,
-    level: 1,
-    completedMissions: [],
-    selectedBuilding: null
+const state={
+    data:null,
+    buildings:[],
+    missions:[],
+    questions:{},
+    levels:[],
+    achievements:[],
+    xp:0,
+    level:1,
+    completedMissions:[],
+    unlockedAchievements:[],
+    currentMission:null,
+    currentQuestion:null,
+    selectedBuilding:null,
+    questionIndex:0,
+    correctAnswers:0
 };
 
-const $ = id => document.getElementById(id);
+const $=id=>document.getElementById(id);
 
-const elements = {
-    cityMap: $("cityMap"),
-    cityModal: $("cityModal"),
-    modalIcon: $("modalIcon"),
-    modalTitle: $("modalTitle"),
-    modalDescription: $("modalDescription"),
-    modalAction: $("modalAction"),
-    modalClose: $("modalClose"),
-    helpButton: $("helpButton"),
-    helpModal: $("helpModal"),
-    helpClose: $("helpClose"),
-    helpOk: $("helpOk"),
-    playerLevel: $("playerLevel"),
-    playerXP: $("playerXP"),
-    xpProgress: $("xpProgress"),
-    missionCompleted: $("missionCompleted"),
-    missionTotal: $("missionTotal")
+const el={
+    cityModal:$("cityModal"),
+    modalIcon:$("modalIcon"),
+    modalTitle:$("modalTitle"),
+    modalDescription:$("modalDescription"),
+    modalAction:$("modalAction"),
+    modalClose:$("modalClose"),
+    helpButton:$("helpButton"),
+    helpModal:$("helpModal"),
+    helpClose:$("helpClose"),
+    helpOk:$("helpOk"),
+    playerLevel:$("playerLevel"),
+    playerXP:$("playerXP"),
+    xpProgress:$("xpProgress"),
+    missionCompleted:$("missionCompleted"),
+    missionTotal:$("missionTotal"),
+    cityMap:$("cityMap")
 };
 
-
-/* =========================================================
-   DEFAULT DATA
-========================================================= */
-
-const defaultData = {
-    buildings: [
-        {
-            id: "mosque",
-            name: "মসজিদ",
-            icon: "🕌",
-            type: "Salah Challenge",
-            description: "মসজিদে প্রবেশ করে নামাজ সম্পর্কিত শিক্ষামূলক Mission সম্পন্ন করুন।",
-            mission: "mosque"
-        },
-        {
-            id: "quran",
-            name: "কুরআন কেন্দ্র",
-            icon: "📖",
-            type: "Quran Challenge",
-            description: "কুরআন সম্পর্কিত প্রশ্নের উত্তর দিয়ে আপনার জ্ঞান যাচাই করুন।",
-            mission: "quran"
-        },
-        {
-            id: "library",
-            name: "ইসলামিক লাইব্রেরি",
-            icon: "📚",
-            type: "Hadith Challenge",
-            description: "হাদিস সম্পর্কে বিভিন্ন শিক্ষামূলক Challenge সম্পন্ন করুন।",
-            mission: "hadith"
-        },
-        {
-            id: "hajj",
-            name: "হজ কেন্দ্র",
-            icon: "🕋",
-            type: "Hajj Challenge",
-            description: "হজ ও উমরাহ সম্পর্কে বিভিন্ন বিষয় শিখুন।",
-            mission: "hajj"
-        },
-        {
-            id: "home",
-            name: "আমার বাড়ি",
-            icon: "🏠",
-            type: "Profile",
-            description: "আপনার Islamic City Profile ও অগ্রগতি দেখুন।",
-            mission: null
-        }
-    ],
-    missions: [
-        {
-            id: "mosque",
-            title: "মসজিদ Mission",
-            description: "নামাজ সম্পর্কিত একটি Challenge সম্পন্ন করুন।",
-            xp: 20
-        },
-        {
-            id: "quran",
-            title: "কুরআন Mission",
-            description: "কুরআন সম্পর্কিত একটি প্রশ্নের উত্তর দিন।",
-            xp: 20
-        },
-        {
-            id: "hadith",
-            title: "হাদিস Mission",
-            description: "হাদিস সম্পর্কে আপনার জ্ঞান যাচাই করুন।",
-            xp: 20
-        },
-        {
-            id: "hajj",
-            title: "হজ Mission",
-            description: "হজ সম্পর্কে একটি শিক্ষামূলক Challenge সম্পন্ন করুন।",
-            xp: 20
-        }
-    ]
+const defaultData={
+    buildings:[],
+    missions:[],
+    questions:{},
+    levels:[],
+    achievements:[]
 };
 
+document.addEventListener("DOMContentLoaded",init);
 
-/* =========================================================
-   INIT
-========================================================= */
-
-document.addEventListener("DOMContentLoaded", init);
-
-async function init() {
+async function init(){
     loadProgress();
     bindEvents();
     await loadGameData();
+    calculateLevel(false);
     updatePlayerUI();
     updateMissionUI();
+    updateBuildingState();
 }
 
 
 /* =========================================================
-   LOAD JSON DATA
+   LOAD GAME DATA
 ========================================================= */
 
-async function loadGameData() {
-    try {
-        const response = await fetch(DATA_URL, {
-            cache: "no-cache"
-        });
+async function loadGameData(){
+    try{
+        const response=await fetch(DATA_URL,{cache:"no-cache"});
 
-        if (!response.ok) {
-            throw new Error("Data file could not be loaded.");
-        }
+        if(!response.ok) throw new Error("JSON load failed");
 
-        const data = await response.json();
+        const data=await response.json();
 
-        state.buildings = Array.isArray(data.buildings)
-            ? data.buildings
-            : defaultData.buildings;
+        state.data=data;
+        state.buildings=Array.isArray(data.buildings)?data.buildings:defaultData.buildings;
+        state.missions=Array.isArray(data.missions)?data.missions:defaultData.missions;
+        state.questions=data.questions&&typeof data.questions==="object"?data.questions:defaultData.questions;
+        state.levels=Array.isArray(data.levels)?data.levels:defaultData.levels;
+        state.achievements=Array.isArray(data.achievements)?data.achievements:defaultData.achievements;
 
-        state.missions = Array.isArray(data.missions)
-            ? data.missions
-            : defaultData.missions;
+    }catch(error){
+        console.warn("Islamic City JSON load failed:",error);
 
-    } catch (error) {
-        console.warn("Using default Islamic City data:", error);
-
-        state.buildings = defaultData.buildings;
-        state.missions = defaultData.missions;
+        state.data=defaultData;
+        state.buildings=defaultData.buildings;
+        state.missions=defaultData.missions;
+        state.questions=defaultData.questions;
+        state.levels=defaultData.levels;
+        state.achievements=defaultData.achievements;
     }
 
-    state.missions = state.missions.filter(
-        mission => mission && mission.id
-    );
-
-    state.buildings = state.buildings.filter(
-        building => building && building.id
-    );
-
-    elements.missionTotal.textContent = state.missions.length;
+    if(el.missionTotal){
+        el.missionTotal.textContent=state.missions.filter(
+            m=>m&&m.status!=="coming-soon"
+        ).length;
+    }
 }
 
 
@@ -178,46 +105,53 @@ async function loadGameData() {
    EVENTS
 ========================================================= */
 
-function bindEvents() {
-    document.querySelectorAll(".city-building").forEach(button => {
-        button.addEventListener("click", () => {
-            const id = button.dataset.building;
-            openBuilding(id);
+function bindEvents(){
+
+    document.querySelectorAll(".city-building").forEach(button=>{
+        button.addEventListener("click",()=>{
+            openBuilding(button.dataset.building);
         });
     });
 
-    document.querySelectorAll(".mission-card").forEach(card => {
-        card.addEventListener("click", () => {
-            const id = card.dataset.mission;
-            openMission(id);
+    document.querySelectorAll(".mission-card").forEach(card=>{
+        card.addEventListener("click",()=>{
+            openMission(card.dataset.mission);
         });
     });
 
-    elements.modalClose.addEventListener("click", closeCityModal);
+    if(el.modalClose){
+        el.modalClose.addEventListener("click",closeCityModal);
+    }
 
-    elements.helpButton.addEventListener("click", openHelpModal);
+    if(el.helpButton){
+        el.helpButton.addEventListener("click",openHelpModal);
+    }
 
-    elements.helpClose.addEventListener("click", closeHelpModal);
+    if(el.helpClose){
+        el.helpClose.addEventListener("click",closeHelpModal);
+    }
 
-    elements.helpOk.addEventListener("click", closeHelpModal);
+    if(el.helpOk){
+        el.helpOk.addEventListener("click",closeHelpModal);
+    }
 
-    document.querySelector(".modal-overlay").addEventListener(
-        "click",
-        closeCityModal
-    );
+    const modalOverlay=document.querySelector(".modal-overlay");
+    const helpOverlay=document.querySelector(".help-overlay");
 
-    document.querySelector(".help-overlay").addEventListener(
-        "click",
-        closeHelpModal
-    );
+    if(modalOverlay){
+        modalOverlay.addEventListener("click",closeCityModal);
+    }
 
-    elements.modalAction.addEventListener(
-        "click",
-        handleModalAction
-    );
+    if(helpOverlay){
+        helpOverlay.addEventListener("click",closeHelpModal);
+    }
 
-    document.addEventListener("keydown", event => {
-        if (event.key === "Escape") {
+    if(el.modalAction){
+        el.modalAction.addEventListener("click",handleModalAction);
+    }
+
+    document.addEventListener("keydown",event=>{
+        if(event.key==="Escape"){
             closeCityModal();
             closeHelpModal();
         }
@@ -229,44 +163,52 @@ function bindEvents() {
    BUILDING
 ========================================================= */
 
-function openBuilding(buildingId) {
-    const building = state.buildings.find(
-        item => item.id === buildingId
-    );
+function openBuilding(buildingId){
 
-    if (!building) return;
+    const building=getBuilding(buildingId);
 
-    state.selectedBuilding = building;
+    if(!building){
+        showToast("এই স্থানটি পাওয়া যায়নি।");
+        return;
+    }
 
-    elements.modalIcon.textContent =
-        building.icon || "🏠";
+    if(building.status==="coming-soon"){
+        showToast("এই স্থানটি শীঘ্রই চালু হবে।");
+        return;
+    }
 
-    elements.modalTitle.textContent =
-        building.name || "Islamic City";
+    const requiredLevel=Number(building.unlockLevel||1);
 
-    elements.modalDescription.textContent =
-        building.description || "এই জায়গাটি সম্পর্কে শিখুন।";
+    if(state.level<requiredLevel){
+        showToast(
+            "এই স্থানটি খুলতে Level "+requiredLevel+
+            " প্রয়োজন।"
+        );
+        return;
+    }
 
-    if (building.mission) {
-        const mission = getMission(building.mission);
+    state.selectedBuilding=building;
 
-        if (mission && isMissionCompleted(mission.id)) {
-            elements.modalAction.textContent =
-                "Mission সম্পন্ন হয়েছে";
+    if(buildingId==="home"){
+        openProfile();
+        return;
+    }
 
-            elements.modalAction.disabled = true;
-        } else {
-            elements.modalAction.textContent =
-                "Mission শুরু করুন";
+    el.modalIcon.textContent=building.icon||"🏠";
+    el.modalTitle.textContent=building.name||"Islamic City";
+    el.modalDescription.textContent=building.description||"এখানে প্রবেশ করুন।";
 
-            elements.modalAction.disabled = false;
-        }
+    const mission=getMission(building.mission);
 
-    } else {
-        elements.modalAction.textContent =
-            "Profile দেখুন";
-
-        elements.modalAction.disabled = false;
+    if(mission&&isMissionCompleted(mission.id)){
+        el.modalAction.textContent="Mission সম্পন্ন হয়েছে";
+        el.modalAction.disabled=true;
+    }else if(mission){
+        el.modalAction.textContent="Mission শুরু করুন";
+        el.modalAction.disabled=false;
+    }else{
+        el.modalAction.textContent="বন্ধ করুন";
+        el.modalAction.disabled=false;
     }
 
     openCityModal();
@@ -277,96 +219,427 @@ function openBuilding(buildingId) {
    MODAL ACTION
 ========================================================= */
 
-function handleModalAction() {
-    const building = state.selectedBuilding;
+function handleModalAction(){
 
-    if (!building) return;
+    const building=state.selectedBuilding;
 
-    if (building.id === "home") {
+    if(!building){
         closeCityModal();
-        showProfileMessage();
         return;
     }
 
-    if (building.mission) {
+    if(building.mission){
         closeCityModal();
         openMission(building.mission);
+    }else{
+        closeCityModal();
     }
 }
 
 
 /* =========================================================
-   MISSION
+   OPEN MISSION
 ========================================================= */
 
-function openMission(missionId) {
-    const mission = getMission(missionId);
+function openMission(missionId){
 
-    if (!mission) {
+    const mission=getMission(missionId);
+
+    if(!mission){
         showToast("Mission পাওয়া যায়নি।");
         return;
     }
 
-    if (isMissionCompleted(mission.id)) {
+    if(mission.status==="coming-soon"){
+        showToast("এই Mission শীঘ্রই আসবে।");
+        return;
+    }
+
+    const requiredLevel=Number(mission.unlockLevel||1);
+
+    if(state.level<requiredLevel){
+        showToast(
+            "এই Mission-এর জন্য Level "+
+            requiredLevel+" প্রয়োজন।"
+        );
+        return;
+    }
+
+    if(isMissionCompleted(mission.id)){
         showToast("এই Mission ইতিমধ্যে সম্পন্ন হয়েছে।");
         return;
     }
 
-    state.selectedBuilding = {
-        id: "mission",
-        name: mission.title,
-        icon: "🎯",
-        description: mission.description,
-        mission: mission.id
-    };
+    const questionList=state.questions[mission.id];
 
-    elements.modalIcon.textContent = "🎯";
-    elements.modalTitle.textContent = mission.title;
+    if(!Array.isArray(questionList)||questionList.length===0){
+        openSimpleMission(mission);
+        return;
+    }
 
-    elements.modalDescription.textContent =
-        mission.description +
-        " সঠিকভাবে সম্পন্ন করলে " +
-        mission.xp +
-        " XP অর্জন করবেন।";
+    state.currentMission=mission;
+    state.questionIndex=0;
+    state.correctAnswers=0;
 
-    elements.modalAction.textContent =
-        "Mission সম্পন্ন করুন";
+    startQuestion();
+}
 
-    elements.modalAction.disabled = false;
+
+/* =========================================================
+   START QUESTION
+========================================================= */
+
+function startQuestion(){
+
+    const mission=state.currentMission;
+
+    if(!mission){
+        closeCityModal();
+        return;
+    }
+
+    const list=state.questions[mission.id]||[];
+
+    if(state.questionIndex>=list.length){
+        finishMission();
+        return;
+    }
+
+    const question=list[state.questionIndex];
+
+    if(!question){
+        finishMission();
+        return;
+    }
+
+    state.currentQuestion=question;
+
+    renderQuestion(question,list.length);
 
     openCityModal();
 }
 
 
 /* =========================================================
-   COMPLETE MISSION
+   QUESTION UI
 ========================================================= */
 
-function completeMission(missionId) {
-    const mission = getMission(missionId);
+function renderQuestion(question,total){
 
-    if (!mission) return;
+    const modal=el.cityModal.querySelector(".modal-box");
 
-    if (isMissionCompleted(mission.id)) {
-        showToast("এই Mission ইতিমধ্যে সম্পন্ন হয়েছে।");
+    if(!modal) return;
+
+    const safeOptions=Array.isArray(question.options)
+        ?question.options:[ ];
+
+    modal.innerHTML=`
+        <button class="modal-close" id="questionClose" type="button" aria-label="বন্ধ করুন">×</button>
+        <div class="modal-icon">🎯</div>
+        <div class="city-question-progress">
+            প্রশ্ন ${state.questionIndex+1} / ${total}
+        </div>
+        <h2>${escapeHTML(question.question||"প্রশ্ন")}</h2>
+        <div class="city-options" id="cityOptions">
+            ${safeOptions.map((option,index)=>`
+                <button class="city-option" type="button" data-index="${index}">
+                    ${escapeHTML(option)}
+                </button>
+            `).join("")}
+        </div>
+        <div class="city-feedback" id="cityFeedback"></div>
+        <button class="modal-action" id="questionNext" type="button" disabled>
+            পরবর্তী
+        </button>
+    `;
+
+    const closeButton=$("questionClose");
+    const nextButton=$("questionNext");
+
+    if(closeButton){
+        closeButton.addEventListener("click",()=>{
+            closeCityModal();
+            resetQuestionUI();
+        });
+    }
+
+    document.querySelectorAll(".city-option").forEach(button=>{
+        button.addEventListener("click",()=>{
+            answerQuestion(Number(button.dataset.index));
+        });
+    });
+
+    if(nextButton){
+        nextButton.addEventListener("click",()=>{
+            state.questionIndex++;
+            startQuestion();
+        });
+    }
+}
+
+
+/* =========================================================
+   ANSWER QUESTION
+========================================================= */
+
+function answerQuestion(selectedIndex){
+
+    const question=state.currentQuestion;
+
+    if(!question) return;
+
+    const options=Array.isArray(question.options)
+        ?question.options:[];
+
+    if(selectedIndex<0||selectedIndex>=options.length) return;
+
+    const buttons=document.querySelectorAll(".city-option");
+
+    buttons.forEach(button=>{
+        button.disabled=true;
+    });
+
+    const selectedAnswer=options[selectedIndex];
+    const correctAnswer=question.answer;
+
+    const isCorrect=normalizeText(selectedAnswer)===
+        normalizeText(correctAnswer);
+
+    buttons.forEach((button,index)=>{
+        const option=options[index];
+
+        if(normalizeText(option)===
+            normalizeText(correctAnswer)){
+            button.classList.add("correct");
+        }
+
+        if(index===selectedIndex&&!isCorrect){
+            button.classList.add("wrong");
+        }
+    });
+
+    const feedback=$("cityFeedback");
+
+    if(feedback){
+
+        feedback.className=
+            "city-feedback "+(isCorrect?"success":"error");
+
+        if(isCorrect){
+            state.correctAnswers++;
+
+            feedback.innerHTML=
+                "<strong>সঠিক উত্তর</strong><br>"+
+                escapeHTML(
+                    question.explanation||
+                    "আপনার উত্তর সঠিক।"
+                );
+        }else{
+            feedback.innerHTML=
+                "<strong>সঠিক উত্তর: "+
+                escapeHTML(correctAnswer)+
+                "</strong><br>"+
+                escapeHTML(
+                    question.explanation||
+                    "এই প্রশ্নের সঠিক উত্তরটি উপরে দেখানো হয়েছে।"
+                );
+        }
+    }
+
+    const nextButton=$("questionNext");
+
+    if(nextButton){
+        nextButton.disabled=false;
+
+        nextButton.textContent=
+            state.questionIndex+1>=
+            (state.questions[state.currentMission.id]||[]).length
+            ?"ফলাফল দেখুন"
+            :"পরবর্তী প্রশ্ন";
+    }
+}
+
+
+/* =========================================================
+   FINISH MISSION
+========================================================= */
+
+function finishMission(){
+
+    const mission=state.currentMission;
+
+    if(!mission){
+        closeCityModal();
         return;
     }
 
-    state.completedMissions.push(mission.id);
+    const total=
+        (state.questions[mission.id]||[]).length;
 
-    addXP(Number(mission.xp) || 0);
+    const correct=state.correctAnswers;
 
-    saveProgress();
+    const passed=
+        total===0||
+        correct>0;
 
-    updateMissionUI();
+    if(passed&&!isMissionCompleted(mission.id)){
 
-    closeCityModal();
+        markMissionCompleted(mission.id);
 
-    showToast(
-        "Mission সম্পন্ন! +" +
-        (Number(mission.xp) || 0) +
-        " XP"
-    );
+        const xp=Number(mission.xp)||0;
+
+        addXP(xp);
+
+        checkAchievements();
+
+        saveProgress();
+
+        updateMissionUI();
+        updateBuildingState();
+
+        showResult(
+            mission,
+            correct,
+            total,
+            xp
+        );
+
+    }else{
+
+        showResult(
+            mission,
+            correct,
+            total,
+            0
+        );
+    }
+
+    state.currentMission=null;
+    state.currentQuestion=null;
+}
+
+
+/* =========================================================
+   RESULT
+========================================================= */
+
+function showResult(mission,correct,total,xp){
+
+    const modal=el.cityModal.querySelector(".modal-box");
+
+    if(!modal) return;
+
+    const passed=total===0||correct>0;
+
+    modal.innerHTML=`
+        <button class="modal-close" id="resultClose" type="button" aria-label="বন্ধ করুন">×</button>
+        <div class="modal-icon">${passed?"🏆":"📚"}</div>
+        <h2>${passed?"Mission সম্পন্ন":"আবার চেষ্টা করুন"}</h2>
+        <p>
+            ${escapeHTML(mission.title)}
+        </p>
+        <div class="city-result">
+            <strong>${correct}</strong>
+            <span>/ ${total} সঠিক</span>
+        </div>
+        ${xp>0?`
+            <div class="city-reward">
+                +${xp} XP
+            </div>
+        `:""}
+        <p>
+            ${passed
+                ?"আপনি এই Mission সম্পন্ন করেছেন।"
+                :"আরও একবার চেষ্টা করে দেখুন।"}
+        </p>
+        <button class="modal-action" id="resultButton" type="button">
+            শহরে ফিরে যান
+        </button>
+    `;
+
+    const close=$("resultClose");
+    const button=$("resultButton");
+
+    if(close){
+        close.addEventListener("click",closeCityModal);
+    }
+
+    if(button){
+        button.addEventListener("click",closeCityModal);
+    }
+}
+
+
+/* =========================================================
+   SIMPLE MISSION
+========================================================= */
+
+function openSimpleMission(mission){
+
+    const modal=el.cityModal.querySelector(".modal-box");
+
+    if(!modal) return;
+
+    modal.innerHTML=`
+        <button class="modal-close" id="simpleClose" type="button" aria-label="বন্ধ করুন">×</button>
+        <div class="modal-icon">${mission.icon||"🎯"}</div>
+        <h2>${escapeHTML(mission.title)}</h2>
+        <p>${escapeHTML(mission.description||"")}</p>
+        <p>
+            এই Mission-এর প্রশ্নগুলো শীঘ্রই যুক্ত করা হবে।
+        </p>
+        <button class="modal-action" id="simpleComplete" type="button">
+            Demo Mission সম্পন্ন করুন
+        </button>
+    `;
+
+    const close=$("simpleClose");
+    const complete=$("simpleComplete");
+
+    if(close){
+        close.addEventListener("click",closeCityModal);
+    }
+
+    if(complete){
+        complete.addEventListener("click",()=>{
+            markMissionCompleted(mission.id);
+
+            const xp=Number(mission.xp)||0;
+
+            addXP(xp);
+            checkAchievements();
+            saveProgress();
+            updateMissionUI();
+            updateBuildingState();
+
+            closeCityModal();
+
+            showToast(
+                "Mission সম্পন্ন! +"+xp+" XP"
+            );
+        });
+    }
+
+    openCityModal();
+}
+
+
+/* =========================================================
+   MISSION COMPLETE
+========================================================= */
+
+function markMissionCompleted(id){
+
+    if(!id) return;
+
+    if(!state.completedMissions.includes(id)){
+        state.completedMissions.push(id);
+    }
+}
+
+
+function isMissionCompleted(id){
+    return state.completedMissions.includes(id);
 }
 
 
@@ -374,37 +647,74 @@ function completeMission(missionId) {
    XP SYSTEM
 ========================================================= */
 
-function addXP(amount) {
-    if (!Number.isFinite(amount) || amount <= 0) {
-        return;
-    }
+function addXP(amount){
 
-    state.xp += amount;
+    amount=Number(amount)||0;
 
-    calculateLevel();
+    if(amount<=0) return;
+
+    const oldLevel=state.level;
+
+    state.xp+=amount;
+
+    calculateLevel(false);
 
     updatePlayerUI();
+
+    if(state.level>oldLevel){
+
+        showToast(
+            "অভিনন্দন! আপনি Level "+
+            state.level+
+            " এ পৌঁছেছেন।"
+        );
+
+        checkAchievements();
+    }
 
     saveProgress();
 }
 
 
-function calculateLevel() {
-    const xpPerLevel = 100;
+function calculateLevel(showMessage=true){
 
-    const newLevel =
-        Math.floor(state.xp / xpPerLevel) + 1;
+    let calculatedLevel=1;
 
-    if (newLevel > state.level) {
-        state.level = newLevel;
+    if(Array.isArray(state.levels)&&state.levels.length){
 
-        showToast(
-            "অভিনন্দন! আপনি Level " +
-            state.level +
-            " এ পৌঁছেছেন।"
+        const sorted=[...state.levels].sort(
+            (a,b)=>
+                Number(a.requiredXP||0)-
+                Number(b.requiredXP||0)
         );
-    } else {
-        state.level = newLevel;
+
+        sorted.forEach(level=>{
+            if(
+                state.xp>=Number(level.requiredXP||0)
+            ){
+                calculatedLevel=
+                    Number(level.level||1);
+            }
+        });
+
+    }else{
+
+        calculatedLevel=
+            Math.floor(state.xp/100)+1;
+    }
+
+    const oldLevel=state.level;
+
+    state.level=Math.max(
+        1,
+        calculatedLevel
+    );
+
+    if(showMessage&&state.level>oldLevel){
+        showToast(
+            "নতুন Level: "+
+            state.level
+        );
     }
 }
 
@@ -413,23 +723,80 @@ function calculateLevel() {
    PLAYER UI
 ========================================================= */
 
-function updatePlayerUI() {
-    elements.playerLevel.textContent =
-        state.level;
+function updatePlayerUI(){
 
-    elements.playerXP.textContent =
-        state.xp;
+    if(el.playerLevel){
+        el.playerLevel.textContent=state.level;
+    }
 
-    const xpPerLevel = 100;
+    if(el.playerXP){
+        el.playerXP.textContent=state.xp;
+    }
 
-    const currentLevelXP =
-        state.xp % xpPerLevel;
+    if(!el.xpProgress) return;
 
-    const percentage =
-        (currentLevelXP / xpPerLevel) * 100;
+    let currentRequired=100;
+    let previousRequired=0;
 
-    elements.xpProgress.style.width =
-        percentage + "%";
+    const sorted=Array.isArray(state.levels)
+        ?[...state.levels].sort(
+            (a,b)=>
+                Number(a.requiredXP||0)-
+                Number(b.requiredXP||0)
+        )
+        :[];
+
+    if(sorted.length){
+
+        const current=sorted.find(
+            item=>Number(item.level)===state.level
+        );
+
+        const next=sorted.find(
+            item=>Number(item.level)===state.level+1
+        );
+
+        if(current){
+            previousRequired=
+                Number(current.requiredXP||0);
+        }
+
+        if(next){
+            currentRequired=
+                Number(next.requiredXP||100);
+        }else{
+            currentRequired=
+                previousRequired+100;
+        }
+
+    }else{
+        previousRequired=
+            (state.level-1)*100;
+
+        currentRequired=
+            state.level*100;
+    }
+
+    const range=
+        Math.max(
+            1,
+            currentRequired-previousRequired
+        );
+
+    const currentXP=
+        Math.max(
+            0,
+            state.xp-previousRequired
+        );
+
+    const percentage=
+        Math.min(
+            100,
+            (currentXP/range)*100
+        );
+
+    el.xpProgress.style.width=
+        percentage+"%";
 }
 
 
@@ -437,99 +804,155 @@ function updatePlayerUI() {
    MISSION UI
 ========================================================= */
 
-function updateMissionUI() {
-    const completed =
-        state.completedMissions.length;
+function updateMissionUI(){
 
-    elements.missionCompleted.textContent =
-        completed;
+    const available=state.missions.filter(
+        mission=>
+            mission&&
+            mission.status!=="coming-soon"
+    );
 
-    document.querySelectorAll(".mission-card").forEach(
-        card => {
-            const missionId =
-                card.dataset.mission;
+    const completed=available.filter(
+        mission=>
+            isMissionCompleted(mission.id)
+    ).length;
 
-            if (isMissionCompleted(missionId)) {
-                card.classList.add("completed");
+    if(el.missionCompleted){
+        el.missionCompleted.textContent=
+            completed;
+    }
 
-                card.style.opacity = "0.60";
+    if(el.missionTotal){
+        el.missionTotal.textContent=
+            available.length;
+    }
 
-                const xp = card.querySelector(".mission-xp");
+    document.querySelectorAll(".mission-card").forEach(card=>{
 
-                if (xp) {
-                    xp.textContent = "সম্পন্ন";
-                }
+        const id=card.dataset.mission;
+
+        const mission=getMission(id);
+
+        if(!mission) return;
+
+        if(isMissionCompleted(id)){
+
+            card.classList.add("completed");
+
+            card.style.opacity="0.60";
+
+            const xp=card.querySelector(".mission-xp");
+
+            if(xp){
+                xp.textContent="সম্পন্ন";
+            }
+
+        }else{
+
+            card.classList.remove("completed");
+
+            card.style.opacity="1";
+
+            const xp=card.querySelector(".mission-xp");
+
+            if(xp){
+                xp.textContent=
+                    "+"+(Number(mission.xp)||0)+" XP";
             }
         }
-    );
+    });
 }
 
 
 /* =========================================================
-   HELPERS
+   BUILDING STATE
 ========================================================= */
 
-function getMission(id) {
-    return state.missions.find(
-        mission => mission.id === id
-    );
-}
+function updateBuildingState(){
 
+    document.querySelectorAll(".city-building").forEach(button=>{
 
-function isMissionCompleted(id) {
-    return state.completedMissions.includes(id);
+        const id=button.dataset.building;
+
+        const building=getBuilding(id);
+
+        if(!building) return;
+
+        const requiredLevel=
+            Number(building.unlockLevel||1);
+
+        if(
+            building.status==="coming-soon"||
+            state.level<requiredLevel
+        ){
+            button.classList.add("locked");
+        }else{
+            button.classList.remove("locked");
+        }
+
+        if(
+            building.mission&&
+            isMissionCompleted(building.mission)
+        ){
+            button.classList.add("completed");
+        }
+    });
 }
 
 
 /* =========================================================
-   CITY MODAL
+   ACHIEVEMENTS
 ========================================================= */
 
-function openCityModal() {
-    elements.cityModal.classList.add("active");
-    elements.cityModal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
+function checkAchievements(){
 
-    document.body.style.overflow = "hidden";
-}
+    if(!Array.isArray(state.achievements)) return;
 
+    state.achievements.forEach(achievement=>{
 
-function closeCityModal() {
-    elements.cityModal.classList.remove("active");
-    elements.cityModal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
+        if(
+            !achievement||
+            !achievement.id||
+            state.unlockedAchievements.includes(
+                achievement.id
+            )
+        ) return;
 
-    document.body.style.overflow = "";
-}
+        const requirement=
+            achievement.requirement;
 
+        if(!requirement) return;
 
-/* =========================================================
-   HELP MODAL
-========================================================= */
+        let unlocked=false;
 
-function openHelpModal() {
-    elements.helpModal.classList.add("active");
-    elements.helpModal.setAttribute(
-        "aria-hidden",
-        "false"
-    );
+        if(requirement.type==="xp"){
 
-    document.body.style.overflow = "hidden";
-}
+            unlocked=
+                state.xp>=Number(
+                    requirement.value||0
+                );
 
+        }else if(requirement.type==="missions"){
 
-function closeHelpModal() {
-    elements.helpModal.classList.remove("active");
-    elements.helpModal.setAttribute(
-        "aria-hidden",
-        "true"
-    );
+            unlocked=
+                state.completedMissions.length>=
+                Number(requirement.value||0);
+        }
 
-    document.body.style.overflow = "";
+        if(unlocked){
+
+            state.unlockedAchievements.push(
+                achievement.id
+            );
+
+            saveProgress();
+
+            showToast(
+                "Achievement unlocked: "+
+                achievement.name
+            );
+        }
+    });
 }
 
 
@@ -537,23 +960,142 @@ function closeHelpModal() {
    PROFILE
 ========================================================= */
 
-function showProfileMessage() {
-    const total =
-        state.missions.length;
+function openProfile(){
 
-    const completed =
-        state.completedMissions.length;
+    const modal=el.cityModal.querySelector(".modal-box");
 
-    showToast(
-        "Level " +
-        state.level +
-        " | XP " +
-        state.xp +
-        " | Mission " +
-        completed +
-        "/" +
-        total
+    if(!modal) return;
+
+    const total=state.missions.filter(
+        m=>m&&m.status!=="coming-soon"
+    ).length;
+
+    const completed=state.completedMissions.length;
+
+    const achievements=
+        state.unlockedAchievements.length;
+
+    modal.innerHTML=`
+        <button class="modal-close" id="profileClose" type="button" aria-label="বন্ধ করুন">×</button>
+        <div class="modal-icon">🏠</div>
+        <h2>আমার Profile</h2>
+        <div class="city-profile">
+            <div>
+                <strong>Level</strong>
+                <span>${state.level}</span>
+            </div>
+            <div>
+                <strong>XP</strong>
+                <span>${state.xp}</span>
+            </div>
+            <div>
+                <strong>Mission</strong>
+                <span>${completed}/${total}</span>
+            </div>
+            <div>
+                <strong>Achievement</strong>
+                <span>${achievements}</span>
+            </div>
+        </div>
+        <button class="modal-action" id="profileButton" type="button">
+            ফিরে যান
+        </button>
+    `;
+
+    const close=$("profileClose");
+    const button=$("profileButton");
+
+    if(close){
+        close.addEventListener("click",closeCityModal);
+    }
+
+    if(button){
+        button.addEventListener("click",closeCityModal);
+    }
+
+    openCityModal();
+}
+
+
+/* =========================================================
+   HELP
+========================================================= */
+
+function openHelpModal(){
+
+    if(!el.helpModal) return;
+
+    el.helpModal.classList.add("active");
+
+    el.helpModal.setAttribute(
+        "aria-hidden",
+        "false"
     );
+
+    document.body.style.overflow="hidden";
+}
+
+
+function closeHelpModal(){
+
+    if(!el.helpModal) return;
+
+    el.helpModal.classList.remove("active");
+
+    el.helpModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow="";
+}
+
+
+/* =========================================================
+   CITY MODAL
+========================================================= */
+
+function openCityModal(){
+
+    if(!el.cityModal) return;
+
+    el.cityModal.classList.add("active");
+
+    el.cityModal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+    document.body.style.overflow="hidden";
+}
+
+
+function closeCityModal(){
+
+    if(!el.cityModal) return;
+
+    el.cityModal.classList.remove("active");
+
+    el.cityModal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+    document.body.style.overflow="";
+
+    state.currentQuestion=null;
+    state.selectedBuilding=null;
+}
+
+/* =========================================================
+   RESET QUESTION UI
+========================================================= */
+
+function resetQuestionUI(){
+    state.currentMission=null;
+    state.currentQuestion=null;
+    state.questionIndex=0;
+    state.correctAnswers=0;
 }
 
 
@@ -561,57 +1103,67 @@ function showProfileMessage() {
    TOAST
 ========================================================= */
 
-let toastTimer = null;
+let toastTimer=null;
 
-function showToast(message) {
-    let toast =
-        document.getElementById("cityToast");
+function showToast(message){
 
-    if (!toast) {
-        toast = document.createElement("div");
+    let toast=document.getElementById("cityToast");
 
-        toast.id = "cityToast";
+    if(!toast){
 
-        toast.style.position = "fixed";
-        toast.style.left = "50%";
-        toast.style.bottom = "25px";
-        toast.style.transform = "translateX(-50%)";
-        toast.style.zIndex = "2000";
-        toast.style.background = "#004d40";
-        toast.style.color = "#ffffff";
-        toast.style.padding = "11px 18px";
-        toast.style.borderRadius = "10px";
-        toast.style.fontSize = "13px";
-        toast.style.maxWidth = "90%";
-        toast.style.textAlign = "center";
-        toast.style.boxShadow =
-            "0 5px 18px rgba(0,0,0,0.25)";
+        toast=document.createElement("div");
+
+        toast.id="cityToast";
+
+        Object.assign(
+            toast.style,
+            {
+                position:"fixed",
+                left:"50%",
+                bottom:"25px",
+                transform:"translateX(-50%)",
+                zIndex:"3000",
+                background:"#004d40",
+                color:"#fff",
+                padding:"11px 18px",
+                borderRadius:"10px",
+                fontSize:"13px",
+                maxWidth:"90%",
+                textAlign:"center",
+                boxShadow:"0 5px 18px rgba(0,0,0,.25)",
+                transition:"opacity .3s ease"
+            }
+        );
 
         document.body.appendChild(toast);
     }
 
-    toast.textContent = message;
-    toast.style.opacity = "1";
+    toast.textContent=message;
+    toast.style.opacity="1";
 
     clearTimeout(toastTimer);
 
-    toastTimer = setTimeout(() => {
-        toast.style.opacity = "0";
-    }, 2500);
+    toastTimer=setTimeout(()=>{
+        toast.style.opacity="0";
+    },2800);
 }
 
 
 /* =========================================================
-   LOCAL STORAGE
+   STORAGE
 ========================================================= */
 
-function saveProgress() {
-    try {
-        const data = {
-            xp: state.xp,
-            level: state.level,
+function saveProgress(){
+
+    try{
+
+        const data={
+            xp:state.xp,
+            level:state.level,
             completedMissions:
-                state.completedMissions
+                [...state.completedMissions],
+            unlockedAchievements:
+                [...state.unlockedAchievements]
         };
 
         localStorage.setItem(
@@ -619,100 +1171,178 @@ function saveProgress() {
             JSON.stringify(data)
         );
 
-    } catch (error) {
+    }catch(error){
+
         console.warn(
-            "Progress could not be saved:",
+            "Progress save failed:",
             error
         );
     }
 }
 
 
-function loadProgress() {
-    try {
-        const saved =
+function loadProgress(){
+
+    try{
+
+        const saved=
             localStorage.getItem(STORAGE_KEY);
 
-        if (!saved) return;
+        if(!saved) return;
 
-        const data =
+        const data=
             JSON.parse(saved);
 
-        if (
-            typeof data.xp === "number" &&
-            data.xp >= 0
-        ) {
-            state.xp = data.xp;
+        if(
+            typeof data.xp==="number"&&
+            data.xp>=0
+        ){
+            state.xp=data.xp;
         }
 
-        if (
-            typeof data.level === "number" &&
-            data.level >= 1
-        ) {
-            state.level = data.level;
+        if(
+            typeof data.level==="number"&&
+            data.level>=1
+        ){
+            state.level=data.level;
         }
 
-        if (
+        if(
             Array.isArray(
                 data.completedMissions
             )
-        ) {
-            state.completedMissions =
+        ){
+            state.completedMissions=
                 data.completedMissions;
         }
 
-        calculateLevel();
+        if(
+            Array.isArray(
+                data.unlockedAchievements
+            )
+        ){
+            state.unlockedAchievements=
+                data.unlockedAchievements;
+        }
 
-    } catch (error) {
+    }catch(error){
+
         console.warn(
-            "Saved progress could not be loaded:",
+            "Progress load failed:",
             error
         );
     }
+}
+
+
+/* =========================================================
+   GETTERS
+========================================================= */
+
+function getBuilding(id){
+
+    return state.buildings.find(
+        building=>building.id===id
+    );
+}
+
+
+function getMission(id){
+
+    if(!id) return null;
+
+    return state.missions.find(
+        mission=>mission.id===id
+    );
+}
+
+
+/* =========================================================
+   TEXT HELPERS
+========================================================= */
+
+function normalizeText(value){
+
+    return String(value||"")
+        .trim()
+        .replace(/\s+/g," ")
+        .toLowerCase();
+}
+
+
+function escapeHTML(value){
+
+    return String(value??"")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
 
 
 /* =========================================================
    RESET PROGRESS
-   ভবিষ্যতে Profile থেকে ব্যবহার করা যাবে
 ========================================================= */
 
-function resetProgress() {
-    const confirmed = confirm(
+function resetProgress(){
+
+    const confirmed=confirm(
         "আপনার Islamic City-এর সব অগ্রগতি মুছে ফেলতে চান?"
     );
 
-    if (!confirmed) return;
+    if(!confirmed) return;
 
-    state.xp = 0;
-    state.level = 1;
-    state.completedMissions = [];
+    state.xp=0;
+    state.level=1;
+    state.completedMissions=[];
+    state.unlockedAchievements=[];
 
     localStorage.removeItem(STORAGE_KEY);
 
     updatePlayerUI();
     updateMissionUI();
+    updateBuildingState();
 
     showToast(
-        "আপনার অগ্রগতি পুনরায় শুরু হয়েছে।"
+        "আপনার অগ্রগতি মুছে ফেলা হয়েছে।"
     );
 }
 
 
 /* =========================================================
-   GLOBAL ACCESS
-   ভবিষ্যতে Profile / Settings থেকে ব্যবহারযোগ্য
+   GLOBAL API
 ========================================================= */
 
-window.IslamicCity = {
-    getProgress() {
-        return {
-            xp: state.xp,
-            level: state.level,
-            completedMissions:
-                [...state.completedMissions]
+window.IslamicCity={
+
+    getProgress(){
+        return{
+            xp:state.xp,
+            level:state.level,
+            completedMissions:[
+                ...state.completedMissions
+            ],
+            unlockedAchievements:[
+                ...state.unlockedAchievements
+            ]
         };
     },
 
-    resetProgress
+    resetProgress,
+
+    addXP(amount){
+        addXP(amount);
+    }
 };
+
+
+
+
+
+
+
+
+
+
+
