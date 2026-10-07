@@ -1,11 +1,11 @@
 /* =========================================
-   Islamic Light — Ultra 3D Raised Embossed Carousel
+   Islamic Light — Ultra Realistic Pillow Emboss Carousel
    Author: Md Ayesh Ali
    ========================================= */
 
 .update-section {
   width: 100%;
-  padding: 18px 8px 12px;
+  padding: 18px 8px 14px;
   position: relative;
   overflow: hidden;
   z-index: 2;
@@ -15,7 +15,7 @@
 .carousel-container {
   width: 100%;
   max-width: 900px;
-  height: 260px;
+  height: 265px;
   margin: 0 auto;
   position: relative;
   perspective: 1100px;
@@ -33,7 +33,7 @@
 }
 
 /* =========================================
-   কার্ড বেস (ভিতর থেকে সুস্পষ্ট উঁচু হওয়া 3D লুক)
+   কার্ড বেস (হুবহু ছবির মতো সুস্পষ্ট ফোলা ৩D লুক)
    ========================================= */
 
 .c-card {
@@ -44,23 +44,30 @@
   max-width: 580px;
   height: 232px;
   margin-left: -44%;
-  border-radius: 28px; /* নরম বালিশের মতো বাঁক */
+  border-radius: 36px; /* ছবির মতো অত্যন্ত মসৃণ কার্ভ */
   
-  /* 🔥 ভেতর থেকে ফুলে ওঠার মতো কনভেক্স গ্রেডিয়েন্ট */
-  background: linear-gradient(145deg, #ffffff, #e3eee9);
+  /* 🔥 ছবির মতো ভার্টিক্যাল সিলিন্ড্রিকাল কার্ভ লাইটিং */
+  background: linear-gradient(
+    180deg, 
+    #ffffff 0%, 
+    #ebf0ee 28%, 
+    #dbe3e0 72%, 
+    #edf2f0 100%
+  );
   
-  /* গ্লাস রিফ্লেকশন বর্ডার */
+  /* অত্যন্ত সূক্ষ্ম চকচকে বর্ডার */
   border-top: 1.5px solid rgba(255, 255, 255, 1);
-  border-left: 1.5px solid rgba(255, 255, 255, 0.9);
-  border-right: 1px solid rgba(0, 77, 64, 0.08);
+  border-left: 1px solid rgba(255, 255, 255, 0.85);
+  border-right: 1px solid rgba(0, 0, 0, 0.04);
   border-bottom: 1.5px solid rgba(0, 77, 64, 0.12);
   
-  /* 🔥 চারপাশের ডিপ শ্যাডো + ওপরের ভেতরের চকচকে আলো */
+  /* 🔥 ছবির মতো দ্বৈত ইনসেট লাইট ও নিচে স্পষ্ট ড্রপ শ্যাডো */
   box-shadow: 
-    12px 18px 30px rgba(0, 77, 64, 0.16),
-    -10px -10px 24px rgba(255, 255, 255, 0.95),
-    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-    inset -2px -2px 5px rgba(0, 77, 64, 0.05);
+    0 18px 28px -5px rgba(0, 77, 64, 0.18),
+    0 8px 14px -3px rgba(0, 0, 0, 0.12),
+    0 -3px 8px rgba(255, 255, 255, 0.95),
+    inset 0 3px 4px rgba(255, 255, 255, 1),
+    inset 0 -3px 5px rgba(0, 77, 64, 0.08);
     
   padding: 22px 24px;
   display: flex;
@@ -82,24 +89,31 @@
   }
 }
 
-/* ডার্ক মোডে স্পষ্ট খাঁজ ও উঁচু ভাব */
+/* ডার্ক মোডেও বাস্তবসম্মত ফোলা ভাব */
 [data-theme="dark"] .c-card {
-  background: linear-gradient(145deg, #202d29, #131b18);
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    180deg, 
+    #2c3935 0%, 
+    #1e2926 28%, 
+    #151e1b 72%, 
+    #212c29 100%
+  );
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
   border-left: 1px solid rgba(255, 255, 255, 0.08);
-  border-right: 1px solid rgba(0, 0, 0, 0.5);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+  border-right: 1px solid rgba(0, 0, 0, 0.6);
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.8);
   box-shadow: 
-    14px 18px 35px rgba(0, 0, 0, 0.7),
-    -8px -8px 25px rgba(255, 255, 255, 0.04),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.1);
+    0 20px 32px rgba(0, 0, 0, 0.75),
+    0 -2px 6px rgba(255, 255, 255, 0.05),
+    inset 0 2px 3px rgba(255, 255, 255, 0.15),
+    inset 0 -3px 5px rgba(0, 0, 0, 0.55);
 }
 
 /* =========================================
    ৩D পজিশন ও সাইজ স্কেলিং
    ========================================= */
 
-/* মাঝখানের প্রধান সক্রিয় কার্ড (সর্বাধিক উঁচু ও স্পষ্ট) */
+/* মাঝখানের প্রধান সক্রিয় কার্ড (সর্বাধিক স্পষ্ট ও উঁচু) */
 .c-card.active {
   transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
   opacity: 1;
@@ -107,17 +121,19 @@
   pointer-events: auto;
   filter: none;
   box-shadow: 
-    16px 24px 42px rgba(0, 77, 64, 0.20),
-    -12px -12px 28px rgba(255, 255, 255, 1),
-    inset 2px 2px 4px rgba(255, 255, 255, 1),
-    inset -2px -2px 6px rgba(0, 77, 64, 0.06);
+    0 26px 40px -6px rgba(0, 77, 64, 0.24),
+    0 12px 18px -4px rgba(0, 0, 0, 0.15),
+    0 -4px 10px rgba(255, 255, 255, 1),
+    inset 0 3px 5px rgba(255, 255, 255, 1),
+    inset 0 -4px 6px rgba(0, 77, 64, 0.10);
 }
 
 [data-theme="dark"] .c-card.active {
   box-shadow: 
-    16px 24px 45px rgba(0, 0, 0, 0.8),
-    -8px -8px 26px rgba(255, 255, 255, 0.05),
-    inset 1px 1px 3px rgba(255, 255, 255, 0.12);
+    0 28px 45px rgba(0, 0, 0, 0.88),
+    0 -3px 8px rgba(255, 255, 255, 0.08),
+    inset 0 2px 4px rgba(255, 255, 255, 0.22),
+    inset 0 -4px 6px rgba(0, 0, 0, 0.65);
 }
 
 /* বাঁ দিকের কার্ড */
@@ -161,15 +177,15 @@
   color: #fff;
   font-size: 25px;
   box-shadow: 
-    6px 8px 16px rgba(0, 77, 64, 0.32),
-    -3px -3px 8px rgba(255, 255, 255, 0.8),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
+    0 8px 18px rgba(0, 77, 64, 0.32),
+    0 -2px 6px rgba(255, 255, 255, 0.8),
+    inset 0 1px 2px rgba(255, 255, 255, 0.4);
 }
 
 [data-theme="dark"] .c-icon {
   box-shadow: 
-    6px 8px 16px rgba(0, 0, 0, 0.7),
-    -3px -3px 8px rgba(255, 255, 255, 0.05);
+    0 8px 18px rgba(0, 0, 0, 0.7),
+    0 -2px 6px rgba(255, 255, 255, 0.06);
 }
 
 .c-content {
@@ -184,24 +200,25 @@
   margin-bottom: 7px;
 }
 
-/* ভিতরের উঁচু সফট ব্যাজ */
+/* ব্যাজ (ছোট ফোলা পিল লুক) */
 .c-badge {
-  background: linear-gradient(145deg, #ffffff, #e1ece7);
+  background: linear-gradient(180deg, #ffffff 0%, #e1ebe6 100%);
   color: #005a4e;
   font-size: 11px;
   font-weight: 800;
   padding: 4px 12px;
   border-radius: 30px;
   box-shadow: 
-    3px 3px 6px rgba(0, 77, 64, 0.10),
-    -2px -2px 6px rgba(255, 255, 255, 0.95);
+    0 3px 6px rgba(0, 77, 64, 0.12),
+    0 -1px 3px rgba(255, 255, 255, 0.95),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
 [data-theme="dark"] .c-badge {
-  background: linear-gradient(145deg, #24332e, #182320);
+  background: linear-gradient(180deg, #273731 0%, #17211e 100%);
   box-shadow: 
-    3px 3px 6px rgba(0, 0, 0, 0.5),
-    -2px -2px 6px rgba(255, 255, 255, 0.03);
+    0 3px 6px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08);
 }
 
 .c-date {
@@ -242,7 +259,7 @@
   color: #c5c5c5;
 }
 
-/* বাটন (উঁচু বাটন লুক) */
+/* অ্যাকশন বাটন */
 .c-btn {
   display: inline-flex;
   align-items: center;
@@ -255,16 +272,16 @@
   font-weight: 700;
   text-decoration: none;
   box-shadow: 
-    5px 6px 14px rgba(0, 77, 64, 0.30),
-    -3px -3px 8px rgba(255, 255, 255, 0.8);
+    0 6px 14px rgba(0, 77, 64, 0.32),
+    0 -2px 6px rgba(255, 255, 255, 0.7);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .c-btn:hover {
   transform: translateY(-2px);
   box-shadow: 
-    7px 9px 18px rgba(0, 77, 64, 0.35),
-    -4px -4px 10px rgba(255, 255, 255, 0.9);
+    0 8px 18px rgba(0, 77, 64, 0.38),
+    0 -2px 8px rgba(255, 255, 255, 0.9);
 }
 
 /* =========================================
@@ -280,11 +297,11 @@
 }
 
 .c-nav {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   border: none;
-  background: linear-gradient(145deg, #ffffff, #e3eee9);
+  background: linear-gradient(180deg, #ffffff 0%, #e2ece7 100%);
   color: #004d40;
   font-size: 20px;
   line-height: 1;
@@ -293,17 +310,18 @@
   align-items: center;
   justify-content: center;
   box-shadow: 
-    4px 5px 10px rgba(0, 77, 64, 0.12),
-    -3px -3px 8px rgba(255, 255, 255, 1);
+    0 5px 10px rgba(0, 77, 64, 0.14),
+    0 -2px 6px rgba(255, 255, 255, 1),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 [data-theme="dark"] .c-nav {
-  background: linear-gradient(145deg, #24332e, #17211e);
+  background: linear-gradient(180deg, #273731 0%, #17211e 100%);
   color: #fff;
   box-shadow: 
-    4px 5px 10px rgba(0, 0, 0, 0.6),
-    -3px -3px 8px rgba(255, 255, 255, 0.04);
+    0 5px 10px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.08);
 }
 
 .c-nav:hover {
@@ -324,8 +342,8 @@
   background: #d1ded9;
   cursor: pointer;
   box-shadow: 
-    inset 1px 1px 2px rgba(0, 0, 0, 0.2),
-    1px 1px 2px rgba(255, 255, 255, 0.9);
+    inset 0 1px 2px rgba(0, 0, 0, 0.25),
+    0 1px 2px rgba(255, 255, 255, 0.9);
   transition: width 0.3s ease, background 0.3s ease;
 }
 
@@ -333,8 +351,8 @@
   width: 24px;
   background: #004d40;
   box-shadow: 
-    2px 3px 6px rgba(0, 77, 64, 0.3),
-    -1px -1px 3px rgba(255, 255, 255, 0.9);
+    0 3px 6px rgba(0, 77, 64, 0.35),
+    inset 0 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 /* =========================================
@@ -343,15 +361,16 @@
 
 @media (max-width: 500px) {
   .carousel-container {
-    height: 282px;
+    height: 285px;
   }
 
   .c-card {
-    height: 270px;
+    height: 272px;
     display: block;
     padding: 20px 18px;
     width: 86%;
     margin-left: -43%;
+    border-radius: 30px;
   }
 
   .c-card.prev-card {
@@ -377,4 +396,4 @@
   .c-desc {
     font-size: 12.5px;
   }
-}
+   }
