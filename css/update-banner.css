@@ -1,5 +1,5 @@
 /* =========================================
-   Islamic Light — 3D Neumorphic Coverflow Carousel
+   Islamic Light — Ultra 3D Raised Embossed Carousel
    Author: Md Ayesh Ali
    ========================================= */
 
@@ -15,7 +15,7 @@
 .carousel-container {
   width: 100%;
   max-width: 900px;
-  height: 255px;
+  height: 260px;
   margin: 0 auto;
   position: relative;
   perspective: 1100px;
@@ -33,7 +33,7 @@
 }
 
 /* =========================================
-   কার্ড বেস (Neumorphic Raised Soft 3D)
+   কার্ড বেস (ভিতর থেকে সুস্পষ্ট উঁচু হওয়া 3D লুক)
    ========================================= */
 
 .c-card {
@@ -42,17 +42,25 @@
   left: 50%;
   width: 88%;
   max-width: 580px;
-  height: 228px;
+  height: 232px;
   margin-left: -44%;
-  border-radius: 26px; /* নিয়ুমরফিক সফট কার্ভ */
-  background: #f0f5f3; /* ব্যাকগ্রাউন্ডের সাথে মেলানো সফট টোন */
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px; /* নরম বালিশের মতো বাঁক */
   
-  /* 🔥 সফট উঁচু হয়ে থাকা দ্বৈত ছায়া (Light & Shadow) */
+  /* 🔥 ভেতর থেকে ফুলে ওঠার মতো কনভেক্স গ্রেডিয়েন্ট */
+  background: linear-gradient(145deg, #ffffff, #e3eee9);
+  
+  /* গ্লাস রিফ্লেকশন বর্ডার */
+  border-top: 1.5px solid rgba(255, 255, 255, 1);
+  border-left: 1.5px solid rgba(255, 255, 255, 0.9);
+  border-right: 1px solid rgba(0, 77, 64, 0.08);
+  border-bottom: 1.5px solid rgba(0, 77, 64, 0.12);
+  
+  /* 🔥 চারপাশের ডিপ শ্যাডো + ওপরের ভেতরের চকচকে আলো */
   box-shadow: 
-    10px 14px 28px rgba(0, 77, 64, 0.12),
-    -8px -8px 22px rgba(255, 255, 255, 0.95),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+    12px 18px 30px rgba(0, 77, 64, 0.16),
+    -10px -10px 24px rgba(255, 255, 255, 0.95),
+    inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+    inset -2px -2px 5px rgba(0, 77, 64, 0.05);
     
   padding: 22px 24px;
   display: flex;
@@ -74,21 +82,24 @@
   }
 }
 
-/* ডার্ক মোডে নিয়ুমরফিক উঁচু ভাব */
+/* ডার্ক মোডে স্পষ্ট খাঁজ ও উঁচু ভাব */
 [data-theme="dark"] .c-card {
-  background: #17211e;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: linear-gradient(145deg, #202d29, #131b18);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  border-right: 1px solid rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.7);
   box-shadow: 
-    10px 14px 28px rgba(0, 0, 0, 0.5),
-    -6px -6px 20px rgba(255, 255, 255, 0.03),
-    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
+    14px 18px 35px rgba(0, 0, 0, 0.7),
+    -8px -8px 25px rgba(255, 255, 255, 0.04),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.1);
 }
 
 /* =========================================
    ৩D পজিশন ও সাইজ স্কেলিং
    ========================================= */
 
-/* মাঝখানের প্রধান সক্রিয় কার্ড */
+/* মাঝখানের প্রধান সক্রিয় কার্ড (সর্বাধিক উঁচু ও স্পষ্ট) */
 .c-card.active {
   transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
   opacity: 1;
@@ -96,16 +107,17 @@
   pointer-events: auto;
   filter: none;
   box-shadow: 
-    14px 18px 36px rgba(0, 77, 64, 0.16),
-    -10px -10px 26px rgba(255, 255, 255, 1),
-    inset 1px 1px 3px rgba(255, 255, 255, 0.9);
+    16px 24px 42px rgba(0, 77, 64, 0.20),
+    -12px -12px 28px rgba(255, 255, 255, 1),
+    inset 2px 2px 4px rgba(255, 255, 255, 1),
+    inset -2px -2px 6px rgba(0, 77, 64, 0.06);
 }
 
 [data-theme="dark"] .c-card.active {
   box-shadow: 
-    14px 18px 36px rgba(0, 0, 0, 0.65),
-    -8px -8px 24px rgba(255, 255, 255, 0.04),
-    inset 1px 1px 3px rgba(255, 255, 255, 0.08);
+    16px 24px 45px rgba(0, 0, 0, 0.8),
+    -8px -8px 26px rgba(255, 255, 255, 0.05),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.12);
 }
 
 /* বাঁ দিকের কার্ড */
@@ -136,27 +148,28 @@
    কার্ডের অভ্যন্তরীণ উপাদান
    ========================================= */
 
-/* আইকন বক্স (উঁচু পিল/টাইল লুক) */
+/* আইকন বক্স */
 .c-icon {
-  width: 60px;
-  height: 60px;
+  width: 62px;
+  height: 62px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 20px;
-  background: linear-gradient(145deg, #005a4b, #00453a);
+  background: linear-gradient(145deg, #005f4f, #004035);
   color: #fff;
-  font-size: 24px;
+  font-size: 25px;
   box-shadow: 
-    5px 5px 12px rgba(0, 77, 64, 0.25),
-    -3px -3px 8px rgba(255, 255, 255, 0.8);
+    6px 8px 16px rgba(0, 77, 64, 0.32),
+    -3px -3px 8px rgba(255, 255, 255, 0.8),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.3);
 }
 
 [data-theme="dark"] .c-icon {
   box-shadow: 
-    5px 5px 14px rgba(0, 0, 0, 0.6),
-    -3px -3px 8px rgba(255, 255, 255, 0.04);
+    6px 8px 16px rgba(0, 0, 0, 0.7),
+    -3px -3px 8px rgba(255, 255, 255, 0.05);
 }
 
 .c-content {
@@ -168,26 +181,26 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 6px;
+  margin-bottom: 7px;
 }
 
-/* নিয়ুমরফিক সফট ব্যাজ */
+/* ভিতরের উঁচু সফট ব্যাজ */
 .c-badge {
-  background: #f0f5f3;
-  color: #00695c;
+  background: linear-gradient(145deg, #ffffff, #e1ece7);
+  color: #005a4e;
   font-size: 11px;
   font-weight: 800;
   padding: 4px 12px;
   border-radius: 30px;
   box-shadow: 
-    2px 2px 5px rgba(0, 77, 64, 0.08),
-    -2px -2px 5px rgba(255, 255, 255, 0.9);
+    3px 3px 6px rgba(0, 77, 64, 0.10),
+    -2px -2px 6px rgba(255, 255, 255, 0.95);
 }
 
 [data-theme="dark"] .c-badge {
-  background: #17211e;
+  background: linear-gradient(145deg, #24332e, #182320);
   box-shadow: 
-    2px 2px 6px rgba(0, 0, 0, 0.4),
+    3px 3px 6px rgba(0, 0, 0, 0.5),
     -2px -2px 6px rgba(255, 255, 255, 0.03);
 }
 
@@ -229,7 +242,7 @@
   color: #c5c5c5;
 }
 
-/* নিয়ুমরফিক উঁচু বাটন */
+/* বাটন (উঁচু বাটন লুক) */
 .c-btn {
   display: inline-flex;
   align-items: center;
@@ -242,20 +255,20 @@
   font-weight: 700;
   text-decoration: none;
   box-shadow: 
-    4px 5px 12px rgba(0, 77, 64, 0.25),
-    -3px -3px 8px rgba(255, 255, 255, 0.7);
+    5px 6px 14px rgba(0, 77, 64, 0.30),
+    -3px -3px 8px rgba(255, 255, 255, 0.8);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .c-btn:hover {
   transform: translateY(-2px);
   box-shadow: 
-    6px 7px 15px rgba(0, 77, 64, 0.3),
-    -4px -4px 10px rgba(255, 255, 255, 0.8);
+    7px 9px 18px rgba(0, 77, 64, 0.35),
+    -4px -4px 10px rgba(255, 255, 255, 0.9);
 }
 
 /* =========================================
-   কন্ট্রোল বাটন ও ডটস (Soft Buttons)
+   কন্ট্রোল বাটন ও ডটস
    ========================================= */
 
 .carousel-controls {
@@ -271,7 +284,7 @@
   height: 34px;
   border-radius: 50%;
   border: none;
-  background: #f0f5f3;
+  background: linear-gradient(145deg, #ffffff, #e3eee9);
   color: #004d40;
   font-size: 20px;
   line-height: 1;
@@ -280,17 +293,17 @@
   align-items: center;
   justify-content: center;
   box-shadow: 
-    3px 4px 8px rgba(0, 77, 64, 0.1),
-    -3px -3px 8px rgba(255, 255, 255, 0.95);
+    4px 5px 10px rgba(0, 77, 64, 0.12),
+    -3px -3px 8px rgba(255, 255, 255, 1);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 [data-theme="dark"] .c-nav {
-  background: #17211e;
+  background: linear-gradient(145deg, #24332e, #17211e);
   color: #fff;
   box-shadow: 
-    3px 4px 8px rgba(0, 0, 0, 0.5),
-    -3px -3px 8px rgba(255, 255, 255, 0.03);
+    4px 5px 10px rgba(0, 0, 0, 0.6),
+    -3px -3px 8px rgba(255, 255, 255, 0.04);
 }
 
 .c-nav:hover {
@@ -308,11 +321,11 @@
   height: 8px;
   border: none;
   border-radius: 20px;
-  background: #d5e0dc;
+  background: #d1ded9;
   cursor: pointer;
   box-shadow: 
-    inset 1px 1px 2px rgba(0, 0, 0, 0.15),
-    1px 1px 2px rgba(255, 255, 255, 0.8);
+    inset 1px 1px 2px rgba(0, 0, 0, 0.2),
+    1px 1px 2px rgba(255, 255, 255, 0.9);
   transition: width 0.3s ease, background 0.3s ease;
 }
 
@@ -320,8 +333,8 @@
   width: 24px;
   background: #004d40;
   box-shadow: 
-    2px 2px 5px rgba(0, 77, 64, 0.25),
-    -1px -1px 3px rgba(255, 255, 255, 0.8);
+    2px 3px 6px rgba(0, 77, 64, 0.3),
+    -1px -1px 3px rgba(255, 255, 255, 0.9);
 }
 
 /* =========================================
@@ -330,11 +343,11 @@
 
 @media (max-width: 500px) {
   .carousel-container {
-    height: 280px;
+    height: 282px;
   }
 
   .c-card {
-    height: 268px;
+    height: 270px;
     display: block;
     padding: 20px 18px;
     width: 86%;
@@ -350,11 +363,11 @@
   }
 
   .c-icon {
-    width: 46px;
-    height: 46px;
+    width: 48px;
+    height: 48px;
     margin-bottom: 12px;
-    border-radius: 14px;
-    font-size: 20px;
+    border-radius: 15px;
+    font-size: 21px;
   }
 
   .c-title {
@@ -364,4 +377,4 @@
   .c-desc {
     font-size: 12.5px;
   }
-     }
+}
