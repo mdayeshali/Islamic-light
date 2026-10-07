@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="bn">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Islamic City | Islamic Light</title>
+
+    <meta
+        name="description"
+        content="Islamic Light-এর Islamic City। খেলতে খেলতে ইসলামিক জ্ঞান অর্জন করুন।"
+    >
+
+    <meta
+        name="robots"
+        content="index, follow"
+    >
+
+    <link
+        rel="canonical"
+        href="https://islamiclight.in/game/city-g.html"
+    >
+
+    <link
+        rel="icon"
+        href="/favicon.ico"
+    >
+
+    <!-- =====================================================
+         OPEN GRAPH
+    ====================================================== -->
+
+    <meta
+        property="og:title"
+        content="Islamic City | Islamic Light"
+    >
+
+    <meta
+        property="og:description"
+        content="Islamic City-তে প্রবেশ করুন এবং খেলতে খেলতে ইসলামিক জ্ঞান অর্জন করুন।"
+    >
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:url"
+        content="https://islamiclight.in/game/city-g.html"
+    >
+
+
+    <!-- =====================================================
+         CITY CSS
+    ====================================================== -->
+
+    <link
+        rel="stylesheet"
+        href="css/city-g.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================================
+         GAME HEADER
+    ====================================================== -->
+
+    <header class="city-header">
+
+        <div class="city-header-left">
+
+            <a
+                href="games.html"
+                class="back-button"
+                aria-label="গেমে ফিরে যান"
+            >
+                ←
+            </a>
+
+            <div>
+
+                <h1>
+                    Islamic City
+                </h1>
+
+                <p>
+                    ইসলামিক জ্ঞান অর্জনের শহর
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="help-button"
+            id="helpButton"
+            type="button"
+            aria-label="সহায়তা"
+        >
+            ?
+        </button>
+
+    </header>
+
+
+
+    <!-- =====================================================
+         PLAYER STATUS
+    ====================================================== -->
+
+    <section class="player-section">
+
+        <div class="player-card">
+
+
+            <div class="player-avatar">
+
+                🧑
+
+            </div>
+
+
+            <div class="player-info">
+
+                <h2>
+                    শিক্ষার্থী
+                </h2>
+
+                <p>
+                    Level <span id="playerLevel">1</span>
+                </p>
+
+            </div>
+
+
+            <div class="player-xp">
+
+                <div class="xp-text">
+
+                    <span>
+                        XP
+                    </span>
+
+                    <strong id="playerXP">
+                        0
+                    </strong>
+
+                </div>
+
+
+                <div class="xp-bar">
+
+                    <div
+                        class="xp-progress"
+                        id="xpProgress"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         CITY MAIN
+    ====================================================== -->
+
+    <main class="city-main">
+
+
+        <!-- =================================================
+             CITY INTRO
+        ================================================== -->
+
+        <section class="city-intro">
+
+            <h2>
+                Islamic City-তে স্বাগতম
+            </h2>
+
+            <p>
+                শহরের বিভিন্ন স্থানে প্রবেশ করুন,
+                Mission সম্পন্ন করুন এবং ইসলামিক জ্ঞান
+                অর্জন করুন।
+            </p>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CITY MAP
+        ================================================== -->
+
+        <section
+            class="city-map"
+            id="cityMap"
+        >
+
+
+            <!-- =============================================
+                 SKY
+            ============================================== -->
+
+            <div class="city-sky">
+
+                <div class="sun">
+                    ☀️
+                </div>
+
+                <div class="cloud cloud-one">
+                    ☁️
+                </div>
+
+                <div class="cloud cloud-two">
+                    ☁️
+                </div>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 CITY BUILDINGS
+            ============================================== -->
+
+            <div class="city-buildings">
+
+
+                <!-- =========================================
+                     MOSQUE
+                ========================================== -->
+
+                <button
+                    class="city-building mosque-building"
+                    data-building="mosque"
+                    type="button"
+                >
+
+                    <span class="building-icon">
+                        🕌
+                    </span>
+
+                    <span class="building-name">
+                        মসজিদ
+                    </span>
+
+                    <span class="building-status">
+                        Salah Challenge
+                    </span>
+
+                </button>
+
+
+
+                <!-- =========================================
+                     QURAN CENTER
+                ========================================== -->
+
+                <button
+                    class="city-building quran-building"
+                    data-building="quran"
+                    type="button"
+                >
+
+                    <span class="building-icon">
+                        📖
+                    </span>
+
+                    <span class="building-name">
+                        কুরআন কেন্দ্র
+                    </span>
+
+                    <span class="building-status">
+                        Quran Challenge
+                    </span>
+
+                </button>
+
+
+
+                <!-- =========================================
+                     ISLAMIC LIBRARY
+                ========================================== -->
+
+                <button
+                    class="city-building library-building"
+                    data-building="library"
+                    type="button"
+                >
+
+                    <span class="building-icon">
+                        📚
+                    </span>
+
+                    <span class="building-name">
+                        ইসলামিক লাইব্রেরি
+                    </span>
+
+                    <span class="building-status">
+                        Hadith Challenge
+                    </span>
+
+                </button>
+
+
+
+                <!-- =========================================
+                     HAJJ CENTER
+                ========================================== -->
+
+                <button
+                    class="city-building hajj-building"
+                    data-building="hajj"
+                    type="button"
+                >
+
+                    <span class="building-icon">
+                        🕋
+                    </span>
+
+                    <span class="building-name">
+                        হজ কেন্দ্র
+                    </span>
+
+                    <span class="building-status">
+                        Hajj Challenge
+                    </span>
+
+                </button>
+
+
+
+                <!-- =========================================
+                     PLAYER HOME
+                ========================================== -->
+
+                <button
+                    class="city-building home-building"
+                    data-building="home"
+                    type="button"
+                >
+
+                    <span class="building-icon">
+                        🏠
+                    </span>
+
+                    <span class="building-name">
+                        আমার বাড়ি
+                    </span>
+
+                    <span class="building-status">
+                        Profile
+                    </span>
+
+                </button>
+
+
+            </div>
+
+
+
+            <!-- =============================================
+                 ROAD
+            ============================================== -->
+
+            <div class="city-road">
+
+                <div class="road-line"></div>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 TREES
+            ============================================== -->
+
+            <div class="city-trees">
+
+                <span>🌳</span>
+                <span>🌳</span>
+                <span>🌴</span>
+                <span>🌳</span>
+                <span>🌴</span>
+                <span>🌳</span>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             MISSION PANEL
+        ================================================== -->
+
+        <section
+            class="mission-section"
+            id="missionSection"
+        >
+
+            <div class="mission-header">
+
+                <h2>
+                    আজকের Mission
+                </h2>
+
+                <span class="mission-count">
+                    <span id="missionCompleted">
+                        0
+                    </span>
+                    /
+                    <span id="missionTotal">
+                        5
+                    </span>
+                </span>
+
+            </div>
+
+
+            <div class="mission-list">
+
+
+                <div
+                    class="mission-card"
+                    data-mission="mosque"
+                >
+
+                    <div class="mission-icon">
+                        🕌
+                    </div>
+
+                    <div class="mission-info">
+
+                        <h3>
+                            মসজিদ Mission
+                        </h3>
+
+                        <p>
+                            নামাজ সম্পর্কিত একটি Challenge সম্পন্ন করুন।
+                        </p>
+
+                    </div>
+
+                    <span class="mission-xp">
+                        +20 XP
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    class="mission-card"
+                    data-mission="quran"
+                >
+
+                    <div class="mission-icon">
+                        📖
+                    </div>
+
+                    <div class="mission-info">
+
+                        <h3>
+                            কুরআন Mission
+                        </h3>
+
+                        <p>
+                            কুরআন সম্পর্কিত একটি প্রশ্নের উত্তর দিন।
+                        </p>
+
+                    </div>
+
+                    <span class="mission-xp">
+                        +20 XP
+                    </span>
+
+                </div>
+
+
+
+                <div
+                    class="mission-card"
+                    data-mission="hadith"
+                >
+
+                    <div class="mission-icon">
+                        📚
+                    </div>
+
+                    <div class="mission-info">
+
+                        <h3>
+                            হাদিস Mission
+                        </h3>
+
+                        <p>
+                            হাদিস সম্পর্কে আপনার জ্ঞান যাচাই করুন।
+                        </p>
+
+                    </div>
+
+                    <span class="mission-xp">
+                        +20 XP
+                    </span>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CITY INFORMATION
+        ================================================== -->
+
+        <section class="city-info-section">
+
+            <h2>
+                Islamic City সম্পর্কে
+            </h2>
+
+            <p>
+                Islamic City একটি শিক্ষামূলক গেম,
+                যেখানে বিভিন্ন জায়গায় প্রবেশ করে
+                ইসলামিক জ্ঞান সম্পর্কে শেখা যাবে।
+                ভবিষ্যতে এই শহরে আরও নতুন স্থান,
+                Mission এবং Challenge যুক্ত করা হবে।
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         BUILDING MODAL
+    ====================================================== -->
+
+    <div
+        class="city-modal"
+        id="cityModal"
+        aria-hidden="true"
+    >
+
+        <div class="modal-overlay"></div>
+
+
+        <div
+            class="modal-box"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modalTitle"
+        >
+
+
+            <button
+                class="modal-close"
+                id="modalClose"
+                type="button"
+                aria-label="বন্ধ করুন"
+            >
+                ×
+            </button>
+
+
+            <div
+                class="modal-icon"
+                id="modalIcon"
+            >
+                🕌
+            </div>
+
+
+            <h2 id="modalTitle">
+                মসজিদ
+            </h2>
+
+
+            <p id="modalDescription">
+                এখানে আপনার Mission শুরু হবে।
+            </p>
+
+
+            <button
+                class="modal-action"
+                id="modalAction"
+                type="button"
+            >
+                Mission শুরু করুন
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HELP MODAL
+    ====================================================== -->
+
+    <div
+        class="help-modal"
+        id="helpModal"
+        aria-hidden="true"
+    >
+
+        <div class="help-overlay"></div>
+
+
+        <div
+            class="help-box"
+            role="dialog"
+            aria-modal="true"
+        >
+
+            <button
+                class="help-close"
+                id="helpClose"
+                type="button"
+                aria-label="বন্ধ করুন"
+            >
+                ×
+            </button>
+
+
+            <h2>
+                Islamic City কী?
+            </h2>
+
+
+            <p>
+                Islamic City একটি ইসলামিক শিক্ষামূলক গেম।
+                শহরের বিভিন্ন স্থানে প্রবেশ করে বিভিন্ন
+                Mission ও Challenge সম্পন্ন করতে পারবেন।
+            </p>
+
+
+            <p>
+                সঠিক উত্তর দিলে XP অর্জন করবেন এবং
+                ভবিষ্যতে নতুন Level ও নতুন জায়গা
+                Unlock করতে পারবেন।
+            </p>
+
+
+            <button
+                class="help-action"
+                id="helpOk"
+                type="button"
+            >
+                বুঝেছি
+            </button>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script
+        src="js/city-g.js"
+        defer
+    ></script>
+
+
+</body>
+
+  </html>
