@@ -1,11 +1,11 @@
 /* =========================================
-   Islamic Light — 3D Coverflow Carousel
+   Islamic Light — 3D Neumorphic Coverflow Carousel
    Author: Md Ayesh Ali
    ========================================= */
 
 .update-section {
   width: 100%;
-  padding: 16px 8px 10px;
+  padding: 18px 8px 12px;
   position: relative;
   overflow: hidden;
   z-index: 2;
@@ -15,14 +15,14 @@
 .carousel-container {
   width: 100%;
   max-width: 900px;
-  height: 250px;
+  height: 255px;
   margin: 0 auto;
   position: relative;
-  perspective: 1100px; /* ৩D ভিউয়ের গভীরতা */
+  perspective: 1100px;
   display: flex;
   align-items: center;
   justify-content: center;
-  touch-action: pan-y; /* মোবাইলে সোয়াইপকে স্মুথ রাখতে */
+  touch-action: pan-y;
 }
 
 .carousel-track {
@@ -32,27 +32,36 @@
   transform-style: preserve-3d;
 }
 
-/* প্রতিটি কার্ডের ৩D বেস */
+/* =========================================
+   কার্ড বেস (Neumorphic Raised Soft 3D)
+   ========================================= */
+
 .c-card {
   position: absolute;
   top: 0;
   left: 50%;
   width: 88%;
   max-width: 580px;
-  height: 225px;
-  margin-left: -44%; /* সেন্টারিং */
-  border-radius: 20px;
-  background: linear-gradient(135deg, #ffffff, #f4faf8);
-  border: 1px solid rgba(0, 77, 64, 0.12);
-  box-shadow: 0 10px 30px rgba(0, 77, 64, 0.10);
-  padding: 20px 22px;
+  height: 228px;
+  margin-left: -44%;
+  border-radius: 26px; /* নিয়ুমরফিক সফট কার্ভ */
+  background: #f0f5f3; /* ব্যাকগ্রাউন্ডের সাথে মেলানো সফট টোন */
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  
+  /* 🔥 সফট উঁচু হয়ে থাকা দ্বৈত ছায়া (Light & Shadow) */
+  box-shadow: 
+    10px 14px 28px rgba(0, 77, 64, 0.12),
+    -8px -8px 22px rgba(255, 255, 255, 0.95),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+    
+  padding: 22px 24px;
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   user-select: none;
   cursor: pointer;
 
-  /* 🐢 স্লো-মোশন ট্রানজিশন (০.৮৫ সেকেন্ডে সিনেমাটিক গ্লাইড) */
+  /* স্লো-মোশন ট্রানজিশন */
   transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
               opacity 0.85s ease,
               filter 0.85s ease,
@@ -65,46 +74,57 @@
   }
 }
 
-/* ডার্ক মোড সমর্থন */
+/* ডার্ক মোডে নিয়ুমরফিক উঁচু ভাব */
 [data-theme="dark"] .c-card {
-  background: linear-gradient(135deg, #182320, #131c19);
-  border-color: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  background: #17211e;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 
+    10px 14px 28px rgba(0, 0, 0, 0.5),
+    -6px -6px 20px rgba(255, 255, 255, 0.03),
+    inset 1px 1px 2px rgba(255, 255, 255, 0.05);
 }
 
 /* =========================================
-   ৩D পজিশন ও সাইজ স্কেলিং (ছোট থেকে বড় ও বড় থেকে ছোট)
+   ৩D পজিশন ও সাইজ স্কেলিং
    ========================================= */
 
-/* মাঝখানের প্রধান সক্রিয় কার্ড (পূর্ণ আকার ও স্পষ্ট ফোকাস) */
+/* মাঝখানের প্রধান সক্রিয় কার্ড */
 .c-card.active {
   transform: translateX(0) translateZ(0) rotateY(0deg) scale(1);
   opacity: 1;
   z-index: 10;
   pointer-events: auto;
   filter: none;
-  box-shadow: 0 15px 35px rgba(0, 77, 64, 0.16);
+  box-shadow: 
+    14px 18px 36px rgba(0, 77, 64, 0.16),
+    -10px -10px 26px rgba(255, 255, 255, 1),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.9);
 }
 
-/* বাঁ দিকের কার্ড (ছোট হয়ে পেছনে বাঁকা থাকবে) */
+[data-theme="dark"] .c-card.active {
+  box-shadow: 
+    14px 18px 36px rgba(0, 0, 0, 0.65),
+    -8px -8px 24px rgba(255, 255, 255, 0.04),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.08);
+}
+
+/* বাঁ দিকের কার্ড */
 .c-card.prev-card {
   transform: translateX(-52%) translateZ(-180px) rotateY(36deg) scale(0.82);
   opacity: 0.45;
   z-index: 5;
-  filter: brightness(0.88);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  filter: brightness(0.92);
 }
 
-/* ডান দিকের কার্ড (ছোট হয়ে পেছনে বাঁকা থাকবে) */
+/* ডান দিকের কার্ড */
 .c-card.next-card {
   transform: translateX(52%) translateZ(-180px) rotateY(-36deg) scale(0.82);
   opacity: 0.45;
   z-index: 5;
-  filter: brightness(0.88);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  filter: brightness(0.92);
 }
 
-/* অন্য স্লাইডগুলো আরও সংকুচিত হয়ে পেছনে লুকানো থাকবে */
+/* পেছনের লুকানো কার্ড */
 .c-card.hidden {
   transform: translateZ(-350px) scale(0.65);
   opacity: 0;
@@ -116,18 +136,27 @@
    কার্ডের অভ্যন্তরীণ উপাদান
    ========================================= */
 
+/* আইকন বক্স (উঁচু পিল/টাইল লুক) */
 .c-icon {
-  width: 58px;
-  height: 58px;
+  width: 60px;
+  height: 60px;
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #004d40, #00796b);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #005a4b, #00453a);
   color: #fff;
   font-size: 24px;
-  box-shadow: 0 6px 16px rgba(0, 77, 64, 0.25);
+  box-shadow: 
+    5px 5px 12px rgba(0, 77, 64, 0.25),
+    -3px -3px 8px rgba(255, 255, 255, 0.8);
+}
+
+[data-theme="dark"] .c-icon {
+  box-shadow: 
+    5px 5px 14px rgba(0, 0, 0, 0.6),
+    -3px -3px 8px rgba(255, 255, 255, 0.04);
 }
 
 .c-content {
@@ -142,13 +171,24 @@
   margin-bottom: 6px;
 }
 
+/* নিয়ুমরফিক সফট ব্যাজ */
 .c-badge {
-  background: #e6f4f1;
+  background: #f0f5f3;
   color: #00695c;
   font-size: 11px;
   font-weight: 800;
-  padding: 3px 10px;
-  border-radius: 20px;
+  padding: 4px 12px;
+  border-radius: 30px;
+  box-shadow: 
+    2px 2px 5px rgba(0, 77, 64, 0.08),
+    -2px -2px 5px rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .c-badge {
+  background: #17211e;
+  box-shadow: 
+    2px 2px 6px rgba(0, 0, 0, 0.4),
+    -2px -2px 6px rgba(255, 255, 255, 0.03);
 }
 
 .c-date {
@@ -189,43 +229,49 @@
   color: #c5c5c5;
 }
 
+/* নিয়ুমরফিক উঁচু বাটন */
 .c-btn {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 7px 16px;
-  border-radius: 8px;
-  background: linear-gradient(135deg, #004d40, #00796b);
+  padding: 8px 18px;
+  border-radius: 30px;
+  background: linear-gradient(145deg, #00796b, #004d40);
   color: #ffffff !important;
   font-size: 12.5px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0, 77, 64, 0.2);
-  transition: transform 0.2s ease;
+  box-shadow: 
+    4px 5px 12px rgba(0, 77, 64, 0.25),
+    -3px -3px 8px rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .c-btn:hover {
   transform: translateY(-2px);
+  box-shadow: 
+    6px 7px 15px rgba(0, 77, 64, 0.3),
+    -4px -4px 10px rgba(255, 255, 255, 0.8);
 }
 
 /* =========================================
-   কন্ট্রোল বাটন ও ডটস
+   কন্ট্রোল বাটন ও ডটস (Soft Buttons)
    ========================================= */
 
 .carousel-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-top: 12px;
+  gap: 16px;
+  margin-top: 14px;
 }
 
 .c-nav {
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   border: none;
-  background: #e0f2fe;
+  background: #f0f5f3;
   color: #004d40;
   font-size: 20px;
   line-height: 1;
@@ -233,54 +279,64 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
+  box-shadow: 
+    3px 4px 8px rgba(0, 77, 64, 0.1),
+    -3px -3px 8px rgba(255, 255, 255, 0.95);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 [data-theme="dark"] .c-nav {
-  background: rgba(255, 255, 255, 0.08);
+  background: #17211e;
   color: #fff;
+  box-shadow: 
+    3px 4px 8px rgba(0, 0, 0, 0.5),
+    -3px -3px 8px rgba(255, 255, 255, 0.03);
 }
 
 .c-nav:hover {
-  background: #004d40;
-  color: #fff;
-  transform: scale(1.1);
+  transform: scale(1.08);
 }
 
 .update-dots {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   align-items: center;
 }
 
 .update-dot-item {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border: none;
   border-radius: 20px;
-  background: #c5d4d1;
+  background: #d5e0dc;
   cursor: pointer;
+  box-shadow: 
+    inset 1px 1px 2px rgba(0, 0, 0, 0.15),
+    1px 1px 2px rgba(255, 255, 255, 0.8);
   transition: width 0.3s ease, background 0.3s ease;
 }
 
 .update-dot-item.active {
-  width: 22px;
+  width: 24px;
   background: #004d40;
+  box-shadow: 
+    2px 2px 5px rgba(0, 77, 64, 0.25),
+    -1px -1px 3px rgba(255, 255, 255, 0.8);
 }
 
 /* =========================================
-   মোবাইল রেসপনসিভ (স্কেলিং ও লেআউট)
+   মোবাইল রেসপনসিভ
    ========================================= */
 
 @media (max-width: 500px) {
   .carousel-container {
-    height: 275px;
+    height: 280px;
   }
 
   .c-card {
-    height: 265px;
-    display: block; /* মোবাইলে আইকন ও টেক্সট পরপর সাজাতে */
-    padding: 18px 16px;
+    height: 268px;
+    display: block;
+    padding: 20px 18px;
     width: 86%;
     margin-left: -43%;
   }
@@ -294,10 +350,10 @@
   }
 
   .c-icon {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 10px;
-    border-radius: 12px;
+    width: 46px;
+    height: 46px;
+    margin-bottom: 12px;
+    border-radius: 14px;
     font-size: 20px;
   }
 
