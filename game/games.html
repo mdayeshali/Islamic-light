@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ইসলামিক গেম | Islamic Light</title>
+
+    <meta name="description"
+        content="Islamic Light-এর ইসলামিক গেম বিভাগ। কুইজ, ইসলামিক সিটি এবং অন্যান্য শিক্ষামূলক ইসলামিক গেম খেলুন।">
+
+    <meta name="robots" content="index, follow">
+
+    <link rel="canonical" href="https://islamiclight.in/game/games.html">
+
+    <meta property="og:title" content="ইসলামিক গেম | Islamic Light">
+    <meta property="og:description"
+        content="ইসলামিক জ্ঞান অর্জনের জন্য শিক্ষামূলক ও বিনোদনমূলক গেম খেলুন।">
+    <meta property="og:type" content="website">
+    <meta property="og:url"
+        content="https://islamiclight.in/game/games.html">
+
+    <link rel="icon" href="/favicon.ico">
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Noto Sans Bengali", sans-serif;
+            background: #f4f8f6;
+            color: #222;
+        }
+
+        .game-header {
+            background: #004d40;
+            color: #ffffff;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .game-header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .game-header p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+
+        .game-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 25px 15px 40px;
+        }
+
+        .game-intro {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .game-intro h2 {
+            color: #004d40;
+            font-size: 23px;
+            margin-bottom: 8px;
+        }
+
+        .game-intro p {
+            color: #555;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .game-card {
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e0ebe7;
+            transition: 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+        }
+
+        .game-icon {
+            height: 180px;
+            background: linear-gradient(
+                135deg,
+                #004d40,
+                #00796b
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+        }
+
+        .city-icon {
+            background: linear-gradient(
+                135deg,
+                #075e54,
+                #2e7d32
+            );
+        }
+
+        .game-content {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .game-content h3 {
+            color: #004d40;
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .game-content p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 18px;
+            flex: 1;
+        }
+
+        .game-button {
+            display: block;
+            width: 100%;
+            background: #004d40;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            padding: 12px 15px;
+            border-radius: 9px;
+            font-size: 15px;
+            transition: 0.2s ease;
+        }
+
+        .game-button:hover {
+            background: #00695c;
+        }
+
+        .coming-soon {
+            background: #eeeeee;
+            color: #777;
+            cursor: default;
+        }
+
+        .coming-soon:hover {
+            background: #eeeeee;
+        }
+
+        .game-footer {
+            background: #004d40;
+            color: #ffffff;
+            text-align: center;
+            padding: 18px 15px;
+            font-size: 13px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 700px) {
+
+            .games-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .game-header h1 {
+                font-size: 24px;
+            }
+
+            .game-icon {
+                height: 160px;
+            }
+
+            .game-content h3 {
+                font-size: 19px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- =====================================================
+         GAME HEADER
+    ====================================================== -->
+
+    <header class="game-header">
+
+        <h1>ইসলামিক গেম</h1>
+
+        <p>
+            খেলুন, শিখুন এবং ইসলামিক জ্ঞান বৃদ্ধি করুন
+        </p>
+
+    </header>
+
+
+    <!-- =====================================================
+         GAME CONTENT
+    ====================================================== -->
+
+    <main class="game-container">
+
+        <section class="game-intro">
+
+            <h2>গেম নির্বাচন করুন</h2>
+
+            <p>
+                ইসলামিক জ্ঞান অর্জনের জন্য আমাদের
+                শিক্ষামূলক গেমগুলো খেলুন।
+            </p>
+
+        </section>
+
+
+        <section class="games-grid">
+
+
+            <!-- =================================================
+                 ISLAMIC QUIZ
+            ================================================== -->
+
+            <article class="game-card">
+
+                <div class="game-icon">
+
+                    🧠
+
+                </div>
+
+                <div class="game-content">
+
+                    <h3>
+                        ইসলামিক কুইজ
+                    </h3>
+
+                    <p>
+                        কুরআন, হাদিস, নামাজ, আকীদাহ,
+                        সীরাত ও ইসলামের বিভিন্ন বিষয় নিয়ে
+                        নিজের জ্ঞান যাচাই করুন।
+                    </p>
+
+                    <a
+                        href="/game/quiz/game.html"
+                        class="game-button"
+                    >
+                        গেম খেলুন
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 ISLAMIC CITY
+            ================================================== -->
+
+            <article class="game-card">
+
+                <div class="game-icon city-icon">
+
+                    🕌
+
+                </div>
+
+                <div class="game-content">
+
+                    <h3>
+                        Islamic City
+                    </h3>
+
+                    <p>
+                        একটি ইসলামিক শহরে প্রবেশ করুন,
+                        বিভিন্ন স্থান ঘুরে দেখুন এবং
+                        খেলতে খেলতে ইসলামিক জ্ঞান অর্জন করুন।
+                    </p>
+
+                    <a
+                        href="/game/city-g.html"
+                        class="game-button"
+                    >
+                        শহরে প্রবেশ করুন
+                    </a>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 FUTURE GAME
+            ================================================== -->
+
+            <article class="game-card">
+
+                <div class="game-icon">
+
+                    📖
+
+                </div>
+
+                <div class="game-content">
+
+                    <h3>
+                        কুরআন চ্যালেঞ্জ
+                    </h3>
+
+                    <p>
+                        কুরআনের সূরা, আয়াত ও অর্থ
+                        নিয়ে বিভিন্ন ধরনের শিক্ষামূলক
+                        Challenge সম্পন্ন করুন।
+                    </p>
+
+                    <span
+                        class="game-button coming-soon"
+                    >
+                        শীঘ্রই আসছে
+                    </span>
+
+                </div>
+
+            </article>
+
+
+            <!-- =================================================
+                 FUTURE GAME
+            ================================================== -->
+
+            <article class="game-card">
+
+                <div class="game-icon">
+
+                    🌙
+
+                </div>
+
+                <div class="game-content">
+
+                    <h3>
+                        রমজান চ্যালেঞ্জ
+                    </h3>
+
+                    <p>
+                        রোজা, সাহরি, ইফতার, তারাবি
+                        এবং রমজানের বিভিন্ন বিষয়
+                        নিয়ে শিক্ষামূলক Challenge।
+                    </p>
+
+                    <span
+                        class="game-button coming-soon"
+                    >
+                        শীঘ্রই আসছে
+                    </span>
+
+                </div>
+
+            </article>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer class="game-footer">
+
+        <p>
+            © Islamic Light — ইসলামিক শিক্ষা ও জ্ঞান
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
