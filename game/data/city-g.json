@@ -1,319 +1,167 @@
 {
-  "game": {
-    "id": "islamic-city",
-    "name": "Islamic City",
-    "version": "1.0.0",
-    "language": "bn",
-    "description": "একটি ইসলামিক শিক্ষামূলক গেম যেখানে খেলতে খেলতে ইসলামিক জ্ঞান অর্জন করা যায়।"
-  },
-  "player": {
-    "defaultName": "শিক্ষার্থী",
-    "startingLevel": 1,
-    "startingXP": 0,
-    "xpPerLevel": 100
-  },
+  "levels": [
+    { "level": 1, "requiredXP": 0 },
+    { "level": 2, "requiredXP": 40 },
+    { "level": 3, "requiredXP": 90 },
+    { "level": 4, "requiredXP": 150 },
+    { "level": 5, "requiredXP": 220 }
+  ],
   "buildings": [
     {
       "id": "mosque",
       "name": "মসজিদ",
       "icon": "🕌",
-      "type": "Salah Challenge",
-      "description": "মসজিদে প্রবেশ করে নামাজ, ওযু ও সালাত সম্পর্কিত শিক্ষামূলক Mission সম্পন্ন করুন।",
-      "mission": "mosque",
-      "status": "available",
-      "unlockLevel": 1
+      "description": "দৈনন্দিন নামাজ, নামাজের নিয়মাবলি ও ফযিলত সম্পর্কিত চ্যালেঞ্জ。",
+      "unlockLevel": 1,
+      "mission": "mosque"
     },
     {
       "id": "quran",
       "name": "কুরআন কেন্দ্র",
       "icon": "📖",
-      "type": "Quran Challenge",
-      "description": "কুরআনের সূরা, আয়াত ও মৌলিক জ্ঞান নিয়ে বিভিন্ন Challenge সম্পন্ন করুন।",
-      "mission": "quran",
-      "status": "available",
-      "unlockLevel": 1
+      "description": "কুরআনের সূরা, আয়াত ও মৌলিক বিষয় সম্পর্কিত জ্ঞান যাচাই করুন।",
+      "unlockLevel": 1,
+      "mission": "quran"
     },
     {
       "id": "library",
       "name": "ইসলামিক লাইব্রেরি",
       "icon": "📚",
-      "type": "Hadith Challenge",
-      "description": "হাদিস ও ইসলামী জ্ঞান সম্পর্কিত Challenge সম্পন্ন করুন এবং নির্ভরযোগ্য সূত্র সম্পর্কে জানুন।",
-      "mission": "hadith",
-      "status": "available",
-      "unlockLevel": 1
+      "description": "সহিহ হাদিস, সাহাবিদের জীবনী ও ইসলামের ইতিহাস সম্পর্কে জানুন।",
+      "unlockLevel": 2,
+      "mission": "hadith"
     },
     {
       "id": "hajj",
       "name": "হজ কেন্দ্র",
       "icon": "🕋",
-      "type": "Hajj Challenge",
-      "description": "হজ ও উমরাহর বিভিন্ন গুরুত্বপূর্ণ বিষয় সম্পর্কে শিক্ষামূলক Challenge সম্পন্ন করুন।",
-      "mission": "hajj",
-      "status": "available",
-      "unlockLevel": 2
+      "description": "পবিত্র হজ ও উমরার আহকাম সম্পর্কিত বিশেষ চ্যালেঞ্জ।",
+      "unlockLevel": 3,
+      "mission": "hajj"
     },
     {
       "id": "home",
       "name": "আমার বাড়ি",
       "icon": "🏠",
-      "type": "Profile",
-      "description": "আপনার Level, XP, Mission এবং Islamic City-এর অগ্রগতি দেখুন।",
-      "mission": null,
-      "status": "available",
-      "unlockLevel": 1
-    },
-    {
-      "id": "dua-garden",
-      "name": "দোয়া বাগান",
-      "icon": "🌿",
-      "type": "Dua Challenge",
-      "description": "বিভিন্ন দৈনন্দিন দোয়া সম্পর্কে শিখুন এবং Challenge সম্পন্ন করুন।",
-      "mission": "dua",
-      "status": "coming-soon",
-      "unlockLevel": 3
-    },
-    {
-      "id": "family-house",
-      "name": "পরিবার কেন্দ্র",
-      "icon": "🏡",
-      "type": "Adab Challenge",
-      "description": "পরিবার, বাবা-মা, প্রতিবেশী ও ইসলামী আদব সম্পর্কে শিখুন।",
-      "mission": "family",
-      "status": "coming-soon",
-      "unlockLevel": 4
-    },
-    {
-      "id": "ramadan-center",
-      "name": "রমজান কেন্দ্র",
-      "icon": "🌙",
-      "type": "Ramadan Challenge",
-      "description": "রোজা, সাহরি, ইফতার, তারাবি ও রমজানের বিভিন্ন বিষয় নিয়ে Challenge।",
-      "mission": "ramadan",
-      "status": "coming-soon",
-      "unlockLevel": 5
+      "description": "আপনার প্রোফাইল, মোট অর্জিত XP ও লেভেল দেখুন।",
+      "unlockLevel": 1,
+      "mission": null
     }
   ],
   "missions": [
     {
       "id": "mosque",
-      "title": "মসজিদ Mission",
-      "description": "নামাজ ও সালাত সম্পর্কিত একটি Challenge সম্পন্ন করুন।",
+      "title": "নামাজ মিশন",
       "icon": "🕌",
-      "xp": 20,
-      "difficulty": "সহজ",
+      "description": "দৈনন্দিন নামাজের মৌলিক বিধানসমূহ যাচাই করুন।",
       "unlockLevel": 1,
-      "category": "নামাজ"
+      "xp": 30,
+      "status": "active"
     },
     {
       "id": "quran",
-      "title": "কুরআন Mission",
-      "description": "কুরআন সম্পর্কিত একটি প্রশ্নের উত্তর দিন।",
+      "title": "কুরআন মিশন",
       "icon": "📖",
-      "xp": 20,
-      "difficulty": "সহজ",
+      "description": "পবিত্র কুরআনের প্রাথমিক জ্ঞান পরীক্ষা করুন।",
       "unlockLevel": 1,
-      "category": "কুরআন"
+      "xp": 30,
+      "status": "active"
     },
     {
       "id": "hadith",
-      "title": "হাদিস Mission",
-      "description": "হাদিস সম্পর্কে একটি শিক্ষামূলক Challenge সম্পন্ন করুন।",
+      "title": "হাদিস মিশন",
       "icon": "📚",
-      "xp": 20,
-      "difficulty": "সহজ",
-      "unlockLevel": 1,
-      "category": "হাদিস"
+      "description": "রাসূলুল্লাহ (সা.)-এর সুন্নাহ ও হাদিস সম্পর্কিত প্রশ্ন।",
+      "unlockLevel": 2,
+      "xp": 40,
+      "status": "active"
     },
     {
       "id": "hajj",
-      "title": "হজ Mission",
-      "description": "হজ ও উমরাহ সম্পর্কে একটি শিক্ষামূলক Challenge সম্পন্ন করুন।",
+      "title": "হজ মিশন",
       "icon": "🕋",
-      "xp": 30,
-      "difficulty": "মাঝারি",
-      "unlockLevel": 2,
-      "category": "হজ"
-    },
-    {
-      "id": "dua",
-      "title": "দোয়া Mission",
-      "description": "দৈনন্দিন জীবনের একটি গুরুত্বপূর্ণ দোয়া সম্পর্কে শিখুন।",
-      "icon": "🤲",
-      "xp": 25,
-      "difficulty": "সহজ",
+      "description": "হজ ও উমরার গুরুত্বপূর্ণ আহকাম ও ইতিহাস।",
       "unlockLevel": 3,
-      "category": "দোয়া"
-    },
-    {
-      "id": "family",
-      "title": "আদব Mission",
-      "description": "ইসলামী পারিবারিক আদব ও উত্তম আচরণ সম্পর্কে Challenge সম্পন্ন করুন।",
-      "icon": "🏡",
-      "xp": 30,
-      "difficulty": "মাঝারি",
-      "unlockLevel": 4,
-      "category": "আদব"
-    },
-    {
-      "id": "ramadan",
-      "title": "রমজান Mission",
-      "description": "রমজান ও রোজা সম্পর্কিত একটি Challenge সম্পন্ন করুন।",
-      "icon": "🌙",
-      "xp": 40,
-      "difficulty": "মাঝারি",
-      "unlockLevel": 5,
-      "category": "রমজান"
+      "xp": 50,
+      "status": "active"
     }
   ],
   "questions": {
     "mosque": [
       {
-        "id": "salah-001",
-        "question": "এক দিনে ফরজ নামাজ কয় ওয়াক্ত?",
-        "options": [
-          "তিন ওয়াক্ত",
-          "চার ওয়াক্ত",
-          "পাঁচ ওয়াক্ত",
-          "ছয় ওয়াক্ত"
-        ],
-        "answer": "পাঁচ ওয়াক্ত",
-        "explanation": "মুসলিমের ওপর দৈনিক পাঁচ ওয়াক্ত ফরজ সালাত নির্ধারিত হয়েছে।",
-        "xp": 20
+        "question": "দৈনিক কত ওয়াক্ত ফরজ নামাজ আদায় করতে হয়?",
+        "options": ["৩ ওয়াক্ত", "৪ ওয়াক্ত", "৫ ওয়াক্ত", "৬ ওয়াক্ত"],
+        "answer": "৫ ওয়াক্ত",
+        "explanation": "প্রতিদিন মুসলিমদের জন্য ফজর, যোহর, আসর, মাগরিব ও ইশা—এই পাঁচ ওয়াক্ত সালাত ফরজ করা হয়েছে।"
       },
       {
-        "id": "salah-002",
-        "question": "ফজরের ফরজ নামাজ কত রাকাত?",
-        "options": [
-          "দুই রাকাত",
-          "তিন রাকাত",
-          "চার রাকাত",
-          "পাঁচ রাকাত"
-        ],
-        "answer": "দুই রাকাত",
-        "explanation": "ফজরের ফরজ সালাত দুই রাকাত।",
-        "xp": 20
+        "question": "সালাতের মূল চাবি বলা হয় কোনটিকে?",
+        "options": ["অজু বা পবিত্রতা", "আজান", "ইকামত", "নিয়ত"],
+        "answer": "অজু বা পবিত্রতা",
+        "explanation": "রাসূলুল্লাহ (সা.) ইরশাদ করেছেন: 'সালাতের চাবি হলো পবিত্রতা (তাহরাত)।'"
       }
     ],
     "quran": [
       {
-        "id": "quran-001",
-        "question": "কুরআনে মোট কতটি সূরা রয়েছে?",
-        "options": [
-          "110টি",
-          "112টি",
-          "114টি",
-          "116টি"
-        ],
-        "answer": "114টি",
-        "explanation": "পবিত্র কুরআনে মোট ১১৪টি সূরা রয়েছে।",
-        "xp": 20
+        "question": "পবিত্র কুরআনের সর্ববৃহৎ সূরার নাম কী?",
+        "options": ["সূরা আল-ইমরান", "সূরা আল-বাকারা", "সূরা আন-নিসা", "সূরা ইয়াসিন"],
+        "answer": "সূরা আল-বাকারা",
+        "explanation": "সূরা আল-বাকারা পবিত্র কুরআনের দ্বিতীয় সূরা এবং এটি সর্ববৃহৎ সূরা (২৮৬টি আয়াত)।"
       },
       {
-        "id": "quran-002",
-        "question": "কুরআনের প্রথম সূরার নাম কী?",
-        "options": [
-          "সূরা আল-বাকারা",
-          "সূরা আল-ফাতিহা",
-          "সূরা আন-নাস",
-          "সূরা আল-ইখলাস"
-        ],
-        "answer": "সূরা আল-ফাতিহা",
-        "explanation": "মুসহাফের ক্রম অনুযায়ী কুরআনের প্রথম সূরা হলো সূরা আল-ফাতিহা।",
-        "xp": 20
+        "question": "পবিত্র কুরআনে মোট কয়টি সূরা রয়েছে?",
+        "options": ["১১২টি", "১১৪টি", "১১৬টি", "১২০টি"],
+        "answer": "১১৪টি",
+        "explanation": "আল-কুরআনে সর্বমোট ১১৪টি সূরা বিদ্যমান।"
       }
     ],
     "hadith": [
       {
-        "id": "hadith-001",
-        "question": "সিহাহ সিত্তার মধ্যে কোনটি হাদিসের একটি প্রসিদ্ধ গ্রন্থ?",
-        "options": [
-          "সহিহ বুখারী",
-          "তাফসির ইবনে কাসির",
-          "রিয়াদুস সালেহিন",
-          "আর-রাহীকুল মাখতুম"
-        ],
-        "answer": "সহিহ বুখারী",
-        "explanation": "সহিহ বুখারী হাদিসের প্রসিদ্ধ ও নির্ভরযোগ্য গ্রন্থগুলোর একটি।",
-        "xp": 20
+        "question": "সবচেয়ে বিশুদ্ধ হাদিস গ্রন্থ হিসেবে কোনটি সর্বাধিক সমাদৃত?",
+        "options": ["সহিহ বুখারি", "তিরমিজি", "ইবনে মাজাহ", "সুনানে নাসাঈ"],
+        "answer": "সহিহ বুখারি",
+        "explanation": "ইমাম বুখারি (রহ.) সংকলিত 'সহিহ বুখারি' হাদিস শাস্ত্রের সবচেয়ে বিশুদ্ধতম গ্রন্থ।"
+      },
+      {
+        "question": "'সকল আমল নিয়তের উপর নির্ভরশীল'—এটি কোন গ্রন্থের প্রথম হাদিস?",
+        "options": ["সহিহ বুখারি", "রিয়াদুস সালিহিন", "মিশকাতুল মাসাবিহ", "মুয়াত্তা মালিক"],
+        "answer": "সহিহ বুখারি",
+        "explanation": "সহিহ বুখারির সর্বপ্রথম হাদিসটি হলো নিয়ত সম্পর্কিত হাদিস।"
       }
     ],
     "hajj": [
       {
-        "id": "hajj-001",
-        "question": "হজের প্রধান কার্যাবলির মধ্যে কোন স্থানটি বিশেষভাবে গুরুত্বপূর্ণ?",
-        "options": [
-          "আরাফাত",
-          "মদিনা",
-          "তাবুক",
-          "জেরুজালেম"
-        ],
-        "answer": "আরাফাত",
-        "explanation": "হজের গুরুত্বপূর্ণ কার্যাবলির মধ্যে আরাফার ময়দানে অবস্থান বিশেষ গুরুত্ব বহন করে।",
-        "xp": 30
+        "question": "ইসলামের কততম স্তম্ভ হলো হজ?",
+        "options": ["তৃতীয়", "চতুর্থ", "পঞ্চম", "দ্বিতীয়"],
+        "answer": "পঞ্চম",
+        "explanation": "ইসলামের পাঁচটি মূল স্তম্ভের মধ্যে সামর্থ্যবানদের জন্য হজ পালন হলো পঞ্চম স্তম্ভ।"
+      },
+      {
+        "question": "হজের মূল দিবস (আরাফাহ প্রান্তর অবস্থান) কোন তারিখে পালিত হয়?",
+        "options": ["৮ জিলহজ", "৯ জিলহজ", "১০ জিলহজ", "১ জিলহজ"],
+        "answer": "৯ জিলহজ",
+        "explanation": "হজের প্রধান রুকন হলো ৯ জিলহজ আরাফাতের ময়দানে অবস্থান করা।"
       }
-    ],
-    "dua": [],
-    "family": [],
-    "ramadan": []
+    ]
   },
-  "levels": [
-    {
-      "level": 1,
-      "name": "নতুন শিক্ষার্থী",
-      "requiredXP": 0
-    },
-    {
-      "level": 2,
-      "name": "জ্ঞান অন্বেষী",
-      "requiredXP": 100
-    },
-    {
-      "level": 3,
-      "name": "ইসলামিক শিক্ষার্থী",
-      "requiredXP": 200
-    },
-    {
-      "level": 4,
-      "name": "জ্ঞান অনুসন্ধানকারী",
-      "requiredXP": 300
-    },
-    {
-      "level": 5,
-      "name": "জ্ঞানপিপাসু",
-      "requiredXP": 400
-    }
-  ],
   "achievements": [
     {
-      "id": "first-mission",
-      "name": "প্রথম পদক্ষেপ",
-      "icon": "⭐",
-      "description": "প্রথম Mission সম্পন্ন করুন।",
-      "requirement": {
-        "type": "missions",
-        "value": 1
-      }
+      "id": "first_step",
+      "name": "প্রথম পদচিহ্ন",
+      "description": "প্রথম কোনো মিশন সফলভাবে সম্পন্ন করুন।",
+      "requirement": { "type": "missions", "value": 1 }
     },
     {
-      "id": "five-missions",
-      "name": "জ্ঞান অন্বেষী",
-      "icon": "🏆",
-      "description": "৫টি Mission সম্পন্ন করুন।",
-      "requirement": {
-        "type": "missions",
-        "value": 5
-      }
+      "id": "knowledge_seeker",
+      "name": "ইলম অন্বেষণকারী",
+      "description": "মোট ১০০ XP অর্জন করুন।",
+      "requirement": { "type": "xp", "value": 100 }
     },
     {
-      "id": "hundred-xp",
-      "name": "প্রথম Level Up",
-      "icon": "🎖️",
-      "description": "১০০ XP অর্জন করুন।",
-      "requirement": {
-        "type": "xp",
-        "value": 100
-      }
+      "id": "city_master",
+      "name": "শহরের আলো",
+      "description": "শহরের সবকটি মিশন সম্পন্ন করুন।",
+      "requirement": { "type": "missions", "value": 4 }
     }
   ]
 }
