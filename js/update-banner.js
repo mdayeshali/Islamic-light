@@ -1,6 +1,6 @@
 /* =========================================
    Islamic Light — 3D Carousel Slider
-   Auto-slide (6s), Touch Swipe & Dot Navigation
+   Smooth Slow-Motion & Real-Time Finger Drag/Swipe
    Author: Md Ayesh Ali
    ========================================= */
 
@@ -9,15 +9,19 @@
 
   const JSON_URL = "/data/update.json";
   const BANNER_HTML_URL = "/includes/update-banner.html";
-  const AUTO_TIME = 6000; // প্রতি ৬ সেকেন্ড পর পর পরিবর্তন হবে
+  const AUTO_TIME = 7500; // আরামদায়ক স্লো-মোশন দেখার জন্য ৭.৫ সেকেন্ড
+  const TRANSITION_DURATION = 1400; // ১.৪ সেকেন্ড স্লো-মোশন লক
 
   let updates = [];
   let currentIndex = 0;
   let timer = null;
+  let isTransitioning = false;
 
-  // Touch Swipe ভ্যারিয়েবল
-  let touchStartX = 0;
-  let touchEndX = 0;
+  // রিয়েল-টাইম টাচ/ড্র্যাগ ট্র্যাকিং ভ্যারিয়েবল
+  let startX = 0;
+  let currentX = 0;
+  let isDragging = false;
+  let containerWidth = 0;
 
   async function initCarousel() {
     const box = document.getElementById("heroUpdateBox");
@@ -41,7 +45,7 @@
       buildDots();
       updateCarouselPositions();
       setupEvents();
-      setupTouchSwipe();
+      setupRealtimeTouch();
       startAuto();
     } catch (e) {
       console.error("Carousel loading error:", e);
@@ -57,8 +61,10 @@
     updates.forEach((item, idx) => {
       const card = document.createElement("div");
       card.className = "c-card";
-      card.onclick = () => {
-        if (currentIndex !== idx) {
+      card.onclick = (e) => {
+        // ড্র্যাগ করার সময় ক্লিক ইভেন্ট ব্লক রাখা
+        if (Math.abs(currentX - startX) > 10) return;
+        if (currentIndex !== idx && !isTransitioning) {
           currentIndex = idx;
           updateCarouselPositions();
           restartAuto();
@@ -85,12 +91,17 @@
     });
   }
 
-  // ৩D পজিশন ও ডট অ্যাক্টিভ আপডেট
+  // ৩D পজিশন ও ডট আপডেট (স্লো-মোশন ট্রানজিশন লকের সাথে)
   function updateCarouselPositions() {
+    isTransitioning = true;
     const cards = document.querySelectorAll(".c-card");
     const total = cards.length;
 
     cards.forEach((card, idx) => {
+      // ড্র্যাগ করার সময় দেওয়া ইনলাইন স্টাইল রিসেট করে CSS ক্লাসের পূর্ণ ট্রানজিশনে ফেরা
+      card.style.transform = "";
+      card.style.transition = "";
+
       card.classList.remove("active", "prev-card", "next-card", "hidden");
 
       if (idx === currentIndex) {
@@ -109,6 +120,11 @@
     dots.forEach((dot, idx) => {
       dot.classList.toggle("active", idx === currentIndex);
     });
+
+    // স্লো-মোশন শেষ হওয়া পর্যন্ত বাটন লক রাখা
+    setTimeout(() => {
+      isTransitioning = false;
+    }, TRANSITION_DURATION);
   }
 
   // ডট বাটন তৈরি
@@ -125,6 +141,7 @@
 
       d.onclick = (e) => {
         e.stopPropagation();
+        if (isTransitioning || currentIndex === i) return;
         currentIndex = i;
         updateCarouselPositions();
         restartAuto();
@@ -134,7 +151,7 @@
     });
   }
 
-  // মাউস ও বাটন ইভেন্ট
+  // বাটন ও হোভার ইভেন্ট
   function setupEvents() {
     const prevBtn = document.getElementById("cPrev");
     const nextBtn = document.getElementById("cNext");
@@ -142,6 +159,7 @@
 
     if (prevBtn) {
       prevBtn.addEventListener("click", () => {
+        if (isTransitioning) return;
         currentIndex = (currentIndex - 1 + updates.length) % updates.length;
         updateCarouselPositions();
         restartAuto();
@@ -150,49 +168,90 @@
 
     if (nextBtn) {
       nextBtn.addEventListener("click", () => {
+        if (isTransitioning) return;
         currentIndex = (currentIndex + 1) % updates.length;
         updateCarouselPositions();
         restartAuto();
       });
     }
 
-    // মাউস রাখলে অটো-স্লাইড পজ হবে, সরালে আবার শুরু হবে
     if (track) {
       track.addEventListener("mouseenter", stopAuto);
       track.addEventListener("mouseleave", startAuto);
     }
   }
 
-  // হাত দিয়ে সোয়াইপ (Touch Swipe) লজিক
-  function setupTouchSwipe() {
+  // আঙুলের সাথে সাথে সরাসরি সোয়াইপ (Real-time Follow Finger)
+  function setupRealtimeTouch() {
     const container = document.querySelector(".carousel-container");
     if (!container) return;
 
     container.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+      if (isTransitioning) return;
       stopAuto();
+      isDragging = true;
+      startX = e.touches[0].clientX;
+      currentX = startX;
+      containerWidth = container.offsetWidth || 350;
+
+      // টাচ চলাকালীন CSS ট্রানজিশন বন্ধ রাখা যাতে আঙুলের সাথে সরাসরি নড়ে
+      const cards = document.querySelectorAll(".c-card");
+      cards.forEach((card) => {
+        card.style.transition = "none";
+      });
     }, { passive: true });
 
-    container.addEventListener("touchend", (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipeGesture();
+    container.addEventListener("touchmove", (e) => {
+      if (!isDragging) return;
+      currentX = e.touches[0].clientX;
+      const diffX = currentX - startX;
+
+      // ড্র্যাগ রেশিও (-১ থেকে +১)
+      const dragPercent = Math.max(-1, Math.min(1, diffX / (containerWidth * 0.75)));
+
+      const activeCard = document.querySelector(".c-card.active");
+      const prevCard = document.querySelector(".c-card.prev-card");
+      const nextCard = document.querySelector(".c-card.next-card");
+
+      // সক্রিয় কার্ড আঙুলের সাথে ডানে-বামে সরবে এবং সামান্য বাঁকবে
+      if (activeCard) {
+        const rotate = -dragPercent * 28;
+        const scale = 1 - Math.abs(dragPercent) * 0.18;
+        activeCard.style.transform = `translateX(${diffX}px) translateZ(0) rotateY(${rotate}deg) scale(${scale})`;
+      }
+
+      // পূর্বের ও পরের কার্ডগুলো ইন্টারঅ্যাকটিভভাবে কাছে আসবে
+      if (prevCard && diffX > 0) {
+        const scale = 0.82 + dragPercent * 0.18;
+        const rotate = 36 - dragPercent * 36;
+        prevCard.style.transform = `translateX(calc(-52% + ${diffX * 0.5}px)) translateZ(-180px) rotateY(${rotate}deg) scale(${scale})`;
+      }
+
+      if (nextCard && diffX < 0) {
+        const scale = 0.82 + Math.abs(dragPercent) * 0.18;
+        const rotate = -36 + Math.abs(dragPercent) * 36;
+        nextCard.style.transform = `translateX(calc(52% + ${diffX * 0.5}px)) translateZ(-180px) rotateY(${rotate}deg) scale(${scale})`;
+      }
+    }, { passive: true });
+
+    container.addEventListener("touchend", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      const diffX = currentX - startX;
+      const threshold = 50; // ৫০ পিক্সেল টানলে স্লাইড পরিবর্তন হবে
+
+      if (diffX < -threshold) {
+        // বামে টেনে ছেড়ে দিলে পরের স্লাইড
+        currentIndex = (currentIndex + 1) % updates.length;
+      } else if (diffX > threshold) {
+        // ডানে টেনে ছেড়ে দিলে আগের স্লাইড
+        currentIndex = (currentIndex - 1 + updates.length) % updates.length;
+      }
+
+      // ট্রানজিশন ফিরিয়ে দিয়ে স্মুথলি পজিশনে সেট করা
+      updateCarouselPositions();
       startAuto();
     }, { passive: true });
-  }
-
-  function handleSwipeGesture() {
-    const swipeDistance = touchStartX - touchEndX;
-    const threshold = 40; // কত পিক্সেল সোয়াইপ করলে কার্যকর হবে
-
-    if (swipeDistance > threshold) {
-      // আঙুল দিয়ে বামে টানলে পরের স্লাইড
-      currentIndex = (currentIndex + 1) % updates.length;
-      updateCarouselPositions();
-    } else if (swipeDistance < -threshold) {
-      // আঙুল দিয়ে ডানে টানলে আগের স্লাইড
-      currentIndex = (currentIndex - 1 + updates.length) % updates.length;
-      updateCarouselPositions();
-    }
   }
 
   // অটো-স্লাইড টাইমার
@@ -224,4 +283,4 @@
     initCarousel();
   }
 })();
-                  
+   
